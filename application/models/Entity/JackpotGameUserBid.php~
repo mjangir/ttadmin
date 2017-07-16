@@ -1,0 +1,70 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * JackpotGameUserBid
+ *
+ * @ORM\Table(name="jackpot_game_user_bid", indexes={@ORM\Index(name="jackpot_game_user_id", columns={"jackpot_game_user_id"})})
+ * @ORM\Entity
+ */
+class JackpotGameUserBid
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="bid_start_time", type="datetime", nullable=false)
+     */
+    private $bidStartTime;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="bid_end_time", type="datetime", nullable=true)
+     */
+    private $bidEndTime;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="bid_duration", type="integer", nullable=true)
+     */
+    private $bidDuration;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \JackpotGameUser
+     *
+     * @ORM\ManyToOne(targetEntity="JackpotGameUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="jackpot_game_user_id", referencedColumnName="id")
+     * })
+     */
+    private $jackpotGameUser;
+
+
+}

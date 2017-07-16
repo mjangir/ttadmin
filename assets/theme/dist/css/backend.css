@@ -1,0 +1,66 @@
+.navbar-custom {
+    background-color:#285081;
+    color:#ffffff;
+    border-radius:0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color:#fff;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color:transparent;
+}
+.navbar-custom .navbar-brand {
+    color:#eeeeee;
+}
+.modal40p .modal-dialog {
+  width: 40%;
+}
+.modal60p .modal-dialog {
+  width: 60%;
+}
+
+.modal50p .modal-dialog {
+  width: 50%;
+}
+
+.modal70p .modal-dialog {
+  width: 70%;
+}
+
+.modal80p .modal-dialog {
+  width: 80%;
+}
+
+.modal.confirm-modal .modal-dialog{
+	width: 400px;
+}
+.modal.confirm-modal .modal-header {
+	background-color: #E9573F;
+	color: #FFF;
+}
+
+.has-feedback label~.form-control-feedback {
+  top: 27px;
+  right: 10px;
+}
+.bg-dark {
+    background-color: #434A54;
+    color: #FFF;
+}
+.the-box.child-menu-permission {
+    margin-bottom: 5px;
+    padding: 10px;
+}
+.menu-action div.checkbox {
+	margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.mbt10 {
+	margin-bottom:10px;
+}
+.mtp10 {
+	margin-top:10px;
+}

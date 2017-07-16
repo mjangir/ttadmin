@@ -1,0 +1,111 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * JackpotGame
+ *
+ * @ORM\Table(name="jackpot_game", indexes={@ORM\Index(name="jackpot_id", columns={"jackpot_id"}), @ORM\Index(name="longest_bid_winner_user_id", columns={"longest_bid_winner_user_id"}), @ORM\Index(name="last_bid_winner_user_id", columns={"last_bid_winner_user_id"})})
+ * @ORM\Entity
+ */
+class JackpotGame
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="total_users_participated", type="integer", nullable=false)
+     */
+    private $totalUsersParticipated;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="total_number_of_bids", type="integer", nullable=false)
+     */
+    private $totalNumberOfBids;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="longest_bid_duration", type="integer", nullable=false)
+     */
+    private $longestBidDuration;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="last_bid_duration", type="integer", nullable=false)
+     */
+    private $lastBidDuration;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="started_on", type="datetime", nullable=true)
+     */
+    private $startedOn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="finished_on", type="datetime", nullable=true)
+     */
+    private $finishedOn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \Jackpot
+     *
+     * @ORM\ManyToOne(targetEntity="Jackpot")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="jackpot_id", referencedColumnName="id")
+     * })
+     */
+    private $jackpot;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="longest_bid_winner_user_id", referencedColumnName="id")
+     * })
+     */
+    private $longestBidWinnerUser;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="last_bid_winner_user_id", referencedColumnName="id")
+     * })
+     */
+    private $lastBidWinnerUser;
+
+
+}

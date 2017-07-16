@@ -1,0 +1,105 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Link
+ *
+ * @ORM\Table(name="link", indexes={@ORM\Index(name="link_category_id", columns={"link_category_id"})})
+ * @ORM\Entity
+ */
+class Link
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="parent_id", type="integer", nullable=false)
+     */
+    private $parentId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="link_order", type="integer", nullable=true)
+     */
+    private $linkOrder;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="alias", type="string", length=255, nullable=false)
+     */
+    private $alias;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="icon", type="string", length=100, nullable=true)
+     */
+    private $icon;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="href", type="string", length=255, nullable=true)
+     */
+    private $href;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="actions", type="text", length=65535, nullable=false)
+     */
+    private $actions;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \LinkCategory
+     *
+     * @ORM\ManyToOne(targetEntity="LinkCategory")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="link_category_id", referencedColumnName="id")
+     * })
+     */
+    private $linkCategory;
+
+
+}

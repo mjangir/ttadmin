@@ -1,0 +1,105 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SocialLogin
+ *
+ * @ORM\Table(name="social_login", indexes={@ORM\Index(name="user_id", columns={"user_id"})})
+ * @ORM\Entity
+ */
+class SocialLogin
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="social_type", type="string", nullable=false)
+     */
+    private $socialType;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="social_id", type="string", length=255, nullable=false)
+     */
+    private $socialId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="profile_url", type="string", length=255, nullable=true)
+     */
+    private $profileUrl;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="access_token", type="text", length=65535, nullable=false)
+     */
+    private $accessToken;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="access_token_secret", type="text", length=65535, nullable=true)
+     */
+    private $accessTokenSecret;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="refresh_token", type="text", length=65535, nullable=true)
+     */
+    private $refreshToken;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="access_token_expires_in", type="integer", nullable=true)
+     */
+    private $accessTokenExpiresIn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="access_token_expires_at", type="datetime", nullable=true)
+     */
+    private $accessTokenExpiresAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_on", type="datetime", nullable=false)
+     */
+    private $createdOn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_on", type="datetime", nullable=true)
+     */
+    private $updatedOn;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+}

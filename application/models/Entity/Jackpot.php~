@@ -1,0 +1,129 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Jackpot
+ *
+ * @ORM\Table(name="jackpot", indexes={@ORM\Index(name="created_by", columns={"created_by"}), @ORM\Index(name="updated_by", columns={"updated_by"})})
+ * @ORM\Entity
+ */
+class Jackpot
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255, nullable=false)
+     */
+    private $title;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="amount", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $amount;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="game_clock_time", type="integer", nullable=false)
+     */
+    private $gameClockTime;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dooms_day_time", type="integer", nullable=false)
+     */
+    private $doomsDayTime;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="game_clock_remaining", type="integer", nullable=false)
+     */
+    private $gameClockRemaining;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dooms_day_remaining", type="integer", nullable=false)
+     */
+    private $doomsDayRemaining;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="game_status", type="string", nullable=false)
+     */
+    private $gameStatus;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="unique_id", type="string", length=32, nullable=false)
+     */
+    private $uniqueId;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="started_on", type="datetime", nullable=true)
+     */
+    private $startedOn;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="status", type="string", nullable=false)
+     */
+    private $status;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="created_by", referencedColumnName="id")
+     * })
+     */
+    private $createdBy;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="updated_by", referencedColumnName="id")
+     * })
+     */
+    private $updatedBy;
+
+
+}

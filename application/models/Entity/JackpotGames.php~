@@ -1,0 +1,102 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * JackpotGames
+ *
+ * @ORM\Table(name="jackpot_games")
+ * @ORM\Entity
+ */
+class JackpotGames
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="total_users_participated", type="integer", nullable=false)
+     */
+    private $totalUsersParticipated;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="total_number_of_bids", type="integer", nullable=false)
+     */
+    private $totalNumberOfBids;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="longest_bid_duration", type="integer", nullable=false)
+     */
+    private $longestBidDuration;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="last_bid_duration", type="integer", nullable=false)
+     */
+    private $lastBidDuration;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="started_on", type="datetime", nullable=true)
+     */
+    private $startedOn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="finished_on", type="datetime", nullable=true)
+     */
+    private $finishedOn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="jackpot_id", type="integer", nullable=false)
+     */
+    private $jackpotId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="longest_bid_winner_user_id", type="integer", nullable=true)
+     */
+    private $longestBidWinnerUserId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="last_bid_winner_user_id", type="integer", nullable=true)
+     */
+    private $lastBidWinnerUserId;
+
+
+}

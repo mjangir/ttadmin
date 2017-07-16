@@ -1,0 +1,94 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * JackpotGameUser
+ *
+ * @ORM\Table(name="jackpot_game_user", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="jackpot_game_id", columns={"jackpot_game_id"})})
+ * @ORM\Entity
+ */
+class JackpotGameUser
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="remaining_available_bids", type="integer", nullable=true)
+     */
+    private $remainingAvailableBids;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="total_number_of_bids", type="integer", nullable=true)
+     */
+    private $totalNumberOfBids;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="longest_bid_duration", type="integer", nullable=true)
+     */
+    private $longestBidDuration;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="joined_on", type="datetime", nullable=true)
+     */
+    private $joinedOn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="quitted_on", type="datetime", nullable=true)
+     */
+    private $quittedOn;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+    /**
+     * @var \JackpotGame
+     *
+     * @ORM\ManyToOne(targetEntity="JackpotGame")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="jackpot_game_id", referencedColumnName="id")
+     * })
+     */
+    private $jackpotGame;
+
+
+}
