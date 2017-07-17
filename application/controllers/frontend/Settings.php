@@ -26,7 +26,7 @@ class Settings extends MY_LoggedUserController
 {
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor and sets base url of the controller,
      * module name and doctrine entity name
      */
@@ -37,7 +37,7 @@ class Settings extends MY_LoggedUserController
 
     /**
      * index action.
-     * 
+     *
      * Index page of Setting module in frontend
      */
     public function index()
@@ -48,10 +48,9 @@ class Settings extends MY_LoggedUserController
 
         $view_data['countries'] = getCountryDropdown(true);
 
-        $view_data['name'] = $this->loggedUserObject->getFirstName();
+        $view_data['name'] = $this->loggedUserObject->getName();
         $view_data['email'] = $this->loggedUserObject->getEmail();
         $view_data['gender'] = $this->loggedUserObject->getGender();
-        $view_data['birthDate'] = ($this->loggedUserObject->getBirthDate()) ? $this->loggedUserObject->getBirthDate()->format('Y-m-d') : '';
         $view_data['country'] = ($this->loggedUserObject->getCountry()) ? $this->loggedUserObject->getCountry()->getId() : '';
 
         //Render index page
@@ -62,7 +61,7 @@ class Settings extends MY_LoggedUserController
 
     /**
      * updateprofile action.
-     * 
+     *
      * Update user profile
      */
     public function updateprofile()
@@ -128,7 +127,7 @@ class Settings extends MY_LoggedUserController
 
     /**
      * changepassword action.
-     * 
+     *
      * Change logged in user password
      */
     public function changepassword()

@@ -17,10 +17,10 @@ if (!function_exists('encrypt')) {
 
     /**
      * Function to encrypt data using encryption key defined in constant.php.
-     * 
+     *
      * @param string $string
      * @param string $salt
-     * 
+     *
      * @return string
      */
     function encrypt($string, $salt = null)
@@ -35,10 +35,10 @@ if (!function_exists('decrypt')) {
 
     /**
      * Function to decrypt data using encryption key defined in constant.php.
-     * 
+     *
      * @param string $encrypted
      * @param string $salt
-     * 
+     *
      * @return string
      */
     function decrypt($encrypted, $salt = null)
@@ -53,9 +53,9 @@ if (!function_exists('getCountryDropdown')) {
 
     /**
      * get country dropdown list.
-     * 
+     *
      * @param bool $selectOption
-     * 
+     *
      * @return array
      */
     function getCountryDropdown($selectOption = false)
@@ -81,10 +81,10 @@ if (!function_exists('getStateDropdown')) {
 
     /**
      * get state dropdown list.
-     * 
+     *
      * @param int  $countryId
      * @param bool $selectOption
-     * 
+     *
      * @return array
      */
     function getStateDropdown($countryId = null, $selectOption = false)
@@ -115,10 +115,10 @@ if (!function_exists('getCityDropdown')) {
 
     /**
      * get city dropdown list.
-     * 
+     *
      * @param int  $stateId
      * @param bool $selectOption
-     * 
+     *
      * @return array
      */
     function getCityDropdown($stateId = null, $selectOption = false)
@@ -149,9 +149,9 @@ if (!function_exists('getUserDropdown')) {
 
     /**
      * Get user dropdown list.
-     * 
+     *
      * @param bool $excludeInActive
-     * 
+     *
      * @return string
      */
     function getUserDropdown($excludeInActive = true)
@@ -177,9 +177,9 @@ if (!function_exists('getLinkCategoryDropdown')) {
 
     /**
      * Get link category dropdown list.
-     * 
+     *
      * @param bool $selectOption
-     * 
+     *
      * @return array
      */
     function getLinkCategoryDropdown($selectOption = false)
@@ -205,10 +205,10 @@ if (!function_exists('getLinkDropdown')) {
 
     /**
      * Get link dropdown list.
-     * 
+     *
      * @param bool $onlyParent
      * @param int  $linkCategoryId
-     * 
+     *
      * @return array
      */
     function getLinkDropdown($onlyParent = false, $linkCategoryId = null)
@@ -239,7 +239,7 @@ if (!function_exists('getUserRoleDropdown')) {
 
     /**
      * Get user role dropdown list.
-     * 
+     *
      * @param bool $selectOption
      *
      * @return array
@@ -267,10 +267,10 @@ if (!function_exists('getUserGroupDropdown')) {
 
     /**
      * Get user group dropdown list.
-     * 
+     *
      * @param bool $selectOption
      * @param bool $excludeInActive
-     * 
+     *
      * @return array
      */
     function getUserGroupDropdown($selectOption = false, $excludeInActive = true)
@@ -299,7 +299,7 @@ if (!function_exists('getLoggedUserData')) {
 
     /**
      * Get logged user data.
-     * 
+     *
      * @return array
      */
     function getLoggedUserData()
@@ -314,7 +314,7 @@ if (!function_exists('getSystemSettings')) {
 
     /**
      * Get system settings.
-     * 
+     *
      * @return array
      */
     function getSystemSettings()
@@ -329,7 +329,7 @@ if (!function_exists('getNavigationMenus')) {
 
     /**
      * Get navigation menus.
-     * 
+     *
      * @return array
      */
     function getNavigationMenus()
@@ -342,11 +342,11 @@ if (!function_exists('getNavigationMenus')) {
 
 /**
  * Check menu permission.
- * 
+ *
  * @param string $alias
  * @param string $permission
  * @param bool   $redirect
- * 
+ *
  * @return bool
  */
 function checkMenuPermission($alias, $permission, $redirect = false)
@@ -383,9 +383,9 @@ function checkMenuPermission($alias, $permission, $redirect = false)
 
 /**
  * Check if email is valid.
- * 
+ *
  * @param string $email
- * 
+ *
  * @return bool
  */
 function isValidEmail($email)
@@ -399,9 +399,9 @@ function isValidEmail($email)
 
 /**
  * Creates string slug.
- * 
+ *
  * @param string $text
- * 
+ *
  * @return string
  */
 function slugify($text)
@@ -420,7 +420,7 @@ function slugify($text)
 
 /**
  * Generates random sting.
- * 
+ *
  * @param int $length
  *
  * @return string
@@ -435,7 +435,7 @@ function generateRandomPassword($length = 8)
 
 /**
  * Get system settings.
- * 
+ *
  * @return array $settings
  */
 function getSettings()
@@ -448,4 +448,42 @@ function getSettings()
     }
 
     return $settings;
+}
+
+/**
+ * Generate Random String
+ *
+ * @return array $settings
+ */
+function generateRandomString($length = 20)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
+
+/**
+ * Convert Time Format To Seconds
+ */
+function convertTimeFormatToSeconds($str_time)
+{
+    $str_time = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $str_time);
+
+    sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
+
+    return $hours * 3600 + $minutes * 60 + $seconds;
+}
+
+/**
+ * Convert Seconds To Time Format
+ *
+ */
+function convertSecondsToTimeFormat($seconds)
+{
+    $t = round($seconds);
+    return sprintf('%02d:%02d:%02d', ($t/3600),($t/60%60), $t%60);
 }

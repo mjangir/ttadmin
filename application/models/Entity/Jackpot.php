@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Jackpot
  *
  * @ORM\Table(name="jackpot", indexes={@ORM\Index(name="created_by", columns={"created_by"}), @ORM\Index(name="updated_by", columns={"updated_by"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Repository\JackpotRepository")
  */
 class Jackpot
 {
@@ -130,7 +130,7 @@ class Jackpot
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -153,7 +153,7 @@ class Jackpot
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -176,7 +176,7 @@ class Jackpot
     /**
      * Get amount
      *
-     * @return string 
+     * @return string
      */
     public function getAmount()
     {
@@ -199,7 +199,7 @@ class Jackpot
     /**
      * Get gameClockTime
      *
-     * @return integer 
+     * @return integer
      */
     public function getGameClockTime()
     {
@@ -222,7 +222,7 @@ class Jackpot
     /**
      * Get doomsDayTime
      *
-     * @return integer 
+     * @return integer
      */
     public function getDoomsDayTime()
     {
@@ -245,7 +245,7 @@ class Jackpot
     /**
      * Get gameClockRemaining
      *
-     * @return integer 
+     * @return integer
      */
     public function getGameClockRemaining()
     {
@@ -268,7 +268,7 @@ class Jackpot
     /**
      * Get doomsDayRemaining
      *
-     * @return integer 
+     * @return integer
      */
     public function getDoomsDayRemaining()
     {
@@ -291,7 +291,7 @@ class Jackpot
     /**
      * Get gameStatus
      *
-     * @return string 
+     * @return string
      */
     public function getGameStatus()
     {
@@ -314,7 +314,7 @@ class Jackpot
     /**
      * Get uniqueId
      *
-     * @return string 
+     * @return string
      */
     public function getUniqueId()
     {
@@ -337,7 +337,7 @@ class Jackpot
     /**
      * Get startedOn
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getStartedOn()
     {
@@ -360,7 +360,7 @@ class Jackpot
     /**
      * Get status
      *
-     * @return string 
+     * @return string
      */
     public function getStatus()
     {
@@ -383,7 +383,7 @@ class Jackpot
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -406,7 +406,7 @@ class Jackpot
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -429,7 +429,7 @@ class Jackpot
     /**
      * Get createdBy
      *
-     * @return User 
+     * @return User
      */
     public function getCreatedBy()
     {
@@ -452,7 +452,7 @@ class Jackpot
     /**
      * Get updatedBy
      *
-     * @return User 
+     * @return User
      */
     public function getUpdatedBy()
     {

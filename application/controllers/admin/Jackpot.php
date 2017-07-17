@@ -14,17 +14,12 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
- * Page Class.
- *
- * Create, Update, Delete application pages. There will be a unique alias name
- * for each page for e.g. about-us. Following base_url('page/alias-name') will 
- * lead to open the respected page
+ * Jackpot Class.
  *
  * @category	Controller
- *
  * @author	Manish Jangir <manishjangir.com>
  */
-class Page extends MY_AdminController
+class Jackpot extends MY_AdminController
 {
     /**
      * Base URL of the controller.
@@ -36,7 +31,7 @@ class Page extends MY_AdminController
     /**
      * Module Name.
      *
-     * @var string Name of the entity which the controller is for 
+     * @var string Name of the entity which the controller is for
      */
     protected $crudName;
 
@@ -49,7 +44,7 @@ class Page extends MY_AdminController
 
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor and sets base url of the controller,
      * module name and doctrine entity name
      */
@@ -58,27 +53,27 @@ class Page extends MY_AdminController
         parent::__construct();
 
         //Set base url of the controller
-        $this->baseControllerUrl = base_url('admin/cms/pages');
+        $this->baseControllerUrl = base_url('admin/jackpots');
 
         //Set module name
-        $this->crudName = 'Page';
+        $this->crudName = 'Jackpot';
 
         //Set doctrine entity name
-        $this->entityName = 'Entity\Page';
+        $this->entityName = 'Entity\Jackpot';
     }
 
     /**
      * index action.
-     * 
-     * Index page of Page module
+     *
+     * Index jackpot of Jackpot module
      */
     public function index()
     {
 
-        //Check if Page LISTING action is permitted
-        checkMenuPermission('admin_manage_pages', 'LISTING', true);
+        //Check if Jackpot LISTING action is permitted
+        checkMenuPermission('admin_jackpots', 'LISTING', true);
 
-        //Get pages to list in data table
+        //Get jackpots to list in data table
         $data = $this->objectManager->getRepository($this->entityName)->getPagedList($this->offset, $this->limit, $this->postParams);
 
         //Set the paginator for listing
@@ -87,12 +82,12 @@ class Page extends MY_AdminController
         //Prepare the view parameters
         $view_data = array();
         $view_data['data'] = $data;                            //Data got from model
-        $view_data['page'] = $this->page;                      //Current page number
+        $view_data['page'] = $this->page;                      //Current jackpot number
         $view_data['listStartFrom'] = $this->offset + 1;                  //Serial number of the table records
         $view_data['isAjaxRequest'] = $this->input->is_ajax_request();  //If request is ajax
         $view_data['pagination'] = $paginator->getPagination();      //Pagination for table
 
-        //Set common view parameters for listing page
+        //Set common view parameters for listing jackpot
         $view_data['postData'] = $this->postParams;
         $view_data['addUrl'] = $this->baseControllerUrl.'/add-update';
         $view_data['updateUrl'] = $this->baseControllerUrl.'/add-update';
@@ -104,39 +99,24 @@ class Page extends MY_AdminController
         //Check if the request is ajax. If yes then only render the view
         if ($this->input->is_ajax_request()) {
             $jsonResponse = array();
-            $jsonResponse['html'] = $this->load->view('admin/page/index', $view_data, true);
+            $jsonResponse['html'] = $this->load->view('admin/jackpot/index', $view_data, true);
             echo json_encode($jsonResponse);
         } else {
 
             //If request is not ajax then render the view with layout
             return $this->load->view('layout/backend', array(
-                'content' => $this->load->view('admin/page/index', $view_data, true),
-                'pageHeading' => 'Manage Pages',
+                'content' => $this->load->view('admin/jackpot/index', $view_data, true),
+                'pageHeading' => 'Manage Jackpots',
                 'pageSubHeading' => '',
-                'activeLinksAlias' => array('admin_manage_cms', 'admin_manage_pages'),
-                'breadCrumbs' => array('Manage Pages' => ''),
+                'activeLinksAlias' => array('admin_jackpots'),
+                'breadCrumbs' => array('Manage Jackpots' => ''),
             ));
         }
-    }
-    
-    /**
-     * alias_exists function.
-     * 
-     * Checks weather given alias name exists in database or not
-     * 
-     * @param string $alias Alias Name to check in database
-     * 
-     * @return bool
-     */
-    public function alias_exists($alias)
-    {
-        $record = $this->objectManager->getRepository('Entity\Page')->findOneBy(array('alias' => $alias));
-        return $record === null;
     }
 
     /**
      * addupdate action.
-     * 
+     *
      * The common action to add or update a record for this controller. In case of update record,
      * the ID of record will be provide. It will render the form only if the request to this action
      * is not POST.
@@ -144,14 +124,14 @@ class Page extends MY_AdminController
     public function addupdate()
     {
 
-        //Get page id from GET requeest
+        //Get jackpot id from GET requeest
         $id = (!empty($this->queryParams['id'])) ? $this->queryParams['id'] : null;
 
-        //Check if Page UPDATE or ADD action is permitted
+        //Check if Jackpot UPDATE or ADD action is permitted
         if (!empty($id)) {
-            checkMenuPermission('admin_manage_pages', 'UPDATE', true);
+            checkMenuPermission('admin_jackpots', 'UPDATE', true);
         } else {
-            checkMenuPermission('admin_manage_pages', 'ADD', true);
+            checkMenuPermission('admin_jackpots', 'ADD', true);
         }
 
         //Check if request is POST. If yes then proceed with add or update
@@ -161,47 +141,46 @@ class Page extends MY_AdminController
             header('Content-Type: application/json');
 
             //Set form validation rules
-            $this->form_validation->set_rules('name', 'Page Name', 'trim|required|xss_clean',
-                    array('required' => 'Please enter Page Name'));
-            $this->form_validation->set_rules('title', 'Page Title', 'trim|required|xss_clean',
-                    array('required' => 'Please enter Page Title'));
-            $this->form_validation->set_rules('content', 'Content', 'trim|xss_clean');
-            $this->form_validation->set_rules('metaKeywords', 'Meta Keywords', 'trim|xss_clean');
-            $this->form_validation->set_rules('metaDescription', 'Meta Description', 'trim|xss_clean');
-            if ($id === null) {
-               $this->form_validation->set_rules('alias', 'Alias Name', 'trim|required|callback_alias_exists|xss_clean',
-                        array('required' => 'Please enter Alias Name',
-                                'alias_exists' => 'Alias Name must be unique for each page'
-                        )); 
-            }
+            $this->form_validation->set_rules('title', 'Jackpot Title', 'trim|required|xss_clean',
+                    array('required' => 'Please enter Jackpot Title'));
+            $this->form_validation->set_rules('amount', 'Jackpot Amount', 'trim|required|xss_clean',
+                    array('required' => 'Please enter Jackpot Amount'));
+            $this->form_validation->set_rules('game_clock_time', 'Game Clock Time', 'trim|required|xss_clean',
+                    array('required' => 'Please enter Game Clock Time'));
+            $this->form_validation->set_rules('dooms_day_time', 'Dooms Day Clock Time', 'trim|required|xss_clean',
+                    array('required' => 'Please enter Dooms Day Clock Time'));
 
             //If form is successfully validated
             if ($this->form_validation->run() == true) {
                 try {
-                    //If new page is created
+                    //If new jackpot is created
                     if ($id === null) {
-                        $page = new Entity\Page();
-                        $page->setCreatedBy($this->loggedUserId);
-                        $page->setCreatedOn(new \DateTime());
-                        $page->setAlias($this->postParams['alias']);
-                        $page->setStatus('ACTIVE');
+                        $jackpot = new Entity\Jackpot();
+                        $jackpot->setUniqueId(generateRandomString(20));
+                        $jackpot->setCreatedBy($this->loggedUserObject);
+                        $jackpot->setUpdatedBy($this->loggedUserObject);
+                        $jackpot->setCreatedAt(new \DateTime());
+                        $jackpot->setUpdatedAt(new \DateTime());
+                        $jackpot->setGameStatus('NOT_STARTED');
+                        $jackpot->setStatus('ACTIVE');
                     } else {
-                        //If existing page is updated
-                        $page = $this->objectManager->getRepository($this->entityName)->find($id);
-                        $page->setUpdatedOn(new \DateTime());
-                        $page->setUpdatedBy($this->loggedUserId);
+                        //If existing jackpot is updated
+                        $jackpot = $this->objectManager->getRepository($this->entityName)->find($id);
+                        $jackpot->setUpdatedAt(new \DateTime());
+                        $jackpot->setUpdatedBy($this->loggedUserObject);
                     }
 
-                    //Set Page object properties
-                    $page->setName($this->postParams['name']);
-                    $page->setTitle($this->postParams['title']);
-                    $page->setContent($this->postParams['content']);
-                    $page->setMetaDescription($this->postParams['metaDescription']);
-                    $page->setMetaKeywords($this->postParams['metaKeywords']);
+                    //Set Jackpot object properties
+                    $jackpot->setTitle($this->postParams['title']);
+                    $jackpot->setAmount($this->postParams['amount']);
+                    $jackpot->setGameClockTime(convertTimeFormatToSeconds($this->postParams['game_clock_time']));
+                    $jackpot->setDoomsDayTime(convertTimeFormatToSeconds($this->postParams['dooms_day_time']));
+                    $jackpot->setGameClockRemaining(convertTimeFormatToSeconds($this->postParams['game_clock_time']));
+                    $jackpot->setDoomsDayRemaining(convertTimeFormatToSeconds($this->postParams['dooms_day_time']));
 
                     //Persist and flush the object
-                    $this->objectManager->persist($page);
-                    $this->objectManager->flush($page);
+                    $this->objectManager->persist($jackpot);
+                    $this->objectManager->flush($jackpot);
 
                     //Return success if added successfully
                     echo json_encode(array(
@@ -222,6 +201,7 @@ class Page extends MY_AdminController
                     ));
                     exit;
                 } catch (Exception $ex) {
+                    die($ex->getMessage());
                     //show error message to user
                     echo json_encode(array(
                         'html' => '',
@@ -240,7 +220,7 @@ class Page extends MY_AdminController
                 $errors = $this->form_validation->error_array();
                 echo json_encode(array(
                     'validation' => array(
-                        'form' => '#form_page',
+                        'form' => '#form_jackpot',
                         'errors' => $errors,
                     ),
                 ));
@@ -251,45 +231,45 @@ class Page extends MY_AdminController
 
             //Set view form attributes and variables
             $view_data['form']['attributes'] = array(
-                'id' => 'form_page',
+                'id' => 'form_jackpot',
             );
-            $view_data['form']['action'] = ($id === null) ? $this->baseControllerUrl.'/add-update' : $this->baseControllerUrl.'/add-update?id='.$id;
+            $view_data['form']['action']    = ($id === null) ? $this->baseControllerUrl.'/add-update' : $this->baseControllerUrl.'/add-update?id='.$id;
             $view_data['form']['cancelUrl'] = $this->baseControllerUrl;
-            $view_data['form']['viewUrl'] = $this->baseControllerUrl.'/view?id='.$id;
+            $view_data['form']['viewUrl']   = $this->baseControllerUrl.'/view?id='.$id;
 
             //Set other view parameters if new record is added
             if ($id === null) {
-                $viewFile = 'admin/page/add';
-                $view_data['pageHeading'] = 'Add Page';
+                $viewFile = 'admin/jackpot/add';
+                $view_data['pageHeading'] = 'Add Jackpot';
             } else {
                 //Set other view parameters if a record is updated
-                $view_data['page'] = $this->objectManager->getRepository($this->entityName)->find($id);
-                $viewFile = 'admin/page/update';
-                $view_data['pageHeading'] = 'Update Page';
+                $view_data['jackpot'] = $this->objectManager->getRepository($this->entityName)->find($id);
+                $viewFile = 'admin/jackpot/update';
+                $view_data['pageHeading'] = 'Update Jackpot';
             }
 
             //Return the layout with view form
             return $this->load->view('layout/backend', array(
-                'content' => $this->load->view($viewFile, $view_data, true),
-                'pageHeading' => $view_data['pageHeading'],
+                'content'           => $this->load->view($viewFile, $view_data, true),
+                'pageHeading'    => $view_data['pageHeading'],
                 'pageSubHeading' => '',
-                'activeLinksAlias' => array('admin_manage_cms', 'admin_manage_pages'),
-                'breadCrumbs' => array('Manage Pages' => $this->baseControllerUrl, $view_data['pageHeading'] => ''),
+                'activeLinksAlias'  => array('admin_jackpots'),
+                'breadCrumbs'       => array('Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''),
             ));
         }
     }
 
     /**
      * addupdate action.
-     * 
+     *
      * Action to delete a record from the table. It will permanent remove the record from database.
      * There is no soft delete functionality as of now
      */
     public function delete()
     {
 
-        //Check if Page DELETE action is permitted
-        checkMenuPermission('admin_manage_pages', 'DELETE', true);
+        //Check if Jackpot DELETE action is permitted
+        checkMenuPermission('admin_jackpots', 'DELETE', true);
 
         //Delete will always accept ajax requests. If the request is not XMLHTTP then redirect to listing
         if (!$this->input->is_ajax_request()) {
@@ -346,14 +326,14 @@ class Page extends MY_AdminController
 
     /**
      * status action.
-     * 
-     * Enable or Disable a page
+     *
+     * Enable or Disable a jackpot
      */
     public function status()
     {
 
-        //Check if Page STATUS action is permitted
-        checkMenuPermission('admin_manage_pages', 'STATUS', true);
+        //Check if Jackpot STATUS action is permitted
+        checkMenuPermission('admin_jackpots', 'STATUS', true);
 
         //This action will always accept ajax requests. If the request is not XMLHTTP then redirect to listing
         if (!$this->input->is_ajax_request()) {
@@ -377,7 +357,7 @@ class Page extends MY_AdminController
 
                 //Set new status and updated date of the object
                 $recordObj->setStatus($newStatus);
-                $recordObj->setUpdatedOn(new \DateTime());
+                $recordObj->setUpdatedAt(new \DateTime());
 
                 //Persist and save the object
                 $this->objectManager->persist($recordObj);

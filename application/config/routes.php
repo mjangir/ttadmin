@@ -109,9 +109,9 @@ $route['admin/users/add-update'] = 'admin/user/addupdate';
 $route['admin/users/delete'] = 'admin/user/delete';
 $route['admin/users/status'] = 'admin/user/status';
 
-//CMS Pages
-$route['admin/cms/pages'] = 'admin/page';
-$route['admin/cms/pages/view'] = 'admin/page/view';
-$route['admin/cms/pages/add-update'] = 'admin/page/addupdate';
-$route['admin/cms/pages/delete'] = 'admin/page/delete';
-$route['admin/cms/pages/status'] = 'admin/page/status';
+//CMS Jackpots
+$route['admin/jackpots'] = 'admin/jackpot';
+$route['admin/jackpots/view'] = 'admin/jackpot/view';
+$route['admin/jackpots/add-update'] = 'admin/jackpot/addupdate';
+$route['admin/jackpots/delete'] = 'admin/jackpot/delete';
+$route['admin/jackpots/status'] = 'admin/jackpot/status';

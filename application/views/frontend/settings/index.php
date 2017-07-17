@@ -8,9 +8,9 @@
                     <li><a href="#changepwd" data-toggle="tab">Settings</a></li>
                 </ul>
                 <div class="tab-content">
-                    
+
                     <div class="active tab-pane" id="profile">
-                        <?php 
+                        <?php
                             if ($this->session->flashdata('formErrors')) {
                                 foreach ($this->session->flashdata('formErrors') as $message) {
                                     echo '<div class="alert alert-danger">
@@ -45,12 +45,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="birth_date" class="col-sm-3 control-label">Birth Date</label>
-                                <div class="col-sm-3">
-                                    <input class="form-control datepicker" type="date" name="birth_date" id="birth_date" placeholder="Birth Date" value="<?php echo $birthDate;?>">
-                                </div>
-                            </div>
-                            <div class="form-group">
                                 <label for="country" class="col-sm-3 control-label">Country</label>
                                 <div class="col-sm-3">
                                     <select name="country" class="form-control">
@@ -61,7 +55,7 @@
     ?>" <?php echo $selected;
     ?>><?php echo $value;
     ?></option>
-                                        <?php 
+                                        <?php
 } ?>
                                     </select>
                                 </div>
@@ -73,7 +67,7 @@
                             </div>
                         </form>
                     </div>
-                    
+
                     <div class="tab-pane" id="changepwd">
                         <form class="form-horizontal" id="form-reset-password" action="<?php echo base_url('settings/changepassword');?>" method="post">
                             <div class="form-group">

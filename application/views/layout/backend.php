@@ -3,11 +3,15 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Smart CMS</title>
+  <title>TickTock Admin</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme/bootstrap/css/bootstrap.min.css">
+
+  <!-- Jquery UI -->
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme/dist/css/jquery-ui.min.css">
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
@@ -17,17 +21,19 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme/dist/css/skins/_all-skins.min.css">
-  
+
   <!-- iCheck CSS -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/theme/plugins/iCheck/square/blue.css">
   <!-- WYSIHTML5 Editor -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/theme/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- Toastr Message -->
   <link href="<?php echo base_url();?>assets/theme/plugins/toastr/toastr.css" rel="stylesheet">
-  
+
   <!-- Backend specific -->
   <link href="<?php echo base_url();?>assets/theme/dist/css/backend.css" rel="stylesheet">
-  
+
+  <link href="<?php echo base_url();?>assets/theme/dist/css/jquery-ui-timepicker-addon.css" rel="stylesheet">
+
   <script type="text/javascript">
         var base_url = '<?php echo base_url();?>';
     </script>
@@ -110,7 +116,7 @@
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-      
+
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
@@ -131,13 +137,13 @@
         <li class="<?php echo $class;
         ?>">
             <a href="<?php echo $linkHref;
-        ?>"> 
+        ?>">
                 <i class="<?php echo $icon;
         ?> icon-sidebar"></i>
                 <?php if (!empty($subMenus)) {
     ?>
                     <i class="fa fa-angle-left pull-right"></i>
-                <?php 
+                <?php
 }
         ?>
                 <?php echo $linkName;
@@ -159,15 +165,15 @@
     ?>"><i class="fa fa-circle-o"></i> <?php echo $linkName;
     ?></a>
                     </li>
-                    <?php 
+                    <?php
 }
-    ?>					
+    ?>
                 </ul>
-            <?php 
+            <?php
 }
         ?>
         </li>
-        <?php 
+        <?php
     }
 }?>
     </ul>
@@ -200,7 +206,7 @@
 }?>
       </ol>
         <br/>
-        <?php 
+        <?php
             if ($this->session->flashdata('messages')) {
                 foreach ($this->session->flashdata('messages') as $message) {
                     $msgArray = explode('@#@', $message);
@@ -236,7 +242,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <?php echo isset($content) ? $content : null;?> 
+        <?php echo isset($content) ? $content : null;?>
     </section>
     <!-- /.content -->
   </div>
@@ -259,6 +265,8 @@
 
 <!-- jQuery 2.2.0 -->
 <script src="<?php echo base_url(); ?>assets/theme/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/theme/plugins/jQueryUI/jquery-ui.min.js"></script>
+
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url(); ?>assets/theme/bootstrap/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->
@@ -285,12 +293,13 @@
 
 <!-- Bootbox -->
 <script src="<?php echo base_url();?>assets/theme/plugins/bootbox/bootbox.min.js"></script>
-        
+
 <!-- Validation.io JS -->
 <script src="<?php echo base_url();?>assets/theme/plugins/validation/formValidation.min.js"></script>
 <script src="<?php echo base_url();?>assets/theme/plugins/validation/bootstrap.min.js"></script>
 
-<!-- Frontend CSS -->
+<!-- Backend CSS -->
 <script src="<?php echo base_url();?>assets/theme/dist/js/backend.js"></script>
+<script src="<?php echo base_url();?>assets/theme/dist/js/jquery-ui-timepicker-addon.js"></script>
 </body>
 </html>

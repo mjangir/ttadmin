@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/theme/plugins/iCheck/square/blue.css">
     <link rel="stylesheet" href="<?php echo base_url();?>assets/theme/dist/css/AdminLTE.min.css">
-    
+
     <!-- Validation CSS -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/theme/dist/css/validation/formValidation.min.css">
 
@@ -40,7 +40,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<?php echo base_url('/'); ?>">Smart CMS</a>
+                <a class="navbar-brand" href="<?php echo base_url('/'); ?>">TickTock</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -52,7 +52,7 @@
 }
     ?>
                     </ul>
-                <?php 
+                <?php
 } ?>
                 <?php if (!empty($loggedUser)) {
     ?>
@@ -71,11 +71,11 @@
     ?>
                         <li><a href="<?php echo base_url('admin');
     ?>">Go To Admin</a></li>
-                        <?php 
+                        <?php
 }
     ?>
                     </ul>
-                <?php 
+                <?php
 } else {
     ?>
                     <ul class="nav navbar-nav pull-right">
@@ -84,7 +84,7 @@
                         <li><a href="<?php echo base_url('auth/register');
     ?>">Register</a></li>
                     </ul>
-                <?php 
+                <?php
 } ?>
             </div>
             <!-- /.navbar-collapse -->
@@ -92,7 +92,7 @@
         <!-- /.container -->
     </nav><!-- Page Content -->
     <div class="container">
-        <?php 
+        <?php
         if ($this->session->flashdata('messages')) {
             foreach ($this->session->flashdata('messages') as $message) {
                 $msgArray = explode('@#@', $message);
@@ -123,7 +123,7 @@
                     </div>
                     <!-- /.widget-user-image -->
                     <h3 class="widget-user-username"><?php echo $loggedUser['fullName'];?></h3>
-                    <h5 class="widget-user-desc">Lead Developer</h5>
+                    <h5 class="widget-user-desc">Admin</h5>
                   </div>
                   <div class="box-footer no-padding">
                       <?php if (!empty($sidebarLinks)) {
@@ -134,14 +134,14 @@
 }
     ?>
                             </ul>
-                        <?php 
+                        <?php
 } ?>
                   </div>
                 </div>
                 <!-- /.widget-user -->
               </div>
             <div class="col-md-9">
-                <?php echo isset($content) ? $content : null;?> 
+                <?php echo isset($content) ? $content : null;?>
             </div>
         </div>
         <hr>
@@ -166,11 +166,11 @@
     <script src="<?php echo base_url();?>assets/theme/plugins/jQuery/jQuery-2.2.0.min.js"></script>
     <script src="<?php echo base_url();?>assets/theme/bootstrap/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url();?>assets/theme/plugins/iCheck/icheck.min.js"></script>
-    
+
     <!-- Validation.io JS -->
     <script src="<?php echo base_url();?>assets/theme/plugins/validation/formValidation.min.js"></script>
     <script src="<?php echo base_url();?>assets/theme/plugins/validation/bootstrap.min.js"></script>
-    
+
     <!-- Frontend CSS -->
     <script src="<?php echo base_url();?>assets/theme/dist/js/frontend.js"></script>
 

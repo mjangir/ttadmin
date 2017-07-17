@@ -359,7 +359,7 @@ $(document).ready(function () {
     });
 
     //Add Validations To Page Form
-    $('#form_page').formValidation({
+    $('#form_jackpot').formValidation({
         framework: 'bootstrap',
         icon: {
             valid: 'glyphicon glyphicon-oks',
@@ -367,33 +367,47 @@ $(document).ready(function () {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-            name: {
-                row: '.col-xs-12',
-                verbose: false,
-                validators: {
-                    notEmpty: {
-                        message: 'Please enter Page Name'
-                    }
-                }
-            },
             title: {
                 row: '.col-xs-12',
                 verbose: false,
                 validators: {
                     notEmpty: {
-                        message: 'Please enter Page Title'
+                        message: 'Please enter Jackpot Title'
                     }
                 }
             },
-            alias: {
+            amount: {
                 row: '.col-xs-12',
                 verbose: false,
                 validators: {
                     notEmpty: {
                         message: 'Please enter Alias Name'
+                    },
+                    numeric: {
+                        message: 'Amount must be a valid decimal number',
+                        thousandsSeparator: '',
+                        decimalSeparator: '.'
                     }
                 }
-            }
+            },
+            game_clock_time: {
+                row: '.col-xs-12',
+                verbose: false,
+                validators: {
+                    notEmpty: {
+                        message: 'Please enter Game Clock Time'
+                    }
+                }
+            },
+            dooms_day_time: {
+                row: '.col-xs-12',
+                verbose: false,
+                validators: {
+                    notEmpty: {
+                        message: 'Please enter Dooms Day Clock Time'
+                    }
+                }
+            },
         }
     }).on('success.form.fv', function (e) {
         $('.server-feedback').removeClass('has-error').removeClass('has-feedback');
@@ -434,4 +448,12 @@ $(document).on('change', 'div.child-links input[type="checkbox"]', function () {
     var checkedLength = $superChildDiv.find('input[type="checkbox"]:checked').length;
     var status = (checkedLength > 0) ? true : false;
     $superParentDiv.find('input.parent-link-check-all').prop({checked: status});
+});
+
+jQuery(document).on('focus', '.timepicker', function()
+{
+    jQuery(this).timepicker({
+        timeFormat: 'HH:mm:ss',
+        showSecond: true
+    });
 });

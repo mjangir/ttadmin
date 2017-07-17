@@ -35,7 +35,7 @@ class Link extends MY_AdminController
     /**
      * Module Name.
      *
-     * @var string Name of the entity which the controller is for 
+     * @var string Name of the entity which the controller is for
      */
     protected $crudName;
 
@@ -48,7 +48,7 @@ class Link extends MY_AdminController
 
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor and sets base url of the controller,
      * module name and doctrine entity name
      */
@@ -68,14 +68,14 @@ class Link extends MY_AdminController
 
     /**
      * index action.
-     * 
+     *
      * Index page of Link module
      */
     public function index()
     {
 
         //If Link LISTING action is permitted
-        checkMenuPermission('admin_manage_system_links_list', 'LISTING', true);
+        checkMenuPermission('admin_manage_system_links', 'LISTING', true);
 
         //Get links to list in data table
         $data = $this->objectManager->getRepository($this->entityName)->getPagedLinks($this->offset, $this->limit, $this->postParams);
@@ -116,8 +116,8 @@ class Link extends MY_AdminController
                 'content' => $this->load->view('admin/link/index', $view_data, true),
                 'pageHeading' => 'Link List',
                 'pageSubHeading' => '',
-                'activeLinksAlias' => array('admin_manage_system_links', 'admin_manage_system_links_list'),
-                'breadCrumbs' => array('Manage System Links' => '', 'Link List' => ''),
+                'activeLinksAlias' => array('admin_manage_system_links'),
+                'breadCrumbs' => array('Manage System Links' => ''),
             ));
         }
     }
@@ -135,9 +135,9 @@ class Link extends MY_AdminController
 
         //Check if link ADD or UPDATE actions are permitted or not
         if (!empty($id)) {
-            checkMenuPermission('admin_manage_system_links_list', 'UPDATE', true);
+            checkMenuPermission('admin_manage_system_links', 'UPDATE', true);
         } else {
-            checkMenuPermission('admin_manage_system_links_list', 'ADD', true);
+            checkMenuPermission('admin_manage_system_links', 'ADD', true);
         }
 
         //Check if request is POST. If yes then proceed with add or update
@@ -268,14 +268,14 @@ class Link extends MY_AdminController
 
     /**
      * view action.
-     * 
+     *
      * View link information
      */
     public function view()
     {
 
         //Check if Link VIEW action is permitted
-        checkMenuPermission('admin_manage_system_links_list', 'VIEW', true);
+        checkMenuPermission('admin_manage_system_links', 'VIEW', true);
 
         //Only accept ajax requests
         if (!$this->input->is_ajax_request()) {
@@ -296,7 +296,7 @@ class Link extends MY_AdminController
 
     /**
      * delete action.
-     * 
+     *
      * Action to delete a record from the table. It will permanent remove the record from database.
      * There is no soft delete functionality as of now
      */
@@ -304,7 +304,7 @@ class Link extends MY_AdminController
     {
 
         //Check if Link DELETE action is permitted
-        checkMenuPermission('admin_manage_system_links_list', 'DELETE', true);
+        checkMenuPermission('admin_manage_system_links', 'DELETE', true);
 
         //Delete will always accept ajax requests. If the request is not XMLHTTP then redirect to listing
         if (!$this->input->is_ajax_request()) {
@@ -361,14 +361,14 @@ class Link extends MY_AdminController
 
     /**
      * status action.
-     * 
+     *
      * Disable or Enable a link
      */
     public function status()
     {
 
         //Check if Link STATUS action is permitted
-        checkMenuPermission('admin_manage_system_links_list', 'STATUS', true);
+        checkMenuPermission('admin_manage_system_links', 'STATUS', true);
 
         //This action will always accept ajax requests. If the request is not XMLHTTP then redirect to listing
         if (!$this->input->is_ajax_request()) {
