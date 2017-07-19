@@ -13,6 +13,8 @@
  */
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use GuzzleHttp\Client;
+
 /**
  * Jackpot Class.
  *
@@ -182,13 +184,38 @@ class Jackpot extends MY_AdminController
                     $this->objectManager->persist($jackpot);
                     $this->objectManager->flush($jackpot);
 
+                    // Update in socket state
+                    $client         = new Client();
+                    $newJpId        = ($id == null) ? $jackpot->getId() : $id;
+                    $accessToken    = $this->session->userdata('accessToken');
+
+                    if($id == null)
+                    {
+                        $result = $client->post(API_BASE_PATH.'/api/jackpots/insert-in-socket/'.$newJpId.'?access_token='.$accessToken);
+                    }
+                    else
+                    {
+                        $result = $client->post(API_BASE_PATH.'/api/jackpots/update-in-socket/'.$newJpId.'?access_token='.$accessToken);
+                    }
+
+                    $response = json_decode($result->getBody()->getContents(), true);
+
+                    if(isset($response['status']) && $response['status'] == 'success')
+                    {
+                        $additionalMessage = 'Also updated in socket state.';
+                    }
+                    else
+                    {
+                        $additionalMessage = 'But '.$response['message'];
+                    }
+
                     //Return success if added successfully
                     echo json_encode(array(
                         'html' => '',
                         'notification' => array(
                             array(
                                 'status' => 'success',
-                                'message' => $this->crudName.' saved successfully.',
+                                'message' => $this->crudName.' saved successfully <br/>'.$additionalMessage,
                                 'type' => 'toastr',
                             ),
                         ),
@@ -285,6 +312,15 @@ class Jackpot extends MY_AdminController
             //Get actual record object
             $recordObj = $this->objectManager->getRepository($this->entityName)->find($id);
 
+            // Check if gameis being played right now
+            $gameResponse = $this->checkIfGameIsRunning($id);
+
+            if($gameResponse != false)
+            {
+                echo json_encode($gameResponse);
+                exit;
+            }
+
             //If the object is not empty
             if (!empty($recordObj)) {
 
@@ -352,6 +388,15 @@ class Jackpot extends MY_AdminController
             //If the object is not empty
             if (!empty($recordObj)) {
 
+                // Check if gameis being played right now
+                $gameResponse = $this->checkIfGameIsRunning($id);
+
+                if($gameResponse != false)
+                {
+                    echo json_encode($gameResponse);
+                    exit;
+                }
+
                 //Create new status of the object according to previous status
                 $newStatus = ($recordObj->getStatus() == 'ACTIVE') ? 'INACTIVE' : 'ACTIVE';
 
@@ -394,4 +439,42 @@ class Jackpot extends MY_AdminController
         echo json_encode($response);
         exit;
     }
+
+    /**
+     * Check if game is currently being played
+     *
+     * @param  int $id
+     * @return array
+     */
+    public function checkIfGameIsRunning($id)
+    {
+        // Check if gameis being played right now
+        $response       = false;
+        $client         = new Client();
+        $accessToken    = $this->session->userdata('accessToken');
+        $result         = $client->post(API_BASE_PATH.'/api/jackpots/check-socket-game-state/'.$id.'?access_token='.$accessToken);
+
+        $response = json_decode($result->getBody()->getContents(), true);
+
+        if(isset($response['status']) && $response['status'] == 'success')
+        {
+            if($response['state'] == 'STARTED')
+            {
+                $response = array(
+                    'html' => '',
+                    'notification' => array(
+                        array(
+                            'status' => 'error',
+                            'message' => 'Sorry but the game is being played currently.',
+                            'type' => 'toastr',
+                        ),
+                    ),
+                );
+            }
+        }
+
+        return $response;
+    }
 }
+
+
