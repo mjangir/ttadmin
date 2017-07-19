@@ -86,7 +86,7 @@ class Settings extends MY_LoggedUserController
                 $user = $this->loggedUserObject;
 
                 //Set User object parameters
-                $user->setFirstName($name);
+                $user->setName($name);
                 $user->setGender($gender);
                 $user->setBirthDate($birthDate);
 

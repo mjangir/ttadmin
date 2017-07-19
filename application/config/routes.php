@@ -115,3 +115,4 @@ $route['admin/jackpots/view'] = 'admin/jackpot/view';
 $route['admin/jackpots/add-update'] = 'admin/jackpot/addupdate';
 $route['admin/jackpots/delete'] = 'admin/jackpot/delete';
 $route['admin/jackpots/status'] = 'admin/jackpot/status';
+$route['admin/jackpots/game-history'] = 'admin/jackpot/gamehistory';

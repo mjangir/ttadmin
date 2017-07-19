@@ -56,10 +56,13 @@
                             <a href="<?php echo $updateUrl.'?id='.$id;?>">
                                 <i class="fa fa-edit text-info" data-toggle="tooltip" title="Update"></i>
                             </a>&nbsp;
-                            <a href="<?php echo $deleteUrl.'?id='.$id;?>" class="ajax confirm" data-confirm-message="Are you sure, you want to delete this page" data-method="post" data-refresh=".paginated_tbl">
+                            <a href="<?php echo $deleteUrl.'?id='.$id;?>" class="ajax confirm" data-confirm-message="Are you sure, you want to delete this jackpot" data-method="post" data-refresh=".paginated_tbl">
                                 <i class="fa fa-trash-o text-danger" data-toggle="tooltip" title="Delete"></i>
                             </a>&nbsp;
-                            <a href="<?php echo $statusUrl.'?id='.$id;?>" class="ajax confirm" data-confirm-message="Are you sure, you want to make this page <?php echo $statusTitle;?>?" data-method="post" data-refresh=".paginated_tbl">
+                            <a href="<?php echo $gameHistoryUrl.'?id='.$id;?>" data-toggle="modal" data-modal-class-name="modal60p" data-target="#largeModal">
+                                <i class="fa fa-gamepad text-success" data-toggle="tooltip" title="View Game History"></i>
+                            </a>&nbsp;
+                            <a href="<?php echo $statusUrl.'?id='.$id;?>" class="ajax confirm" data-confirm-message="Are you sure, you want to make this jackpot <?php echo $statusTitle;?>?" data-method="post" data-refresh=".paginated_tbl">
                                     <i class="fa fa-ban text-warning" data-toggle="tooltip" title="Make <?php echo $statusTitle;?>"></i>
                             </a>
                         </td>

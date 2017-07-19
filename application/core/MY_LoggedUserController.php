@@ -72,6 +72,10 @@ class MY_LoggedUserController extends CI_Controller
         if (empty($loggedUserData['id'])) {
             redirect('auth/login');
         }
+        else if($loggedUserData['userGroupId'] == ADMIN_GROUP_ID && $this->controller != 'settings')
+        {
+            redirect('/admin');
+        }
 
         //Set current logged user ID
         $this->loggedUserId = $loggedUserData['id'];

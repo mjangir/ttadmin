@@ -69,52 +69,60 @@ class Auth extends MY_GuestUserController
                 $password = $this->input->post('password');
 
                 $client = new Client(); 
-                $result = $client->post(API_BASE_PATH.'/auth/login', array(
-                            'json' => array(
-                                'email'     => $email,
-                                'password'  => $password
-                            )));
-                $response = json_decode($result->getBody()->getContents(), true);
 
-                //If user not found or the password mismatched, throw error
-                if (!isset($response['status']) || $response['status'] != 'success' || !isset($response['data']['token'])) {
-                    $loginErr = 'Incorrect Email or Password';
-                    if (isset($settings['invalid_login_message']) &&
-                       !empty($settings['invalid_login_message'])) {
-                        $loginErr = $settings['invalid_login_message'];
+                try {
+                    $result = $client->post(API_BASE_PATH.'/auth/login', array(
+                                'json' => array(
+                                    'email'     => $email,
+                                    'password'  => $password
+                                )));
+                    $response = json_decode($result->getBody()->getContents(), true);
+
+                    //If user not found or the password mismatched, throw error
+                    if (!isset($response['status']) || $response['status'] != 'success' || !isset($response['data']['token'])) {
+                        $loginErr = 'Incorrect Email or Password';
+                        if (isset($settings['invalid_login_message']) &&
+                           !empty($settings['invalid_login_message'])) {
+                            $loginErr = $settings['invalid_login_message'];
+                        }
+                        $this->session->set_flashdata('formErrors', array($loginErr));
+                        redirect(base_url('auth/login'));
+                    } else {
+
+                        $user = $this->doctrine->em->getRepository('Entity\User')
+                                                ->findOneBy(array(
+                                                    'email' => $email,
+                                                    'status' => 'ACTIVE',
+                                                ));
+
+                        //If user matched successfully, then store user in session
+                        $loggedUser = array(
+                            'id'            => $user->getId(),
+                            'email'         => $user->getEmail(),
+                            'userGroupId'   => (string)$user->getUserGroup()->getId(),
+                            'roleId'        => $user->getUserGroup()->getRole()->getId(),
+                            'firstName'     => $user->getName(),
+                            'lastName'      => $user->getName(),
+                            'fullName'      => $user->getName(),
+                            'photo'         => $user->getPhoto(),
+                            'createdOn'     => $user->getCreatedAt()->format('Y-m-d'),
+                        );
+
+                        $this->session->set_userdata('loggedUser', $loggedUser);
+                        $this->session->set_userdata('accessToken', $response['data']['token']);
+
+                        //Update sessionMenuPermissions variable
+                        $this->navigation->setSessionMenuPermissions();
+
+                        //Redirect to user dashboard
+                        redirect(base_url('my-account'));
                     }
-                    $this->session->set_flashdata('formErrors', array($loginErr));
+                } catch(GuzzleHttp\Exception\ConnectException $e)
+                {
+                    $this->session->set_flashdata('formErrors', array('Some Internal Error Occured. Please try again later.'));
                     redirect(base_url('auth/login'));
-                } else {
-
-                    $user = $this->doctrine->em->getRepository('Entity\User')
-                                            ->findOneBy(array(
-                                                'email' => $email,
-                                                'status' => 'ACTIVE',
-                                            ));
-
-                    //If user matched successfully, then store user in session
-                    $loggedUser = array(
-                        'id'            => $user->getId(),
-                        'email'         => $user->getEmail(),
-                        'userGroupId'   => (string)$user->getUserGroup()->getId(),
-                        'roleId'        => $user->getUserGroup()->getRole()->getId(),
-                        'firstName'     => $user->getName(),
-                        'lastName'      => $user->getName(),
-                        'fullName'      => $user->getName(),
-                        'photo'         => $user->getPhoto(),
-                        'createdOn'     => $user->getCreatedAt()->format('Y-m-d'),
-                    );
-
-                    $this->session->set_userdata('loggedUser', $loggedUser);
-                    $this->session->set_userdata('accessToken', $response['data']['token']);
-
-                    //Update sessionMenuPermissions variable
-                    $this->navigation->setSessionMenuPermissions();
-
-                    //Redirect to user dashboard
-                    redirect(base_url('my-account'));
                 }
+                
             } else {
 
                 //Throw the validation errors, if validation not successful

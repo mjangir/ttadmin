@@ -165,13 +165,13 @@ class Link extends MY_AdminController
                         //If new link is added
                         if ($id === null) {
                             $link = new Entity\Link();
-                            $link->setCreatedOn(new \DateTime());
-                            $link->setUpdatedOn(new \DateTime());
+                            $link->setCreatedAt(new \DateTime());
+                            $link->setUpdatedAt(new \DateTime());
                             $link->setStatus('ACTIVE');
                         } else {
                             //If existing link is updated
                             $link = $this->objectManager->getRepository($this->entityName)->find($id);
-                            $link->setUpdatedOn(new \DateTime());
+                            $link->setUpdatedAt(new \DateTime());
                         }
 
                         //Get link category object by category id
@@ -392,7 +392,7 @@ class Link extends MY_AdminController
 
                 //Set new status and updated date of the object
                 $recordObj->setStatus($newStatus);
-                $recordObj->setUpdatedOn(new \DateTime());
+                $recordObj->setUpdatedAt(new \DateTime());
 
                 //Persist and save the object
                 $this->objectManager->persist($recordObj);

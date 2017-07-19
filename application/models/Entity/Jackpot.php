@@ -125,7 +125,16 @@ class Jackpot
      */
     private $updatedBy;
 
+    /**
+     * @ORM\OneToMany(targetEntity="JackpotGame", mappedBy="jackpot")
+     * @ORM\OrderBy({"id" = "DESC"})
+     */
+    protected $jackpotGames;
 
+    public function __construct()
+    {
+        $this->jackpotGames = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -457,5 +466,11 @@ class Jackpot
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+
+    public function getJackpotGames()
+    {
+        return $this->jackpotGames;
     }
 }

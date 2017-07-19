@@ -94,6 +94,7 @@ class Jackpot extends MY_AdminController
         $view_data['addUrl'] = $this->baseControllerUrl.'/add-update';
         $view_data['updateUrl'] = $this->baseControllerUrl.'/add-update';
         $view_data['viewUrl'] = $this->baseControllerUrl.'/view';
+        $view_data['gameHistoryUrl'] = $this->baseControllerUrl.'/game-history';
         $view_data['deleteUrl'] = $this->baseControllerUrl.'/delete';
         $view_data['statusUrl'] = $this->baseControllerUrl.'/status';
         $view_data['listingUrl'] = $this->baseControllerUrl;
@@ -474,6 +475,41 @@ class Jackpot extends MY_AdminController
         }
 
         return $response;
+    }
+
+    /**
+     * gamehistory action
+     *
+     * View jackpot game history
+     */
+    public function gamehistory()
+    {
+        //Check if Jackpot STATUS action is permitted
+        checkMenuPermission('admin_jackpots', 'VIEW_GAME_HISTORY', true);
+
+        //This action will always accept ajax requests. If the request is not XMLHTTP then redirect to listing
+        if (!$this->input->is_ajax_request()) {
+            redirect($this->baseControllerUrl);
+        }
+
+        //Get the record ID from get request
+        $id = (!empty($this->queryParams['id'])) ? $this->queryParams['id'] : null;
+
+        //If record ID is not empty then get the actual record object from database
+        if (!empty($id)) {
+            //Get actual record object
+            $recordObj = $this->objectManager->getRepository($this->entityName)->find($id);
+
+            //If the object is not empty
+            $view_data = array();
+            $view_data['games'] = $recordObj->getJackpotGames();            
+            $view_data['pageHeading'] = 'Jackpot Games';
+            $view_data['jackpotTitle'] = $recordObj->getTitle();
+            $viewFile = 'admin/jackpot/game-history';
+
+            //If request is ajax then return only view
+            $this->load->view($viewFile, $view_data);
+        }
     }
 }
 
