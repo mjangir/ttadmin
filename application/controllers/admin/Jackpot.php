@@ -501,11 +501,13 @@ class Jackpot extends MY_AdminController
             $recordObj = $this->objectManager->getRepository($this->entityName)->find($id);
 
             //If the object is not empty
-            $view_data = array();
-            $view_data['games'] = $recordObj->getJackpotGames();            
-            $view_data['pageHeading'] = 'Jackpot Games';
-            $view_data['jackpotTitle'] = $recordObj->getTitle();
-            $viewFile = 'admin/jackpot/game-history';
+            $view_data                          = array();
+            $view_data['games']                 = $recordObj->getJackpotGames();            
+            $view_data['pageHeading']           = 'Jackpot Games';
+            $view_data['jackpotTitle']          = $recordObj->getTitle();
+            $view_data['jackpotGameBidsUrl']    = 'jackpot-game/bids';
+            $view_data['jackpotGameUsersUrl']   = 'jackpot-game/users';
+            $viewFile                           = 'admin/jackpot/game-history';
 
             //If request is ajax then return only view
             $this->load->view($viewFile, $view_data);

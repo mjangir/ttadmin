@@ -3,6 +3,8 @@ namespace Entity;
 
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * JackpotGame
@@ -106,6 +108,17 @@ class JackpotGame
      * })
      */
     private $lastBidWinnerUser;
+
+    /**
+     * @ORM\OneToMany(targetEntity="JackpotGameUser", mappedBy="jackpotGame")
+     * @ORM\OrderBy({"id" = "DESC"})
+     */
+    protected $gameUsers;
+
+    public function __construct()
+    {
+        $this->gameUsers = new ArrayCollection();
+    }
 
 
 
@@ -370,5 +383,10 @@ class JackpotGame
     public function getLastBidWinnerUser()
     {
         return $this->lastBidWinnerUser;
+    }
+
+    public function getUsers()
+    {
+        return $this->gameUsers;
     }
 }

@@ -109,10 +109,13 @@ $route['admin/users/add-update'] = 'admin/user/addupdate';
 $route['admin/users/delete'] = 'admin/user/delete';
 $route['admin/users/status'] = 'admin/user/status';
 
-//CMS Jackpots
+//Jackpots
 $route['admin/jackpots'] = 'admin/jackpot';
 $route['admin/jackpots/view'] = 'admin/jackpot/view';
 $route['admin/jackpots/add-update'] = 'admin/jackpot/addupdate';
 $route['admin/jackpots/delete'] = 'admin/jackpot/delete';
 $route['admin/jackpots/status'] = 'admin/jackpot/status';
 $route['admin/jackpots/game-history'] = 'admin/jackpot/gamehistory';
+
+// Jackpot Game
+$route['admin/jackpot-game/users'] = 'admin/jackpotgame/users';
