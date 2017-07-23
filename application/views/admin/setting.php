@@ -48,3 +48,38 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-6">
+                <form method="post" action="<?php echo $saveUrl;?>" id="setting-application-form">
+                    <div class="panel panel-square panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Jackpot Setting</h3>
+                        </div>
+                        <div class="panel-body">
+                            <label><strong>Default Bids Per User Per Game</strong></label>
+                            <input type="text" name="settings[jackpot_setting_default_bid_per_user_per_game]" value="<?php echo $settings['jackpot_setting_default_bid_per_user_per_game'] ?>" class="form-control" />
+
+                            <label class="mtp10"><strong>Game Clock Seconds Increment On Bid</strong></label>
+                            <input type="text" name="settings[jackpot_setting_game_clock_seconds_increment_on_bid]" value="<?php echo $settings['jackpot_setting_game_clock_seconds_increment_on_bid'] ?>" class="form-control" />
+                            
+                            <label class="mtp10"><strong>Amount Percent To Longest Bid User</strong></label>
+                            <input type="text" name="settings[jackpot_setting_longest_bid_percent_amount]" value="<?php echo $settings['jackpot_setting_longest_bid_percent_amount'] ?>" class="form-control" />
+                            
+                            <label class="mtp10"><strong>Amount Percent To Last Bid User</strong></label>
+                            <input type="text" name="settings[jackpot_setting_last_bid_percent_amount]" value="<?php echo $settings['jackpot_setting_last_bid_percent_amount'] ?>" class="form-control" />
+                        </div>
+                        <!-- /.panel-body -->
+                        <div class="panel-footer">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm-6">
+            </div>
+        </div>
+    </div>
+</div>

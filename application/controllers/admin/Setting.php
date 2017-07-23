@@ -13,6 +13,8 @@
  */
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use GuzzleHttp\Client;
+
 /**
  * Setting Class.
  *
@@ -123,6 +125,12 @@ class Setting extends MY_AdminController
                     $this->objectManager->flush();
                 }
             }
+
+            // Update Global Settings In NodeJS
+            $client         = new Client();
+            $accessToken    = $this->session->userdata('accessToken');
+            $result         = $client->post(API_BASE_PATH.'/api/settings/update-global-settings?access_token='.$accessToken);
+
 
             //Return success if added successfully
             $this->session->set_flashdata('messages', array('success@#@Settings updated successfully'));
