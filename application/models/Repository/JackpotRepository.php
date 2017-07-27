@@ -55,4 +55,33 @@ class JackpotRepository extends EntityRepository
 
         return $paginator;
     }
+
+    /**
+     * Get users paged list.
+     *
+     * @param int $offset
+     * @param int $limit
+     * @param int $postParams
+     *
+     * @return Paginator
+     */
+    public function getJackpotUsersList($offset = 0, $limit = 10, $postParams)
+    {
+        $em = $this->_em;
+        $qb = $em->createQueryBuilder();
+
+        $prepare = $qb->select('tbl')
+                ->from('Entity\JackpotGameUser', 'tbl')
+                ->where('tbl.jackpotGame = :jackpotGame')
+                ->setParameter('jackpotGame', $postParams['jackpotGame'])
+                ->orderBy('tbl.id');
+
+        $prepare->setMaxResults($limit)
+                ->setFirstResult($offset);
+
+        $query = $qb->getQuery();
+        $paginator = new Paginator($query);
+
+        return $paginator;
+    }
 }

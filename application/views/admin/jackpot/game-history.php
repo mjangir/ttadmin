@@ -49,9 +49,9 @@
                     <td><?php echo $startedOn;?></td>
                     <td><?php echo $finishedOn;?></td>
                     <td>
-                        <a href="<?php echo $jackpotGameBidsUrl.'?id='.$id;?>">
+                        <!-- <a href="<?php echo $jackpotGameBidsUrl.'?id='.$id;?>">
                             <i class="fa fa-dollar text-info" data-toggle="tooltip" title="View All Bids"></i>
-                        </a>&nbsp;
+                        </a>&nbsp; -->
                         <a href="<?php echo $jackpotGameUsersUrl.'?id='.$id;?>">
                             <i class="fa fa-group text-info" data-toggle="tooltip" title="View All Users Played"></i>
                         </a>

@@ -183,7 +183,7 @@ class MY_AdminController extends CI_Controller
         $this->postParams = $finalData['post'];
         $this->queryParams = $finalData['get'];
         $this->page = $finalData['page'];
-        $this->limit = 40;
+        $this->limit = 20;
         $this->offset = ($this->page == 0) ? 0 : ($this->page - 1) * $this->limit;
 
         //Clear the cache each time

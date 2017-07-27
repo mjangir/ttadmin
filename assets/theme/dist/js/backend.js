@@ -312,6 +312,21 @@ $('body').on('shown.bs.modal', '.modal', function (e) {
 });
 
 $(document).ready(function () {
+
+    // Validate form normal battle
+    $('#form_normal_battle_levels').formValidation({
+        err: {
+            container: 'tooltip'
+        }
+    }).on('success.form.fv', function (e) {
+        $('.server-feedback').removeClass('has-error').removeClass('has-feedback');
+        $('.server-feedback').find('small.help-block,i.glyphicon').remove();
+        $(e.target).addClass('ajax');
+        return false;
+    }).on('err.form.fv', function (e) {
+        $(e.target).removeClass('ajax');
+    });
+
     //Add Validations To Email Template Form
     $('#form_emailtemplate').formValidation({
         framework: 'bootstrap',
@@ -456,4 +471,79 @@ jQuery(document).on('focus', '.timepicker', function()
         timeFormat: 'HH:mm:ss',
         showSecond: true
     });
+});
+
+function resetPivotNames($outer) {
+    $outer.find('.add').addClass('hide');
+    $outer.find('.remove').removeClass('hide');
+    $outer.find('.add').first().removeClass('hide');
+    $outer.find('.remove').first().addClass('hide');
+    var i = 0;
+    $outer.find('.pivot-inner').each(function(){
+        $(this).find('input, select').each(function(){
+           var name = $(this).attr('name').replace(/\d/g, i);
+           $(this).attr('name', name);
+        });
+        i++;
+    });
+}
+
+function removeFVGarbage($clone)
+{
+    $clone.find('.has-feedback')
+    .removeClass('has-feedback')
+    .removeClass('has-error')
+    .removeClass('has-success')
+    .removeClass('fv-has-toolip');
+    $clone.find('i.form-control-feedback, .help-block').remove();
+}
+
+function addNewFieldToFV($clone)
+{
+    $parentForm = $clone.parents('form');
+    if($parentForm.length && $parentForm.data('form-validation'))
+    {
+        $clone.find('input, select, textarea').each(function()
+        {
+            var dataFvRow = $(this).attr('data-fv-row');
+
+            if (typeof dataFvRow !== typeof undefined && dataFvRow !== false) {
+                $parentForm.formValidation('addField', $(this));
+            }
+        });
+    }
+}
+
+function removeFieldFromFV($clone)
+{
+    $parentForm = $clone.parents('form');
+    if($parentForm.length && $parentForm.data('form-validation'))
+    {
+        $clone.find('input, select, textarea').each(function()
+        {
+            var dataFvRow = $(this).attr('data-fv-row');
+
+            if (typeof dataFvRow !== typeof undefined && dataFvRow !== false) {
+                $parentForm.formValidation('removeField', $(this));
+            }
+        });
+    }
+}
+
+$(document).on('click', '.pivot-inner .add', function(){
+    var $parent = $(this).parents('.pivot-inner');
+    var $clone  = $parent.clone();
+    $clone.find('input[type="text"],input[type="number"],input[type="email"], select').val('');
+    $parent.parent().append($clone);
+    resetPivotNames($parent.parent());
+    removeFVGarbage($clone);
+    addNewFieldToFV($clone);
+});
+
+$(document).on('click', '.pivot-inner .remove', function(){
+    var $parent = $(this).parents('.pivot-wrapper');
+    var $pivotInner = $(this).parents('.pivot-inner');
+    removeFieldFromFV($pivotInner);
+    $pivotInner.remove();
+    resetPivotNames($parent);
 });

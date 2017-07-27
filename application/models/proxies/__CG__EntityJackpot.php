@@ -64,10 +64,10 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'id', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'title', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'amount', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameStatus', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'uniqueId', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'startedOn', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'status', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdBy', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedBy', 'jackpotGames');
+            return array('__isInitialized__', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'id', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'title', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'amount', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameStatus', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'uniqueId', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'startedOn', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'status', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdBy', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedBy', 'jackpotGames', 'battleLevels');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'id', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'title', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'amount', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameStatus', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'uniqueId', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'startedOn', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'status', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdBy', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedBy', 'jackpotGames');
+        return array('__isInitialized__', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'id', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'title', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'amount', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameStatus', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'uniqueId', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'startedOn', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'status', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdBy', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedBy', 'jackpotGames', 'battleLevels');
     }
 
     /**
@@ -505,6 +505,17 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJackpotGames', array());
 
         return parent::getJackpotGames();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getBattleLevels()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBattleLevels', array());
+
+        return parent::getBattleLevels();
     }
 
 }

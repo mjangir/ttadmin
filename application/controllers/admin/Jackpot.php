@@ -98,6 +98,8 @@ class Jackpot extends MY_AdminController
         $view_data['deleteUrl'] = $this->baseControllerUrl.'/delete';
         $view_data['statusUrl'] = $this->baseControllerUrl.'/status';
         $view_data['listingUrl'] = $this->baseControllerUrl;
+        $view_data['normalBidBattleUrl'] = $this->baseControllerUrl.'/normal-bid-battle';
+        $view_data['gamblingBidBattleUrl'] = $this->baseControllerUrl.'/gambling-bid-battle';
 
         //Check if the request is ajax. If yes then only render the view
         if ($this->input->is_ajax_request()) {
@@ -288,6 +290,176 @@ class Jackpot extends MY_AdminController
     }
 
     /**
+     * add update normal bid battles
+     */
+    public function normalbidbattle()
+    {
+
+        //Get jackpot id from GET requeest
+        $id = (!empty($this->queryParams['id'])) ? $this->queryParams['id'] : null;
+
+        if($id == null)
+        {
+        	redirect($this->baseControllerUrl);
+        }
+
+        checkMenuPermission('admin_jackpots', 'NORMAL_BID_BATTLE', true);
+
+        // If game is currently running, we dont allow to upate levels
+        if($this->checkIfGameIsRunning($id, true))
+        {
+        	$this->session->set_flashdata('messages', array('error@#@You cannot modify the battle levels because a jackpot game is currently being played'));
+            redirect(base_url('admin/jackpots'));
+        }
+
+        $jackpot = $this->objectManager->getRepository($this->entityName)->find($id);
+
+        //Check if request is POST. If yes then proceed with add or update
+        if ($this->input->server('REQUEST_METHOD') == 'POST') {
+
+            //If data is posted then return json response only
+            header('Content-Type: application/json');
+
+            //If form is successfully validated
+            try {
+                $this->updateNormalBidBattleLevels($jackpot, $this->postParams);
+
+                //Return success if added successfully
+                echo json_encode(array(
+                    'html' => '',
+                    'notification' => array(
+                        array(
+                            'status' => 'success',
+                            'message' => ' Battle levels saved successfully',
+                            'type' => 'toastr',
+                        ),
+                    ),
+                    'location' => array(
+                        'redirect' => array(
+                            'url' => $this->baseControllerUrl.'/normal-bid-battle?id='.$id,
+                            'timeout' => 2000,
+                        ),
+                    ),
+                ));
+                exit;
+            } catch (Exception $ex) {
+                die($ex->getMessage());
+                //show error message to user
+                echo json_encode(array(
+                    'html' => '',
+                    'notification' => array(
+                        array(
+                            'status' => 'error',
+                            'message' => 'Error occured while processing.',
+                            'type' => 'toastr',
+                        ),
+                    ),
+                ));
+                exit;
+            }
+        } else {
+            //If request method is not post then render the form with layout
+
+            //Set view form attributes and variables
+            $view_data['form']['attributes'] = array(
+                'id' => 'form_normal_battle_levels',
+            );
+            $view_data['form']['action']    = $this->baseControllerUrl.'/normal-bid-battle?id='.$id;
+            $view_data['form']['cancelUrl'] = $this->baseControllerUrl;
+
+           	//Set other view parameters if a record is updated
+           	$view_data['jackpot'] 		= $jackpot;
+            $view_data['levels'] 		= $this->getBattleLevels($jackpot);
+            $viewFile 					= 'admin/jackpot/normal-bid-battle';
+            $view_data['pageHeading'] 	= 'Manage Normal Bid Battle';
+
+            //Return the layout with view form
+            return $this->load->view('layout/backend', array(
+                'content'           => $this->load->view($viewFile, $view_data, true),
+                'pageHeading'    => $view_data['pageHeading'],
+                'pageSubHeading' => '',
+                'activeLinksAlias'  => array('admin_jackpots'),
+                'breadCrumbs'       => array('Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''),
+            ));
+        }
+    }
+
+    /**
+     * Update normal battle levels
+     * @param type $model
+     * @param type $params
+     */
+    public function updateNormalBidBattleLevels($model, $params)
+    {
+        $oldRecords = $this->objectManager->getRepository('Entity\JackpotBattleLevel')->findBy( array( 'jackpot' => $model ) );
+        $createdAt  = new \DateTime();
+        $updatedAt 	= new \DateTime();
+                
+        if($oldRecords) {
+            foreach ($oldRecords as $record) {
+                $this->objectManager->remove($record);
+            }
+        }
+
+        if(isset($params['levels']) && !empty($params['levels'])) {
+        	$i = 1;
+        	$total = count($params['levels']);
+            foreach($params['levels'] as $newRecord) {
+
+                if(!empty($newRecord['level_name']) && !empty($newRecord['battle_type'])) {
+                    $entity = new Entity\JackpotBattleLevel();
+                    $entity->setJackpot($model);
+                    $entity->setBattleType($newRecord['battle_type']);
+                    $entity->setOrder($i);
+                    $entity->setLevelName($newRecord['level_name']);
+                    $entity->setPrizeType($newRecord['prize_type']);
+                    $entity->setPrizeValue($newRecord['prize_value']);
+                    $entity->setDefaultAvailableBids($newRecord['default_bids']);
+                    $entity->setLastBidWinnerPercent($newRecord['last_bid_winner_percent']);
+                    $entity->setLongestBidWinnerPercent($newRecord['longest_bid_winner_percent']);
+                    $entity->setMinPlayersRequiredToStart($newRecord['min_players_to_start']);
+                    $entity->setMinWinsToUnlockNextLevel($newRecord['min_wins_to_unlock_next']);
+                    $entity->setCreatedAt($createdAt);
+                    $entity->setUpdatedAt($updatedAt);
+
+                    if($i == $total)
+                    {
+                    	$entity->setIsLastLevel(1);
+                    }
+                    else
+                    {
+                    	$entity->setIsLastLevel(0);
+                    }
+
+                    $this->objectManager->persist($entity);
+
+                    $i++;
+                }
+            }
+        }
+        $this->objectManager->flush();
+        return $model;
+    }
+
+    public function getBattleLevels($jackpot, $type = 'NORMAL')
+    {
+    	$levels = array();
+
+    	if($jackpot->getBattleLevels()->count() > 0)
+    	{
+    		foreach ($jackpot->getBattleLevels() as $level)
+    		{
+    			if($level->getBattleType() == $type)
+    			{
+    				$levels[] = $level;
+    			}
+    		}
+    	}
+
+    	return $levels;
+    }
+
+    /**
      * addupdate action.
      *
      * Action to delete a record from the table. It will permanent remove the record from database.
@@ -447,7 +619,7 @@ class Jackpot extends MY_AdminController
      * @param  int $id
      * @return array
      */
-    public function checkIfGameIsRunning($id)
+    public function checkIfGameIsRunning($id, $bool = false)
     {
         // Check if gameis being played right now
         $response       = false;
@@ -455,22 +627,29 @@ class Jackpot extends MY_AdminController
         $accessToken    = $this->session->userdata('accessToken');
         $result         = $client->post(API_BASE_PATH.'/api/jackpots/check-socket-game-state/'.$id.'?access_token='.$accessToken);
 
-        $response = json_decode($result->getBody()->getContents(), true);
+        $body = json_decode($result->getBody()->getContents(), true);
 
-        if(isset($response['status']) && $response['status'] == 'success')
+        if(isset($body['status']) && $body['status'] == 'success')
         {
-            if($response['state'] == 'STARTED')
+            if($body['state'] == 'STARTED')
             {
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'error',
-                            'message' => 'Sorry but the game is being played currently.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+            	if($bool == true)
+	        	{
+	        		$response = true;
+	        	}
+	        	else
+	        	{
+	        		$response = array(
+	                    'html' => '',
+	                    'notification' => array(
+	                        array(
+	                            'status' => 'error',
+	                            'message' => 'Sorry but the game is being played currently.',
+	                            'type' => 'toastr',
+	                        ),
+	                    ),
+	                );
+	        	}
             }
         }
 
@@ -506,7 +685,7 @@ class Jackpot extends MY_AdminController
             $view_data['pageHeading']           = 'Jackpot Games';
             $view_data['jackpotTitle']          = $recordObj->getTitle();
             $view_data['jackpotGameBidsUrl']    = 'jackpot-game/bids';
-            $view_data['jackpotGameUsersUrl']   = 'jackpot-game/users';
+            $view_data['jackpotGameUsersUrl']   = 'jackpot-game-users';
             $viewFile                           = 'admin/jackpot/game-history';
 
             //If request is ajax then return only view

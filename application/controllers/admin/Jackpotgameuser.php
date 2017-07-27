@@ -16,12 +16,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 use GuzzleHttp\Client;
 
 /**
- * Jackpotgame Class.
+ * Jackpotgameuser Class.
  *
  * @category	Controller
  * @author	Manish Jangir <manishjangir.com>
  */
-class Jackpotgame extends MY_AdminController
+class Jackpotgameuser extends MY_AdminController
 {
     /**
      * Base URL of the controller.
@@ -55,7 +55,7 @@ class Jackpotgame extends MY_AdminController
         parent::__construct();
 
         //Set base url of the controller
-        $this->baseControllerUrl = base_url('admin/jackpot-game');
+        $this->baseControllerUrl = base_url('admin/jackpot-game-users');
 
         //Set module name
         $this->crudName = 'Jackpot Game';
@@ -66,16 +66,6 @@ class Jackpotgame extends MY_AdminController
 
     public function index()
     {
-    }
-
-    /**
-     * jackpot game users action.
-     *
-     * Get all users on a jackpot game
-     */
-    public function users()
-    {
-
         //Check if Jackpot LISTING action is permitted
         checkMenuPermission('admin_jackpots', 'VIEW_JACKPOT_GAME_USERS', true);
 
@@ -88,26 +78,41 @@ class Jackpotgame extends MY_AdminController
         }
 
         //Get jackpots to list in data table
-        $jackpotGame = $this->objectManager->getRepository($this->entityName)->find($jackpotGameId);
+        $jackpotGame                        = $this->objectManager->getRepository($this->entityName)->find($jackpotGameId);
 
         if(!$jackpotGame)
         {
             $this->session->set_flashdata('messages', array('error@#@No Jackpot Game Found'));
             redirect('admin/jackpots');
         }
-        $view_data = array(
-            'users' => $jackpotGame->getUsers(),
-            'game'  => $jackpotGame
-        );
+        $this->postParams['jackpotGame']    = $jackpotGame;
+        $users      = $this->objectManager->getRepository('Entity\Jackpot')->getJackpotUsersList($this->offset, $this->limit, $this->postParams);
+        $paginator  = $this->paginator->setOptions($users, $this->page, $this->baseControllerUrl.'?id='.$jackpotGameId, $this->limit);
 
-        return $this->load->view('layout/backend', array(
-            'content'           => $this->load->view('admin/jackpotgame/users', $view_data, true),
-            'pageHeading'       => 'Jackpot Game Users',
-            'pageSubHeading'    => '',
-            'activeLinksAlias'  => array('admin_jackpots'),
-            'breadCrumbs'       => array('Jackpot Game Users' => ''),
-        ));
+        $view_data = array();
+        $view_data['game'] = $jackpotGame;
+        $view_data['data'] = $users;                            //Data got from model
+        $view_data['page'] = $this->page;                      //Current jackpot number
+        $view_data['listStartFrom'] = $this->offset + 1;                  //Serial number of the table records
+        $view_data['isAjaxRequest'] = $this->input->is_ajax_request();  //If request is ajax
+        $view_data['pagination'] = $paginator->getPagination();      //Pagination for table
 
+        //Check if the request is ajax. If yes then only render the view
+        if ($this->input->is_ajax_request()) {
+            $jsonResponse = array();
+            $jsonResponse['html'] = $this->load->view('admin/jackpotgame/users', $view_data, true);
+            echo json_encode($jsonResponse);
+        } else {
+
+            //If request is not ajax then render the view with layout
+            return $this->load->view('layout/backend', array(
+                'content' => $this->load->view('admin/jackpotgame/users', $view_data, true),
+                'pageHeading' => 'Jackpot Game Users',
+                'pageSubHeading' => '',
+                'activeLinksAlias' => array('admin_jackpots'),
+                'breadCrumbs' => array('Jackpot Game Users' => ''),
+            ));
+        }
     }
 }
 
