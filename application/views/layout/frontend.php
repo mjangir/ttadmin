@@ -81,8 +81,6 @@
                     <ul class="nav navbar-nav pull-right">
                         <li><a href="<?php echo base_url('auth/login');
     ?>">Login</a></li>
-                        <li><a href="<?php echo base_url('auth/register');
-    ?>">Register</a></li>
                     </ul>
                 <?php
 } ?>
