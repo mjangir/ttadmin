@@ -65,6 +65,13 @@
                             <a href="<?php echo $statusUrl.'?id='.$id;?>" class="ajax confirm" data-confirm-message="Are you sure, you want to make this jackpot <?php echo $statusTitle;?>?" data-method="post" data-refresh=".paginated_tbl">
                                     <i class="fa fa-ban text-warning" data-toggle="tooltip" title="Make <?php echo $statusTitle;?>"></i>
                             </a>
+                            &nbsp;
+                            <a href="<?php echo $normalBidBattleUrl.'?id='.$id;?>">
+                                <i class="fa fa-gavel text-primary" data-toggle="tooltip" title="Normal Bid Battle"></i>
+                            </a>&nbsp;
+                            <!-- <a href="<?php echo $gamblingBidBattleUrl.'?id='.$id;?>">
+                                <i class="fa fa-gamepad text-primary" data-toggle="tooltip" title="Gambling Bid Battle"></i>
+                            </a>&nbsp; -->
                         </td>
                     </tr>
                        <?php ++$count;

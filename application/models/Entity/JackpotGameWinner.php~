@@ -1,0 +1,87 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * JackpotGameWinner
+ *
+ * @ORM\Table(name="jackpot_game_winner", indexes={@ORM\Index(name="jackpot_game_id", columns={"jackpot_game_id"}), @ORM\Index(name="user_id", columns={"user_id"})})
+ * @ORM\Entity
+ */
+class JackpotGameWinner
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="jackpot_amount", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $jackpotAmount;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="winning_amount", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $winningAmount;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_last_bid_user", type="boolean", nullable=true)
+     */
+    private $isLastBidUser;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_longest_bid_user", type="boolean", nullable=true)
+     */
+    private $isLongestBidUser;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \JackpotGame
+     *
+     * @ORM\ManyToOne(targetEntity="JackpotGame")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="jackpot_game_id", referencedColumnName="id")
+     * })
+     */
+    private $jackpotGame;
+
+    /**
+     * @var \User
+     *
+     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * })
+     */
+    private $user;
+
+
+}

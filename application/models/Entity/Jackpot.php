@@ -133,9 +133,16 @@ class Jackpot
      */
     protected $jackpotGames;
 
+    /**
+     * @ORM\OneToMany(targetEntity="JackpotBattleLevel", mappedBy="jackpot")
+     * @ORM\OrderBy({"id" = "ASC"})
+     */
+    protected $battleLevels;
+
     public function __construct()
     {
         $this->jackpotGames = new ArrayCollection();
+        $this->battleLevels = new ArrayCollection();
     }
 
     /**
@@ -470,9 +477,13 @@ class Jackpot
         return $this->updatedBy;
     }
 
-
     public function getJackpotGames()
     {
         return $this->jackpotGames;
+    }
+
+    public function getBattleLevels()
+    {
+        return $this->battleLevels;
     }
 }

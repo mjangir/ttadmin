@@ -64,3 +64,12 @@
 .mtp10 {
 	margin-top:10px;
 }
+.col-md-12.inner-col-8p div {
+    padding: 8px;
+}
+form .form-control-feedback {
+    right: 8px;
+}
+.has-feedback .form-control {
+    padding-right: 2px;
+}

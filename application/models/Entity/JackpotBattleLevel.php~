@@ -1,0 +1,126 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * JackpotBattleLevel
+ *
+ * @ORM\Table(name="jackpot_battle_level", indexes={@ORM\Index(name="jackpot_id", columns={"jackpot_id"})})
+ * @ORM\Entity
+ */
+class JackpotBattleLevel
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="battle_type", type="string", nullable=false)
+     */
+    private $battleType;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="order", type="integer", nullable=false)
+     */
+    private $order;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="level_name", type="string", length=255, nullable=false)
+     */
+    private $levelName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prize_type", type="string", nullable=false)
+     */
+    private $prizeType;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prize_value", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $prizeValue;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="default_available_bids", type="integer", nullable=false)
+     */
+    private $defaultAvailableBids;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_bid_winner_percent", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $lastBidWinnerPercent;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="longest_bid_winner_percent", type="decimal", precision=10, scale=2, nullable=false)
+     */
+    private $longestBidWinnerPercent;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="min_players_required_to_start", type="integer", nullable=false)
+     */
+    private $minPlayersRequiredToStart;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="min_wins_to_unlock_next_level", type="integer", nullable=false)
+     */
+    private $minWinsToUnlockNextLevel;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_last_level", type="boolean", nullable=true)
+     */
+    private $isLastLevel;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=false)
+     */
+    private $updatedAt;
+
+    /**
+     * @var \Jackpot
+     *
+     * @ORM\ManyToOne(targetEntity="Jackpot")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="jackpot_id", referencedColumnName="id")
+     * })
+     */
+    private $jackpot;
+
+
+}
