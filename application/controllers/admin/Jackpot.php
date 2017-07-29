@@ -450,7 +450,7 @@ class Jackpot extends MY_AdminController
     public function checkIfGameIsRunning($id)
     {
         // Check if gameis being played right now
-        $response       = false;
+        $return         = false;
         $client         = new Client();
         $accessToken    = $this->session->userdata('accessToken');
         $result         = $client->post(API_BASE_PATH.'/api/jackpots/check-socket-game-state/'.$id.'?access_token='.$accessToken);
@@ -461,7 +461,7 @@ class Jackpot extends MY_AdminController
         {
             if($response['state'] == 'STARTED')
             {
-                $response = array(
+                $return = array(
                     'html' => '',
                     'notification' => array(
                         array(
@@ -474,7 +474,7 @@ class Jackpot extends MY_AdminController
             }
         }
 
-        return $response;
+        return $return;
     }
 
     /**
@@ -502,7 +502,7 @@ class Jackpot extends MY_AdminController
 
             //If the object is not empty
             $view_data                          = array();
-            $view_data['games']                 = $recordObj->getJackpotGames();            
+            $view_data['games']                 = $recordObj->getJackpotGames();
             $view_data['pageHeading']           = 'Jackpot Games';
             $view_data['jackpotTitle']          = $recordObj->getTitle();
             $view_data['jackpotGameBidsUrl']    = 'jackpot-game/bids';
