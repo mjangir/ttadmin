@@ -67,7 +67,7 @@ echo form_open($form['action'], $finalFormAttrs);
                             <?php echo form_input(array(
                               'type' => 'text',
                               'value' => $level->getDuration(),
-                              'name' => 'levels['.$i.'][default_bids]',
+                              'name' => 'levels['.$i.'][duration]',
                               'class' => 'form-control','data-fv-row' => '.col-md-1',
                               'data-fv-notempty' => 'true',
                               'data-fv-notempty-message'=>'Please Enter Game Duration (In Seconds)',
