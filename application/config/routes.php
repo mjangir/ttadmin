@@ -63,6 +63,9 @@ $route['auth/forgot-password'] = 'auth/forgotpassword';
 $route['auth/reset-password'] = 'auth/resetpassword';
 $route['auth/social/(:any)'] = 'auth/social/$1';
 
+//Demo
+$route['demo'] = 'frontend/demo/index';
+
 $route['my-account'] = 'frontend/dashboard/index';
 $route['settings'] = 'frontend/settings/index';
 $route['settings/updateprofile'] = 'frontend/settings/updateprofile';

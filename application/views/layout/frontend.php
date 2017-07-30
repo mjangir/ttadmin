@@ -140,6 +140,8 @@
 
     <!-- Frontend CSS -->
     <script src="<?php echo base_url();?>assets/theme/dist/js/frontend.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+    <script src="<?php echo base_url();?>assets/theme/dist/js/script.js"></script>
 
 </body>
 
