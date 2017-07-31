@@ -16,13 +16,13 @@
     		<div class="row">
     			<div class="col-md-6 text-left mbt10">
 				    <span class="text-bold">Current Bid: </span>
-				    <span id="current-bid-user"></span>
-				    <span id="current-bid-length"></span>
+				    <span id="nbl-current-bid-user"></span>
+				    <span id="nbl-current-bid-length"></span>
 				</div>
 				 <div class="col-md-6 text-right text-bold mbt10">
 				    <span class="text-bold">Longest Bid: </span>
-				    <span id="longest-bid-user"></span>
-				    <span id="longest-bid-length"></span>
+				    <span id="nbl-longest-bid-user"></span>
+				    <span id="nbl-longest-bid-length"></span>
 				</div>
     		</div>
     		<div class="row" id="battle-level-playing-users">
@@ -38,10 +38,11 @@
     				My Remaining Bids - <span id="my-normal-battle-placed-bids"></span>
     			</div>
     			<div class="col-md-12">
-    				<button class="btn btn-sm btn-success" id="place-normal-battle-bid">Place A Bid</button>
+    				<button class="btn btn-sm btn-success hide" id="place-normal-battle-bid">Place A Bid</button>
     			</div>
     		</div>
     	</div>
     </div>
 </div>
 <input type="hidden" name="" id="normal_battle_level_unique_id">
+<input type="hidden" name="" id="normal_battle_game_unique_id">

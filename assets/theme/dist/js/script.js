@@ -96,6 +96,7 @@ jQuery(document).ready(function()
       if(data.currentGameInfo !== false)
       {
         jQuery('#normal_battle_level_unique_id').val(data.currentGameInfo.levelInfo.uniqueId);
+        jQuery('#normal_battle_game_unique_id').val(data.currentGameInfo.gameInfo.uniqueId);
       }
       if(data.battleLevelsList.length > 0)
       {
@@ -107,6 +108,16 @@ jQuery(document).ready(function()
     socket.on('response_join_normal_battle_level', function(data)
     {
       renderResponseJoinNormalBattleLevel(data);
+    });
+
+    socket.on('response_place_normal_battle_level_bid', function(data)
+    {
+      handleAfterPlaceBid(data);
+    });
+
+    socket.on('normal_battle_level_game_started', function()
+    {
+      handleGameStarted();
     });
 
     socket.on('update_normal_battle_level_data', function(data)
@@ -170,9 +181,11 @@ jQuery(document).on('click', '.play-battle-level', function(e)
 // Place a normal battle bid
 jQuery(document).on('click', '#place-normal-battle-bid', function(e)
 {
-    socket.emit('place_normal_battle_bid', {
+    socket.emit('request_place_normal_battle_level_bid', {
         userId: USERID,
-        jackpotUniqueId: jQuery('#jackpot_id').val()
+        jackpotUniqueId: jQuery('#jackpot_id').val(),
+        levelUniqueId : jQuery('#normal_battle_level_unique_id').val(),
+        gameUniqueId: jQuery('#normal_battle_game_unique_id').val()
     })
 });
 
@@ -233,10 +246,13 @@ function renderNormalBattleLevelData(data)
 
 function updateNormalBattleTimer(data)
 {
+  console.log(data);
   jQuery('#battle-clock-time').html(data.battleClock);
-  jQuery('#current-bid-length').html(data.currentBidDuration);
-  jQuery('#longest-bid-user').html(data.longestBidUser);
-  jQuery('#longest-bid-length').html(data.longestBidDuration);
+  jQuery('#nbl-current-bid-length').html(data.currentBidDuration);
+  jQuery('#nbl-current-bid-user').html(data.currentBidUserName);
+  jQuery('#nbl-longest-bid-length').html(data.longestBidDuration);
+  jQuery('#nbl-longest-bid-user').html(data.longestBidUserName);
+
 }
 
 function renderResponseJoinNormalBattleLevel(data)
@@ -288,8 +304,21 @@ function renderResponseJoinNormalBattleLevel(data)
     jQuery('#longest-bid-user').html(data.longestBidUser + ' - ' + data.longestBidUser);
   }
 
+  jQuery('#normal_battle_level_unique_id').val(data.levelInfo.uniqueId);
+  jQuery('#normal_battle_game_unique_id').val(data.gameInfo.uniqueId);
+
   jQuery('#battle-level-list-container').addClass('hide');
   jQuery('#battle-level-game-container').removeClass('hide');
 }
 
 
+function handleAfterPlaceBid(data)
+{
+  jQuery('#my-normal-battle-available-bids').html(data.totalPlacedBids);
+  jQuery('#my-normal-battle-placed-bids').html(data.availableBids);
+}
+
+function handleGameStarted()
+{
+  jQuery('#place-normal-battle-bid').removeClass('hide');
+}
