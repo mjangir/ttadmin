@@ -87,11 +87,12 @@ define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 /*
 |--------------------------------------------------------------------------
-| Define API URL
+| Define NODE Server URLs
 |--------------------------------------------------------------------------
 |
 */
 define('API_BASE_PATH', 'http://localhost:9000');
+define('WS_BASE_PATH', 'ws://localhost:9000/jackpot');
 
 /*
 |--------------------------------------------------------------------------

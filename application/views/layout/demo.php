@@ -47,7 +47,9 @@
         <?php echo isset($content) ? $content : null;?>
     </div>
     <!-- /.container -->
-
+    <script type="text/javascript">
+        var WS_BASE_PATH = '<?php echo WS_BASE_PATH;?>';
+    </script>
     <script src="<?php echo base_url();?>assets/theme/plugins/jQuery/jQuery-2.2.0.min.js"></script>
     <script src="<?php echo base_url();?>assets/theme/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>

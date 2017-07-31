@@ -2,7 +2,7 @@ var socket;
 
 jQuery(document).ready(function()
 {
-  socket = io.connect('ws://localhost:9000/jackpot', {
+  socket = io.connect(WS_BASE_PATH, {
     path: '/ticktock/socket.io',
     query: {
       userId: USERID
@@ -90,13 +90,23 @@ jQuery(document).ready(function()
         jQuery("#quit-game-button").show();
     });
 
-    // Got bid battle level list
+    // When user clicked on battle tab
     socket.on('response_battle', function(data)
     {
+      if(data.currentGameInfo !== false)
+      {
+        jQuery('#normal_battle_level_unique_id').val(data.currentGameInfo.levelInfo.uniqueId);
+      }
       if(data.battleLevelsList.length > 0)
       {
         renderBidBattleLevelList(data.battleLevelsList);
       }
+    });
+
+    // When user clicked on play button of any level
+    socket.on('response_join_normal_battle_level', function(data)
+    {
+      renderResponseJoinNormalBattleLevel(data);
     });
 
     socket.on('update_normal_battle_level_data', function(data)
@@ -104,10 +114,7 @@ jQuery(document).ready(function()
       renderNormalBattleLevelData(data);
     });
 
-    socket.on('update_my_normal_battle_info', function(data)
-    {
-      updateMyNormalBattleInfo(data);
-    });
+
 
     socket.on('update_normal_battle_level_timer', function(data)
     {
@@ -115,21 +122,7 @@ jQuery(document).ready(function()
     })
 
   });
-  
-});
 
-// When tab change
-jQuery(document).on('shown.bs.tab', '#ticktock-tabs', function(e)
-{
-  var target = e.target.getAttribute('href');
-  
-  if(target == '#bid-battle-tab')
-  {
-    socket.emit('request_battle', {
-        userId: USERID,
-        jackpotUniqueId: jQuery('#jackpot_id').val()
-    })
-  }
 });
 
 // Place a bid
@@ -149,15 +142,38 @@ jQuery(document).on('click', '#quit-game-button', function(e)
     })
 });
 
+// When tab change
+jQuery(document).on('shown.bs.tab', '#ticktock-tabs', function(e)
+{
+  var target = e.target.getAttribute('href');
+
+  if(target == '#bid-battle-tab')
+  {
+    socket.emit('request_battle', {
+        userId: USERID,
+        jackpotUniqueId: jQuery('#jackpot_id').val()
+    })
+  }
+});
+
 jQuery(document).on('click', '.play-battle-level', function(e)
 {
   var levelUniqueId = jQuery(this).closest('li').attr('data-unique-id');
-  socket.emit('play_jackpot_battle_level', {
+  socket.emit('request_join_normal_battle_level', {
       userId            : USERID,
       jackpotUniqueId   : jQuery('#jackpot_id').val(),
       levelUniqueId     : levelUniqueId,
       battleType        : 'NORMAL'
   })
+});
+
+// Place a normal battle bid
+jQuery(document).on('click', '#place-normal-battle-bid', function(e)
+{
+    socket.emit('place_normal_battle_bid', {
+        userId: USERID,
+        jackpotUniqueId: jQuery('#jackpot_id').val()
+    })
 });
 
 function renderBidBattleLevelList(data)
@@ -199,16 +215,16 @@ function renderNormalBattleLevelData(data)
       {
         html  += `<div class="col-md-6 mbt10">
             <div class="media">
-                  <a href="#" class="pull-left">        
-                    <img alt="64x64" class="media-object img-thumbnail" style="width: 64px; height: 64px;" src="${user.picture}">      
+                  <a href="#" class="pull-left">
+                    <img alt="64x64" class="media-object img-thumbnail" style="width: 64px; height: 64px;" src="${user.picture}">
                   </a>
                   <div class="media-body text-left">
                     <h4 class="media-heading"><strong><a href="#">${user.name}</a></strong></h4>
                     <p class="small">${user.totalBids} Bids</p>
                   </div>
-                </div>  
+                </div>
           </div>`;
-        
+
       }
     }
   }
@@ -223,13 +239,57 @@ function updateNormalBattleTimer(data)
   jQuery('#longest-bid-length').html(data.longestBidDuration);
 }
 
-function updateMyNormalBattleInfo(data)
+function renderResponseJoinNormalBattleLevel(data)
 {
   console.log(data);
-  jQuery('#my-normal-battle-available-bids').html(data.userInfo.availableBids);
-  jQuery('#my-normal-battle-placed-bids').html(data.userInfo.totalPlacedBids);
+
+  var usersHtml = ``,
+      myUserId  = data.myInfo.userId;
+
+  if(data.players.length > 0)
+  {
+    for(var k in data.players)
+    {
+      var players = data.players[k];
+
+      if(players.userId != myUserId)
+      {
+        usersHtml  += `<div class="col-md-6 mbt10">
+            <div class="media">
+                  <a href="#" class="pull-left">
+                    <img alt="64x64" class="media-object img-thumbnail" style="width: 64px; height: 64px;" src="${players.picture}">
+                  </a>
+                  <div class="media-body text-left">
+                    <h4 class="media-heading"><strong><a href="#">${players.name}</a></strong></h4>
+                    <p class="small">${players.totalBids} Bids</p>
+                  </div>
+                </div>
+          </div>`;
+
+      }
+    }
+  }
+  jQuery('#battle-level-playing-users').html(usersHtml);
+
+  jQuery('#my-normal-battle-available-bids').html(data.myInfo.availableBids);
+  jQuery('#my-normal-battle-placed-bids').html(data.myInfo.totalPlacedBids);
+
+  jQuery('#battle-clock-time').html(data.levelInfo.duration);
   jQuery('#battle-level-name').html(data.levelInfo.levelName);
   jQuery('#battle-level-prize').html(data.levelInfo.prizeValue + ' ' + data.levelInfo.prizeType);
+
+  if(data.currentBidUser != null)
+  {
+    jQuery('#current-bid-user').html(data.currentBidUser + ' - ' + data.currentBidDuration);
+  }
+
+  if(data.longestBidUser != null)
+  {
+    jQuery('#longest-bid-user').html(data.longestBidUser + ' - ' + data.longestBidUser);
+  }
+
+  jQuery('#battle-level-list-container').addClass('hide');
+  jQuery('#battle-level-game-container').removeClass('hide');
 }
 
 
