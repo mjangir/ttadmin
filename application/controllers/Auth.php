@@ -29,7 +29,7 @@ class Auth extends MY_GuestUserController
 {
     /**
      * index action.
-     * 
+     *
      * Redirects to login action if index action is called
      */
     public function index()
@@ -41,7 +41,7 @@ class Auth extends MY_GuestUserController
 
     /**
      * login action.
-     * 
+     *
      * Handels user login
      */
     public function login()
@@ -68,7 +68,7 @@ class Auth extends MY_GuestUserController
                 $email = $this->input->post('email');
                 $password = $this->input->post('password');
 
-                $client = new Client(); 
+                $client = new Client();
 
                 try {
                     $result = $client->post(API_BASE_PATH.'/auth/login', array(
@@ -76,6 +76,7 @@ class Auth extends MY_GuestUserController
                                     'email'     => $email,
                                     'password'  => $password
                                 )));
+
                     $response = json_decode($result->getBody()->getContents(), true);
 
                     //If user not found or the password mismatched, throw error
@@ -117,12 +118,21 @@ class Auth extends MY_GuestUserController
                         //Redirect to user dashboard
                         redirect(base_url('my-account'));
                     }
+                } catch(GuzzleHttp\Exception\ClientException $e)
+                {
+                    $this->session->set_flashdata('formErrors', array('Invalid Email or Password!'));
+                    redirect(base_url('auth/login'));
                 } catch(GuzzleHttp\Exception\ConnectException $e)
                 {
                     $this->session->set_flashdata('formErrors', array('Some Internal Error Occured. Please try again later.'));
                     redirect(base_url('auth/login'));
                 }
-                
+                 catch(Exception $e)
+                {
+                    $this->session->set_flashdata('formErrors', array('Some Internal Error Occured. Please try again later.'));
+                    redirect(base_url('auth/login'));
+                }
+
             } else {
 
                 //Throw the validation errors, if validation not successful
@@ -142,11 +152,11 @@ class Auth extends MY_GuestUserController
 
     /**
      * email_exists function.
-     * 
+     *
      * Checks weather given email exists in database or not
-     * 
+     *
      * @param string $email Email to check in database
-     * 
+     *
      * @return bool
      */
     public function email_exists($email)
@@ -158,7 +168,7 @@ class Auth extends MY_GuestUserController
 
     /**
      * register action.
-     * 
+     *
      * Handels user registration
      */
     public function register()
@@ -286,7 +296,7 @@ class Auth extends MY_GuestUserController
 
     /**
      * confirmregistration action.
-     * 
+     *
      * Confirm action to complete the user registration
      */
     public function confirmregistration()
@@ -330,7 +340,7 @@ class Auth extends MY_GuestUserController
 
     /**
      * forgotpassword action.
-     * 
+     *
      * Handles forgot password functionality
      */
     public function forgotpassword()
@@ -417,7 +427,7 @@ class Auth extends MY_GuestUserController
 
     /**
      * resetpassword action.
-     * 
+     *
      * Handles reset password functionality when user clicks on password reset link
      */
     public function resetpassword()
@@ -505,7 +515,7 @@ class Auth extends MY_GuestUserController
 
     /**
      * logout action.
-     * 
+     *
      * Clear outs all sessions and logs out the user
      */
     public function logout()
@@ -530,7 +540,7 @@ class Auth extends MY_GuestUserController
 
     /**
      * social action.
-     * 
+     *
      * Login through social media sites (Facebook, google, twitter, linkedin etc.)
      */
     public function social($provider)
@@ -637,8 +647,8 @@ class Auth extends MY_GuestUserController
 
     /**
      * endpont action.
-     * 
-     * Social media oauth redirect action. Each user will reach here 
+     *
+     * Social media oauth redirect action. Each user will reach here
      * after authenticating from social site.
      */
     public function endpoint()
@@ -657,13 +667,13 @@ class Auth extends MY_GuestUserController
 
     /**
      * registerOauthUser function.
-     * 
+     *
      * Registers a user after authenticating from social media site
-     * 
+     *
      * @param type $userProfile     User profile got after authentication
      * @param type $accessTokenData Access token information
      * @param type $provider        P      rovider Name
-     * 
+     *
      * @return bool
      */
     private function registerOauthUser($userProfile, $accessTokenData, $provider)
