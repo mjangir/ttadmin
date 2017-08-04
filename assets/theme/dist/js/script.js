@@ -120,9 +120,9 @@ jQuery(document).ready(function()
       handleGameStarted();
     });
 
-    socket.on('update_normal_battle_level_data', function(data)
+    socket.on('update_normal_battle_level_player_list', function(data)
     {
-      renderNormalBattleLevelData(data);
+      renderNormalBattleLevelPlayerList(data);
     });
 
 
@@ -130,7 +130,19 @@ jQuery(document).ready(function()
     socket.on('update_normal_battle_level_timer', function(data)
     {
       updateNormalBattleTimer(data);
-    })
+    });
+
+    socket.on('hide_normal_battle_level_place_bid_button', function()
+    {
+      console.log("hide button");
+      jQuery('#place-normal-battle-bid').hide();
+    });
+
+    socket.on('show_normal_battle_level_place_bid_button', function()
+    {
+      console.log("show button");
+      jQuery('#place-normal-battle-bid').show();
+    });
 
   });
 
@@ -203,27 +215,18 @@ function renderBidBattleLevelList(data)
   jQuery('#battle-level-list').html(html);
 }
 
-function renderNormalBattleLevelData(data)
+function renderNormalBattleLevelPlayerList(data)
 {
   jQuery('#battle-level-list-container').addClass('hide');
   jQuery('#battle-level-game-container').removeClass('hide');
-
-  if(data.currentBidUser && data.currentBidUser != null)
-  {
-    jQuery('#current-bid-user').html(data.currentBidUser + ' - ');
-  }
-  if(data.longestBidUser && data.longestBidUser != null)
-  {
-    jQuery('#longest-bid-user').html(data.longestBidUser + ' - ');
-  }
-
+console.log(data.players);
   var html = ``;
 
-  if(data.users.length > 0)
+  if(data.players.length > 0)
   {
-    for(var k in data.users)
+    for(var k in data.players)
     {
-      var user = data.users[k];
+      var user = data.players[k];
       if(user.id != USERID)
       {
         html  += `<div class="col-md-6 mbt10">
@@ -246,7 +249,7 @@ function renderNormalBattleLevelData(data)
 
 function updateNormalBattleTimer(data)
 {
-  console.log(data);
+  //console.log(data);
   jQuery('#battle-clock-time').html(data.battleClock);
   jQuery('#nbl-current-bid-length').html(data.currentBidDuration);
   jQuery('#nbl-current-bid-user').html(data.currentBidUserName);
@@ -257,7 +260,7 @@ function updateNormalBattleTimer(data)
 
 function renderResponseJoinNormalBattleLevel(data)
 {
-  console.log(data);
+  //console.log(data);
 
   var usersHtml = ``,
       myUserId  = data.myInfo.userId;
