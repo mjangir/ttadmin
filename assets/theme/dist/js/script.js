@@ -135,13 +135,13 @@ jQuery(document).ready(function()
     socket.on('hide_normal_battle_level_place_bid_button', function()
     {
       console.log("hide button");
-      jQuery('#place-normal-battle-bid').hide();
+      jQuery('#place-normal-battle-bid').addClass('hide');
     });
 
     socket.on('show_normal_battle_level_place_bid_button', function()
     {
       console.log("show button");
-      jQuery('#place-normal-battle-bid').show();
+      jQuery('#place-normal-battle-bid').removeClass('hide');
     });
 
   });
