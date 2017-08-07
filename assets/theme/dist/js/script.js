@@ -36,6 +36,11 @@ jQuery(document).ready(function()
         jQuery('#total-bids-by-me').html(data.totalPlacedBids);
     });
 
+    socket.on('update_available_bid_after_battle_win', function(data)
+    {
+      jQuery('#my-available-bids').html(data.availableBids);
+    });
+
     // Constant time updater
     socket.on('update_jackpot_timer', function(data)
     {
@@ -143,6 +148,11 @@ jQuery(document).ready(function()
       console.log("show button");
       jQuery('#place-normal-battle-bid').removeClass('hide');
     });
+
+    socket.on('no_enough_available_bids', function()
+    {
+      alert("you dont have enough bids available");
+    })
 
   });
 
@@ -317,8 +327,8 @@ function renderResponseJoinNormalBattleLevel(data)
 
 function handleAfterPlaceBid(data)
 {
-  jQuery('#my-normal-battle-available-bids').html(data.totalPlacedBids);
-  jQuery('#my-normal-battle-placed-bids').html(data.availableBids);
+  jQuery('#my-normal-battle-available-bids').html(data.availableBids);
+  jQuery('#my-normal-battle-placed-bids').html(data.totalPlacedBids);
 }
 
 function handleGameStarted()
