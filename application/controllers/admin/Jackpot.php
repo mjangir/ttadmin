@@ -306,9 +306,9 @@ class Jackpot extends MY_AdminController
         checkMenuPermission('admin_jackpots', 'NORMAL_BID_BATTLE', true);
 
         // If game is currently running, we dont allow to upate levels
-        if($this->checkIfGameIsRunning($id, true))
+        if(!$this->input->is_ajax_request() && $this->checkIfGameIsRunning($id, true))
         {
-        	$this->session->set_flashdata('messages', array('error@#@You cannot modify the battle levels because a jackpot game is currently being played'));
+            $this->session->set_flashdata('messages', array('error@#@You cannot modify the battle levels because a jackpot game is currently being played'));
             redirect(base_url('admin/jackpots'));
         }
 
@@ -322,7 +322,39 @@ class Jackpot extends MY_AdminController
 
             //If form is successfully validated
             try {
+
+                if($this->input->is_ajax_request() && $this->checkIfGameIsRunning($id, true))
+                {
+                    echo json_encode(array(
+                        'html' => '',
+                        'notification' => array(
+                            array(
+                                'status' => 'error',
+                                'message' => 'You cannot update battle levels as the game is already running',
+                                'type' => 'toastr',
+                            ),
+                        ),
+                    ));
+                    exit;
+                }
+
                 $this->updateNormalBidBattleLevels($jackpot, $this->postParams);
+
+                try{
+
+                    // Update in socket state
+                    $client         = new Client();
+                    $newJpId        = $jackpot->getId();
+                    $accessToken    = $this->session->userdata('accessToken');
+                    $result         = $client->post(API_BASE_PATH.'/api/jackpots/update-battle-in-socket/'.$newJpId.'?access_token='.$accessToken);
+
+                    $response = json_decode($result->getBody()->getContents(), true);
+                
+                }catch(Exception $e)
+                {
+                    
+                }
+                
 
                 //Return success if added successfully
                 echo json_encode(array(
@@ -343,7 +375,7 @@ class Jackpot extends MY_AdminController
                 ));
                 exit;
             } catch (Exception $ex) {
-                die($ex->getMessage());
+                //die($ex->getMessage());
                 //show error message to user
                 echo json_encode(array(
                     'html' => '',
@@ -636,11 +668,11 @@ class Jackpot extends MY_AdminController
             {
             	if($bool == true)
 	        	{
-	        		$response = true;
+	        		$return = true;
 	        	}
 	        	else
 	        	{
-	        		$response = array(
+	        		$return = array(
 	                    'html' => '',
 	                    'notification' => array(
 	                        array(
