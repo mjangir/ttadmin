@@ -405,6 +405,15 @@ $(document).ready(function () {
                     }
                 }
             },
+            min_players_required: {
+                row: '.col-xs-12',
+                verbose: false,
+                validators: {
+                    notEmpty: {
+                        message: 'Please enter Min Players Required'
+                    }
+                }
+            },
             game_clock_time: {
                 row: '.col-xs-12',
                 verbose: false,

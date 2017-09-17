@@ -40,6 +40,13 @@ class Jackpot
     /**
      * @var integer
      *
+     * @ORM\Column(name="min_players_required", type="integer", nullable=false)
+     */
+    private $minPlayersRequired;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="game_clock_time", type="integer", nullable=false)
      */
     private $gameClockTime;
@@ -199,6 +206,29 @@ class Jackpot
     public function getAmount()
     {
         return $this->amount;
+    }
+
+    /**
+     * Set minPlayersRequired
+     *
+     * @param integer $minPlayersRequired
+     * @return Jackpot
+     */
+    public function setMinPlayersRequired($minPlayersRequired)
+    {
+        $this->minPlayersRequired = $minPlayersRequired;
+
+        return $this;
+    }
+
+    /**
+     * Get minPlayersRequired
+     *
+     * @return integer
+     */
+    public function getMinPlayersRequired()
+    {
+        return $this->minPlayersRequired;
     }
 
     /**

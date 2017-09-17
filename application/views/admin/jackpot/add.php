@@ -25,6 +25,14 @@ echo form_open($form['action'], $form['attributes']);
             <div class="form-group">
                 <div class="row">
                     <div class="col-xs-12">
+                        <label class="control-label">Minimum Players Required To Start*</label>
+                        <?php echo form_input(array('name' => 'min_players_required', 'type' => 'number', 'min' => '1', 'class' => 'form-control', 'value' => 1));?>
+                    </div>
+               </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12">
                         <label class="control-label">Game Clock Time*</label>
                         <?php echo form_input(array('name' => 'game_clock_time', 'class' => 'form-control timepicker'));?>
                     </div>

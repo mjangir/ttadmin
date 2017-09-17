@@ -300,7 +300,7 @@ function renderResponseJoinNormalBattleLevel(data)
   }
   jQuery('#battle-level-playing-users').html(usersHtml);
 
-  jQuery('#my-normal-battle-available-bids').html(data.myInfo.availableBids);
+  jQuery('#my-normal-battle-available-bids').html(data.myInfo.remainingBids);
   jQuery('#my-normal-battle-placed-bids').html(data.myInfo.totalPlacedBids);
 
   jQuery('#battle-clock-time').html(data.levelInfo.duration);

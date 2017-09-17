@@ -182,6 +182,7 @@ class Jackpot extends MY_AdminController
                     $jackpot->setDoomsDayTime(convertTimeFormatToSeconds($this->postParams['dooms_day_time']));
                     $jackpot->setGameClockRemaining(convertTimeFormatToSeconds($this->postParams['game_clock_time']));
                     $jackpot->setDoomsDayRemaining(convertTimeFormatToSeconds($this->postParams['dooms_day_time']));
+                    $jackpot->setMinPlayersRequired($this->postParams['min_players_required']);
 
                     //Persist and flush the object
                     $this->objectManager->persist($jackpot);
