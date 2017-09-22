@@ -93,6 +93,7 @@ jQuery(document).ready(function()
     // When user clicked on battle tab
     socket.on('response_battle', function(data)
     {
+      console.log(data);
       if(data.currentGameInfo !== false)
       {
         jQuery('#normal_battle_level_unique_id').val(data.currentGameInfo.levelInfo.uniqueId);
@@ -120,9 +121,9 @@ jQuery(document).ready(function()
       handleGameStarted();
     });
 
-    socket.on('update_normal_battle_level_data', function(data)
+    socket.on('update_normal_battle_level_player_list', function(data)
     {
-      renderNormalBattleLevelData(data);
+      renderNormalBattleLevelPlayerList(data);
     });
 
 
@@ -191,6 +192,8 @@ jQuery(document).on('click', '#place-normal-battle-bid', function(e)
 
 function renderBidBattleLevelList(data)
 {
+  console.log(data);
+
   jQuery('#battle-level-list-container').removeClass('hide');
   jQuery('#battle-level-game-container').addClass('hide');
 
@@ -203,27 +206,15 @@ function renderBidBattleLevelList(data)
   jQuery('#battle-level-list').html(html);
 }
 
-function renderNormalBattleLevelData(data)
+function renderNormalBattleLevelPlayerList(data)
 {
-  jQuery('#battle-level-list-container').addClass('hide');
-  jQuery('#battle-level-game-container').removeClass('hide');
-
-  if(data.currentBidUser && data.currentBidUser != null)
-  {
-    jQuery('#current-bid-user').html(data.currentBidUser + ' - ');
-  }
-  if(data.longestBidUser && data.longestBidUser != null)
-  {
-    jQuery('#longest-bid-user').html(data.longestBidUser + ' - ');
-  }
-
   var html = ``;
 
-  if(data.users.length > 0)
+  if(data.players.length > 0)
   {
-    for(var k in data.users)
+    for(var k in data.players)
     {
-      var user = data.users[k];
+      var user = data.players[k];
       if(user.id != USERID)
       {
         html  += `<div class="col-md-6 mbt10">
