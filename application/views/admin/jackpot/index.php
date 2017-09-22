@@ -69,9 +69,9 @@
                             <a href="<?php echo $normalBidBattleUrl.'?id='.$id;?>">
                                 <i class="fa fa-gavel text-primary" data-toggle="tooltip" title="Normal Bid Battle"></i>
                             </a>&nbsp;
-                            <!-- <a href="<?php echo $gamblingBidBattleUrl.'?id='.$id;?>">
+                            <a href="<?php echo $gamblingBidBattleUrl.'?id='.$id;?>">
                                 <i class="fa fa-gamepad text-primary" data-toggle="tooltip" title="Gambling Bid Battle"></i>
-                            </a>&nbsp; -->
+                            </a>&nbsp;
                         </td>
                     </tr>
                        <?php ++$count;

@@ -36,6 +36,11 @@ jQuery(document).ready(function()
         jQuery('#total-bids-by-me').html(data.totalPlacedBids);
     });
 
+    socket.on('update_available_bid_after_battle_win', function(data)
+    {
+      jQuery('#my-available-bids').html(data.availableBids);
+    });
+
     // Constant time updater
     socket.on('update_jackpot_timer', function(data)
     {
@@ -131,6 +136,23 @@ jQuery(document).ready(function()
     socket.on('update_normal_battle_level_timer', function(data)
     {
       updateNormalBattleTimer(data);
+    });
+
+    socket.on('hide_normal_battle_level_place_bid_button', function()
+    {
+      console.log("hide button");
+      jQuery('#place-normal-battle-bid').addClass('hide');
+    });
+
+    socket.on('show_normal_battle_level_place_bid_button', function()
+    {
+      console.log("show button");
+      jQuery('#place-normal-battle-bid').removeClass('hide');
+    });
+
+    socket.on('no_enough_available_bids', function()
+    {
+      alert("you dont have enough bids available");
     })
 
   });
@@ -208,6 +230,10 @@ function renderBidBattleLevelList(data)
 
 function renderNormalBattleLevelPlayerList(data)
 {
+  jQuery('#battle-level-list-container').addClass('hide');
+  jQuery('#battle-level-game-container').removeClass('hide');
+console.log(data.players);
+
   var html = ``;
 
   if(data.players.length > 0)
@@ -237,7 +263,7 @@ function renderNormalBattleLevelPlayerList(data)
 
 function updateNormalBattleTimer(data)
 {
-  console.log(data);
+  //console.log(data);
   jQuery('#battle-clock-time').html(data.battleClock);
   jQuery('#nbl-current-bid-length').html(data.currentBidDuration);
   jQuery('#nbl-current-bid-user').html(data.currentBidUserName);
@@ -248,7 +274,7 @@ function updateNormalBattleTimer(data)
 
 function renderResponseJoinNormalBattleLevel(data)
 {
-  console.log(data);
+  //console.log(data);
 
   var usersHtml = ``,
       myUserId  = data.myInfo.userId;
@@ -278,7 +304,7 @@ function renderResponseJoinNormalBattleLevel(data)
   }
   jQuery('#battle-level-playing-users').html(usersHtml);
 
-  jQuery('#my-normal-battle-available-bids').html(data.myInfo.availableBids);
+  jQuery('#my-normal-battle-available-bids').html(data.myInfo.remainingBids);
   jQuery('#my-normal-battle-placed-bids').html(data.myInfo.totalPlacedBids);
 
   jQuery('#battle-clock-time').html(data.levelInfo.duration);
@@ -305,8 +331,8 @@ function renderResponseJoinNormalBattleLevel(data)
 
 function handleAfterPlaceBid(data)
 {
-  jQuery('#my-normal-battle-available-bids').html(data.totalPlacedBids);
-  jQuery('#my-normal-battle-placed-bids').html(data.availableBids);
+  jQuery('#my-normal-battle-available-bids').html(data.availableBids);
+  jQuery('#my-normal-battle-placed-bids').html(data.totalPlacedBids);
 }
 
 function handleGameStarted()

@@ -35,7 +35,7 @@
     				My Available Bids - <span id="my-normal-battle-available-bids"></span>
     			</div>
     			<div class="col-md-12 text-left mbt10">
-    				My Remaining Bids - <span id="my-normal-battle-placed-bids"></span>
+    				My Placed Bids - <span id="my-normal-battle-placed-bids"></span>
     			</div>
     			<div class="col-md-12">
     				<button class="btn btn-sm btn-success hide" id="place-normal-battle-bid">Place A Bid</button>

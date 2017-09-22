@@ -66,6 +66,13 @@ class JackpotBattleLevel
     /**
      * @var integer
      *
+     * @ORM\Column(name="min_bids_to_gamb", type="integer", nullable=false)
+     */
+    private $minBidsToGamb;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="default_available_bids", type="integer", nullable=false)
      */
     private $defaultAvailableBids;
@@ -277,6 +284,29 @@ class JackpotBattleLevel
     public function getPrizeValue()
     {
         return $this->prizeValue;
+    }
+
+    /**
+     * Set minBidsToGamb
+     *
+     * @param integer $minBidsToGamb
+     * @return JackpotBattleLevel
+     */
+    public function setMinBidsToGamb($minBidsToGamb)
+    {
+        $this->minBidsToGamb = $minBidsToGamb;
+
+        return $this;
+    }
+
+    /**
+     * Get minBidsToGamb
+     *
+     * @return integer
+     */
+    public function getMinBidsToGamb()
+    {
+        return $this->minBidsToGamb;
     }
 
     /**

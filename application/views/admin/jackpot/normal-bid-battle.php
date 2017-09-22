@@ -23,18 +23,15 @@ echo form_open($form['action'], $finalFormAttrs);
                         <strong>Duration</strong>
                     </div>
                     <div class="col-md-1">
-                        <strong>Prize Type</strong>
-                    </div>
-                    <div class="col-md-2">
-                        <strong>Prize Value</strong>
+                        <strong>Prize Bids</strong>
                     </div>
                     <div class="col-md-1">
                         <strong>Default Given Bids</strong>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <strong>Last Winner Percent</strong>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-2">
                         <strong>Longest Winner Percent</strong>
                     </div>
                     <div class="col-md-1">
@@ -76,17 +73,15 @@ echo form_open($form['action'], $finalFormAttrs);
                               'data-fv-numeric-thousandsseparator' => '',
                               'data-fv-numeric-decimalseparator' => '.'
                             )); ?>
+                            <?php echo form_hidden('levels['.$i.'][prize_type]','BID');?>
                         </div>
                         <div class="col-md-1">
-                            <?php echo form_dropdown('levels['.$i.'][prize_type]', array('MONEY' => 'MONEY', 'BID' => 'BID'), $level->getPrizeType(), 'class="form-control" data-fv-row=".col-md-2" data-fv-notempty="true" data-fv-notempty-message="Prize Type Cannot Be Empty"'); ?>
-                        </div>
-                        <div class="col-md-2">
                             <?php echo form_input(array(
                               'type' => 'text',
                               'value' => $level->getPrizeValue(),
                               'name' => 'levels['.$i.'][prize_value]',
                               'class' => 'form-control',
-                              'data-fv-row' => '.col-md-2',
+                              'data-fv-row' => '.col-md-1',
                               'data-fv-notempty' => 'true',
                               'data-fv-notempty-message'=>'Prize Value Cannot Be Empty',
                               'data-fv-numeric' => 'true',
@@ -109,13 +104,13 @@ echo form_open($form['action'], $finalFormAttrs);
                               'data-fv-numeric-decimalseparator' => '.'
                             )); ?>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                             <?php echo form_input(array(
                               'type' => 'text',
                               'value' => $level->getLastBidWinnerPercent(),
                               'name' => 'levels['.$i.'][last_bid_winner_percent]',
                               'class' => 'form-control',
-                              'data-fv-row' => '.col-md-1',
+                              'data-fv-row' => '.col-md-2',
                               'data-fv-notempty' => 'true',
                               'data-fv-notempty-message'=>'Last Bid Winner Percent (In Case of Different)',
                               'data-fv-numeric' => 'true',
@@ -124,13 +119,13 @@ echo form_open($form['action'], $finalFormAttrs);
                               'data-fv-numeric-decimalseparator' => '.'
                             )); ?>
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-md-2">
                             <?php echo form_input(array(
                               'type' => 'text',
                               'value' => $level->getLongestBidWinnerPercent(),
                               'name' => 'levels['.$i.'][longest_bid_winner_percent]',
                               'class' => 'form-control',
-                              'data-fv-row' => '.col-md-1',
+                              'data-fv-row' => '.col-md-2',
                               'data-fv-notempty' => 'true',
                               'data-fv-notempty-message'=>'Longest Bid Winner Percent (In Case of Different)',
                               'data-fv-numeric' => 'true',
@@ -200,16 +195,14 @@ echo form_open($form['action'], $finalFormAttrs);
                                   'data-fv-numeric-thousandsseparator' => '',
                                   'data-fv-numeric-decimalseparator' => '.'
                                 )); ?>
+                                <?php echo form_hidden('levels[0][prize_type]','BID');?>
                             </div>
                             <div class="col-md-1">
-                                <?php echo form_dropdown('levels[0][prize_type]', array('MONEY' => 'MONEY', 'BID' => 'BID'), 'BID', 'class="form-control" data-fv-row=".col-md-2" data-fv-notempty="true" data-fv-notempty-message="Prize Type Cannot Be Empty"'); ?>
-                            </div>
-                            <div class="col-md-2">
                                 <?php echo form_input(array(
                                   'type' => 'text',
                                   'name' => 'levels[0][prize_value]',
                                   'class' => 'form-control',
-                                  'data-fv-row' => '.col-md-2',
+                                  'data-fv-row' => '.col-md-1',
                                   'data-fv-notempty' => 'true',
                                   'data-fv-notempty-message'=>'Prize Value Cannot Be Empty',
                                   'data-fv-numeric' => 'true',
@@ -232,12 +225,12 @@ echo form_open($form['action'], $finalFormAttrs);
                                   'data-fv-numeric-decimalseparator' => '.'
                                 )); ?>
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <?php echo form_input(array(
                                   'type' => 'text',
                                   'name' => 'levels[0][last_bid_winner_percent]',
                                   'class' => 'form-control',
-                                  'data-fv-row' => '.col-md-1',
+                                  'data-fv-row' => '.col-md-2',
                                   'data-fv-notempty' => 'true',
                                   'data-fv-notempty-message'=>'Last Bid Winner Percent (In Case of Different)',
                                   'data-fv-numeric' => 'true',
@@ -246,12 +239,12 @@ echo form_open($form['action'], $finalFormAttrs);
                                   'data-fv-numeric-decimalseparator' => '.'
                                 )); ?>
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <?php echo form_input(array(
                                     'type' => 'text',
                                     'name' => 'levels[0][longest_bid_winner_percent]',
                                     'class' => 'form-control',
-                                    'data-fv-row' => '.col-md-1',
+                                    'data-fv-row' => '.col-md-2',
                                     'data-fv-notempty' => 'true',
                                     'data-fv-notempty-message'=>'Longest Bid Winner Percent (In Case of Different)',
                                     'data-fv-numeric' => 'true',

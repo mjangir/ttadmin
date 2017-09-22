@@ -314,7 +314,7 @@ $('body').on('shown.bs.modal', '.modal', function (e) {
 $(document).ready(function () {
 
     // Validate form normal battle
-    $('#form_normal_battle_levels').formValidation({
+    $('#form_normal_battle_levels, #form_gambling_battle_levels').formValidation({
         err: {
             container: 'tooltip'
         }
@@ -402,6 +402,15 @@ $(document).ready(function () {
                         message: 'Amount must be a valid decimal number',
                         thousandsSeparator: '',
                         decimalSeparator: '.'
+                    }
+                }
+            },
+            min_players_required: {
+                row: '.col-xs-12',
+                verbose: false,
+                validators: {
+                    notEmpty: {
+                        message: 'Please enter Min Players Required'
                     }
                 }
             },
