@@ -183,6 +183,7 @@ class Jackpot extends MY_AdminController
                     $jackpot->setGameClockRemaining(convertTimeFormatToSeconds($this->postParams['game_clock_time']));
                     $jackpot->setDoomsDayRemaining(convertTimeFormatToSeconds($this->postParams['dooms_day_time']));
                     $jackpot->setMinPlayersRequired($this->postParams['min_players_required']);
+                    $jackpot->setDurationSetting($this->prepareDurationSetting($this->postParams));
 
                     //Persist and flush the object
                     $this->objectManager->persist($jackpot);
@@ -288,6 +289,15 @@ class Jackpot extends MY_AdminController
                 'breadCrumbs'       => array('Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''),
             ));
         }
+    }
+
+    public function prepareDurationSetting($post)
+    {
+        if(isset($post['duration_setting']))
+        {
+            return json_encode($post['duration_setting']);
+        }
+        return json_encode([]);
     }
 
     /**
@@ -632,13 +642,13 @@ class Jackpot extends MY_AdminController
                     $entity->setLevelName($newRecord['level_name']);
                     $entity->setDuration($newRecord['duration']);
                     $entity->setPrizeType($newRecord['prize_type']);
-                    $entity->setPrizeValue($newRecord['prize_value']);
+                    $entity->setPrizeValue(0);
                     $entity->setDefaultAvailableBids($newRecord['default_bids']);
                     $entity->setMinBidsToGamb($newRecord['min_bids_to_gamb']);
                     $entity->setLastBidWinnerPercent($newRecord['last_bid_winner_percent']);
                     $entity->setLongestBidWinnerPercent($newRecord['longest_bid_winner_percent']);
                     $entity->setMinPlayersRequiredToStart($newRecord['min_players_to_start']);
-                    $entity->setMinWinsToUnlockNextLevel($newRecord['min_wins_to_unlock_next']);
+                    $entity->setMinWinsToUnlockNextLevel(0);
                     $entity->setCreatedAt($createdAt);
                     $entity->setUpdatedAt($updatedAt);
 

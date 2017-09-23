@@ -46,6 +46,126 @@ echo form_open($form['action'], $form['attributes']);
                     </div>
                </div>
             </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h3 class="control-label">Jackpot Game Duration 
+                          <small><i>At how many seconds, what amount should be increased</i></small>
+                        </h3>
+                    </div>
+               </div>
+            </div>
+            <div class="row pivot-wrapper">
+                <div class="col-md-12 inner-col-8p">
+                    <div class="col-md-2">
+                        <strong>Seconds</strong>
+                    </div>
+                    <div class="col-md-2">
+                        <strong>Amount</strong>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <?php
+                  $dsStatus = false;
+                  if($jackpot->getDurationSetting() && !empty($jackpot->getDurationSetting()))
+                  {
+                    $dsStatus = true;
+                    $durationSettings = json_decode($jackpot->getDurationSetting(), true);
+                    if(is_array($durationSettings) && !empty($durationSettings))
+                    {
+                      $dsStatus = true;
+                      $i = 0;
+                      foreach($durationSettings as $ds)
+                      {
+                ?>
+                <div class="col-md-12 pivot-inner mbt10 inner-col-8p">
+                    <div class="col-md-2">
+                      <?php echo form_input(array(
+                          'type'                    => 'text',
+                          'name'                    => 'duration_setting['.$i.'][seconds]',
+                          'value'                   => $ds['seconds'],
+                          'class'                   => 'form-control',
+                          'data-fv-row'             => '.col-md-2',
+                          'data-fv-notempty'        => 'true',
+                          'data-fv-notempty-message'=>'Seconds cannot be empty',
+                          'data-fv-numeric'         => 'true',
+                          'data-fv-numeric-message' => 'Duration Seconds Must Be Numeric',
+                          'data-fv-numeric-thousandsseparator' => '',
+                          'data-fv-numeric-decimalseparator' => '.'
+                        )); 
+                      ?>
+                    </div>
+                    <div class="col-md-2">
+                      <?php echo form_input(array(
+                          'type'                    => 'text',
+                          'name'                    => 'duration_setting['.$i.'][amount]',
+                          'value'                   => $ds['amount'],
+                          'class'                   => 'form-control',
+                          'data-fv-row'             => '.col-md-2',
+                          'data-fv-notempty'        => 'true',
+                          'data-fv-notempty-message'=> 'Amount Cannot Be Empty',
+                          'data-fv-numeric'         => 'true',
+                          'data-fv-numeric-message' => 'Amount Must Be Numeric',
+                          'data-fv-numeric-thousandsseparator' => '',
+                          'data-fv-numeric-decimalseparator' => '.'
+                        )); 
+                      ?>
+                    </div>
+                    <div class="col-md-2">
+                      <button type="button" class="btn bg-purple btn-flat add <?php echo ($i > 0) ? 'hide' : '' ?>" style="margin-left: -12px;"><i class="fa fa-plus"></i></button>
+                      <button type="button" class="btn bg-maroon btn-flat remove <?php echo ($i == 0) ? 'hide' : '' ?>" style="margin-left: -12px;"><i class="fa fa-minus"></i></button>
+                  </div>
+                </div>
+                <?php
+                $i++;
+                      }
+                    }
+                  }
+
+                  if($dsStatus == false) {
+                ?>
+                <div class="col-md-12 pivot-inner mbt10 inner-col-8p">
+                    <div class="col-md-2">
+                      <?php echo form_input(array(
+                          'type'                    => 'text',
+                          'name'                    => 'duration_setting[0][seconds]',
+                          'value'                   => 0,
+                          'class'                   => 'form-control',
+                          'data-fv-row'             => '.col-md-2',
+                          'data-fv-notempty'        => 'true',
+                          'data-fv-notempty-message'=>'Seconds cannot be empty',
+                          'data-fv-numeric'         => 'true',
+                          'data-fv-numeric-message' => 'Duration Seconds Must Be Numeric',
+                          'data-fv-numeric-thousandsseparator' => '',
+                          'data-fv-numeric-decimalseparator' => '.'
+                        )); 
+                      ?>
+                    </div>
+                    <div class="col-md-2">
+                      <?php echo form_input(array(
+                          'type'                    => 'text',
+                          'name'                    => 'duration_setting[0][amount]',
+                          'value'                   => 0,
+                          'class'                   => 'form-control',
+                          'data-fv-row'             => '.col-md-2',
+                          'data-fv-notempty'        => 'true',
+                          'data-fv-notempty-message'=> 'Amount Cannot Be Empty',
+                          'data-fv-numeric'         => 'true',
+                          'data-fv-numeric-message' => 'Amount Must Be Numeric',
+                          'data-fv-numeric-thousandsseparator' => '',
+                          'data-fv-numeric-decimalseparator' => '.'
+                        )); 
+                      ?>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn bg-purple btn-flat add" style="margin-left: -12px;"><i class="fa fa-plus"></i></button>
+                        <button type="button" class="btn bg-maroon btn-flat remove hide" style="margin-left: -12px;"><i class="fa fa-minus"></i></button>
+                    </div>
+                </div>
+                <?php } ?>
+                <div class="clearfix"></div>
+            </div>
       </div>
       <div class="panel-footer">
             <button type="submit" name="submitForm" class="btn btn-primary">Save</button>

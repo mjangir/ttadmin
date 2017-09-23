@@ -47,6 +47,13 @@ class Jackpot
     /**
      * @var integer
      *
+     * @ORM\Column(name="duration_setting", type="text", nullable=true)
+     */
+    private $durationSetting;
+
+    /**
+     * @var integer
+     *
      * @ORM\Column(name="game_clock_time", type="integer", nullable=false)
      */
     private $gameClockTime;
@@ -229,6 +236,17 @@ class Jackpot
     public function getMinPlayersRequired()
     {
         return $this->minPlayersRequired;
+    }
+
+    public function setDurationSetting($durationSetting)
+    {
+        $this->durationSetting = $durationSetting;
+        return $this;
+    }
+
+    public function getDurationSetting()
+    {
+        return $this->durationSetting;
     }
 
     /**

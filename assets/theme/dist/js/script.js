@@ -95,6 +95,11 @@ jQuery(document).ready(function()
         jQuery("#quit-game-button").show();
     });
 
+    socket.on('update_jackpot_amount', function(data)
+    {
+      jQuery('#jackpot-amount').html(data.amount);
+    });
+
     // When user clicked on battle tab
     socket.on('response_battle', function(data)
     {
@@ -153,6 +158,21 @@ jQuery(document).ready(function()
     socket.on('no_enough_available_bids', function()
     {
       alert("you dont have enough bids available");
+    });
+
+    socket.on('update_normal_battle_jackpot_amount', function(data)
+    {
+      console.log("new amount", data.amount);
+    });
+
+    socket.on('normal_battle_level_game_finished', function(data)
+    {
+      console.log(data);
+    });
+
+    socket.on('normal_battle_main_jackpot_finished', function()
+    {
+      alert("Main game has been finished");
     })
 
   });
