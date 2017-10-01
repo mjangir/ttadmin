@@ -107,34 +107,77 @@ class Setting extends MY_AdminController
     public function save()
     {
 
+        $isAjax = false;
+
         //Check if request is POST. If yes then proceed with add or update
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
 
-            //Get all posted data
-            $settings = $this->input->post('settings');
-
-            foreach ($settings as $key => $value) {
-
+            if($this->input->post('normal_battle_levels') && $this->input->post('normal_battle_levels') == 1)
+            {
+                $levels = $this->input->post('levels') ? json_encode($this->input->post('levels')) : json_encode(array());
                 //Get setting entity by key
-                $settingEntity = $this->objectManager->getRepository($this->entityName)->findOneBy(array('key' => $key));
+                $settingEntity = $this->objectManager->getRepository($this->entityName)->findOneBy(array('key' => 'normal_battle_levels_json'));
 
                 //If key is not empty them update the new value
                 if (!empty($settingEntity)) {
-                    $settingEntity->setValue($value);
+                    $settingEntity->setValue($levels);
                     $this->objectManager->persist($settingEntity);
                     $this->objectManager->flush();
                 }
+
+                $isAjax = true;
             }
+            else
+            {
+                //Get all posted data
+                $settings = $this->input->post('settings');
+
+                foreach ($settings as $key => $value) {
+
+                    //Get setting entity by key
+                    $settingEntity = $this->objectManager->getRepository($this->entityName)->findOneBy(array('key' => $key));
+
+                    //If key is not empty them update the new value
+                    if (!empty($settingEntity)) {
+                        $settingEntity->setValue($value);
+                        $this->objectManager->persist($settingEntity);
+                        $this->objectManager->flush();
+                    }
+
+            }
+        }
 
             // Update Global Settings In NodeJS
             $client         = new Client();
             $accessToken    = $this->session->userdata('accessToken');
             $result         = $client->post(API_BASE_PATH.'/api/settings/update-global-settings?access_token='.$accessToken);
 
-
-            //Return success if added successfully
-            $this->session->set_flashdata('messages', array('success@#@Settings updated successfully'));
-            redirect(base_url('admin/setting'));
+            if($isAjax)
+            {
+                //Return success if added successfully
+                echo json_encode(array(
+                    'html' => '',
+                    'notification' => array(
+                        array(
+                            'status' => 'success',
+                            'message' => 'Settings updated successfully',
+                            'type' => 'toastr',
+                        ),
+                    ),
+                    'location' => array(
+                        'redirect' => array(
+                            'url' => base_url('admin/setting'),
+                            'timeout' => 2000,
+                        ),
+                    ),
+                ));
+            }
+            else
+            {
+                //Return success if added successfully
+                $this->session->set_flashdata('messages', array('success@#@Settings updated successfully'));
+                redirect(base_url('admin/setting'));
+            }
         }
     }
 }

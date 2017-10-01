@@ -189,6 +189,11 @@ class Jackpot extends MY_AdminController
                     $this->objectManager->persist($jackpot);
                     $this->objectManager->flush($jackpot);
 
+                    // Copy default normal bid battle levels from settings (only for add new)
+                    if ($id === null) {
+                        $this->copyNormalBidBattleLevelsFromSettings($jackpot);
+                    }
+
                     // Update in socket state
                     $client         = new Client();
                     $newJpId        = ($id == null) ? $jackpot->getId() : $id;
@@ -483,6 +488,72 @@ class Jackpot extends MY_AdminController
         }
         $this->objectManager->flush();
         return $model;
+    }
+
+    /**
+     * Copy Normal Bid Battle Levels From Settings
+
+     * @param Jackpot $jackpot
+     */
+    public function copyNormalBidBattleLevelsFromSettings($jackpot)
+    {
+        $settingEntity = $this->objectManager->getRepository('Entity\Setting')->findOneBy(array('key' => 'normal_battle_levels_json'));
+
+        //If key is not empty them update the new value
+        if (!empty($settingEntity))
+        {
+            $levels = $settingEntity->getValue();
+
+            $normalBattleLevels = isset($levels) && !empty($levels) ? json_decode($levels, true) : null;
+
+            if($normalBattleLevels && is_array($normalBattleLevels) && count($normalBattleLevels) > 0) 
+            {
+                $i          = 1;
+                $total      = count($normalBattleLevels);
+                $createdAt  = new \DateTime();
+                $updatedAt  = new \DateTime();
+
+                foreach($normalBattleLevels as $level) 
+                {
+                    if(!empty($level['level_name']) && !empty($level['battle_type']))
+                    {
+                        $entity = new Entity\JackpotBattleLevel();
+                        $entity->setJackpot($jackpot);
+                        $entity->setBattleType($level['battle_type']);
+                        $entity->setOrder($i);
+                        $entity->setLevelName($level['level_name']);
+                        $entity->setDuration($level['duration']);
+                        $entity->setPrizeType($level['prize_type']);
+                        $entity->setPrizeValue($level['prize_value']);
+                        $entity->setDefaultAvailableBids($level['default_bids']);
+                        $entity->setLastBidWinnerPercent($level['last_bid_winner_percent']);
+                        $entity->setLongestBidWinnerPercent($level['longest_bid_winner_percent']);
+                        $entity->setMinPlayersRequiredToStart($level['min_players_to_start']);
+                        $entity->setMinWinsToUnlockNextLevel($level['min_wins_to_unlock_next']);
+                        $entity->setCreatedAt($createdAt);
+                        $entity->setUpdatedAt($updatedAt);
+
+                        if($i == $total)
+                        {
+                            $entity->setIsLastLevel(1);
+                        }
+                        else
+                        {
+                            $entity->setIsLastLevel(0);
+                        }
+
+                        $this->objectManager->persist($entity);
+
+                        $i++;
+                    }
+                }
+
+                $this->objectManager->flush();
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
