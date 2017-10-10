@@ -178,7 +178,12 @@ jQuery(document).ready(function()
     socket.on('normal_battle_main_jackpot_finished', function()
     {
       alert("Main game has been finished");
-    })
+    });
+
+    socket.on('normal_battle_game_about_to_start', function (data)
+    {
+      console.log(data.time);
+    });
 
   });
 
