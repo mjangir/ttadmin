@@ -50,6 +50,13 @@ class JackpotBattleLevel
     private $duration;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="increment_seconds", type="integer", nullable=false)
+     */
+    private $incrementSeconds;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="prize_type", type="string", nullable=false)
@@ -238,6 +245,29 @@ class JackpotBattleLevel
     public function getDuration()
     {
         return $this->duration;
+    }
+
+    /**
+     * Set incrementSeconds
+     *
+     * @param string $incrementSeconds
+     * @return JackpotBattleLevel
+     */
+    public function setIncrementSeconds($incrementSeconds)
+    {
+        $this->incrementSeconds = $incrementSeconds;
+
+        return $this;
+    }
+
+    /**
+     * Get incrementSeconds
+     *
+     * @return string
+     */
+    public function getIncrementSeconds()
+    {
+        return $this->incrementSeconds;
     }
 
     /**

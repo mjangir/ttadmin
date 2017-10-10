@@ -468,6 +468,7 @@ class Jackpot extends MY_AdminController
                     $entity->setLongestBidWinnerPercent($newRecord['longest_bid_winner_percent']);
                     $entity->setMinPlayersRequiredToStart($newRecord['min_players_to_start']);
                     $entity->setMinWinsToUnlockNextLevel($newRecord['min_wins_to_unlock_next']);
+                    $entity->setIncrementSeconds($newRecord['increment_seconds']);
                     $entity->setCreatedAt($createdAt);
                     $entity->setUpdatedAt($updatedAt);
 
@@ -506,14 +507,14 @@ class Jackpot extends MY_AdminController
 
             $normalBattleLevels = isset($levels) && !empty($levels) ? json_decode($levels, true) : null;
 
-            if($normalBattleLevels && is_array($normalBattleLevels) && count($normalBattleLevels) > 0) 
+            if($normalBattleLevels && is_array($normalBattleLevels) && count($normalBattleLevels) > 0)
             {
                 $i          = 1;
                 $total      = count($normalBattleLevels);
                 $createdAt  = new \DateTime();
                 $updatedAt  = new \DateTime();
 
-                foreach($normalBattleLevels as $level) 
+                foreach($normalBattleLevels as $level)
                 {
                     if(!empty($level['level_name']) && !empty($level['battle_type']))
                     {
@@ -530,6 +531,7 @@ class Jackpot extends MY_AdminController
                         $entity->setLongestBidWinnerPercent($level['longest_bid_winner_percent']);
                         $entity->setMinPlayersRequiredToStart($level['min_players_to_start']);
                         $entity->setMinWinsToUnlockNextLevel($level['min_wins_to_unlock_next']);
+                        $entity->setIncrementSeconds($level['increment_seconds']);
                         $entity->setCreatedAt($createdAt);
                         $entity->setUpdatedAt($updatedAt);
 
