@@ -36,7 +36,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\User' . "\0" . 'id', '' . "\0" . 'Entity\\User' . "\0" . 'name', '' . "\0" . 'Entity\\User' . "\0" . 'facebookId', '' . "\0" . 'Entity\\User' . "\0" . 'email', '' . "\0" . 'Entity\\User' . "\0" . 'salt', '' . "\0" . 'Entity\\User' . "\0" . 'password', '' . "\0" . 'Entity\\User' . "\0" . 'forgotPwdSalt', '' . "\0" . 'Entity\\User' . "\0" . 'gender', '' . "\0" . 'Entity\\User' . "\0" . 'birthDate', '' . "\0" . 'Entity\\User' . "\0" . 'bloodGroup', '' . "\0" . 'Entity\\User' . "\0" . 'phone', '' . "\0" . 'Entity\\User' . "\0" . 'photo', '' . "\0" . 'Entity\\User' . "\0" . 'status', '' . "\0" . 'Entity\\User' . "\0" . 'createdAt', '' . "\0" . 'Entity\\User' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\User' . "\0" . 'userGroup', '' . "\0" . 'Entity\\User' . "\0" . 'country', '' . "\0" . 'Entity\\User' . "\0" . 'createdBy', '' . "\0" . 'Entity\\User' . "\0" . 'updatedBy');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\User' . "\0" . 'id', '' . "\0" . 'Entity\\User' . "\0" . 'name', '' . "\0" . 'Entity\\User' . "\0" . 'facebookId', '' . "\0" . 'Entity\\User' . "\0" . 'email', '' . "\0" . 'Entity\\User' . "\0" . 'salt', '' . "\0" . 'Entity\\User' . "\0" . 'password', '' . "\0" . 'Entity\\User' . "\0" . 'forgotPwdSalt', '' . "\0" . 'Entity\\User' . "\0" . 'gender', '' . "\0" . 'Entity\\User' . "\0" . 'birthDate', '' . "\0" . 'Entity\\User' . "\0" . 'bloodGroup', '' . "\0" . 'Entity\\User' . "\0" . 'phone', '' . "\0" . 'Entity\\User' . "\0" . 'photo', '' . "\0" . 'Entity\\User' . "\0" . 'status', '' . "\0" . 'Entity\\User' . "\0" . 'createdAt', '' . "\0" . 'Entity\\User' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\User' . "\0" . 'userGroup', '' . "\0" . 'Entity\\User' . "\0" . 'country', '' . "\0" . 'Entity\\User' . "\0" . 'createdBy', '' . "\0" . 'Entity\\User' . "\0" . 'updatedBy'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\User' . "\0" . 'id', '' . "\0" . 'Entity\\User' . "\0" . 'name', '' . "\0" . 'Entity\\User' . "\0" . 'facebookId', '' . "\0" . 'Entity\\User' . "\0" . 'email', '' . "\0" . 'Entity\\User' . "\0" . 'salt', '' . "\0" . 'Entity\\User' . "\0" . 'password', '' . "\0" . 'Entity\\User' . "\0" . 'forgotPwdSalt', '' . "\0" . 'Entity\\User' . "\0" . 'gender', '' . "\0" . 'Entity\\User' . "\0" . 'birthDate', '' . "\0" . 'Entity\\User' . "\0" . 'bloodGroup', '' . "\0" . 'Entity\\User' . "\0" . 'phone', '' . "\0" . 'Entity\\User' . "\0" . 'photo', '' . "\0" . 'Entity\\User' . "\0" . 'status', '' . "\0" . 'Entity\\User' . "\0" . 'createdAt', '' . "\0" . 'Entity\\User' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\User' . "\0" . 'userGroup', '' . "\0" . 'Entity\\User' . "\0" . 'country', '' . "\0" . 'Entity\\User' . "\0" . 'createdBy', '' . "\0" . 'Entity\\User' . "\0" . 'updatedBy');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\User' . "\0" . 'id', '' . "\0" . 'Entity\\User' . "\0" . 'name', '' . "\0" . 'Entity\\User' . "\0" . 'facebookId', '' . "\0" . 'Entity\\User' . "\0" . 'email', '' . "\0" . 'Entity\\User' . "\0" . 'salt', '' . "\0" . 'Entity\\User' . "\0" . 'password', '' . "\0" . 'Entity\\User' . "\0" . 'forgotPwdSalt', '' . "\0" . 'Entity\\User' . "\0" . 'gender', '' . "\0" . 'Entity\\User' . "\0" . 'birthDate', '' . "\0" . 'Entity\\User' . "\0" . 'bloodGroup', '' . "\0" . 'Entity\\User' . "\0" . 'phone', '' . "\0" . 'Entity\\User' . "\0" . 'photo', '' . "\0" . 'Entity\\User' . "\0" . 'status', '' . "\0" . 'Entity\\User' . "\0" . 'createdAt', '' . "\0" . 'Entity\\User' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\User' . "\0" . 'userGroup', '' . "\0" . 'Entity\\User' . "\0" . 'country', '' . "\0" . 'Entity\\User' . "\0" . 'createdBy', '' . "\0" . 'Entity\\User' . "\0" . 'updatedBy'];
     }
 
     /**
@@ -97,7 +97,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setName($name)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', array($name));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', [$name]);
 
         return parent::setName($name);
     }
@@ -205,7 +205,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
 
         return parent::getName();
     }
@@ -216,7 +216,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setFacebookId($facebookId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFacebookId', array($facebookId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFacebookId', [$facebookId]);
 
         return parent::setFacebookId($facebookId);
     }
@@ -227,7 +227,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getFacebookId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFacebookId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFacebookId', []);
 
         return parent::getFacebookId();
     }
@@ -238,7 +238,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setEmail($email)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', array($email));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', [$email]);
 
         return parent::setEmail($email);
     }
@@ -249,7 +249,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getEmail()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', []);
 
         return parent::getEmail();
     }
@@ -260,7 +260,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setSalt($salt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSalt', array($salt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSalt', [$salt]);
 
         return parent::setSalt($salt);
     }
@@ -271,7 +271,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getSalt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSalt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSalt', []);
 
         return parent::getSalt();
     }
@@ -282,7 +282,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setPassword($password)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassword', array($password));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassword', [$password]);
 
         return parent::setPassword($password);
     }
@@ -293,7 +293,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getPassword()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPassword', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPassword', []);
 
         return parent::getPassword();
     }
@@ -304,7 +304,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setForgotPwdSalt($forgotPwdSalt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setForgotPwdSalt', array($forgotPwdSalt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setForgotPwdSalt', [$forgotPwdSalt]);
 
         return parent::setForgotPwdSalt($forgotPwdSalt);
     }
@@ -315,7 +315,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getForgotPwdSalt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getForgotPwdSalt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getForgotPwdSalt', []);
 
         return parent::getForgotPwdSalt();
     }
@@ -326,7 +326,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setGender($gender)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGender', array($gender));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGender', [$gender]);
 
         return parent::setGender($gender);
     }
@@ -337,7 +337,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getGender()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGender', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGender', []);
 
         return parent::getGender();
     }
@@ -348,7 +348,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setBirthDate($birthDate)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBirthDate', array($birthDate));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBirthDate', [$birthDate]);
 
         return parent::setBirthDate($birthDate);
     }
@@ -359,7 +359,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getBirthDate()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBirthDate', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBirthDate', []);
 
         return parent::getBirthDate();
     }
@@ -370,7 +370,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setBloodGroup($bloodGroup)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBloodGroup', array($bloodGroup));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBloodGroup', [$bloodGroup]);
 
         return parent::setBloodGroup($bloodGroup);
     }
@@ -381,7 +381,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getBloodGroup()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBloodGroup', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBloodGroup', []);
 
         return parent::getBloodGroup();
     }
@@ -392,7 +392,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setPhone($phone)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone', array($phone));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhone', [$phone]);
 
         return parent::setPhone($phone);
     }
@@ -403,7 +403,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getPhone()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhone', []);
 
         return parent::getPhone();
     }
@@ -414,7 +414,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setPhoto($photo)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhoto', array($photo));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPhoto', [$photo]);
 
         return parent::setPhoto($photo);
     }
@@ -425,7 +425,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getPhoto()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhoto', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPhoto', []);
 
         return parent::getPhoto();
     }
@@ -436,7 +436,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setStatus($status)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$status]);
 
         return parent::setStatus($status);
     }
@@ -447,7 +447,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getStatus()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', []);
 
         return parent::getStatus();
     }
@@ -458,7 +458,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -469,7 +469,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -480,7 +480,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -491,7 +491,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -502,7 +502,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setUserGroup(\Entity\UserGroup $userGroup = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserGroup', array($userGroup));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUserGroup', [$userGroup]);
 
         return parent::setUserGroup($userGroup);
     }
@@ -513,7 +513,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getUserGroup()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserGroup', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUserGroup', []);
 
         return parent::getUserGroup();
     }
@@ -524,7 +524,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setCountry(\Entity\Country $country = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', array($country));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', [$country]);
 
         return parent::setCountry($country);
     }
@@ -535,7 +535,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getCountry()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', []);
 
         return parent::getCountry();
     }
@@ -546,7 +546,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedBy(\Entity\User $createdBy = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', array($createdBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', [$createdBy]);
 
         return parent::setCreatedBy($createdBy);
     }
@@ -557,7 +557,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', []);
 
         return parent::getCreatedBy();
     }
@@ -568,7 +568,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedBy(\Entity\User $updatedBy = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', array($updatedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', [$updatedBy]);
 
         return parent::setUpdatedBy($updatedBy);
     }
@@ -579,7 +579,7 @@ class User extends \Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', []);
 
         return parent::getUpdatedBy();
     }

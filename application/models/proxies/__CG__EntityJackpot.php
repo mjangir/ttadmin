@@ -36,7 +36,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'id', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'title', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'amount', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameStatus', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'uniqueId', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'startedOn', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'status', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdBy', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedBy', 'jackpotGames', 'battleLevels');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'id', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'title', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'amount', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'minPlayersRequired', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'durationSetting', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameStatus', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'uniqueId', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'startedOn', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'status', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdBy', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedBy', 'jackpotGames', 'battleLevels'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'id', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'title', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'amount', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameStatus', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'uniqueId', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'startedOn', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'status', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdBy', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedBy', 'jackpotGames', 'battleLevels');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'id', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'title', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'amount', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'minPlayersRequired', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'durationSetting', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayTime', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameClockRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'doomsDayRemaining', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'gameStatus', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'uniqueId', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'startedOn', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'status', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'createdBy', '' . "\0" . 'Entity\\Jackpot' . "\0" . 'updatedBy', 'jackpotGames', 'battleLevels'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setTitle($title)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -205,7 +205,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getTitle()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -216,7 +216,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setAmount($amount)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAmount', array($amount));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAmount', [$amount]);
 
         return parent::setAmount($amount);
     }
@@ -227,9 +227,53 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getAmount()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAmount', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAmount', []);
 
         return parent::getAmount();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setMinPlayersRequired($minPlayersRequired)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMinPlayersRequired', [$minPlayersRequired]);
+
+        return parent::setMinPlayersRequired($minPlayersRequired);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getMinPlayersRequired()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMinPlayersRequired', []);
+
+        return parent::getMinPlayersRequired();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDurationSetting($durationSetting)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDurationSetting', [$durationSetting]);
+
+        return parent::setDurationSetting($durationSetting);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDurationSetting()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDurationSetting', []);
+
+        return parent::getDurationSetting();
     }
 
     /**
@@ -238,7 +282,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setGameClockTime($gameClockTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGameClockTime', array($gameClockTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGameClockTime', [$gameClockTime]);
 
         return parent::setGameClockTime($gameClockTime);
     }
@@ -249,7 +293,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getGameClockTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGameClockTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGameClockTime', []);
 
         return parent::getGameClockTime();
     }
@@ -260,7 +304,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setDoomsDayTime($doomsDayTime)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDoomsDayTime', array($doomsDayTime));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDoomsDayTime', [$doomsDayTime]);
 
         return parent::setDoomsDayTime($doomsDayTime);
     }
@@ -271,7 +315,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getDoomsDayTime()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDoomsDayTime', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDoomsDayTime', []);
 
         return parent::getDoomsDayTime();
     }
@@ -282,7 +326,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setGameClockRemaining($gameClockRemaining)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGameClockRemaining', array($gameClockRemaining));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGameClockRemaining', [$gameClockRemaining]);
 
         return parent::setGameClockRemaining($gameClockRemaining);
     }
@@ -293,7 +337,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getGameClockRemaining()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGameClockRemaining', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGameClockRemaining', []);
 
         return parent::getGameClockRemaining();
     }
@@ -304,7 +348,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setDoomsDayRemaining($doomsDayRemaining)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDoomsDayRemaining', array($doomsDayRemaining));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDoomsDayRemaining', [$doomsDayRemaining]);
 
         return parent::setDoomsDayRemaining($doomsDayRemaining);
     }
@@ -315,7 +359,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getDoomsDayRemaining()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDoomsDayRemaining', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDoomsDayRemaining', []);
 
         return parent::getDoomsDayRemaining();
     }
@@ -326,7 +370,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setGameStatus($gameStatus)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGameStatus', array($gameStatus));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGameStatus', [$gameStatus]);
 
         return parent::setGameStatus($gameStatus);
     }
@@ -337,7 +381,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getGameStatus()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGameStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGameStatus', []);
 
         return parent::getGameStatus();
     }
@@ -348,7 +392,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setUniqueId($uniqueId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniqueId', array($uniqueId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniqueId', [$uniqueId]);
 
         return parent::setUniqueId($uniqueId);
     }
@@ -359,7 +403,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getUniqueId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniqueId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniqueId', []);
 
         return parent::getUniqueId();
     }
@@ -370,7 +414,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setStartedOn($startedOn)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartedOn', array($startedOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartedOn', [$startedOn]);
 
         return parent::setStartedOn($startedOn);
     }
@@ -381,7 +425,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getStartedOn()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartedOn', []);
 
         return parent::getStartedOn();
     }
@@ -392,7 +436,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setStatus($status)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$status]);
 
         return parent::setStatus($status);
     }
@@ -403,7 +447,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getStatus()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', []);
 
         return parent::getStatus();
     }
@@ -414,7 +458,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -425,7 +469,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -436,7 +480,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -447,7 +491,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -458,7 +502,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedBy(\Entity\User $createdBy = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', array($createdBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', [$createdBy]);
 
         return parent::setCreatedBy($createdBy);
     }
@@ -469,7 +513,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', []);
 
         return parent::getCreatedBy();
     }
@@ -480,7 +524,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedBy(\Entity\User $updatedBy = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', array($updatedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', [$updatedBy]);
 
         return parent::setUpdatedBy($updatedBy);
     }
@@ -491,7 +535,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedBy()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', []);
 
         return parent::getUpdatedBy();
     }
@@ -502,7 +546,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getJackpotGames()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJackpotGames', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getJackpotGames', []);
 
         return parent::getJackpotGames();
     }
@@ -513,7 +557,7 @@ class Jackpot extends \Entity\Jackpot implements \Doctrine\ORM\Proxy\Proxy
     public function getBattleLevels()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBattleLevels', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBattleLevels', []);
 
         return parent::getBattleLevels();
     }

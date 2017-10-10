@@ -36,7 +36,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Link' . "\0" . 'id', '' . "\0" . 'Entity\\Link' . "\0" . 'parentId', '' . "\0" . 'Entity\\Link' . "\0" . 'linkOrder', '' . "\0" . 'Entity\\Link' . "\0" . 'name', '' . "\0" . 'Entity\\Link' . "\0" . 'alias', '' . "\0" . 'Entity\\Link' . "\0" . 'icon', '' . "\0" . 'Entity\\Link' . "\0" . 'href', '' . "\0" . 'Entity\\Link' . "\0" . 'actions', '' . "\0" . 'Entity\\Link' . "\0" . 'status', '' . "\0" . 'Entity\\Link' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Link' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\Link' . "\0" . 'linkCategory');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Link' . "\0" . 'id', '' . "\0" . 'Entity\\Link' . "\0" . 'parentId', '' . "\0" . 'Entity\\Link' . "\0" . 'linkOrder', '' . "\0" . 'Entity\\Link' . "\0" . 'name', '' . "\0" . 'Entity\\Link' . "\0" . 'alias', '' . "\0" . 'Entity\\Link' . "\0" . 'icon', '' . "\0" . 'Entity\\Link' . "\0" . 'href', '' . "\0" . 'Entity\\Link' . "\0" . 'actions', '' . "\0" . 'Entity\\Link' . "\0" . 'status', '' . "\0" . 'Entity\\Link' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Link' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\Link' . "\0" . 'linkCategory'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Link' . "\0" . 'id', '' . "\0" . 'Entity\\Link' . "\0" . 'parentId', '' . "\0" . 'Entity\\Link' . "\0" . 'linkOrder', '' . "\0" . 'Entity\\Link' . "\0" . 'name', '' . "\0" . 'Entity\\Link' . "\0" . 'alias', '' . "\0" . 'Entity\\Link' . "\0" . 'icon', '' . "\0" . 'Entity\\Link' . "\0" . 'href', '' . "\0" . 'Entity\\Link' . "\0" . 'actions', '' . "\0" . 'Entity\\Link' . "\0" . 'status', '' . "\0" . 'Entity\\Link' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Link' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\Link' . "\0" . 'linkCategory');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Link' . "\0" . 'id', '' . "\0" . 'Entity\\Link' . "\0" . 'parentId', '' . "\0" . 'Entity\\Link' . "\0" . 'linkOrder', '' . "\0" . 'Entity\\Link' . "\0" . 'name', '' . "\0" . 'Entity\\Link' . "\0" . 'alias', '' . "\0" . 'Entity\\Link' . "\0" . 'icon', '' . "\0" . 'Entity\\Link' . "\0" . 'href', '' . "\0" . 'Entity\\Link' . "\0" . 'actions', '' . "\0" . 'Entity\\Link' . "\0" . 'status', '' . "\0" . 'Entity\\Link' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Link' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\Link' . "\0" . 'linkCategory'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function setParentId($parentId)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentId', array($parentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentId', [$parentId]);
 
         return parent::setParentId($parentId);
     }
@@ -205,7 +205,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function getParentId()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentId', []);
 
         return parent::getParentId();
     }
@@ -216,7 +216,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function setLinkOrder($linkOrder)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLinkOrder', array($linkOrder));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLinkOrder', [$linkOrder]);
 
         return parent::setLinkOrder($linkOrder);
     }
@@ -227,7 +227,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function getLinkOrder()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLinkOrder', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLinkOrder', []);
 
         return parent::getLinkOrder();
     }
@@ -238,7 +238,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function setName($name)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', array($name));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', [$name]);
 
         return parent::setName($name);
     }
@@ -249,7 +249,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function getName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
 
         return parent::getName();
     }
@@ -260,7 +260,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function setAlias($alias)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAlias', array($alias));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAlias', [$alias]);
 
         return parent::setAlias($alias);
     }
@@ -271,7 +271,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function getAlias()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAlias', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAlias', []);
 
         return parent::getAlias();
     }
@@ -282,7 +282,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function setIcon($icon)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIcon', array($icon));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIcon', [$icon]);
 
         return parent::setIcon($icon);
     }
@@ -293,7 +293,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function getIcon()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIcon', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIcon', []);
 
         return parent::getIcon();
     }
@@ -304,7 +304,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function setHref($href)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHref', array($href));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHref', [$href]);
 
         return parent::setHref($href);
     }
@@ -315,7 +315,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function getHref()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHref', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHref', []);
 
         return parent::getHref();
     }
@@ -326,7 +326,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function setActions($actions)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActions', array($actions));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActions', [$actions]);
 
         return parent::setActions($actions);
     }
@@ -337,7 +337,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function getActions()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActions', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActions', []);
 
         return parent::getActions();
     }
@@ -348,7 +348,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function setStatus($status)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$status]);
 
         return parent::setStatus($status);
     }
@@ -359,7 +359,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function getStatus()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', []);
 
         return parent::getStatus();
     }
@@ -370,7 +370,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -381,7 +381,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -392,7 +392,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -403,7 +403,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -414,7 +414,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function setLinkCategory(\Entity\LinkCategory $linkCategory = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLinkCategory', array($linkCategory));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLinkCategory', [$linkCategory]);
 
         return parent::setLinkCategory($linkCategory);
     }
@@ -425,7 +425,7 @@ class Link extends \Entity\Link implements \Doctrine\ORM\Proxy\Proxy
     public function getLinkCategory()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLinkCategory', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLinkCategory', []);
 
         return parent::getLinkCategory();
     }

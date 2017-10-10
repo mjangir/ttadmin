@@ -36,7 +36,7 @@ class Role extends \Entity\Role implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class Role extends \Entity\Role implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\Role' . "\0" . 'id', '' . "\0" . 'Entity\\Role' . "\0" . 'role', '' . "\0" . 'Entity\\Role' . "\0" . 'status', '' . "\0" . 'Entity\\Role' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Role' . "\0" . 'updatedAt');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\Role' . "\0" . 'id', '' . "\0" . 'Entity\\Role' . "\0" . 'role', '' . "\0" . 'Entity\\Role' . "\0" . 'status', '' . "\0" . 'Entity\\Role' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Role' . "\0" . 'updatedAt'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\Role' . "\0" . 'id', '' . "\0" . 'Entity\\Role' . "\0" . 'role', '' . "\0" . 'Entity\\Role' . "\0" . 'status', '' . "\0" . 'Entity\\Role' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Role' . "\0" . 'updatedAt');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\Role' . "\0" . 'id', '' . "\0" . 'Entity\\Role' . "\0" . 'role', '' . "\0" . 'Entity\\Role' . "\0" . 'status', '' . "\0" . 'Entity\\Role' . "\0" . 'createdAt', '' . "\0" . 'Entity\\Role' . "\0" . 'updatedAt'];
     }
 
     /**
@@ -97,7 +97,7 @@ class Role extends \Entity\Role implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class Role extends \Entity\Role implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class Role extends \Entity\Role implements \Doctrine\ORM\Proxy\Proxy
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class Role extends \Entity\Role implements \Doctrine\ORM\Proxy\Proxy
     public function setRole($role)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRole', array($role));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRole', [$role]);
 
         return parent::setRole($role);
     }
@@ -205,7 +205,7 @@ class Role extends \Entity\Role implements \Doctrine\ORM\Proxy\Proxy
     public function getRole()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRole', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRole', []);
 
         return parent::getRole();
     }
@@ -216,7 +216,7 @@ class Role extends \Entity\Role implements \Doctrine\ORM\Proxy\Proxy
     public function setStatus($status)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$status]);
 
         return parent::setStatus($status);
     }
@@ -227,7 +227,7 @@ class Role extends \Entity\Role implements \Doctrine\ORM\Proxy\Proxy
     public function getStatus()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', []);
 
         return parent::getStatus();
     }
@@ -238,7 +238,7 @@ class Role extends \Entity\Role implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -249,7 +249,7 @@ class Role extends \Entity\Role implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -260,7 +260,7 @@ class Role extends \Entity\Role implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -271,7 +271,7 @@ class Role extends \Entity\Role implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }

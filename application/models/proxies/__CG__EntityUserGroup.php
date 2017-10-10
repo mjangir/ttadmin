@@ -36,7 +36,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'id', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'groupName', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'alias', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'description', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'status', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'createdAt', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'role');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'id', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'groupName', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'alias', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'description', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'status', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'createdAt', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'role'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'id', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'groupName', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'alias', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'description', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'status', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'createdAt', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'role');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'id', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'groupName', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'alias', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'description', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'status', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'createdAt', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\UserGroup' . "\0" . 'role'];
     }
 
     /**
@@ -97,7 +97,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function setGroupName($groupName)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupName', array($groupName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setGroupName', [$groupName]);
 
         return parent::setGroupName($groupName);
     }
@@ -205,7 +205,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function getGroupName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getGroupName', []);
 
         return parent::getGroupName();
     }
@@ -216,7 +216,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function setAlias($alias)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAlias', array($alias));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAlias', [$alias]);
 
         return parent::setAlias($alias);
     }
@@ -227,7 +227,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function getAlias()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAlias', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAlias', []);
 
         return parent::getAlias();
     }
@@ -238,7 +238,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function setDescription($description)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -249,7 +249,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function getDescription()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -260,7 +260,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function setStatus($status)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$status]);
 
         return parent::setStatus($status);
     }
@@ -271,7 +271,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function getStatus()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', []);
 
         return parent::getStatus();
     }
@@ -282,7 +282,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -293,7 +293,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -304,7 +304,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -315,7 +315,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -326,7 +326,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function setRole(\Entity\Role $role = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRole', array($role));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRole', [$role]);
 
         return parent::setRole($role);
     }
@@ -337,7 +337,7 @@ class UserGroup extends \Entity\UserGroup implements \Doctrine\ORM\Proxy\Proxy
     public function getRole()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRole', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRole', []);
 
         return parent::getRole();
     }

@@ -36,7 +36,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
 
 
@@ -64,10 +64,10 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'id', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'name', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'alias', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'createdAt', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'role');
+            return ['__isInitialized__', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'id', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'name', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'alias', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'createdAt', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'role'];
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'id', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'name', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'alias', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'createdAt', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'role');
+        return ['__isInitialized__', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'id', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'name', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'alias', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'createdAt', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'updatedAt', '' . "\0" . 'Entity\\LinkCategory' . "\0" . 'role'];
     }
 
     /**
@@ -97,7 +97,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
      */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -105,7 +105,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -183,7 +183,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
         }
 
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -194,7 +194,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
     public function setName($name)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', array($name));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setName', [$name]);
 
         return parent::setName($name);
     }
@@ -205,7 +205,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
     public function getName()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getName', []);
 
         return parent::getName();
     }
@@ -216,7 +216,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
     public function setAlias($alias)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAlias', array($alias));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAlias', [$alias]);
 
         return parent::setAlias($alias);
     }
@@ -227,7 +227,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
     public function getAlias()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAlias', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAlias', []);
 
         return parent::getAlias();
     }
@@ -238,7 +238,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
     public function setCreatedAt($createdAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', array($createdAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedAt', [$createdAt]);
 
         return parent::setCreatedAt($createdAt);
     }
@@ -249,7 +249,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
     public function getCreatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedAt', []);
 
         return parent::getCreatedAt();
     }
@@ -260,7 +260,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
     public function setUpdatedAt($updatedAt)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', array($updatedAt));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedAt', [$updatedAt]);
 
         return parent::setUpdatedAt($updatedAt);
     }
@@ -271,7 +271,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
     public function getUpdatedAt()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedAt', []);
 
         return parent::getUpdatedAt();
     }
@@ -282,7 +282,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
     public function setRole(\Entity\Role $role = NULL)
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRole', array($role));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRole', [$role]);
 
         return parent::setRole($role);
     }
@@ -293,7 +293,7 @@ class LinkCategory extends \Entity\LinkCategory implements \Doctrine\ORM\Proxy\P
     public function getRole()
     {
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRole', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRole', []);
 
         return parent::getRole();
     }
