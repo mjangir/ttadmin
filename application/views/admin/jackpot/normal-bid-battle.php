@@ -16,7 +16,7 @@ echo form_open($form['action'], $finalFormAttrs);
       <div class="panel-body">
             <div class="row pivot-wrapper">
                 <div class="col-md-12 mbt10 inner-col-8p">
-                    <div class="col-md-2">
+                    <div class="col-md-3">
                         <strong>Level Name</strong>
                     </div>
                     <div class="col-md-1">
@@ -28,11 +28,14 @@ echo form_open($form['action'], $finalFormAttrs);
                     <div class="col-md-1">
                         <strong>Default Given Bids</strong>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <strong>Last Winner Percent</strong>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-1">
                         <strong>Longest Winner Percent</strong>
+                    </div>
+                    <div class="col-md-1">
+                        <strong>Increment Seconds</strong>
                     </div>
                     <div class="col-md-1">
                         <strong>Min Players</strong>
@@ -48,7 +51,7 @@ echo form_open($form['action'], $finalFormAttrs);
                         foreach($levels as $level) {
                 ?>
                     <div class="col-md-12 pivot-inner mbt10">
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                             <?php echo form_hidden('levels['.$i.'][battle_type]','NORMAL');?>
                             <?php echo form_input(array(
                               'type' => 'text',
@@ -104,7 +107,7 @@ echo form_open($form['action'], $finalFormAttrs);
                               'data-fv-numeric-decimalseparator' => '.'
                             )); ?>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-1">
                             <?php echo form_input(array(
                               'type' => 'text',
                               'value' => $level->getLastBidWinnerPercent(),
@@ -119,7 +122,7 @@ echo form_open($form['action'], $finalFormAttrs);
                               'data-fv-numeric-decimalseparator' => '.'
                             )); ?>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-1">
                             <?php echo form_input(array(
                               'type' => 'text',
                               'value' => $level->getLongestBidWinnerPercent(),
@@ -130,6 +133,20 @@ echo form_open($form['action'], $finalFormAttrs);
                               'data-fv-notempty-message'=>'Longest Bid Winner Percent (In Case of Different)',
                               'data-fv-numeric' => 'true',
                               'data-fv-numeric-message' => 'Percentage Must Be Numeric',
+                              'data-fv-numeric-thousandsseparator' => '',
+                              'data-fv-numeric-decimalseparator' => '.'
+                            )); ?>
+                        </div>
+                        <div class="col-md-1">
+                            <?php echo form_input(array(
+                              'type' => 'text',
+                              'value' => $level->getIncrementSeconds(),
+                              'name' => 'levels['.$i.'][increment_seconds]',
+                              'class' => 'form-control','data-fv-row' => '.col-md-1',
+                              'data-fv-notempty' => 'true',
+                              'data-fv-notempty-message'=>'Please Enter Time Increment On Bid (In Seconds)',
+                              'data-fv-numeric' => 'true',
+                              'data-fv-numeric-message' => 'Seconds Must Be Numeric',
                               'data-fv-numeric-thousandsseparator' => '',
                               'data-fv-numeric-decimalseparator' => '.'
                             )); ?>
@@ -171,7 +188,7 @@ echo form_open($form['action'], $finalFormAttrs);
                     </div>
                 <?php $i++; } } else {?>
                         <div class="col-md-12 pivot-inner mbt10 inner-col-8p">
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <?php echo form_hidden('levels[0][battle_type]','NORMAL');?>
                                 <?php echo form_input(array(
                                   'type' => 'text',
@@ -225,7 +242,7 @@ echo form_open($form['action'], $finalFormAttrs);
                                   'data-fv-numeric-decimalseparator' => '.'
                                 )); ?>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <?php echo form_input(array(
                                   'type' => 'text',
                                   'name' => 'levels[0][last_bid_winner_percent]',
@@ -239,7 +256,7 @@ echo form_open($form['action'], $finalFormAttrs);
                                   'data-fv-numeric-decimalseparator' => '.'
                                 )); ?>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <?php echo form_input(array(
                                     'type' => 'text',
                                     'name' => 'levels[0][longest_bid_winner_percent]',
@@ -253,6 +270,19 @@ echo form_open($form['action'], $finalFormAttrs);
                                     'data-fv-numeric-decimalseparator' => '.'
                                 )); ?>
                             </div>
+                            <div class="col-md-1">
+                              <?php echo form_input(array(
+                                'type' => 'text',
+                                'name' => 'levels[0][increment_seconds]',
+                                'class' => 'form-control','data-fv-row' => '.col-md-1',
+                                'data-fv-notempty' => 'true',
+                                'data-fv-notempty-message'=>'Please Enter Time Increment On Bid (In Seconds)',
+                                'data-fv-numeric' => 'true',
+                                'data-fv-numeric-message' => 'Seconds Must Be Numeric',
+                                'data-fv-numeric-thousandsseparator' => '',
+                                'data-fv-numeric-decimalseparator' => '.'
+                              )); ?>
+                          </div>
                             <div class="col-md-1">
                                 <?php echo form_input(array(
                                   'type' => 'text',

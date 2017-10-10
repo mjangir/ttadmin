@@ -100,6 +100,12 @@ jQuery(document).ready(function()
       jQuery('#jackpot-amount').html(data.amount);
     });
 
+    // Game finished
+    socket.on('update_home_jackpot_battle_info', function(data){
+        jQuery('#current-battle-streak').html(data.battleStreak);
+        jQuery('#total-battle-wins').html(data.battleWins);
+    });
+
     // When user clicked on battle tab
     socket.on('response_battle', function(data)
     {
@@ -173,7 +179,12 @@ jQuery(document).ready(function()
     socket.on('normal_battle_main_jackpot_finished', function()
     {
       alert("Main game has been finished");
-    })
+    });
+
+    socket.on('normal_battle_game_about_to_start', function (data)
+    {
+      console.log(data.time);
+    });
 
   });
 

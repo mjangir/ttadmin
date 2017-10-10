@@ -80,6 +80,20 @@ class Jackpot
     private $doomsDayRemaining;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="increase_amount_seconds", type="integer", nullable=false)
+     */
+    private $increaseAmountSeconds;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="increase_amount", type="integer", nullable=false)
+     */
+    private $increaseAmount;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="game_status", type="string", nullable=false)
@@ -339,6 +353,52 @@ class Jackpot
     public function getDoomsDayRemaining()
     {
         return $this->doomsDayRemaining;
+    }
+
+    /**
+     * Set increaseAmountSeconds
+     *
+     * @param integer $increaseAmountSeconds
+     * @return Jackpot
+     */
+    public function setIncreaseAmountSeconds($increaseAmountSeconds)
+    {
+        $this->increaseAmountSeconds = $increaseAmountSeconds;
+
+        return $this;
+    }
+
+    /**
+     * Get increaseAmountSeconds
+     *
+     * @return integer
+     */
+    public function getIncreaseAmountSeconds()
+    {
+        return $this->increaseAmountSeconds;
+    }
+
+    /**
+     * Set increaseAmount
+     *
+     * @param integer $increaseAmount
+     * @return Jackpot
+     */
+    public function setIncreaseAmount($increaseAmount)
+    {
+        $this->increaseAmount = $increaseAmount;
+
+        return $this;
+    }
+
+    /**
+     * Get increaseAmount
+     *
+     * @return integer
+     */
+    public function getIncreaseAmount()
+    {
+        return $this->increaseAmount;
     }
 
     /**

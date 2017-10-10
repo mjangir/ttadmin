@@ -71,6 +71,14 @@
                     <td>Total Bids By Me</td>
                     <td id="total-bids-by-me"></td>
                   </tr>
+                  <tr>
+                    <td>Battle Wins</td>
+                    <td id="total-battle-wins"></td>
+                  </tr>
+                  <tr>
+                    <td>Current Battle Streak</td>
+                    <td id="current-battle-streak"></td>
+                  </tr>
                 </tbody>
             </table>
         </div>
