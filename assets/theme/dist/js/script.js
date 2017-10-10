@@ -102,7 +102,8 @@ jQuery(document).ready(function()
 
     // Game finished
     socket.on('update_home_jackpot_battle_info', function(data){
-        console.log(data);
+        jQuery('#current-battle-streak').html(data.battleStreak);
+        jQuery('#total-battle-wins').html(data.battleWins);
     });
 
     // When user clicked on battle tab

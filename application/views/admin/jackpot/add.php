@@ -55,7 +55,7 @@ echo form_open($form['action'], $form['attributes']);
                     </div>
                </div>
             </div>
-            <div class="row pivot-wrapper">
+            <!-- <div class="row pivot-wrapper">
                 <div class="col-md-12 inner-col-8p">
                     <div class="col-md-2">
                         <strong>Seconds</strong>
@@ -68,35 +68,37 @@ echo form_open($form['action'], $form['attributes']);
                 </div>
                 <div class="col-md-12 pivot-inner mbt10 inner-col-8p">
                     <div class="col-md-2">
-                      <?php echo form_input(array(
-                          'type'                    => 'text',
-                          'name'                    => 'duration_setting[0][seconds]',
-                          'value'                   => 0,
-                          'class'                   => 'form-control',
-                          'data-fv-row'             => '.col-md-2',
-                          'data-fv-notempty'        => 'true',
-                          'data-fv-notempty-message'=>'Seconds cannot be empty',
-                          'data-fv-numeric'         => 'true',
-                          'data-fv-numeric-message' => 'Duration Seconds Must Be Numeric',
-                          'data-fv-numeric-thousandsseparator' => '',
-                          'data-fv-numeric-decimalseparator' => '.'
-                        )); 
+                      <?php 
+                        // echo form_input(array(
+                        //   'type'                    => 'text',
+                        //   'name'                    => 'duration_setting[0][seconds]',
+                        //   'value'                   => 0,
+                        //   'class'                   => 'form-control',
+                        //   'data-fv-row'             => '.col-md-2',
+                        //   'data-fv-notempty'        => 'true',
+                        //   'data-fv-notempty-message'=>'Seconds cannot be empty',
+                        //   'data-fv-numeric'         => 'true',
+                        //   'data-fv-numeric-message' => 'Duration Seconds Must Be Numeric',
+                        //   'data-fv-numeric-thousandsseparator' => '',
+                        //   'data-fv-numeric-decimalseparator' => '.'
+                        // )); 
                       ?>
                     </div>
                     <div class="col-md-2">
-                      <?php echo form_input(array(
-                          'type'                    => 'text',
-                          'name'                    => 'duration_setting[0][amount]',
-                          'value'                   => 0,
-                          'class'                   => 'form-control',
-                          'data-fv-row'             => '.col-md-2',
-                          'data-fv-notempty'        => 'true',
-                          'data-fv-notempty-message'=> 'Amount Cannot Be Empty',
-                          'data-fv-numeric'         => 'true',
-                          'data-fv-numeric-message' => 'Amount Must Be Numeric',
-                          'data-fv-numeric-thousandsseparator' => '',
-                          'data-fv-numeric-decimalseparator' => '.'
-                        )); 
+                      <?php 
+                        // echo form_input(array(
+                        //   'type'                    => 'text',
+                        //   'name'                    => 'duration_setting[0][amount]',
+                        //   'value'                   => 0,
+                        //   'class'                   => 'form-control',
+                        //   'data-fv-row'             => '.col-md-2',
+                        //   'data-fv-notempty'        => 'true',
+                        //   'data-fv-notempty-message'=> 'Amount Cannot Be Empty',
+                        //   'data-fv-numeric'         => 'true',
+                        //   'data-fv-numeric-message' => 'Amount Must Be Numeric',
+                        //   'data-fv-numeric-thousandsseparator' => '',
+                        //   'data-fv-numeric-decimalseparator' => '.'
+                        // )); 
                       ?>
                     </div>
                     <div class="col-md-2">
@@ -105,6 +107,18 @@ echo form_open($form['action'], $form['attributes']);
                     </div>
                 </div>
                 <div class="clearfix"></div>
+            </div> -->
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <label class="control-label">Every Below Seconds</label>
+                        <?php echo form_input(array('type' => 'number', 'name' => 'increase_amount_seconds', 'class' => 'form-control'));?>
+                    </div>
+                    <div class="col-xs-4">
+                        <label class="control-label">Below Amount Should Be Increased</label>
+                        <?php echo form_input(array('type' => 'number','name' => 'increase_amount', 'class' => 'form-control'));?>
+                    </div>
+               </div>
             </div>
       </div>
       <div class="panel-footer">
