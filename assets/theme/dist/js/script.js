@@ -100,6 +100,11 @@ jQuery(document).ready(function()
       jQuery('#jackpot-amount').html(data.amount);
     });
 
+    // Game finished
+    socket.on('update_home_jackpot_battle_info', function(data){
+        console.log(data);
+    });
+
     // When user clicked on battle tab
     socket.on('response_battle', function(data)
     {
