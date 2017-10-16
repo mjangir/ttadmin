@@ -157,6 +157,16 @@ class Jackpot extends MY_AdminController
 
             //If form is successfully validated
             if ($this->form_validation->run() == true) {
+
+                if(!isset($this->postParams['increase_amount_seconds']) || empty($this->postParams['increase_amount_seconds']))
+                {
+                    $this->postParams['increase_amount_seconds'] = 0;
+                }
+                if(!isset($this->postParams['increase_amount']) || empty($this->postParams['increase_amount']))
+                {
+                    $this->postParams['increase_amount'] = 0;
+                }
+
                 try {
                     //If new jackpot is created
                     if ($id === null) {
