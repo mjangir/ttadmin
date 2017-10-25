@@ -36,7 +36,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\SoftwareInstallation'."\0".'id', ''."\0".'Entity\\SoftwareInstallation'."\0".'installationId', ''."\0".'Entity\\SoftwareInstallation'."\0".'macId', ''."\0".'Entity\\SoftwareInstallation'."\0".'ipAddress', ''."\0".'Entity\\SoftwareInstallation'."\0".'countryId', ''."\0".'Entity\\SoftwareInstallation'."\0".'createdOn', ''."\0".'Entity\\SoftwareInstallation'."\0".'updatedOn', ''."\0".'Entity\\SoftwareInstallation'."\0".'user');
+            return ['__isInitialized__', ''."\0".'Entity\\SoftwareInstallation'."\0".'id', ''."\0".'Entity\\SoftwareInstallation'."\0".'installationId', ''."\0".'Entity\\SoftwareInstallation'."\0".'macId', ''."\0".'Entity\\SoftwareInstallation'."\0".'ipAddress', ''."\0".'Entity\\SoftwareInstallation'."\0".'countryId', ''."\0".'Entity\\SoftwareInstallation'."\0".'createdOn', ''."\0".'Entity\\SoftwareInstallation'."\0".'updatedOn', ''."\0".'Entity\\SoftwareInstallation'."\0".'user'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\SoftwareInstallation'."\0".'id', ''."\0".'Entity\\SoftwareInstallation'."\0".'installationId', ''."\0".'Entity\\SoftwareInstallation'."\0".'macId', ''."\0".'Entity\\SoftwareInstallation'."\0".'ipAddress', ''."\0".'Entity\\SoftwareInstallation'."\0".'countryId', ''."\0".'Entity\\SoftwareInstallation'."\0".'createdOn', ''."\0".'Entity\\SoftwareInstallation'."\0".'updatedOn', ''."\0".'Entity\\SoftwareInstallation'."\0".'user');
+        return ['__isInitialized__', ''."\0".'Entity\\SoftwareInstallation'."\0".'id', ''."\0".'Entity\\SoftwareInstallation'."\0".'installationId', ''."\0".'Entity\\SoftwareInstallation'."\0".'macId', ''."\0".'Entity\\SoftwareInstallation'."\0".'ipAddress', ''."\0".'Entity\\SoftwareInstallation'."\0".'countryId', ''."\0".'Entity\\SoftwareInstallation'."\0".'createdOn', ''."\0".'Entity\\SoftwareInstallation'."\0".'updatedOn', ''."\0".'Entity\\SoftwareInstallation'."\0".'user'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function setInstallationId($installationId)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInstallationId', array($installationId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInstallationId', [$installationId]);
 
         return parent::setInstallationId($installationId);
     }
@@ -197,7 +191,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function getInstallationId()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInstallationId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInstallationId', []);
 
         return parent::getInstallationId();
     }
@@ -207,7 +201,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function setMacId($macId)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMacId', array($macId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMacId', [$macId]);
 
         return parent::setMacId($macId);
     }
@@ -217,7 +211,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function getMacId()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMacId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMacId', []);
 
         return parent::getMacId();
     }
@@ -227,7 +221,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function setIpAddress($ipAddress)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIpAddress', array($ipAddress));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIpAddress', [$ipAddress]);
 
         return parent::setIpAddress($ipAddress);
     }
@@ -237,7 +231,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function getIpAddress()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIpAddress', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIpAddress', []);
 
         return parent::getIpAddress();
     }
@@ -247,7 +241,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function setCountryId($countryId)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountryId', array($countryId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountryId', [$countryId]);
 
         return parent::setCountryId($countryId);
     }
@@ -257,7 +251,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function getCountryId()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountryId', []);
 
         return parent::getCountryId();
     }
@@ -267,7 +261,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function setCreatedOn($createdOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', array($createdOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', [$createdOn]);
 
         return parent::setCreatedOn($createdOn);
     }
@@ -277,7 +271,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function getCreatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', []);
 
         return parent::getCreatedOn();
     }
@@ -287,7 +281,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function setUpdatedOn($updatedOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', array($updatedOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', [$updatedOn]);
 
         return parent::setUpdatedOn($updatedOn);
     }
@@ -297,7 +291,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function getUpdatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', []);
 
         return parent::getUpdatedOn();
     }
@@ -307,7 +301,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function setUser(\Entity\User $user = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUser', array($user));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUser', [$user]);
 
         return parent::setUser($user);
     }
@@ -317,7 +311,7 @@ class __CG__EntitySoftwareInstallation extends \Entity\SoftwareInstallation impl
      */
     public function getUser()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', []);
 
         return parent::getUser();
     }

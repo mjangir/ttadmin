@@ -30,7 +30,7 @@ class RoleRepository extends EntityRepository
 {
     /**
      * Get User Roles.
-     * 
+     *
      * @return object
      */
     public function getRoles()
@@ -47,13 +47,13 @@ class RoleRepository extends EntityRepository
 
     /**
      * Get User Roles Dropdown List.
-     * 
+     *
      * @return object
      */
     public function getRolesList()
     {
         $querybuilder = $this->_em->createQueryBuilder();
-        $querybuilder->select(array('r.id', 'r.role'))
+        $querybuilder->select(['r.id', 'r.role'])
                 ->from('Entity\Role', 'r')
                 ->orderBy('r.role', 'ASC');
 

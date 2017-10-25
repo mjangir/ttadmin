@@ -112,10 +112,10 @@ class CI_Migration
      *
      * @param array $config
      */
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         // Only run this constructor on main library load
-        if (!in_array(get_class($this), array('CI_Migration', config_item('subclass_prefix').'Migration'), true)) {
+        if (!in_array(get_class($this), ['CI_Migration', config_item('subclass_prefix').'Migration'], true)) {
             return;
         }
 
@@ -153,19 +153,19 @@ class CI_Migration
             : '/^\d{3}_(\w+)$/';
 
         // Make sure a valid migration numbering type was set.
-        if (!in_array($this->_migration_type, array('sequential', 'timestamp'))) {
+        if (!in_array($this->_migration_type, ['sequential', 'timestamp'])) {
             show_error('An invalid migration numbering type was specified: '.$this->_migration_type);
         }
 
         // If the migrations table is missing, make it
         if (!$this->db->table_exists($this->_migration_table)) {
-            $this->dbforge->add_field(array(
-                'version' => array('type' => 'BIGINT', 'constraint' => 20),
-            ));
+            $this->dbforge->add_field([
+                'version' => ['type' => 'BIGINT', 'constraint' => 20],
+            ]);
 
             $this->dbforge->create_table($this->_migration_table, true);
 
-            $this->db->insert($this->_migration_table, array('version' => 0));
+            $this->db->insert($this->_migration_table, ['version' => 0]);
         }
 
         // Do we auto migrate to the latest migration?
@@ -243,18 +243,18 @@ class CI_Migration
 
             // Run migrations that are inside the target range
             if (
-                ($method === 'up'   && $number > $current_version && $number <= $target_version) or
+                ($method === 'up' && $number > $current_version && $number <= $target_version) or
                 ($method === 'down' && $number <= $current_version && $number > $target_version)
             ) {
                 $instance = new $class();
-                if (!is_callable(array($instance, $method))) {
+                if (!is_callable([$instance, $method])) {
                     $this->_error_string = sprintf($this->lang->line('migration_missing_'.$method.'_method'), $class);
 
                     return false;
                 }
 
                 log_message('debug', 'Migrating '.$method.' from version '.$current_version.' to version '.$number);
-                call_user_func(array($instance, $method));
+                call_user_func([$instance, $method]);
                 $current_version = $number;
                 $this->_update_version($current_version);
             }
@@ -329,7 +329,7 @@ class CI_Migration
      */
     public function find_migrations()
     {
-        $migrations = array();
+        $migrations = [];
 
         // Load all *_*.php files in the migrations path
         foreach (glob($this->_migration_path.'*_*.php') as $file) {
@@ -409,9 +409,9 @@ class CI_Migration
      */
     protected function _update_version($migration)
     {
-        $this->db->update($this->_migration_table, array(
+        $this->db->update($this->_migration_table, [
             'version' => $migration,
-        ));
+        ]);
     }
 
     // --------------------------------------------------------------------

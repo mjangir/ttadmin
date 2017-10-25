@@ -151,10 +151,10 @@ class CI_Zip
         // filemtime() may return false, but raises an error for non-existing files
         $date = file_exists($dir) ? getdate(filemtime($dir)) : getdate($this->now);
 
-        return array(
+        return [
             'file_mtime' => ($date['hours'] << 11) + ($date['minutes'] << 5) + $date['seconds'] / 2,
             'file_mdate' => (($date['year'] - 1980) << 9) + ($date['mon'] << 5) + $date['mday'],
-        );
+        ];
     }
 
     // --------------------------------------------------------------------
@@ -337,7 +337,7 @@ class CI_Zip
 
         // Set the original directory root for child dir's to use as relative
         if ($root_path === null) {
-            $root_path = str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, dirname($path)).DIRECTORY_SEPARATOR;
+            $root_path = str_replace(['\\', '/'], DIRECTORY_SEPARATOR, dirname($path)).DIRECTORY_SEPARATOR;
         }
 
         while (false !== ($file = readdir($fp))) {
@@ -348,7 +348,7 @@ class CI_Zip
             if (is_dir($path.$file)) {
                 $this->read_dir($path.$file.DIRECTORY_SEPARATOR, $preserve_filepath, $root_path);
             } elseif (false !== ($data = file_get_contents($path.$file))) {
-                $name = str_replace(array('\\', '/'), DIRECTORY_SEPARATOR, $path);
+                $name = str_replace(['\\', '/'], DIRECTORY_SEPARATOR, $path);
                 if ($preserve_filepath === false) {
                     $name = str_replace($root_path, '', $name);
                 }

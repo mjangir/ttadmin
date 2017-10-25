@@ -5,15 +5,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="<?php echo (isset($metaDescription) && !empty($metaDescription)) ? $metaDescription : $settings['homepage_meta_description'];?>">
-    <meta name="keywords" content="<?php echo (isset($metaKeywords) && !empty($metaKeywords)) ? $metaKeywords : $settings['homepage_meta_keywords'];?>">
+    <meta name="description" content="<?php echo (isset($metaDescription) && !empty($metaDescription)) ? $metaDescription : $settings['homepage_meta_description']; ?>">
+    <meta name="keywords" content="<?php echo (isset($metaKeywords) && !empty($metaKeywords)) ? $metaKeywords : $settings['homepage_meta_keywords']; ?>">
     <meta name="author" content="Manish Jangir">
 
-    <title><?php echo (isset($metaTitle) && !empty($metaTitle)) ? $metaTitle : $settings['homepage_meta_title'];?></title>
+    <title><?php echo (isset($metaTitle) && !empty($metaTitle)) ? $metaTitle : $settings['homepage_meta_title']; ?></title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="<?php echo base_url();?>assets/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/theme/dist/css/frontend.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/theme/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/theme/dist/css/frontend.css" rel="stylesheet">
 
     <style type="text/css">
         body {
@@ -44,16 +44,16 @@
 
 <body>
     <div class="container">
-        <?php echo isset($content) ? $content : null;?>
+        <?php echo isset($content) ? $content : null; ?>
     </div>
     <!-- /.container -->
     <script type="text/javascript">
-        var WS_BASE_PATH = '<?php echo WS_BASE_PATH;?>';
+        var WS_BASE_PATH = '<?php echo WS_BASE_PATH; ?>';
     </script>
-    <script src="<?php echo base_url();?>assets/theme/plugins/jQuery/jQuery-2.2.0.min.js"></script>
-    <script src="<?php echo base_url();?>assets/theme/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/theme/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/theme/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
-    <script src="<?php echo base_url();?>assets/theme/dist/js/script.js"></script>
+    <script src="<?php echo base_url(); ?>assets/theme/dist/js/script.js"></script>
 
 </body>
 

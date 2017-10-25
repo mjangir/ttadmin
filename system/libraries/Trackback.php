@@ -62,13 +62,13 @@ class CI_Trackback
      *
      * @var array
      */
-    public $data = array(
-        'url' => '',
-        'title' => '',
-        'excerpt' => '',
+    public $data = [
+        'url'       => '',
+        'title'     => '',
+        'excerpt'   => '',
         'blog_name' => '',
-        'charset' => '',
-    );
+        'charset'   => '',
+    ];
 
     /**
      * Convert ASCII flag.
@@ -92,7 +92,7 @@ class CI_Trackback
      *
      * @var string[]
      */
-    public $error_msg = array();
+    public $error_msg = [];
 
     // --------------------------------------------------------------------
 
@@ -122,7 +122,7 @@ class CI_Trackback
         }
 
         // Pre-process the Trackback Data
-        foreach (array('url', 'title', 'excerpt', 'blog_name', 'ping_url') as $item) {
+        foreach (['url', 'title', 'excerpt', 'blog_name', 'ping_url'] as $item) {
             if (!isset($tb_data[$item])) {
                 $this->set_error('Required item missing: '.$item);
 
@@ -145,7 +145,7 @@ class CI_Trackback
             }
 
             // Convert High ASCII Characters
-            if ($this->convert_ascii === true && in_array($item, array('excerpt', 'title', 'blog_name'), true)) {
+            if ($this->convert_ascii === true && in_array($item, ['excerpt', 'title', 'blog_name'], true)) {
                 $$item = $this->convert_ascii($$item);
             }
         }
@@ -183,7 +183,7 @@ class CI_Trackback
      */
     public function receive()
     {
-        foreach (array('url', 'title', 'blog_name', 'excerpt') as $val) {
+        foreach (['url', 'title', 'blog_name', 'excerpt'] as $val) {
             if (empty($_POST[$val])) {
                 $this->set_error('The following required POST variable is missing: '.$val);
 
@@ -289,12 +289,12 @@ class CI_Trackback
         }
 
         // Transfer the data
-        fputs($fp, 'POST '.$path." HTTP/1.0\r\n");
-        fputs($fp, 'Host: '.$target['host']."\r\n");
-        fputs($fp, "Content-type: application/x-www-form-urlencoded\r\n");
-        fputs($fp, 'Content-length: '.strlen($data)."\r\n");
-        fputs($fp, "Connection: close\r\n\r\n");
-        fputs($fp, $data);
+        fwrite($fp, 'POST '.$path." HTTP/1.0\r\n");
+        fwrite($fp, 'Host: '.$target['host']."\r\n");
+        fwrite($fp, "Content-type: application/x-www-form-urlencoded\r\n");
+        fwrite($fp, 'Content-length: '.strlen($data)."\r\n");
+        fwrite($fp, "Connection: close\r\n\r\n");
+        fwrite($fp, $data);
 
         // Was it successful?
 
@@ -337,7 +337,7 @@ class CI_Trackback
         // Break into an array via commas and remove duplicates
         $urls = array_unique(preg_split('/[,]/', rtrim($urls, ',')));
 
-        array_walk($urls, array($this, 'validate_url'));
+        array_walk($urls, [$this, 'validate_url']);
 
         return $urls;
     }
@@ -410,13 +410,13 @@ class CI_Trackback
     {
         $temp = '__TEMP_AMPERSANDS__';
 
-        $str = preg_replace(array('/&#(\d+);/', '/&(\w+);/'), $temp.'\\1;', $str);
+        $str = preg_replace(['/&#(\d+);/', '/&(\w+);/'], $temp.'\\1;', $str);
 
-        $str = str_replace(array('&', '<', '>', '"', "'", '-'),
-                    array('&amp;', '&lt;', '&gt;', '&quot;', '&#39;', '&#45;'),
+        $str = str_replace(['&', '<', '>', '"', "'", '-'],
+                    ['&amp;', '&lt;', '&gt;', '&quot;', '&#39;', '&#45;'],
                     $str);
 
-        return preg_replace(array('/'.$temp.'(\d+);/', '/'.$temp.'(\w+);/'), array('&#\\1;', '&\\1;'), $str);
+        return preg_replace(['/'.$temp.'(\d+);/', '/'.$temp.'(\w+);/'], ['&#\\1;', '&\\1;'], $str);
     }
 
     // --------------------------------------------------------------------
@@ -438,7 +438,7 @@ class CI_Trackback
             return $str;
         }
 
-        $str = preg_replace('/\s+/', ' ', str_replace(array("\r\n", "\r", "\n"), ' ', $str));
+        $str = preg_replace('/\s+/', ' ', str_replace(["\r\n", "\r", "\n"], ' ', $str));
 
         if (strlen($str) <= $n) {
             return $str;
@@ -469,7 +469,7 @@ class CI_Trackback
     {
         $count = 1;
         $out = '';
-        $temp = array();
+        $temp = [];
 
         for ($i = 0, $s = strlen($str); $i < $s; ++$i) {
             $ordinal = ord($str[$i]);
@@ -490,7 +490,7 @@ class CI_Trackback
 
                     $out .= '&#'.$number.';';
                     $count = 1;
-                    $temp = array();
+                    $temp = [];
                 }
             }
         }

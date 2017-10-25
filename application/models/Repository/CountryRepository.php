@@ -30,7 +30,7 @@ class CountryRepository extends EntityRepository
 {
     /**
      * Get Countries List.
-     * 
+     *
      * @return object
      */
     public function getCountries()
@@ -47,7 +47,7 @@ class CountryRepository extends EntityRepository
 
     /**
      * Get Dropdown list of countries.
-     * 
+     *
      * @return array
      */
     public function getDropdownList()

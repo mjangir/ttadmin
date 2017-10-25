@@ -23,19 +23,19 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme/dist/css/skins/_all-skins.min.css">
 
   <!-- iCheck CSS -->
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/theme/plugins/iCheck/square/blue.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme/plugins/iCheck/square/blue.css">
   <!-- WYSIHTML5 Editor -->
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/theme/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/theme/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- Toastr Message -->
-  <link href="<?php echo base_url();?>assets/theme/plugins/toastr/toastr.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/theme/plugins/toastr/toastr.css" rel="stylesheet">
 
   <!-- Backend specific -->
-  <link href="<?php echo base_url();?>assets/theme/dist/css/backend.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/theme/dist/css/backend.css" rel="stylesheet">
 
-  <link href="<?php echo base_url();?>assets/theme/dist/css/jquery-ui-timepicker-addon.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>assets/theme/dist/css/jquery-ui-timepicker-addon.css" rel="stylesheet">
 
   <script type="text/javascript">
-        var base_url = '<?php echo base_url();?>';
+        var base_url = '<?php echo base_url(); ?>';
     </script>
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -71,17 +71,17 @@
         <ul class="nav navbar-nav">
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo (!empty($loggedUser['photo'])) ? $loggedUser['photo'] : base_url().'assets/theme/dist/img/avatar_na.png';?>" class="user-image" alt="User Image">
+              <img src="<?php echo (!empty($loggedUser['photo'])) ? $loggedUser['photo'] : base_url().'assets/theme/dist/img/avatar_na.png'; ?>" class="user-image" alt="User Image">
               <span class="hidden-xs"><?php echo $loggedUser['fullName']; ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?php echo (!empty($loggedUser['photo'])) ? $loggedUser['photo'] : base_url().'assets/theme/dist/img/avatar_na.png';?>" class="img-circle" alt="User Image">
+                <img src="<?php echo (!empty($loggedUser['photo'])) ? $loggedUser['photo'] : base_url().'assets/theme/dist/img/avatar_na.png'; ?>" class="img-circle" alt="User Image">
 
                 <p>
-                  <?php echo $loggedUser['fullName'];?>
-                  <small>Member since <?php echo date('M, Y', strtotime($loggedUser['createdOn']));?></small>
+                  <?php echo $loggedUser['fullName']; ?>
+                  <small>Member since <?php echo date('M, Y', strtotime($loggedUser['createdOn'])); ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -109,10 +109,10 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?php echo (!empty($loggedUser['photo'])) ? $loggedUser['photo'] : base_url().'assets/theme/dist/img/avatar_na.png';?>" class="img-circle" alt="User Image">
+          <img src="<?php echo (!empty($loggedUser['photo'])) ? $loggedUser['photo'] : base_url().'assets/theme/dist/img/avatar_na.png'; ?>" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p><?php echo $loggedUser['fullName'];?></p>
+          <p><?php echo $loggedUser['fullName']; ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -121,7 +121,7 @@
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
         <?php if (!empty($sidebarLinks)) {
-    $activeLinkAlias = (isset($activeLinksAlias) && !empty($activeLinksAlias)) ? $activeLinksAlias : array();
+    $activeLinkAlias = (isset($activeLinksAlias) && !empty($activeLinksAlias)) ? $activeLinksAlias : [];
     foreach ($sidebarLinks as $mainLink) {
         $linkName = $mainLink['link_name'];
         $linkHref = $mainLink['anchor_href'];
@@ -132,46 +132,33 @@
         $subMenuVisible = (!empty($class)) ? 'menu-open' : '';
         if (!empty($subMenus)) {
             $class .= ' treeview';
-        }
-        ?>
-        <li class="<?php echo $class;
-        ?>">
-            <a href="<?php echo $linkHref;
-        ?>">
-                <i class="<?php echo $icon;
-        ?> icon-sidebar"></i>
+        } ?>
+        <li class="<?php echo $class; ?>">
+            <a href="<?php echo $linkHref; ?>">
+                <i class="<?php echo $icon; ?> icon-sidebar"></i>
                 <?php if (!empty($subMenus)) {
-    ?>
+            ?>
                     <i class="fa fa-angle-left pull-right"></i>
                 <?php
-}
-        ?>
-                <?php echo $linkName;
-        ?>
+        } ?>
+                <?php echo $linkName; ?>
             </a>
             <?php if (!empty($subMenus)) {
-    ?>
-                <ul class="treeview-menu <?php echo $subMenuVisible;
-    ?>">
+            ?>
+                <ul class="treeview-menu <?php echo $subMenuVisible; ?>">
                     <?php foreach ($subMenus as $subMenu) {
-    $linkName = $subMenu['link_name'];
-    $linkHref = $subMenu['anchor_href'];
-    $alias = $subMenu['link_alias'];
-    $class = (in_array($alias, $activeLinkAlias)) ? 'active' : 'NULL';
-    ?>
-                    <li class="<?php echo $class;
-    ?>">
-                        <a href="<?php echo $linkHref;
-    ?>"><i class="fa fa-circle-o"></i> <?php echo $linkName;
-    ?></a>
+                $linkName = $subMenu['link_name'];
+                $linkHref = $subMenu['anchor_href'];
+                $alias = $subMenu['link_alias'];
+                $class = (in_array($alias, $activeLinkAlias)) ? 'active' : 'NULL'; ?>
+                    <li class="<?php echo $class; ?>">
+                        <a href="<?php echo $linkHref; ?>"><i class="fa fa-circle-o"></i> <?php echo $linkName; ?></a>
                     </li>
                     <?php
-}
-    ?>
+            } ?>
                 </ul>
             <?php
-}
-        ?>
+        } ?>
         </li>
         <?php
     }
@@ -188,11 +175,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <?php echo $pageHeading;?>
-        <small><?php echo $pageSubHeading;?></small>
+        <?php echo $pageHeading; ?>
+        <small><?php echo $pageSubHeading; ?></small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="<?php echo base_url('admin/dashboard');?>"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="<?php echo base_url('admin/dashboard'); ?>"><i class="fa fa-dashboard"></i> Home</a></li>
         <?php if (!empty($breadCrumbs)) {
     $toEnd = count($breadCrumbs);
     foreach ($breadCrumbs as $bd => $url) {
@@ -242,7 +229,7 @@
 
     <!-- Main content -->
     <section class="content">
-        <?php echo isset($content) ? $content : null;?>
+        <?php echo isset($content) ? $content : null; ?>
     </section>
     <!-- /.content -->
   </div>
@@ -283,28 +270,28 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/theme/dist/js/demo.js"></script>
 <!-- iCheck -->
-<script src="<?php echo base_url();?>assets/theme/plugins/iCheck/icheck.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/theme/plugins/iCheck/icheck.min.js"></script>
 <!-- Tostr Messages -->
-<script src="<?php echo base_url();?>assets/theme/plugins/toastr/toastr.js"></script>
+<script src="<?php echo base_url(); ?>assets/theme/plugins/toastr/toastr.js"></script>
 
 <!-- Bootstrap WYSIHTML5 -->
-<script src="<?php echo base_url();?>assets/theme/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/theme/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 
 <!-- Ajax -->
-<script src="<?php echo base_url();?>assets/theme/plugins/jQuery/jquery.form.min.js"></script>
-<script src="<?php echo base_url();?>assets/theme/plugins/ajax/eldarion-ajax-core.js" charset="utf-8"></script>
-<script src="<?php echo base_url();?>assets/theme/plugins/ajax/eldarion-ajax-handlers.js"></script>
-<script src="<?php echo base_url();?>assets/theme/plugins/ajax/polyfills.js"></script>
+<script src="<?php echo base_url(); ?>assets/theme/plugins/jQuery/jquery.form.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/theme/plugins/ajax/eldarion-ajax-core.js" charset="utf-8"></script>
+<script src="<?php echo base_url(); ?>assets/theme/plugins/ajax/eldarion-ajax-handlers.js"></script>
+<script src="<?php echo base_url(); ?>assets/theme/plugins/ajax/polyfills.js"></script>
 
 <!-- Bootbox -->
-<script src="<?php echo base_url();?>assets/theme/plugins/bootbox/bootbox.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/theme/plugins/bootbox/bootbox.min.js"></script>
 
 <!-- Validation.io JS -->
-<script src="<?php echo base_url();?>assets/theme/plugins/validation/formValidation.min.js"></script>
-<script src="<?php echo base_url();?>assets/theme/plugins/validation/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/theme/plugins/validation/formValidation.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/theme/plugins/validation/bootstrap.min.js"></script>
 
 <!-- Backend CSS -->
-<script src="<?php echo base_url();?>assets/theme/dist/js/backend.js"></script>
-<script src="<?php echo base_url();?>assets/theme/dist/js/jquery-ui-timepicker-addon.js"></script>
+<script src="<?php echo base_url(); ?>assets/theme/dist/js/backend.js"></script>
+<script src="<?php echo base_url(); ?>assets/theme/dist/js/jquery-ui-timepicker-addon.js"></script>
 </body>
 </html>

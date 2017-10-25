@@ -2,13 +2,13 @@
 /*!
 * HybridAuth
 * http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
-* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html 
+* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
 */
 
 /**
  * To implement an OpenID based service provider, Hybrid_Provider_Model_OpenID
- * can be used to save the hassle of the authentication flow. 
- * 
+ * can be used to save the hassle of the authentication flow.
+ *
  * Each class that inherit from Hybrid_Provider_Model_OAuth2 have only to define
  * the provider identifier : <code>public $openidIdentifier = ""; </code>
  *
@@ -53,7 +53,7 @@ class Hybrid_Provider_Model_OpenID extends Hybrid_Provider_Model
 
         $this->api->identity = $this->openidIdentifier;
         $this->api->returnUrl = $this->endpoint;
-        $this->api->required = array(
+        $this->api->required = [
             'namePerson/first',
             'namePerson/last',
             'namePerson/friendly',
@@ -74,9 +74,9 @@ class Hybrid_Provider_Model_OpenID extends Hybrid_Provider_Model
             'contact/country/home',
 
             'media/image/default',
-        );
+        ];
 
-        # redirect the user to the provider authentication url
+        // redirect the user to the provider authentication url
         Hybrid_Auth::redirect($this->api->authUrl());
     }
 
@@ -87,20 +87,20 @@ class Hybrid_Provider_Model_OpenID extends Hybrid_Provider_Model
      */
     public function loginFinish()
     {
-        # if user don't garant acess of their data to your site, halt with an Exception
+        // if user don't garant acess of their data to your site, halt with an Exception
         if ($this->api->mode == 'cancel') {
             throw new Exception('Authentication failed! User has canceled authentication!', 5);
         }
 
-        # if something goes wrong
+        // if something goes wrong
         if (!$this->api->validate()) {
             throw new Exception('Authentication failed. Invalid request recived!', 5);
         }
 
-        # fetch recived user data
+        // fetch recived user data
         $response = $this->api->getAttributes();
 
-        # sotre the user profile
+        // sotre the user profile
         $this->user->profile->identifier = $this->api->identity;
 
         $this->user->profile->firstName = (array_key_exists('namePerson/first', $response)) ? $response['namePerson/first'] : '';
@@ -148,7 +148,7 @@ class Hybrid_Provider_Model_OpenID extends Hybrid_Provider_Model
         // set user as logged in
         $this->setUserConnected();
 
-        // with openid providers we get the user profile only once, so store it 
+        // with openid providers we get the user profile only once, so store it
         Hybrid_Auth::storage()->set("hauth_session.{$this->providerId}.user", $this->user);
     }
 

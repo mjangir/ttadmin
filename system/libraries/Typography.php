@@ -74,7 +74,7 @@ class CI_Typography
      *
      * @var array
      */
-    public $inner_block_required = array('blockquote');
+    public $inner_block_required = ['blockquote'];
 
     /**
      * the last block element parsed.
@@ -114,7 +114,7 @@ class CI_Typography
 
         // Standardize Newlines to make matching easier
         if (strpos($str, "\r") !== false) {
-            $str = str_replace(array("\r\n", "\r"), "\n", $str);
+            $str = str_replace(["\r\n", "\r"], "\n", $str);
         }
 
         // Reduce line breaks.  If there are more than two consecutive linebreaks
@@ -124,7 +124,7 @@ class CI_Typography
         }
 
         // HTML comment tags don't conform to patterns of normal tags, so pull them out separately, only if needed
-        $html_comments = array();
+        $html_comments = [];
         if (strpos($str, '<!--') !== false && preg_match_all('#(<!\-\-.*?\-\->)#s', $str, $matches)) {
             for ($i = 0, $total = count($matches[0]); $i < $total; ++$i) {
                 $html_comments[] = $matches[0][$i];
@@ -135,15 +135,15 @@ class CI_Typography
         // match and yank <pre> tags if they exist.  It's cheaper to do this separately since most content will
         // not contain <pre> tags, and it keeps the PCRE patterns below simpler and faster
         if (strpos($str, '<pre') !== false) {
-            $str = preg_replace_callback('#<pre.*?>.*?</pre>#si', array($this, '_protect_characters'), $str);
+            $str = preg_replace_callback('#<pre.*?>.*?</pre>#si', [$this, '_protect_characters'], $str);
         }
 
         // Convert quotes within tags to temporary markers.
-        $str = preg_replace_callback('#<.+?>#si', array($this, '_protect_characters'), $str);
+        $str = preg_replace_callback('#<.+?>#si', [$this, '_protect_characters'], $str);
 
         // Do the same with braces if necessary
         if ($this->protect_braced_quotes === true) {
-            $str = preg_replace_callback('#\{.+?\}#si', array($this, '_protect_characters'), $str);
+            $str = preg_replace_callback('#\{.+?\}#si', [$this, '_protect_characters'], $str);
         }
 
         // Convert "ignore" tags to temporary marker.  The parser splits out the string at every tag
@@ -214,14 +214,14 @@ class CI_Typography
         }
 
         // Final clean up
-        $table = array(
+        $table = [
 
                         // If the user submitted their own paragraph tags within the text
                         // we will retain them instead of using our tags.
                         '/(<p[^>*?]>)<p>/' => '$1', // <?php BBEdit syntax coloring bug fix
 
                         // Reduce multiple instances of opening/closing paragraph tags to a single one
-                        '#(</p>)+#' => '</p>',
+                        '#(</p>)+#'      => '</p>',
                         '/(<p>\W*<p>)+/' => '<p>',
 
                         // Clean up stray paragraph tags that appear before block level elements
@@ -232,9 +232,9 @@ class CI_Typography
 
                         // Replace the temporary markers we added earlier
                         '/\{@TAG\}/' => '<',
-                        '/\{@DQ\}/' => '"',
-                        '/\{@SQ\}/' => "'",
-                        '/\{@DD\}/' => '--',
+                        '/\{@DQ\}/'  => '"',
+                        '/\{@SQ\}/'  => "'",
+                        '/\{@DD\}/'  => '--',
                         '/\{@NBS\}/' => '  ',
 
                         // An unintended consequence of the _format_newlines function is that
@@ -246,7 +246,7 @@ class CI_Typography
                         // Similarly, there might be cases where a closing </block> will follow
                         // a closing </p> tag, so we'll correct it by adding a newline in between
                         '#</p></#' => "</p>\n</",
-                        );
+                        ];
 
         // Do we need to reduce empty lines?
         if ($reduce_linebreaks === true) {
@@ -278,7 +278,7 @@ class CI_Typography
         static $table;
 
         if (!isset($table)) {
-            $table = array(
+            $table = [
                             // nested smart quotes, opening and closing
                             // note that rules for grammar (English) allow only for two levels deep
                             // and that single quotes are _supposed_ to always be on the outside
@@ -286,40 +286,40 @@ class CI_Typography
                             // Note that in all cases, whitespace is the primary determining factor
                             // on which direction to curl, with non-word characters like punctuation
                             // being a secondary factor only after whitespace is addressed.
-                            '/\'"(\s|$)/' => '&#8217;&#8221;$1',
+                            '/\'"(\s|$)/'     => '&#8217;&#8221;$1',
                             '/(^|\s|<p>)\'"/' => '$1&#8216;&#8220;',
-                            '/\'"(\W)/' => '&#8217;&#8221;$1',
-                            '/(\W)\'"/' => '$1&#8216;&#8220;',
-                            '/"\'(\s|$)/' => '&#8221;&#8217;$1',
+                            '/\'"(\W)/'       => '&#8217;&#8221;$1',
+                            '/(\W)\'"/'       => '$1&#8216;&#8220;',
+                            '/"\'(\s|$)/'     => '&#8221;&#8217;$1',
                             '/(^|\s|<p>)"\'/' => '$1&#8220;&#8216;',
-                            '/"\'(\W)/' => '&#8221;&#8217;$1',
-                            '/(\W)"\'/' => '$1&#8220;&#8216;',
+                            '/"\'(\W)/'       => '&#8221;&#8217;$1',
+                            '/(\W)"\'/'       => '$1&#8220;&#8216;',
 
                             // single quote smart quotes
-                            '/\'(\s|$)/' => '&#8217;$1',
+                            '/\'(\s|$)/'     => '&#8217;$1',
                             '/(^|\s|<p>)\'/' => '$1&#8216;',
-                            '/\'(\W)/' => '&#8217;$1',
-                            '/(\W)\'/' => '$1&#8216;',
+                            '/\'(\W)/'       => '&#8217;$1',
+                            '/(\W)\'/'       => '$1&#8216;',
 
                             // double quote smart quotes
-                            '/"(\s|$)/' => '&#8221;$1',
+                            '/"(\s|$)/'     => '&#8221;$1',
                             '/(^|\s|<p>)"/' => '$1&#8220;',
-                            '/"(\W)/' => '&#8221;$1',
-                            '/(\W)"/' => '$1&#8220;',
+                            '/"(\W)/'       => '&#8221;$1',
+                            '/(\W)"/'       => '$1&#8220;',
 
                             // apostrophes
                             "/(\w)'(\w)/" => '$1&#8217;$2',
 
                             // Em dash and ellipses dots
                             '/\s?\-\-\s?/' => '&#8212;',
-                            '/(\w)\.{3}/' => '$1&#8230;',
+                            '/(\w)\.{3}/'  => '$1&#8230;',
 
                             // double space after sentences
                             '/(\W)  /' => '$1&nbsp; ',
 
                             // ampersands, if not a character entity
                             '/&(?!#?[a-zA-Z0-9]{2,};)/' => '&amp;',
-                        );
+                        ];
         }
 
         return preg_replace(array_keys($table), $table, $str);
@@ -377,7 +377,7 @@ class CI_Typography
      */
     protected function _protect_characters($match)
     {
-        return str_replace(array("'", '"', '--', '  '), array('{@SQ}', '{@DQ}', '{@DD}', '{@NBS}'), $match[0]);
+        return str_replace(["'", '"', '--', '  '], ['{@SQ}', '{@DQ}', '{@DD}', '{@NBS}'], $match[0]);
     }
 
     // --------------------------------------------------------------------

@@ -43,7 +43,7 @@
         </div>
         <!-- /.social-auth-links -->
 
-        <a href="<?php echo base_url('auth/forgot-password');?>">I forgot my password</a><br>
+        <a href="<?php echo base_url('auth/forgot-password'); ?>">I forgot my password</a><br>
 
     </div>
     <!-- /.login-box-body -->

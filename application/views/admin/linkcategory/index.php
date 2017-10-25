@@ -1,6 +1,6 @@
 <div class="row">
 <div class="col-md-12">
-<div class="the-box no-border paginated_tbl" data-refresh-url="<?php echo $listingUrl.'?page='.$page;?>">
+<div class="the-box no-border paginated_tbl" data-refresh-url="<?php echo $listingUrl.'?page='.$page; ?>">
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3 class="box-title">Link Categories</h3>
@@ -18,15 +18,11 @@
                 <?php if ($data->count() > 0) {
     $count = $listStartFrom;
     foreach ($data as $record) {
-        $id = $record->getId();
-        ?>
+        $id = $record->getId(); ?>
                     <tr>
-                        <td><?php echo $count;
-        ?></td>
-                        <td><?php echo $record->getName();
-        ?></td>
-                        <td><?php echo $record->getAlias();
-        ?></td>
+                        <td><?php echo $count; ?></td>
+                        <td><?php echo $record->getName(); ?></td>
+                        <td><?php echo $record->getAlias(); ?></td>
                     </tr>
                        <?php ++$count;
     }
@@ -35,7 +31,7 @@
                             <tr>
                                 <td colspan="3" class="text-center"> No Data Found.</td>
                             </tr>
-                       <?php 
+                       <?php
 } ?>
             </tbody>
         </table>

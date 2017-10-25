@@ -36,7 +36,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\Order'."\0".'id', ''."\0".'Entity\\Order'."\0".'orderNo', ''."\0".'Entity\\Order'."\0".'amount', ''."\0".'Entity\\Order'."\0".'discount', ''."\0".'Entity\\Order'."\0".'transactionId', ''."\0".'Entity\\Order'."\0".'transactionStatus', ''."\0".'Entity\\Order'."\0".'errorCode', ''."\0".'Entity\\Order'."\0".'mihPayId', ''."\0".'Entity\\Order'."\0".'uniquePaymentId', ''."\0".'Entity\\Order'."\0".'paymentMode', ''."\0".'Entity\\Order'."\0".'paymentGatewayType', ''."\0".'Entity\\Order'."\0".'bankReferenceNumber', ''."\0".'Entity\\Order'."\0".'payuSystemStatus', ''."\0".'Entity\\Order'."\0".'createdOn', ''."\0".'Entity\\Order'."\0".'student');
+            return ['__isInitialized__', ''."\0".'Entity\\Order'."\0".'id', ''."\0".'Entity\\Order'."\0".'orderNo', ''."\0".'Entity\\Order'."\0".'amount', ''."\0".'Entity\\Order'."\0".'discount', ''."\0".'Entity\\Order'."\0".'transactionId', ''."\0".'Entity\\Order'."\0".'transactionStatus', ''."\0".'Entity\\Order'."\0".'errorCode', ''."\0".'Entity\\Order'."\0".'mihPayId', ''."\0".'Entity\\Order'."\0".'uniquePaymentId', ''."\0".'Entity\\Order'."\0".'paymentMode', ''."\0".'Entity\\Order'."\0".'paymentGatewayType', ''."\0".'Entity\\Order'."\0".'bankReferenceNumber', ''."\0".'Entity\\Order'."\0".'payuSystemStatus', ''."\0".'Entity\\Order'."\0".'createdOn', ''."\0".'Entity\\Order'."\0".'student'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\Order'."\0".'id', ''."\0".'Entity\\Order'."\0".'orderNo', ''."\0".'Entity\\Order'."\0".'amount', ''."\0".'Entity\\Order'."\0".'discount', ''."\0".'Entity\\Order'."\0".'transactionId', ''."\0".'Entity\\Order'."\0".'transactionStatus', ''."\0".'Entity\\Order'."\0".'errorCode', ''."\0".'Entity\\Order'."\0".'mihPayId', ''."\0".'Entity\\Order'."\0".'uniquePaymentId', ''."\0".'Entity\\Order'."\0".'paymentMode', ''."\0".'Entity\\Order'."\0".'paymentGatewayType', ''."\0".'Entity\\Order'."\0".'bankReferenceNumber', ''."\0".'Entity\\Order'."\0".'payuSystemStatus', ''."\0".'Entity\\Order'."\0".'createdOn', ''."\0".'Entity\\Order'."\0".'student');
+        return ['__isInitialized__', ''."\0".'Entity\\Order'."\0".'id', ''."\0".'Entity\\Order'."\0".'orderNo', ''."\0".'Entity\\Order'."\0".'amount', ''."\0".'Entity\\Order'."\0".'discount', ''."\0".'Entity\\Order'."\0".'transactionId', ''."\0".'Entity\\Order'."\0".'transactionStatus', ''."\0".'Entity\\Order'."\0".'errorCode', ''."\0".'Entity\\Order'."\0".'mihPayId', ''."\0".'Entity\\Order'."\0".'uniquePaymentId', ''."\0".'Entity\\Order'."\0".'paymentMode', ''."\0".'Entity\\Order'."\0".'paymentGatewayType', ''."\0".'Entity\\Order'."\0".'bankReferenceNumber', ''."\0".'Entity\\Order'."\0".'payuSystemStatus', ''."\0".'Entity\\Order'."\0".'createdOn', ''."\0".'Entity\\Order'."\0".'student'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setOrderNo($orderNo)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrderNo', array($orderNo));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setOrderNo', [$orderNo]);
 
         return parent::setOrderNo($orderNo);
     }
@@ -197,7 +191,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getOrderNo()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrderNo', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getOrderNo', []);
 
         return parent::getOrderNo();
     }
@@ -207,7 +201,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setAmount($amount)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAmount', array($amount));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAmount', [$amount]);
 
         return parent::setAmount($amount);
     }
@@ -217,7 +211,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getAmount()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAmount', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAmount', []);
 
         return parent::getAmount();
     }
@@ -227,7 +221,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setDiscount($discount)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDiscount', array($discount));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDiscount', [$discount]);
 
         return parent::setDiscount($discount);
     }
@@ -237,7 +231,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getDiscount()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDiscount', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDiscount', []);
 
         return parent::getDiscount();
     }
@@ -247,7 +241,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setTransactionId($transactionId)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTransactionId', array($transactionId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTransactionId', [$transactionId]);
 
         return parent::setTransactionId($transactionId);
     }
@@ -257,7 +251,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getTransactionId()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTransactionId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTransactionId', []);
 
         return parent::getTransactionId();
     }
@@ -267,7 +261,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setTransactionStatus($transactionStatus)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTransactionStatus', array($transactionStatus));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTransactionStatus', [$transactionStatus]);
 
         return parent::setTransactionStatus($transactionStatus);
     }
@@ -277,7 +271,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getTransactionStatus()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTransactionStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTransactionStatus', []);
 
         return parent::getTransactionStatus();
     }
@@ -287,7 +281,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setErrorCode($errorCode)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setErrorCode', array($errorCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setErrorCode', [$errorCode]);
 
         return parent::setErrorCode($errorCode);
     }
@@ -297,7 +291,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getErrorCode()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getErrorCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getErrorCode', []);
 
         return parent::getErrorCode();
     }
@@ -307,7 +301,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setMihPayId($mihPayId)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMihPayId', array($mihPayId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMihPayId', [$mihPayId]);
 
         return parent::setMihPayId($mihPayId);
     }
@@ -317,7 +311,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getMihPayId()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMihPayId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMihPayId', []);
 
         return parent::getMihPayId();
     }
@@ -327,7 +321,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setUniquePaymentId($uniquePaymentId)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniquePaymentId', array($uniquePaymentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUniquePaymentId', [$uniquePaymentId]);
 
         return parent::setUniquePaymentId($uniquePaymentId);
     }
@@ -337,7 +331,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getUniquePaymentId()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniquePaymentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUniquePaymentId', []);
 
         return parent::getUniquePaymentId();
     }
@@ -347,7 +341,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setPaymentMode($paymentMode)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPaymentMode', array($paymentMode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPaymentMode', [$paymentMode]);
 
         return parent::setPaymentMode($paymentMode);
     }
@@ -357,7 +351,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getPaymentMode()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPaymentMode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPaymentMode', []);
 
         return parent::getPaymentMode();
     }
@@ -367,7 +361,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setPaymentGatewayType($paymentGatewayType)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPaymentGatewayType', array($paymentGatewayType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPaymentGatewayType', [$paymentGatewayType]);
 
         return parent::setPaymentGatewayType($paymentGatewayType);
     }
@@ -377,7 +371,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getPaymentGatewayType()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPaymentGatewayType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPaymentGatewayType', []);
 
         return parent::getPaymentGatewayType();
     }
@@ -387,7 +381,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setBankReferenceNumber($bankReferenceNumber)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBankReferenceNumber', array($bankReferenceNumber));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBankReferenceNumber', [$bankReferenceNumber]);
 
         return parent::setBankReferenceNumber($bankReferenceNumber);
     }
@@ -397,7 +391,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getBankReferenceNumber()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBankReferenceNumber', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBankReferenceNumber', []);
 
         return parent::getBankReferenceNumber();
     }
@@ -407,7 +401,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setPayuSystemStatus($payuSystemStatus)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPayuSystemStatus', array($payuSystemStatus));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPayuSystemStatus', [$payuSystemStatus]);
 
         return parent::setPayuSystemStatus($payuSystemStatus);
     }
@@ -417,7 +411,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getPayuSystemStatus()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPayuSystemStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPayuSystemStatus', []);
 
         return parent::getPayuSystemStatus();
     }
@@ -427,7 +421,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setCreatedOn($createdOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', array($createdOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', [$createdOn]);
 
         return parent::setCreatedOn($createdOn);
     }
@@ -437,7 +431,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getCreatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', []);
 
         return parent::getCreatedOn();
     }
@@ -447,7 +441,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function setStudent(\Entity\Student $student = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStudent', array($student));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStudent', [$student]);
 
         return parent::setStudent($student);
     }
@@ -457,7 +451,7 @@ class __CG__EntityOrder extends \Entity\Order implements \Doctrine\ORM\Proxy\Pro
      */
     public function getStudent()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStudent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStudent', []);
 
         return parent::getStudent();
     }

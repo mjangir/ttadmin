@@ -38,7 +38,7 @@ class JackpotRepository extends EntityRepository
      *
      * @return Paginator
      */
-    public function getPagedList($offset = 0, $limit = 10, $postParams)
+    public function getPagedList($offset, $limit, $postParams)
     {
         $em = $this->_em;
         $qb = $em->createQueryBuilder();
@@ -65,7 +65,7 @@ class JackpotRepository extends EntityRepository
      *
      * @return Paginator
      */
-    public function getJackpotUsersList($offset = 0, $limit = 10, $postParams)
+    public function getJackpotUsersList($offset, $limit, $postParams)
     {
         $em = $this->_em;
         $qb = $em->createQueryBuilder();

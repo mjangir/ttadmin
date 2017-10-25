@@ -95,7 +95,7 @@ class CI_Session_database_driver extends CI_Session_driver implements SessionHan
         $db_driver = $this->_db->dbdriver.(empty($this->_db->subdriver) ? '' : '_'.$this->_db->subdriver);
         if (strpos($db_driver, 'mysql') !== false) {
             $this->_platform = 'mysql';
-        } elseif (in_array($db_driver, array('postgre', 'pdo_pgsql'), true)) {
+        } elseif (in_array($db_driver, ['postgre', 'pdo_pgsql'], true)) {
             $this->_platform = 'postgre';
         }
 
@@ -199,12 +199,12 @@ class CI_Session_database_driver extends CI_Session_driver implements SessionHan
         }
 
         if ($this->_row_exists === false) {
-            $insert_data = array(
-                'id' => $session_id,
+            $insert_data = [
+                'id'         => $session_id,
                 'ip_address' => $_SERVER['REMOTE_ADDR'],
-                'timestamp' => time(),
-                'data' => ($this->_platform === 'postgre' ? base64_encode($session_data) : $session_data),
-            );
+                'timestamp'  => time(),
+                'data'       => ($this->_platform === 'postgre' ? base64_encode($session_data) : $session_data),
+            ];
 
             if ($this->_db->insert($this->_config['save_path'], $insert_data)) {
                 $this->_fingerprint = md5($session_data);
@@ -220,7 +220,7 @@ class CI_Session_database_driver extends CI_Session_driver implements SessionHan
             $this->_db->where('ip_address', $_SERVER['REMOTE_ADDR']);
         }
 
-        $update_data = array('timestamp' => time());
+        $update_data = ['timestamp' => time()];
         if ($this->_fingerprint !== md5($session_data)) {
             $update_data['data'] = ($this->_platform === 'postgre')
                 ? base64_encode($session_data)

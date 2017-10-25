@@ -34,7 +34,7 @@ class Dashboard extends MY_AdminController
     /**
      * Module Name.
      *
-     * @var string Name of the entity which the controller is for 
+     * @var string Name of the entity which the controller is for
      */
     protected $crudName;
 
@@ -47,7 +47,7 @@ class Dashboard extends MY_AdminController
 
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor and sets base url of the controller
      */
     public function __construct()
@@ -59,19 +59,19 @@ class Dashboard extends MY_AdminController
 
     /**
      * index action.
-     * 
+     *
      * Handles dashboard index page
      */
     public function index()
     {
-        $view_data = array();
+        $view_data = [];
 
-        return $this->load->view('layout/backend', array(
-            'content' => $this->load->view('admin/dashboard/index', $view_data, true),
-            'pageHeading' => 'Dashboard',
-            'pageSubHeading' => '',
-            'activeLinksAlias' => array('admin_dashboard'),
-            'breadCrumbs' => array('Dashboard' => ''),
-        ));
+        return $this->load->view('layout/backend', [
+            'content'          => $this->load->view('admin/dashboard/index', $view_data, true),
+            'pageHeading'      => 'Dashboard',
+            'pageSubHeading'   => '',
+            'activeLinksAlias' => ['admin_dashboard'],
+            'breadCrumbs'      => ['Dashboard' => ''],
+        ]);
     }
 }

@@ -71,7 +71,7 @@ class CI_DB_pdo_cubrid_driver extends CI_DB_pdo_driver
      *
      * @var array
      */
-    protected $_random_keyword = array('RANDOM()', 'RANDOM(%d)');
+    protected $_random_keyword = ['RANDOM()', 'RANDOM(%d)'];
 
     // --------------------------------------------------------------------
 
@@ -149,7 +149,7 @@ class CI_DB_pdo_cubrid_driver extends CI_DB_pdo_driver
         }
         $query = $query->result_object();
 
-        $retval = array();
+        $retval = [];
         for ($i = 0, $c = count($query); $i < $c; ++$i) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = $query[$i]->Field;
@@ -181,7 +181,7 @@ class CI_DB_pdo_cubrid_driver extends CI_DB_pdo_driver
      */
     protected function _update_batch($table, $values, $index)
     {
-        $ids = array();
+        $ids = [];
         foreach ($values as $key => $val) {
             $ids[] = $val[$index];
 

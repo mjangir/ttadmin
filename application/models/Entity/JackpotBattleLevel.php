@@ -5,7 +5,7 @@ namespace Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * JackpotBattleLevel
+ * JackpotBattleLevel.
  *
  * @ORM\Table(name="jackpot_battle_level", indexes={@ORM\Index(name="jackpot_id", columns={"jackpot_id"})})
  * @ORM\Entity
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class JackpotBattleLevel
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -29,7 +29,7 @@ class JackpotBattleLevel
     private $battleType;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="`order`", type="integer", nullable=false)
      */
@@ -43,14 +43,14 @@ class JackpotBattleLevel
     private $levelName;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="duration", type="integer", nullable=false)
      */
     private $duration;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="increment_seconds", type="integer", nullable=false)
      */
@@ -71,14 +71,14 @@ class JackpotBattleLevel
     private $prizeValue;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="min_bids_to_gamb", type="integer", nullable=false)
      */
     private $minBidsToGamb;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="default_available_bids", type="integer", nullable=false)
      */
@@ -99,21 +99,21 @@ class JackpotBattleLevel
     private $longestBidWinnerPercent;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="min_players_required_to_start", type="integer", nullable=false)
      */
     private $minPlayersRequiredToStart;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="min_wins_to_unlock_next_level", type="integer", nullable=false)
      */
     private $minWinsToUnlockNextLevel;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="is_last_level", type="boolean", nullable=true)
      */
@@ -143,12 +143,10 @@ class JackpotBattleLevel
      */
     private $jackpot;
 
-
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -156,9 +154,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set battleType
+     * Set battleType.
      *
      * @param string $battleType
+     *
      * @return JackpotBattleLevel
      */
     public function setBattleType($battleType)
@@ -169,7 +168,7 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get battleType
+     * Get battleType.
      *
      * @return string
      */
@@ -179,9 +178,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set order
+     * Set order.
      *
-     * @param integer $order
+     * @param int $order
+     *
      * @return JackpotBattleLevel
      */
     public function setOrder($order)
@@ -192,9 +192,9 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get order
+     * Get order.
      *
-     * @return integer
+     * @return int
      */
     public function getOrder()
     {
@@ -202,9 +202,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set levelName
+     * Set levelName.
      *
      * @param string $levelName
+     *
      * @return JackpotBattleLevel
      */
     public function setLevelName($levelName)
@@ -215,7 +216,7 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get levelName
+     * Get levelName.
      *
      * @return string
      */
@@ -225,9 +226,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set duration
+     * Set duration.
      *
      * @param string $duration
+     *
      * @return JackpotBattleLevel
      */
     public function setDuration($duration)
@@ -238,7 +240,7 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get duration
+     * Get duration.
      *
      * @return string
      */
@@ -248,9 +250,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set incrementSeconds
+     * Set incrementSeconds.
      *
      * @param string $incrementSeconds
+     *
      * @return JackpotBattleLevel
      */
     public function setIncrementSeconds($incrementSeconds)
@@ -261,7 +264,7 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get incrementSeconds
+     * Get incrementSeconds.
      *
      * @return string
      */
@@ -271,9 +274,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set prizeType
+     * Set prizeType.
      *
      * @param string $prizeType
+     *
      * @return JackpotBattleLevel
      */
     public function setPrizeType($prizeType)
@@ -284,7 +288,7 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get prizeType
+     * Get prizeType.
      *
      * @return string
      */
@@ -294,9 +298,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set prizeValue
+     * Set prizeValue.
      *
      * @param string $prizeValue
+     *
      * @return JackpotBattleLevel
      */
     public function setPrizeValue($prizeValue)
@@ -307,7 +312,7 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get prizeValue
+     * Get prizeValue.
      *
      * @return string
      */
@@ -317,9 +322,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set minBidsToGamb
+     * Set minBidsToGamb.
      *
-     * @param integer $minBidsToGamb
+     * @param int $minBidsToGamb
+     *
      * @return JackpotBattleLevel
      */
     public function setMinBidsToGamb($minBidsToGamb)
@@ -330,9 +336,9 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get minBidsToGamb
+     * Get minBidsToGamb.
      *
-     * @return integer
+     * @return int
      */
     public function getMinBidsToGamb()
     {
@@ -340,9 +346,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set defaultAvailableBids
+     * Set defaultAvailableBids.
      *
-     * @param integer $defaultAvailableBids
+     * @param int $defaultAvailableBids
+     *
      * @return JackpotBattleLevel
      */
     public function setDefaultAvailableBids($defaultAvailableBids)
@@ -353,9 +360,9 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get defaultAvailableBids
+     * Get defaultAvailableBids.
      *
-     * @return integer
+     * @return int
      */
     public function getDefaultAvailableBids()
     {
@@ -363,9 +370,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set lastBidWinnerPercent
+     * Set lastBidWinnerPercent.
      *
      * @param string $lastBidWinnerPercent
+     *
      * @return JackpotBattleLevel
      */
     public function setLastBidWinnerPercent($lastBidWinnerPercent)
@@ -376,7 +384,7 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get lastBidWinnerPercent
+     * Get lastBidWinnerPercent.
      *
      * @return string
      */
@@ -386,9 +394,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set longestBidWinnerPercent
+     * Set longestBidWinnerPercent.
      *
      * @param string $longestBidWinnerPercent
+     *
      * @return JackpotBattleLevel
      */
     public function setLongestBidWinnerPercent($longestBidWinnerPercent)
@@ -399,7 +408,7 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get longestBidWinnerPercent
+     * Get longestBidWinnerPercent.
      *
      * @return string
      */
@@ -409,9 +418,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set minPlayersRequiredToStart
+     * Set minPlayersRequiredToStart.
      *
-     * @param integer $minPlayersRequiredToStart
+     * @param int $minPlayersRequiredToStart
+     *
      * @return JackpotBattleLevel
      */
     public function setMinPlayersRequiredToStart($minPlayersRequiredToStart)
@@ -422,9 +432,9 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get minPlayersRequiredToStart
+     * Get minPlayersRequiredToStart.
      *
-     * @return integer
+     * @return int
      */
     public function getMinPlayersRequiredToStart()
     {
@@ -432,9 +442,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set minWinsToUnlockNextLevel
+     * Set minWinsToUnlockNextLevel.
      *
-     * @param integer $minWinsToUnlockNextLevel
+     * @param int $minWinsToUnlockNextLevel
+     *
      * @return JackpotBattleLevel
      */
     public function setMinWinsToUnlockNextLevel($minWinsToUnlockNextLevel)
@@ -445,9 +456,9 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get minWinsToUnlockNextLevel
+     * Get minWinsToUnlockNextLevel.
      *
-     * @return integer
+     * @return int
      */
     public function getMinWinsToUnlockNextLevel()
     {
@@ -455,9 +466,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set isLastLevel
+     * Set isLastLevel.
      *
-     * @param boolean $isLastLevel
+     * @param bool $isLastLevel
+     *
      * @return JackpotBattleLevel
      */
     public function setIsLastLevel($isLastLevel)
@@ -468,9 +480,9 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get isLastLevel
+     * Get isLastLevel.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsLastLevel()
     {
@@ -478,9 +490,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return JackpotBattleLevel
      */
     public function setCreatedAt($createdAt)
@@ -491,7 +504,7 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
      * @return \DateTime
      */
@@ -501,9 +514,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return JackpotBattleLevel
      */
     public function setUpdatedAt($updatedAt)
@@ -514,7 +528,7 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
      * @return \DateTime
      */
@@ -524,9 +538,10 @@ class JackpotBattleLevel
     }
 
     /**
-     * Set jackpot
+     * Set jackpot.
      *
      * @param Jackpot $jackpot
+     *
      * @return JackpotBattleLevel
      */
     public function setJackpot(Jackpot $jackpot = null)
@@ -537,7 +552,7 @@ class JackpotBattleLevel
     }
 
     /**
-     * Get jackpot
+     * Get jackpot.
      *
      * @return Jackpot
      */

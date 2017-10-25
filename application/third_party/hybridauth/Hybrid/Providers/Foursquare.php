@@ -2,12 +2,12 @@
 /*!
 * HybridAuth
 * http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
-* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html 
+* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
 */
 
 /**
  * Hybrid_Providers_Foursquare provider adapter based on OAuth2 protocol.
- * 
+ *
  * http://hybridauth.sourceforge.net/userguide/IDProvider_info_Foursquare.html
  */
 class Hybrid_Providers_Foursquare extends Hybrid_Provider_Model_OAuth2

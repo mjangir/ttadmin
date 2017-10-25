@@ -1,11 +1,10 @@
 <?php
 
 
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * JackpotGameWinner
+ * JackpotGameWinner.
  *
  * @ORM\Table(name="jackpot_game_winner", indexes={@ORM\Index(name="jackpot_game_id", columns={"jackpot_game_id"}), @ORM\Index(name="user_id", columns={"user_id"})})
  * @ORM\Entity
@@ -13,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 class JackpotGameWinner
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -36,14 +35,14 @@ class JackpotGameWinner
     private $winningAmount;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="is_last_bid_user", type="boolean", nullable=true)
      */
     private $isLastBidUser;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="is_longest_bid_user", type="boolean", nullable=true)
      */
@@ -83,12 +82,10 @@ class JackpotGameWinner
      */
     private $user;
 
-
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -96,9 +93,10 @@ class JackpotGameWinner
     }
 
     /**
-     * Set jackpotAmount
+     * Set jackpotAmount.
      *
      * @param string $jackpotAmount
+     *
      * @return JackpotGameWinner
      */
     public function setJackpotAmount($jackpotAmount)
@@ -109,9 +107,9 @@ class JackpotGameWinner
     }
 
     /**
-     * Get jackpotAmount
+     * Get jackpotAmount.
      *
-     * @return string 
+     * @return string
      */
     public function getJackpotAmount()
     {
@@ -119,9 +117,10 @@ class JackpotGameWinner
     }
 
     /**
-     * Set winningAmount
+     * Set winningAmount.
      *
      * @param string $winningAmount
+     *
      * @return JackpotGameWinner
      */
     public function setWinningAmount($winningAmount)
@@ -132,9 +131,9 @@ class JackpotGameWinner
     }
 
     /**
-     * Get winningAmount
+     * Get winningAmount.
      *
-     * @return string 
+     * @return string
      */
     public function getWinningAmount()
     {
@@ -142,9 +141,10 @@ class JackpotGameWinner
     }
 
     /**
-     * Set isLastBidUser
+     * Set isLastBidUser.
      *
-     * @param boolean $isLastBidUser
+     * @param bool $isLastBidUser
+     *
      * @return JackpotGameWinner
      */
     public function setIsLastBidUser($isLastBidUser)
@@ -155,9 +155,9 @@ class JackpotGameWinner
     }
 
     /**
-     * Get isLastBidUser
+     * Get isLastBidUser.
      *
-     * @return boolean 
+     * @return bool
      */
     public function getIsLastBidUser()
     {
@@ -165,9 +165,10 @@ class JackpotGameWinner
     }
 
     /**
-     * Set isLongestBidUser
+     * Set isLongestBidUser.
      *
-     * @param boolean $isLongestBidUser
+     * @param bool $isLongestBidUser
+     *
      * @return JackpotGameWinner
      */
     public function setIsLongestBidUser($isLongestBidUser)
@@ -178,9 +179,9 @@ class JackpotGameWinner
     }
 
     /**
-     * Get isLongestBidUser
+     * Get isLongestBidUser.
      *
-     * @return boolean 
+     * @return bool
      */
     public function getIsLongestBidUser()
     {
@@ -188,9 +189,10 @@ class JackpotGameWinner
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return JackpotGameWinner
      */
     public function setCreatedAt($createdAt)
@@ -201,9 +203,9 @@ class JackpotGameWinner
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -211,9 +213,10 @@ class JackpotGameWinner
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return JackpotGameWinner
      */
     public function setUpdatedAt($updatedAt)
@@ -224,9 +227,9 @@ class JackpotGameWinner
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -234,9 +237,10 @@ class JackpotGameWinner
     }
 
     /**
-     * Set jackpotGame
+     * Set jackpotGame.
      *
      * @param \JackpotGame $jackpotGame
+     *
      * @return JackpotGameWinner
      */
     public function setJackpotGame(\JackpotGame $jackpotGame = null)
@@ -247,9 +251,9 @@ class JackpotGameWinner
     }
 
     /**
-     * Get jackpotGame
+     * Get jackpotGame.
      *
-     * @return \JackpotGame 
+     * @return \JackpotGame
      */
     public function getJackpotGame()
     {
@@ -257,9 +261,10 @@ class JackpotGameWinner
     }
 
     /**
-     * Set user
+     * Set user.
      *
      * @param \User $user
+     *
      * @return JackpotGameWinner
      */
     public function setUser(\User $user = null)
@@ -270,9 +275,9 @@ class JackpotGameWinner
     }
 
     /**
-     * Get user
+     * Get user.
      *
-     * @return \User 
+     * @return \User
      */
     public function getUser()
     {

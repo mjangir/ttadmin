@@ -71,21 +71,21 @@ class CI_DB_result
      *
      * @var array[]
      */
-    public $result_array = array();
+    public $result_array = [];
 
     /**
      * Result Object.
      *
      * @var object[]
      */
-    public $result_object = array();
+    public $result_object = [];
 
     /**
      * Custom Result Object.
      *
      * @var object[]
      */
-    public $custom_result_object = array();
+    public $custom_result_object = [];
 
     /**
      * Current Row index.
@@ -175,7 +175,7 @@ class CI_DB_result
         if (isset($this->custom_result_object[$class_name])) {
             return $this->custom_result_object[$class_name];
         } elseif (!$this->result_id or $this->num_rows === 0) {
-            return array();
+            return [];
         }
 
         // Don't fetch the result set again if we already have it
@@ -199,7 +199,7 @@ class CI_DB_result
         }
 
         is_null($this->row_data) or $this->data_seek(0);
-        $this->custom_result_object[$class_name] = array();
+        $this->custom_result_object[$class_name] = [];
 
         while ($row = $this->_fetch_object($class_name)) {
             $this->custom_result_object[$class_name][] = $row;
@@ -225,7 +225,7 @@ class CI_DB_result
         // will not be a valid resource so we'll simply return an empty
         // array.
         if (!$this->result_id or $this->num_rows === 0) {
-            return array();
+            return [];
         }
 
         if (($c = count($this->result_array)) > 0) {
@@ -261,7 +261,7 @@ class CI_DB_result
         // will not be a valid resource so we'll simply return an empty
         // array.
         if (!$this->result_id or $this->num_rows === 0) {
-            return array();
+            return [];
         }
 
         if (($c = count($this->result_object)) > 0) {
@@ -549,7 +549,7 @@ class CI_DB_result
      */
     public function list_fields()
     {
-        return array();
+        return [];
     }
 
     // --------------------------------------------------------------------
@@ -565,7 +565,7 @@ class CI_DB_result
      */
     public function field_data()
     {
-        return array();
+        return [];
     }
 
     // --------------------------------------------------------------------
@@ -613,7 +613,7 @@ class CI_DB_result
      */
     protected function _fetch_assoc()
     {
-        return array();
+        return [];
     }
 
     // --------------------------------------------------------------------
@@ -631,6 +631,6 @@ class CI_DB_result
      */
     protected function _fetch_object($class_name = 'stdClass')
     {
-        return array();
+        return [];
     }
 }

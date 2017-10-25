@@ -62,7 +62,7 @@ class CI_Unit_test
      *
      * @var array
      */
-    public $results = array();
+    public $results = [];
 
     /**
      * Strict comparison flag.
@@ -92,7 +92,7 @@ class CI_Unit_test
      *
      * @var array
      */
-    protected $_test_items_visible = array(
+    protected $_test_items_visible = [
         'test_name',
         'test_datatype',
         'res_datatype',
@@ -100,7 +100,7 @@ class CI_Unit_test
         'file',
         'line',
         'notes',
-    );
+    ];
 
     // --------------------------------------------------------------------
 
@@ -148,10 +148,10 @@ class CI_Unit_test
             return false;
         }
 
-        if (in_array($expected, array('is_object', 'is_string', 'is_bool', 'is_true', 'is_false', 'is_int', 'is_numeric', 'is_float', 'is_double', 'is_array', 'is_null', 'is_resource'), true)) {
+        if (in_array($expected, ['is_object', 'is_string', 'is_bool', 'is_true', 'is_false', 'is_int', 'is_numeric', 'is_float', 'is_double', 'is_array', 'is_null', 'is_resource'], true)) {
             $expected = str_replace('is_double', 'is_float', $expected);
             $result = $expected($test);
-            $extype = str_replace(array('true', 'false'), 'bool', str_replace('is_', '', $expected));
+            $extype = str_replace(['true', 'false'], 'bool', str_replace('is_', '', $expected));
         } else {
             $result = ($this->strict === true) ? ($test === $expected) : ($test == $expected);
             $extype = gettype($expected);
@@ -159,19 +159,19 @@ class CI_Unit_test
 
         $back = $this->_backtrace();
 
-        $report = array(
-            'test_name' => $test_name,
+        $report = [
+            'test_name'     => $test_name,
             'test_datatype' => gettype($test),
-            'res_datatype' => $extype,
-            'result' => ($result === true) ? 'passed' : 'failed',
-            'file' => $back['file'],
-            'line' => $back['line'],
-            'notes' => $notes,
-        );
+            'res_datatype'  => $extype,
+            'result'        => ($result === true) ? 'passed' : 'failed',
+            'file'          => $back['file'],
+            'line'          => $back['line'],
+            'notes'         => $notes,
+        ];
 
         $this->results[] = $report;
 
-        return $this->report($this->result(array($report)));
+        return $this->report($this->result([$report]));
     }
 
     // --------------------------------------------------------------------
@@ -185,7 +185,7 @@ class CI_Unit_test
      *
      * @return string
      */
-    public function report($result = array())
+    public function report($result = [])
     {
         if (count($result) === 0) {
             $result = $this->result();
@@ -209,7 +209,7 @@ class CI_Unit_test
                     }
                 }
 
-                $table .= str_replace(array('{item}', '{result}'), array($key, $val), $this->_template_rows);
+                $table .= str_replace(['{item}', '{result}'], [$key, $val], $this->_template_rows);
             }
 
             $r .= str_replace('{rows}', $table, $this->_template);
@@ -257,7 +257,7 @@ class CI_Unit_test
      *
      * @return array
      */
-    public function result($results = array())
+    public function result($results = [])
     {
         $CI = &get_instance();
         $CI->load->language('unit_test');
@@ -266,13 +266,13 @@ class CI_Unit_test
             $results = $this->results;
         }
 
-        $retval = array();
+        $retval = [];
         foreach ($results as $result) {
-            $temp = array();
+            $temp = [];
             foreach ($result as $key => $val) {
                 if (!in_array($key, $this->_test_items_visible)) {
                     continue;
-                } elseif (in_array($key, array('test_name', 'test_datatype', 'test_res_datatype', 'result'), true)) {
+                } elseif (in_array($key, ['test_name', 'test_datatype', 'test_res_datatype', 'result'], true)) {
                     if (false !== ($line = $CI->lang->line(strtolower('ut_'.$val), false))) {
                         $val = $line;
                     }
@@ -314,10 +314,10 @@ class CI_Unit_test
     {
         $back = debug_backtrace();
 
-        return array(
+        return [
             'file' => (isset($back[1]['file']) ? $back[1]['file'] : ''),
             'line' => (isset($back[1]['line']) ? $back[1]['line'] : ''),
-        );
+        ];
     }
 
     // --------------------------------------------------------------------

@@ -13,11 +13,11 @@
  */
 defined('BASEPATH') or exit('No direct script access allowed');
 
+use Doctrine\Common\Cache\ArrayCache;
 use Doctrine\Common\ClassLoader;
+use Doctrine\DBAL\Logging\EchoSQLLogger;
 use Doctrine\ORM\Configuration;
 use Doctrine\ORM\EntityManager;
-use Doctrine\Common\Cache\ArrayCache;
-use Doctrine\DBAL\Logging\EchoSQLLogger;
 
 /**
  * Doctrine Class.
@@ -32,14 +32,14 @@ class Doctrine
 {
     /**
      * Doctrine entity manager.
-     * 
+     *
      * @var object
      */
     public $em = null;
 
     /**
      * Class constructor.
-     * 
+     *
      * Configures doctrine entity manager
      */
     public function __construct()
@@ -64,7 +64,7 @@ class Doctrine
         $cache = new ArrayCache();
         $config->setMetadataCacheImpl($cache);
 
-        $entityPath = array(APPPATH.'models/Entity');
+        $entityPath = [APPPATH.'models/Entity'];
 
         $config = Doctrine\ORM\Tools\Setup::createAnnotationMetadataConfiguration($entityPath, true);
         $config->setMetadataDriverImpl(
@@ -90,13 +90,13 @@ class Doctrine
         $config->setAutoGenerateProxyClasses(true);
 
         // Database connection information
-        $connectionOptions = array(
-            'driver' => 'pdo_mysql',
-            'user' => $db['default']['username'],
+        $connectionOptions = [
+            'driver'   => 'pdo_mysql',
+            'user'     => $db['default']['username'],
             'password' => $db['default']['password'],
-            'host' => $db['default']['hostname'],
-            'dbname' => $db['default']['database'],
-        );
+            'host'     => $db['default']['hostname'],
+            'dbname'   => $db['default']['database'],
+        ];
 
         // Create EntityManager
         $this->em = EntityManager::create($connectionOptions, $config);

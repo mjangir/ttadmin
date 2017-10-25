@@ -36,7 +36,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\Institute'."\0".'id', ''."\0".'Entity\\Institute'."\0".'instituteName', ''."\0".'Entity\\Institute'."\0".'instituteCode', ''."\0".'Entity\\Institute'."\0".'logo', ''."\0".'Entity\\Institute'."\0".'pincode', ''."\0".'Entity\\Institute'."\0".'contactEmail', ''."\0".'Entity\\Institute'."\0".'contactNumber', ''."\0".'Entity\\Institute'."\0".'website', ''."\0".'Entity\\Institute'."\0".'createdOn', ''."\0".'Entity\\Institute'."\0".'updatedOn', ''."\0".'Entity\\Institute'."\0".'status', ''."\0".'Entity\\Institute'."\0".'country', ''."\0".'Entity\\Institute'."\0".'state', ''."\0".'Entity\\Institute'."\0".'city', ''."\0".'Entity\\Institute'."\0".'createdBy', ''."\0".'Entity\\Institute'."\0".'updatedBy');
+            return ['__isInitialized__', ''."\0".'Entity\\Institute'."\0".'id', ''."\0".'Entity\\Institute'."\0".'instituteName', ''."\0".'Entity\\Institute'."\0".'instituteCode', ''."\0".'Entity\\Institute'."\0".'logo', ''."\0".'Entity\\Institute'."\0".'pincode', ''."\0".'Entity\\Institute'."\0".'contactEmail', ''."\0".'Entity\\Institute'."\0".'contactNumber', ''."\0".'Entity\\Institute'."\0".'website', ''."\0".'Entity\\Institute'."\0".'createdOn', ''."\0".'Entity\\Institute'."\0".'updatedOn', ''."\0".'Entity\\Institute'."\0".'status', ''."\0".'Entity\\Institute'."\0".'country', ''."\0".'Entity\\Institute'."\0".'state', ''."\0".'Entity\\Institute'."\0".'city', ''."\0".'Entity\\Institute'."\0".'createdBy', ''."\0".'Entity\\Institute'."\0".'updatedBy'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\Institute'."\0".'id', ''."\0".'Entity\\Institute'."\0".'instituteName', ''."\0".'Entity\\Institute'."\0".'instituteCode', ''."\0".'Entity\\Institute'."\0".'logo', ''."\0".'Entity\\Institute'."\0".'pincode', ''."\0".'Entity\\Institute'."\0".'contactEmail', ''."\0".'Entity\\Institute'."\0".'contactNumber', ''."\0".'Entity\\Institute'."\0".'website', ''."\0".'Entity\\Institute'."\0".'createdOn', ''."\0".'Entity\\Institute'."\0".'updatedOn', ''."\0".'Entity\\Institute'."\0".'status', ''."\0".'Entity\\Institute'."\0".'country', ''."\0".'Entity\\Institute'."\0".'state', ''."\0".'Entity\\Institute'."\0".'city', ''."\0".'Entity\\Institute'."\0".'createdBy', ''."\0".'Entity\\Institute'."\0".'updatedBy');
+        return ['__isInitialized__', ''."\0".'Entity\\Institute'."\0".'id', ''."\0".'Entity\\Institute'."\0".'instituteName', ''."\0".'Entity\\Institute'."\0".'instituteCode', ''."\0".'Entity\\Institute'."\0".'logo', ''."\0".'Entity\\Institute'."\0".'pincode', ''."\0".'Entity\\Institute'."\0".'contactEmail', ''."\0".'Entity\\Institute'."\0".'contactNumber', ''."\0".'Entity\\Institute'."\0".'website', ''."\0".'Entity\\Institute'."\0".'createdOn', ''."\0".'Entity\\Institute'."\0".'updatedOn', ''."\0".'Entity\\Institute'."\0".'status', ''."\0".'Entity\\Institute'."\0".'country', ''."\0".'Entity\\Institute'."\0".'state', ''."\0".'Entity\\Institute'."\0".'city', ''."\0".'Entity\\Institute'."\0".'createdBy', ''."\0".'Entity\\Institute'."\0".'updatedBy'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setInstituteName($instituteName)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInstituteName', array($instituteName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInstituteName', [$instituteName]);
 
         return parent::setInstituteName($instituteName);
     }
@@ -197,7 +191,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getInstituteName()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInstituteName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInstituteName', []);
 
         return parent::getInstituteName();
     }
@@ -207,7 +201,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setInstituteCode($instituteCode)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInstituteCode', array($instituteCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInstituteCode', [$instituteCode]);
 
         return parent::setInstituteCode($instituteCode);
     }
@@ -217,7 +211,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getInstituteCode()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInstituteCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInstituteCode', []);
 
         return parent::getInstituteCode();
     }
@@ -227,7 +221,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setLogo($logo)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLogo', array($logo));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLogo', [$logo]);
 
         return parent::setLogo($logo);
     }
@@ -237,7 +231,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getLogo()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLogo', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLogo', []);
 
         return parent::getLogo();
     }
@@ -247,7 +241,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setPincode($pincode)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPincode', array($pincode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPincode', [$pincode]);
 
         return parent::setPincode($pincode);
     }
@@ -257,7 +251,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getPincode()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPincode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPincode', []);
 
         return parent::getPincode();
     }
@@ -267,7 +261,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setContactEmail($contactEmail)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactEmail', array($contactEmail));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactEmail', [$contactEmail]);
 
         return parent::setContactEmail($contactEmail);
     }
@@ -277,7 +271,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getContactEmail()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactEmail', []);
 
         return parent::getContactEmail();
     }
@@ -287,7 +281,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setContactNumber($contactNumber)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactNumber', array($contactNumber));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setContactNumber', [$contactNumber]);
 
         return parent::setContactNumber($contactNumber);
     }
@@ -297,7 +291,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getContactNumber()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactNumber', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getContactNumber', []);
 
         return parent::getContactNumber();
     }
@@ -307,7 +301,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setWebsite($website)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWebsite', array($website));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWebsite', [$website]);
 
         return parent::setWebsite($website);
     }
@@ -317,7 +311,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getWebsite()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWebsite', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWebsite', []);
 
         return parent::getWebsite();
     }
@@ -327,7 +321,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setCreatedOn($createdOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', array($createdOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', [$createdOn]);
 
         return parent::setCreatedOn($createdOn);
     }
@@ -337,7 +331,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getCreatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', []);
 
         return parent::getCreatedOn();
     }
@@ -347,7 +341,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setUpdatedOn($updatedOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', array($updatedOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', [$updatedOn]);
 
         return parent::setUpdatedOn($updatedOn);
     }
@@ -357,7 +351,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getUpdatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', []);
 
         return parent::getUpdatedOn();
     }
@@ -367,7 +361,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setStatus($status)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$status]);
 
         return parent::setStatus($status);
     }
@@ -377,7 +371,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getStatus()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', []);
 
         return parent::getStatus();
     }
@@ -387,7 +381,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setCountry(\Entity\Country $country = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', array($country));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', [$country]);
 
         return parent::setCountry($country);
     }
@@ -397,7 +391,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getCountry()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', []);
 
         return parent::getCountry();
     }
@@ -407,7 +401,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setState(\Entity\State $state = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setState', array($state));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setState', [$state]);
 
         return parent::setState($state);
     }
@@ -417,7 +411,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getState()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getState', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getState', []);
 
         return parent::getState();
     }
@@ -427,7 +421,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setCity(\Entity\City $city = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCity', array($city));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCity', [$city]);
 
         return parent::setCity($city);
     }
@@ -437,7 +431,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getCity()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCity', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCity', []);
 
         return parent::getCity();
     }
@@ -447,7 +441,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setCreatedBy(\Entity\User $createdBy = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', array($createdBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', [$createdBy]);
 
         return parent::setCreatedBy($createdBy);
     }
@@ -457,7 +451,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getCreatedBy()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', []);
 
         return parent::getCreatedBy();
     }
@@ -467,7 +461,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function setUpdatedBy(\Entity\User $updatedBy = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', array($updatedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', [$updatedBy]);
 
         return parent::setUpdatedBy($updatedBy);
     }
@@ -477,7 +471,7 @@ class __CG__EntityInstitute extends \Entity\Institute implements \Doctrine\ORM\P
      */
     public function getUpdatedBy()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', []);
 
         return parent::getUpdatedBy();
     }

@@ -1,11 +1,10 @@
 <?php
 
 
-
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Sessions
+ * Sessions.
  *
  * @ORM\Table(name="sessions")
  * @ORM\Entity
@@ -22,7 +21,7 @@ class Sessions
     private $sessionId;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="expires", type="integer", nullable=false)
      */
@@ -35,12 +34,10 @@ class Sessions
      */
     private $data;
 
-
-
     /**
-     * Get sessionId
+     * Get sessionId.
      *
-     * @return string 
+     * @return string
      */
     public function getSessionId()
     {
@@ -48,9 +45,10 @@ class Sessions
     }
 
     /**
-     * Set expires
+     * Set expires.
      *
-     * @param integer $expires
+     * @param int $expires
+     *
      * @return Sessions
      */
     public function setExpires($expires)
@@ -61,9 +59,9 @@ class Sessions
     }
 
     /**
-     * Get expires
+     * Get expires.
      *
-     * @return integer 
+     * @return int
      */
     public function getExpires()
     {
@@ -71,9 +69,10 @@ class Sessions
     }
 
     /**
-     * Set data
+     * Set data.
      *
      * @param string $data
+     *
      * @return Sessions
      */
     public function setData($data)
@@ -84,9 +83,9 @@ class Sessions
     }
 
     /**
-     * Get data
+     * Get data.
      *
-     * @return string 
+     * @return string
      */
     public function getData()
     {

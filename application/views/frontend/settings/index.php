@@ -21,17 +21,17 @@
                                 }
                             }
                         ?>
-                        <form class="form-horizontal" id="form-user-profile" action="<?php echo base_url('settings/updateprofile');?>" method="post">
+                        <form class="form-horizontal" id="form-user-profile" action="<?php echo base_url('settings/updateprofile'); ?>" method="post">
                             <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Full Name*</label>
                                 <div class="col-sm-9">
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Full Name" value="<?php echo $name;?>">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Full Name" value="<?php echo $name; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="col-sm-3 control-label">Email</label>
                                 <div class="col-sm-9">
-                                    <input type="email" name="email" class="form-control" id="email" placeholder="Email" disabled="disabled" value="<?php echo $email;?>">
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="Email" disabled="disabled" value="<?php echo $email; ?>">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -49,14 +49,10 @@
                                 <div class="col-sm-3">
                                     <select name="country" class="form-control">
                                         <?php foreach ($countries as $id => $value) {
-    $selected = ($id == $country) ? 'selected="selected"' : '';
-    ?>
-                                        <option value="<?php echo $id;
-    ?>" <?php echo $selected;
-    ?>><?php echo $value;
-    ?></option>
+                            $selected = ($id == $country) ? 'selected="selected"' : ''; ?>
+                                        <option value="<?php echo $id; ?>" <?php echo $selected; ?>><?php echo $value; ?></option>
                                         <?php
-} ?>
+                        } ?>
                                     </select>
                                 </div>
                             </div>
@@ -69,7 +65,7 @@
                     </div>
 
                     <div class="tab-pane" id="changepwd">
-                        <form class="form-horizontal" id="form-reset-password" action="<?php echo base_url('settings/changepassword');?>" method="post">
+                        <form class="form-horizontal" id="form-reset-password" action="<?php echo base_url('settings/changepassword'); ?>" method="post">
                             <div class="form-group">
                                 <label for="password" class="col-sm-3 control-label">Password</label>
                                 <div class="col-sm-9">

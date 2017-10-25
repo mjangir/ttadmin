@@ -36,7 +36,7 @@ class __CG__EntityState extends \Entity\State implements \Doctrine\ORM\Proxy\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityState extends \Entity\State implements \Doctrine\ORM\Proxy\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\State'."\0".'id', ''."\0".'Entity\\State'."\0".'countryId', ''."\0".'Entity\\State'."\0".'stateName');
+            return ['__isInitialized__', ''."\0".'Entity\\State'."\0".'id', ''."\0".'Entity\\State'."\0".'countryId', ''."\0".'Entity\\State'."\0".'stateName'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\State'."\0".'id', ''."\0".'Entity\\State'."\0".'countryId', ''."\0".'Entity\\State'."\0".'stateName');
+        return ['__isInitialized__', ''."\0".'Entity\\State'."\0".'id', ''."\0".'Entity\\State'."\0".'countryId', ''."\0".'Entity\\State'."\0".'stateName'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityState extends \Entity\State implements \Doctrine\ORM\Proxy\Pro
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityState extends \Entity\State implements \Doctrine\ORM\Proxy\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityState extends \Entity\State implements \Doctrine\ORM\Proxy\Pro
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityState extends \Entity\State implements \Doctrine\ORM\Proxy\Pro
      */
     public function setCountryId($countryId)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountryId', array($countryId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountryId', [$countryId]);
 
         return parent::setCountryId($countryId);
     }
@@ -197,7 +191,7 @@ class __CG__EntityState extends \Entity\State implements \Doctrine\ORM\Proxy\Pro
      */
     public function getCountryId()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountryId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountryId', []);
 
         return parent::getCountryId();
     }
@@ -207,7 +201,7 @@ class __CG__EntityState extends \Entity\State implements \Doctrine\ORM\Proxy\Pro
      */
     public function setStateName($stateName)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateName', array($stateName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateName', [$stateName]);
 
         return parent::setStateName($stateName);
     }
@@ -217,7 +211,7 @@ class __CG__EntityState extends \Entity\State implements \Doctrine\ORM\Proxy\Pro
      */
     public function getStateName()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateName', []);
 
         return parent::getStateName();
     }

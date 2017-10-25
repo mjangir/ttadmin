@@ -36,7 +36,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\Survey'."\0".'id', ''."\0".'Entity\\Survey'."\0".'surveyName', ''."\0".'Entity\\Survey'."\0".'description', ''."\0".'Entity\\Survey'."\0".'surveyPrice', ''."\0".'Entity\\Survey'."\0".'surveyType', ''."\0".'Entity\\Survey'."\0".'forStudent', ''."\0".'Entity\\Survey'."\0".'createdOn', ''."\0".'Entity\\Survey'."\0".'updatedOn', ''."\0".'Entity\\Survey'."\0".'status', ''."\0".'Entity\\Survey'."\0".'createdBy', ''."\0".'Entity\\Survey'."\0".'updatedBy');
+            return ['__isInitialized__', ''."\0".'Entity\\Survey'."\0".'id', ''."\0".'Entity\\Survey'."\0".'surveyName', ''."\0".'Entity\\Survey'."\0".'description', ''."\0".'Entity\\Survey'."\0".'surveyPrice', ''."\0".'Entity\\Survey'."\0".'surveyType', ''."\0".'Entity\\Survey'."\0".'forStudent', ''."\0".'Entity\\Survey'."\0".'createdOn', ''."\0".'Entity\\Survey'."\0".'updatedOn', ''."\0".'Entity\\Survey'."\0".'status', ''."\0".'Entity\\Survey'."\0".'createdBy', ''."\0".'Entity\\Survey'."\0".'updatedBy'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\Survey'."\0".'id', ''."\0".'Entity\\Survey'."\0".'surveyName', ''."\0".'Entity\\Survey'."\0".'description', ''."\0".'Entity\\Survey'."\0".'surveyPrice', ''."\0".'Entity\\Survey'."\0".'surveyType', ''."\0".'Entity\\Survey'."\0".'forStudent', ''."\0".'Entity\\Survey'."\0".'createdOn', ''."\0".'Entity\\Survey'."\0".'updatedOn', ''."\0".'Entity\\Survey'."\0".'status', ''."\0".'Entity\\Survey'."\0".'createdBy', ''."\0".'Entity\\Survey'."\0".'updatedBy');
+        return ['__isInitialized__', ''."\0".'Entity\\Survey'."\0".'id', ''."\0".'Entity\\Survey'."\0".'surveyName', ''."\0".'Entity\\Survey'."\0".'description', ''."\0".'Entity\\Survey'."\0".'surveyPrice', ''."\0".'Entity\\Survey'."\0".'surveyType', ''."\0".'Entity\\Survey'."\0".'forStudent', ''."\0".'Entity\\Survey'."\0".'createdOn', ''."\0".'Entity\\Survey'."\0".'updatedOn', ''."\0".'Entity\\Survey'."\0".'status', ''."\0".'Entity\\Survey'."\0".'createdBy', ''."\0".'Entity\\Survey'."\0".'updatedBy'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function setSurveyName($surveyName)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSurveyName', array($surveyName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSurveyName', [$surveyName]);
 
         return parent::setSurveyName($surveyName);
     }
@@ -197,7 +191,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function getSurveyName()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSurveyName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSurveyName', []);
 
         return parent::getSurveyName();
     }
@@ -207,7 +201,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function setDescription($description)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -217,7 +211,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function getDescription()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -227,7 +221,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function setSurveyPrice($surveyPrice)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSurveyPrice', array($surveyPrice));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSurveyPrice', [$surveyPrice]);
 
         return parent::setSurveyPrice($surveyPrice);
     }
@@ -237,7 +231,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function getSurveyPrice()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSurveyPrice', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSurveyPrice', []);
 
         return parent::getSurveyPrice();
     }
@@ -247,7 +241,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function setSurveyType($surveyType)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSurveyType', array($surveyType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSurveyType', [$surveyType]);
 
         return parent::setSurveyType($surveyType);
     }
@@ -257,7 +251,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function getSurveyType()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSurveyType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSurveyType', []);
 
         return parent::getSurveyType();
     }
@@ -267,7 +261,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function setForStudent($forStudent)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setForStudent', array($forStudent));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setForStudent', [$forStudent]);
 
         return parent::setForStudent($forStudent);
     }
@@ -277,7 +271,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function getForStudent()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getForStudent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getForStudent', []);
 
         return parent::getForStudent();
     }
@@ -287,7 +281,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function setCreatedOn($createdOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', array($createdOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', [$createdOn]);
 
         return parent::setCreatedOn($createdOn);
     }
@@ -297,7 +291,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function getCreatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', []);
 
         return parent::getCreatedOn();
     }
@@ -307,7 +301,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function setUpdatedOn($updatedOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', array($updatedOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', [$updatedOn]);
 
         return parent::setUpdatedOn($updatedOn);
     }
@@ -317,7 +311,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function getUpdatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', []);
 
         return parent::getUpdatedOn();
     }
@@ -327,7 +321,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function setStatus($status)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$status]);
 
         return parent::setStatus($status);
     }
@@ -337,7 +331,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function getStatus()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', []);
 
         return parent::getStatus();
     }
@@ -347,7 +341,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function setCreatedBy(\Entity\User $createdBy = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', array($createdBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', [$createdBy]);
 
         return parent::setCreatedBy($createdBy);
     }
@@ -357,7 +351,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function getCreatedBy()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', []);
 
         return parent::getCreatedBy();
     }
@@ -367,7 +361,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function setUpdatedBy(\Entity\User $updatedBy = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', array($updatedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', [$updatedBy]);
 
         return parent::setUpdatedBy($updatedBy);
     }
@@ -377,7 +371,7 @@ class __CG__EntitySurvey extends \Entity\Survey implements \Doctrine\ORM\Proxy\P
      */
     public function getUpdatedBy()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', []);
 
         return parent::getUpdatedBy();
     }

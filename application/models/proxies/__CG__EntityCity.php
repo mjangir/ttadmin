@@ -36,7 +36,7 @@ class __CG__EntityCity extends \Entity\City implements \Doctrine\ORM\Proxy\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityCity extends \Entity\City implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\City'."\0".'id', ''."\0".'Entity\\City'."\0".'stateId', ''."\0".'Entity\\City'."\0".'cityName');
+            return ['__isInitialized__', ''."\0".'Entity\\City'."\0".'id', ''."\0".'Entity\\City'."\0".'stateId', ''."\0".'Entity\\City'."\0".'cityName'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\City'."\0".'id', ''."\0".'Entity\\City'."\0".'stateId', ''."\0".'Entity\\City'."\0".'cityName');
+        return ['__isInitialized__', ''."\0".'Entity\\City'."\0".'id', ''."\0".'Entity\\City'."\0".'stateId', ''."\0".'Entity\\City'."\0".'cityName'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityCity extends \Entity\City implements \Doctrine\ORM\Proxy\Proxy
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityCity extends \Entity\City implements \Doctrine\ORM\Proxy\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityCity extends \Entity\City implements \Doctrine\ORM\Proxy\Proxy
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityCity extends \Entity\City implements \Doctrine\ORM\Proxy\Proxy
      */
     public function setStateId($stateId)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateId', array($stateId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStateId', [$stateId]);
 
         return parent::setStateId($stateId);
     }
@@ -197,7 +191,7 @@ class __CG__EntityCity extends \Entity\City implements \Doctrine\ORM\Proxy\Proxy
      */
     public function getStateId()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStateId', []);
 
         return parent::getStateId();
     }
@@ -207,7 +201,7 @@ class __CG__EntityCity extends \Entity\City implements \Doctrine\ORM\Proxy\Proxy
      */
     public function setCityName($cityName)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCityName', array($cityName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCityName', [$cityName]);
 
         return parent::setCityName($cityName);
     }
@@ -217,7 +211,7 @@ class __CG__EntityCity extends \Entity\City implements \Doctrine\ORM\Proxy\Proxy
      */
     public function getCityName()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCityName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCityName', []);
 
         return parent::getCityName();
     }

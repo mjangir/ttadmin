@@ -36,7 +36,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\StudentSurvey'."\0".'id', ''."\0".'Entity\\StudentSurvey'."\0".'ipAddress', ''."\0".'Entity\\StudentSurvey'."\0".'country', ''."\0".'Entity\\StudentSurvey'."\0".'city', ''."\0".'Entity\\StudentSurvey'."\0".'platform', ''."\0".'Entity\\StudentSurvey'."\0".'browser', ''."\0".'Entity\\StudentSurvey'."\0".'currentPage', ''."\0".'Entity\\StudentSurvey'."\0".'browserVersion', ''."\0".'Entity\\StudentSurvey'."\0".'resultPdf', ''."\0".'Entity\\StudentSurvey'."\0".'startedOn', ''."\0".'Entity\\StudentSurvey'."\0".'finishedOn', ''."\0".'Entity\\StudentSurvey'."\0".'currentStatus', ''."\0".'Entity\\StudentSurvey'."\0".'student', ''."\0".'Entity\\StudentSurvey'."\0".'survey');
+            return ['__isInitialized__', ''."\0".'Entity\\StudentSurvey'."\0".'id', ''."\0".'Entity\\StudentSurvey'."\0".'ipAddress', ''."\0".'Entity\\StudentSurvey'."\0".'country', ''."\0".'Entity\\StudentSurvey'."\0".'city', ''."\0".'Entity\\StudentSurvey'."\0".'platform', ''."\0".'Entity\\StudentSurvey'."\0".'browser', ''."\0".'Entity\\StudentSurvey'."\0".'currentPage', ''."\0".'Entity\\StudentSurvey'."\0".'browserVersion', ''."\0".'Entity\\StudentSurvey'."\0".'resultPdf', ''."\0".'Entity\\StudentSurvey'."\0".'startedOn', ''."\0".'Entity\\StudentSurvey'."\0".'finishedOn', ''."\0".'Entity\\StudentSurvey'."\0".'currentStatus', ''."\0".'Entity\\StudentSurvey'."\0".'student', ''."\0".'Entity\\StudentSurvey'."\0".'survey'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\StudentSurvey'."\0".'id', ''."\0".'Entity\\StudentSurvey'."\0".'ipAddress', ''."\0".'Entity\\StudentSurvey'."\0".'country', ''."\0".'Entity\\StudentSurvey'."\0".'city', ''."\0".'Entity\\StudentSurvey'."\0".'platform', ''."\0".'Entity\\StudentSurvey'."\0".'browser', ''."\0".'Entity\\StudentSurvey'."\0".'currentPage', ''."\0".'Entity\\StudentSurvey'."\0".'browserVersion', ''."\0".'Entity\\StudentSurvey'."\0".'resultPdf', ''."\0".'Entity\\StudentSurvey'."\0".'startedOn', ''."\0".'Entity\\StudentSurvey'."\0".'finishedOn', ''."\0".'Entity\\StudentSurvey'."\0".'currentStatus', ''."\0".'Entity\\StudentSurvey'."\0".'student', ''."\0".'Entity\\StudentSurvey'."\0".'survey');
+        return ['__isInitialized__', ''."\0".'Entity\\StudentSurvey'."\0".'id', ''."\0".'Entity\\StudentSurvey'."\0".'ipAddress', ''."\0".'Entity\\StudentSurvey'."\0".'country', ''."\0".'Entity\\StudentSurvey'."\0".'city', ''."\0".'Entity\\StudentSurvey'."\0".'platform', ''."\0".'Entity\\StudentSurvey'."\0".'browser', ''."\0".'Entity\\StudentSurvey'."\0".'currentPage', ''."\0".'Entity\\StudentSurvey'."\0".'browserVersion', ''."\0".'Entity\\StudentSurvey'."\0".'resultPdf', ''."\0".'Entity\\StudentSurvey'."\0".'startedOn', ''."\0".'Entity\\StudentSurvey'."\0".'finishedOn', ''."\0".'Entity\\StudentSurvey'."\0".'currentStatus', ''."\0".'Entity\\StudentSurvey'."\0".'student', ''."\0".'Entity\\StudentSurvey'."\0".'survey'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function setIpAddress($ipAddress)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIpAddress', array($ipAddress));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIpAddress', [$ipAddress]);
 
         return parent::setIpAddress($ipAddress);
     }
@@ -197,7 +191,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function getIpAddress()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIpAddress', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIpAddress', []);
 
         return parent::getIpAddress();
     }
@@ -207,7 +201,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function setCountry($country)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', array($country));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', [$country]);
 
         return parent::setCountry($country);
     }
@@ -217,7 +211,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function getCountry()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', []);
 
         return parent::getCountry();
     }
@@ -227,7 +221,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function setCity($city)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCity', array($city));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCity', [$city]);
 
         return parent::setCity($city);
     }
@@ -237,7 +231,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function getCity()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCity', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCity', []);
 
         return parent::getCity();
     }
@@ -247,7 +241,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function setPlatform($platform)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPlatform', array($platform));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPlatform', [$platform]);
 
         return parent::setPlatform($platform);
     }
@@ -257,7 +251,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function getPlatform()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPlatform', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPlatform', []);
 
         return parent::getPlatform();
     }
@@ -267,7 +261,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function setBrowser($browser)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBrowser', array($browser));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBrowser', [$browser]);
 
         return parent::setBrowser($browser);
     }
@@ -277,7 +271,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function getBrowser()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrowser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrowser', []);
 
         return parent::getBrowser();
     }
@@ -287,7 +281,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function setCurrentPage($currentPage)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCurrentPage', array($currentPage));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCurrentPage', [$currentPage]);
 
         return parent::setCurrentPage($currentPage);
     }
@@ -297,7 +291,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function getCurrentPage()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCurrentPage', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCurrentPage', []);
 
         return parent::getCurrentPage();
     }
@@ -307,7 +301,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function setBrowserVersion($browserVersion)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBrowserVersion', array($browserVersion));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBrowserVersion', [$browserVersion]);
 
         return parent::setBrowserVersion($browserVersion);
     }
@@ -317,7 +311,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function getBrowserVersion()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrowserVersion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBrowserVersion', []);
 
         return parent::getBrowserVersion();
     }
@@ -327,7 +321,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function setResultPdf($resultPdf)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResultPdf', array($resultPdf));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setResultPdf', [$resultPdf]);
 
         return parent::setResultPdf($resultPdf);
     }
@@ -337,7 +331,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function getResultPdf()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResultPdf', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResultPdf', []);
 
         return parent::getResultPdf();
     }
@@ -347,7 +341,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function setStartedOn($startedOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartedOn', array($startedOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStartedOn', [$startedOn]);
 
         return parent::setStartedOn($startedOn);
     }
@@ -357,7 +351,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function getStartedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStartedOn', []);
 
         return parent::getStartedOn();
     }
@@ -367,7 +361,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function setFinishedOn($finishedOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFinishedOn', array($finishedOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFinishedOn', [$finishedOn]);
 
         return parent::setFinishedOn($finishedOn);
     }
@@ -377,7 +371,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function getFinishedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFinishedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFinishedOn', []);
 
         return parent::getFinishedOn();
     }
@@ -387,7 +381,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function setCurrentStatus($currentStatus)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCurrentStatus', array($currentStatus));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCurrentStatus', [$currentStatus]);
 
         return parent::setCurrentStatus($currentStatus);
     }
@@ -397,7 +391,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function getCurrentStatus()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCurrentStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCurrentStatus', []);
 
         return parent::getCurrentStatus();
     }
@@ -407,7 +401,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function setStudent(\Entity\Student $student = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStudent', array($student));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStudent', [$student]);
 
         return parent::setStudent($student);
     }
@@ -417,7 +411,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function getStudent()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStudent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStudent', []);
 
         return parent::getStudent();
     }
@@ -427,7 +421,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function setSurvey(\Entity\Survey $survey = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSurvey', array($survey));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSurvey', [$survey]);
 
         return parent::setSurvey($survey);
     }
@@ -437,7 +431,7 @@ class __CG__EntityStudentSurvey extends \Entity\StudentSurvey implements \Doctri
      */
     public function getSurvey()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSurvey', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSurvey', []);
 
         return parent::getSurvey();
     }
