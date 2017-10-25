@@ -36,7 +36,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\Student'."\0".'id', ''."\0".'Entity\\Student'."\0".'class', ''."\0".'Entity\\Student'."\0".'section', ''."\0".'Entity\\Student'."\0".'rollNo', ''."\0".'Entity\\Student'."\0".'year', ''."\0".'Entity\\Student'."\0".'degreePursuing', ''."\0".'Entity\\Student'."\0".'studentType', ''."\0".'Entity\\Student'."\0".'registrationType', ''."\0".'Entity\\Student'."\0".'educationalQualification', ''."\0".'Entity\\Student'."\0".'fieldOfStudy', ''."\0".'Entity\\Student'."\0".'address', ''."\0".'Entity\\Student'."\0".'locality', ''."\0".'Entity\\Student'."\0".'country', ''."\0".'Entity\\Student'."\0".'state', ''."\0".'Entity\\Student'."\0".'city', ''."\0".'Entity\\Student'."\0".'pincode', ''."\0".'Entity\\Student'."\0".'createdOn', ''."\0".'Entity\\Student'."\0".'updatedOn', ''."\0".'Entity\\Student'."\0".'user');
+            return ['__isInitialized__', ''."\0".'Entity\\Student'."\0".'id', ''."\0".'Entity\\Student'."\0".'class', ''."\0".'Entity\\Student'."\0".'section', ''."\0".'Entity\\Student'."\0".'rollNo', ''."\0".'Entity\\Student'."\0".'year', ''."\0".'Entity\\Student'."\0".'degreePursuing', ''."\0".'Entity\\Student'."\0".'studentType', ''."\0".'Entity\\Student'."\0".'registrationType', ''."\0".'Entity\\Student'."\0".'educationalQualification', ''."\0".'Entity\\Student'."\0".'fieldOfStudy', ''."\0".'Entity\\Student'."\0".'address', ''."\0".'Entity\\Student'."\0".'locality', ''."\0".'Entity\\Student'."\0".'country', ''."\0".'Entity\\Student'."\0".'state', ''."\0".'Entity\\Student'."\0".'city', ''."\0".'Entity\\Student'."\0".'pincode', ''."\0".'Entity\\Student'."\0".'createdOn', ''."\0".'Entity\\Student'."\0".'updatedOn', ''."\0".'Entity\\Student'."\0".'user'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\Student'."\0".'id', ''."\0".'Entity\\Student'."\0".'class', ''."\0".'Entity\\Student'."\0".'section', ''."\0".'Entity\\Student'."\0".'rollNo', ''."\0".'Entity\\Student'."\0".'year', ''."\0".'Entity\\Student'."\0".'degreePursuing', ''."\0".'Entity\\Student'."\0".'studentType', ''."\0".'Entity\\Student'."\0".'registrationType', ''."\0".'Entity\\Student'."\0".'educationalQualification', ''."\0".'Entity\\Student'."\0".'fieldOfStudy', ''."\0".'Entity\\Student'."\0".'address', ''."\0".'Entity\\Student'."\0".'locality', ''."\0".'Entity\\Student'."\0".'country', ''."\0".'Entity\\Student'."\0".'state', ''."\0".'Entity\\Student'."\0".'city', ''."\0".'Entity\\Student'."\0".'pincode', ''."\0".'Entity\\Student'."\0".'createdOn', ''."\0".'Entity\\Student'."\0".'updatedOn', ''."\0".'Entity\\Student'."\0".'user');
+        return ['__isInitialized__', ''."\0".'Entity\\Student'."\0".'id', ''."\0".'Entity\\Student'."\0".'class', ''."\0".'Entity\\Student'."\0".'section', ''."\0".'Entity\\Student'."\0".'rollNo', ''."\0".'Entity\\Student'."\0".'year', ''."\0".'Entity\\Student'."\0".'degreePursuing', ''."\0".'Entity\\Student'."\0".'studentType', ''."\0".'Entity\\Student'."\0".'registrationType', ''."\0".'Entity\\Student'."\0".'educationalQualification', ''."\0".'Entity\\Student'."\0".'fieldOfStudy', ''."\0".'Entity\\Student'."\0".'address', ''."\0".'Entity\\Student'."\0".'locality', ''."\0".'Entity\\Student'."\0".'country', ''."\0".'Entity\\Student'."\0".'state', ''."\0".'Entity\\Student'."\0".'city', ''."\0".'Entity\\Student'."\0".'pincode', ''."\0".'Entity\\Student'."\0".'createdOn', ''."\0".'Entity\\Student'."\0".'updatedOn', ''."\0".'Entity\\Student'."\0".'user'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setClass($class)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClass', array($class));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setClass', [$class]);
 
         return parent::setClass($class);
     }
@@ -197,7 +191,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getClass()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClass', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getClass', []);
 
         return parent::getClass();
     }
@@ -207,7 +201,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setSection($section)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSection', array($section));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSection', [$section]);
 
         return parent::setSection($section);
     }
@@ -217,7 +211,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getSection()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSection', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSection', []);
 
         return parent::getSection();
     }
@@ -227,7 +221,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setRollNo($rollNo)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRollNo', array($rollNo));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRollNo', [$rollNo]);
 
         return parent::setRollNo($rollNo);
     }
@@ -237,7 +231,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getRollNo()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRollNo', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRollNo', []);
 
         return parent::getRollNo();
     }
@@ -247,7 +241,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setYear($year)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setYear', array($year));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setYear', [$year]);
 
         return parent::setYear($year);
     }
@@ -257,7 +251,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getYear()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getYear', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getYear', []);
 
         return parent::getYear();
     }
@@ -267,7 +261,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setDegreePursuing($degreePursuing)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDegreePursuing', array($degreePursuing));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDegreePursuing', [$degreePursuing]);
 
         return parent::setDegreePursuing($degreePursuing);
     }
@@ -277,7 +271,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getDegreePursuing()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDegreePursuing', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDegreePursuing', []);
 
         return parent::getDegreePursuing();
     }
@@ -287,7 +281,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setStudentType($studentType)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStudentType', array($studentType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStudentType', [$studentType]);
 
         return parent::setStudentType($studentType);
     }
@@ -297,7 +291,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getStudentType()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStudentType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStudentType', []);
 
         return parent::getStudentType();
     }
@@ -307,7 +301,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setRegistrationType($registrationType)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRegistrationType', array($registrationType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setRegistrationType', [$registrationType]);
 
         return parent::setRegistrationType($registrationType);
     }
@@ -317,7 +311,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getRegistrationType()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRegistrationType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getRegistrationType', []);
 
         return parent::getRegistrationType();
     }
@@ -327,7 +321,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setEducationalQualification($educationalQualification)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEducationalQualification', array($educationalQualification));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEducationalQualification', [$educationalQualification]);
 
         return parent::setEducationalQualification($educationalQualification);
     }
@@ -337,7 +331,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getEducationalQualification()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEducationalQualification', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEducationalQualification', []);
 
         return parent::getEducationalQualification();
     }
@@ -347,7 +341,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setFieldOfStudy($fieldOfStudy)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFieldOfStudy', array($fieldOfStudy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFieldOfStudy', [$fieldOfStudy]);
 
         return parent::setFieldOfStudy($fieldOfStudy);
     }
@@ -357,7 +351,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getFieldOfStudy()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFieldOfStudy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFieldOfStudy', []);
 
         return parent::getFieldOfStudy();
     }
@@ -367,7 +361,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setAddress($address)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress', array($address));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress', [$address]);
 
         return parent::setAddress($address);
     }
@@ -377,7 +371,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getAddress()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress', []);
 
         return parent::getAddress();
     }
@@ -387,7 +381,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setLocality($locality)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocality', array($locality));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLocality', [$locality]);
 
         return parent::setLocality($locality);
     }
@@ -397,7 +391,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getLocality()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocality', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLocality', []);
 
         return parent::getLocality();
     }
@@ -407,7 +401,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setCountry($country)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', array($country));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCountry', [$country]);
 
         return parent::setCountry($country);
     }
@@ -417,7 +411,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getCountry()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCountry', []);
 
         return parent::getCountry();
     }
@@ -427,7 +421,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setState($state)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setState', array($state));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setState', [$state]);
 
         return parent::setState($state);
     }
@@ -437,7 +431,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getState()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getState', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getState', []);
 
         return parent::getState();
     }
@@ -447,7 +441,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setCity($city)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCity', array($city));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCity', [$city]);
 
         return parent::setCity($city);
     }
@@ -457,7 +451,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getCity()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCity', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCity', []);
 
         return parent::getCity();
     }
@@ -467,7 +461,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setPincode($pincode)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPincode', array($pincode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPincode', [$pincode]);
 
         return parent::setPincode($pincode);
     }
@@ -477,7 +471,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getPincode()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPincode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPincode', []);
 
         return parent::getPincode();
     }
@@ -487,7 +481,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setCreatedOn($createdOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', array($createdOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', [$createdOn]);
 
         return parent::setCreatedOn($createdOn);
     }
@@ -497,7 +491,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getCreatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', []);
 
         return parent::getCreatedOn();
     }
@@ -507,7 +501,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setUpdatedOn($updatedOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', array($updatedOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', [$updatedOn]);
 
         return parent::setUpdatedOn($updatedOn);
     }
@@ -517,7 +511,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getUpdatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', []);
 
         return parent::getUpdatedOn();
     }
@@ -527,7 +521,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function setUser(\Entity\User $user = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUser', array($user));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUser', [$user]);
 
         return parent::setUser($user);
     }
@@ -537,7 +531,7 @@ class __CG__EntityStudent extends \Entity\Student implements \Doctrine\ORM\Proxy
      */
     public function getUser()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUser', []);
 
         return parent::getUser();
     }

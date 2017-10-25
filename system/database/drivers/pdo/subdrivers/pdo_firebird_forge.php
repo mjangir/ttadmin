@@ -60,11 +60,11 @@ class CI_DB_pdo_firebird_forge extends CI_DB_pdo_forge
      *
      * @var array
      */
-    protected $_unsigned = array(
+    protected $_unsigned = [
         'SMALLINT' => 'INTEGER',
-        'INTEGER' => 'INT64',
-        'FLOAT' => 'DOUBLE PRECISION',
-    );
+        'INTEGER'  => 'INT64',
+        'FLOAT'    => 'DOUBLE PRECISION',
+    ];
 
     /**
      * NULL value representation in CREATE/ALTER TABLE statements.
@@ -128,12 +128,12 @@ class CI_DB_pdo_firebird_forge extends CI_DB_pdo_forge
      */
     protected function _alter_table($alter_type, $table, $field)
     {
-        if (in_array($alter_type, array('DROP', 'ADD'), true)) {
+        if (in_array($alter_type, ['DROP', 'ADD'], true)) {
             return parent::_alter_table($alter_type, $table, $field);
         }
 
         $sql = 'ALTER TABLE '.$this->db->escape_identifiers($table);
-        $sqls = array();
+        $sqls = [];
         for ($i = 0, $c = count($field); $i < $c; ++$i) {
             if ($field[$i]['_literal'] !== false) {
                 return false;

@@ -84,7 +84,7 @@ class Link extends MY_AdminController
         $paginator = $this->paginator->setOptions($data, $this->page, $this->baseControllerUrl, $this->limit);
 
         //Prepare the view parameters
-        $view_data = array();
+        $view_data = [];
         $view_data['data'] = $data;                            //Data got from model
         $view_data['page'] = $this->page;                      //Current page number
         $view_data['listStartFrom'] = $this->offset + 1;                  //Serial number of the table records
@@ -102,23 +102,23 @@ class Link extends MY_AdminController
 
         //Link search form params
         $view_data['linkCategoryDropdown'] = getLinkCategoryDropdown(true);
-        $view_data['linkDropdown'] = (isset($this->postParams['linkCategory'])) ? getLinkDropdown(false, $this->postParams['linkCategory']) : array();
+        $view_data['linkDropdown'] = (isset($this->postParams['linkCategory'])) ? getLinkDropdown(false, $this->postParams['linkCategory']) : [];
 
         //If request is type of ajax then only render the view
         if ($this->input->is_ajax_request()) {
-            $jsonResponse = array();
+            $jsonResponse = [];
             $jsonResponse['html'] = $this->load->view('admin/link/index', $view_data, true);
             echo json_encode($jsonResponse);
         } else {
 
             //If request is not ajax then render the view with layout
-            return $this->load->view('layout/backend', array(
-                'content' => $this->load->view('admin/link/index', $view_data, true),
-                'pageHeading' => 'Link List',
-                'pageSubHeading' => '',
-                'activeLinksAlias' => array('admin_manage_system_links'),
-                'breadCrumbs' => array('Manage System Links' => ''),
-            ));
+            return $this->load->view('layout/backend', [
+                'content'          => $this->load->view('admin/link/index', $view_data, true),
+                'pageHeading'      => 'Link List',
+                'pageSubHeading'   => '',
+                'activeLinksAlias' => ['admin_manage_system_links'],
+                'breadCrumbs'      => ['Manage System Links' => ''],
+            ]);
         }
     }
 
@@ -148,37 +148,37 @@ class Link extends MY_AdminController
 
             //Set form validation rules
             $this->form_validation->set_rules('linkCategoryId', 'Link Category', 'trim|required',
-                    array('required' => 'Please select Link Category'));
+                    ['required' => 'Please select Link Category']);
             $this->form_validation->set_rules('name', 'Link Name', 'trim|required|xss_clean',
-                    array('required' => 'Please enter Link Name'));
+                    ['required' => 'Please enter Link Name']);
             $this->form_validation->set_rules('alias', 'Link Alias', 'trim|required|xss_clean',
-                    array('required' => 'Please enter Link Alias'));
+                    ['required' => 'Please enter Link Alias']);
             $this->form_validation->set_rules('href', 'Hyperlink', 'trim|required',
-                    array('required' => 'Please enter Hyperlink or #'));
+                    ['required' => 'Please enter Hyperlink or #']);
             $this->form_validation->set_rules('actions', 'Link Actions', 'trim|required',
-                    array('required' => 'Actions cannot be empty. Use instead {"ALL":"All Rights"}'));
+                    ['required' => 'Actions cannot be empty. Use instead {"ALL":"All Rights"}']);
 
             //If form is successfully validated
             if ($this->form_validation->run() == true) {
                 try {
 
                         //If new link is added
-                        if ($id === null) {
-                            $link = new Entity\Link();
-                            $link->setCreatedAt(new \DateTime());
-                            $link->setUpdatedAt(new \DateTime());
-                            $link->setStatus('ACTIVE');
-                        } else {
-                            //If existing link is updated
-                            $link = $this->objectManager->getRepository($this->entityName)->find($id);
-                            $link->setUpdatedAt(new \DateTime());
-                        }
+                    if ($id === null) {
+                        $link = new Entity\Link();
+                        $link->setCreatedAt(new \DateTime());
+                        $link->setUpdatedAt(new \DateTime());
+                        $link->setStatus('ACTIVE');
+                    } else {
+                        //If existing link is updated
+                        $link = $this->objectManager->getRepository($this->entityName)->find($id);
+                        $link->setUpdatedAt(new \DateTime());
+                    }
 
-                        //Get link category object by category id
-                        $linkCategory = $this->objectManager->getRepository('Entity\LinkCategory')->find($this->postParams['linkCategoryId']);
+                    //Get link category object by category id
+                    $linkCategory = $this->objectManager->getRepository('Entity\LinkCategory')->find($this->postParams['linkCategoryId']);
 
-                        //Set Link object properties
-                        $link->setLinkCategory($linkCategory);
+                    //Set Link object properties
+                    $link->setLinkCategory($linkCategory);
                     $link->setParentId((int) $this->postParams['parentId']);
                     $link->setName($this->postParams['name']);
                     $link->setAlias($this->postParams['alias']);
@@ -186,60 +186,60 @@ class Link extends MY_AdminController
                     $link->setHref($this->postParams['href']);
                     $link->setActions($this->postParams['actions']);
 
-                        //Persist and flush the object
-                        $this->objectManager->persist($link);
+                    //Persist and flush the object
+                    $this->objectManager->persist($link);
                     $this->objectManager->flush($link);
 
-                        //Return success if added successfully
-                        echo json_encode(array(
-                                'html' => '',
-                                'notification' => array(
-                                    array(
-                                        'status' => 'success',
+                    //Return success if added successfully
+                    echo json_encode([
+                                'html'         => '',
+                                'notification' => [
+                                    [
+                                        'status'  => 'success',
                                         'message' => $this->crudName.' saved successfully.',
-                                        'type' => 'toastr',
-                                    ),
-                                ),
-                                'location' => array(
-                                    'redirect' => array(
-                                        'url' => $this->baseControllerUrl,
+                                        'type'    => 'toastr',
+                                    ],
+                                ],
+                                'location' => [
+                                    'redirect' => [
+                                        'url'     => $this->baseControllerUrl,
                                         'timeout' => 2000,
-                                    ),
-                                ),
-                        ));
+                                    ],
+                                ],
+                        ]);
                     exit;
                 } catch (Exception $ex) {
                     //show error message to user
-                        echo json_encode(array(
-                                'html' => '',
-                                'notification' => array(
-                                    array(
-                                        'status' => 'error',
+                    echo json_encode([
+                                'html'         => '',
+                                'notification' => [
+                                    [
+                                        'status'  => 'error',
                                         'message' => 'Error occured while processing.',
-                                        'type' => 'toastr',
-                                    ),
-                                ),
-                        ));
+                                        'type'    => 'toastr',
+                                    ],
+                                ],
+                        ]);
                     exit;
                 }
             } else {
                 //Throw the validation errors, if validation not successfully
-                    $errors = $this->form_validation->error_array();
-                echo json_encode(array(
-                            'validation' => array(
-                                'form' => '#form_link',
+                $errors = $this->form_validation->error_array();
+                echo json_encode([
+                            'validation' => [
+                                'form'   => '#form_link',
                                 'errors' => $errors,
-                            ),
-                    ));
+                            ],
+                    ]);
                 exit;
             }
         } else {
             //If request method is not post then render the form with layout
 
             //Set view form attributes and variables
-            $view_data['form']['attributes'] = array(
+            $view_data['form']['attributes'] = [
                 'id' => 'form_link',
-            );
+            ];
             $view_data['form']['action'] = ($id === null) ? $this->baseControllerUrl.'/add-update' : $this->baseControllerUrl.'/add-update?id='.$id;
             $view_data['form']['cancelUrl'] = $this->baseControllerUrl;
             $view_data['form']['viewUrl'] = $this->baseControllerUrl.'/view?id='.$id;
@@ -290,7 +290,7 @@ class Link extends MY_AdminController
             $record = $this->objectManager->getRepository('Entity\Link')->find($id);
 
             //Render view page
-            $this->load->view('admin/link/view', array('record' => $record));
+            $this->load->view('admin/link/view', ['record' => $record]);
         }
     }
 
@@ -328,29 +328,29 @@ class Link extends MY_AdminController
                 $this->objectManager->flush();
 
                 //If record deleted successfully then show the success message
-                $response = array(
-                        'html' => '',
-                        'notification' => array(
-                                array(
-                                        'status' => 'success',
+                $response = [
+                        'html'         => '',
+                        'notification' => [
+                                [
+                                        'status'  => 'success',
                                         'message' => $this->crudName.' deleted successfully.',
-                                        'type' => 'toastr',
-                                ),
-                        ),
-                );
+                                        'type'    => 'toastr',
+                                ],
+                        ],
+                ];
             } else {
 
                 //If record not found in database with the given ID, then show No record found message
-                $response = array(
-                        'html' => '',
-                        'notification' => array(
-                                array(
-                                        'status' => 'error',
+                $response = [
+                        'html'         => '',
+                        'notification' => [
+                                [
+                                        'status'  => 'error',
                                         'message' => 'No record found.',
-                                        'type' => 'toastr',
-                                ),
-                        ),
-                );
+                                        'type'    => 'toastr',
+                                ],
+                        ],
+                ];
             }
         }
 
@@ -399,29 +399,29 @@ class Link extends MY_AdminController
                 $this->objectManager->flush();
 
                 //If record marked as active or in-active then show the success message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'success',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'success',
                             'message' => $this->crudName.' marked as '.strtolower($newStatus).' successfully.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             } else {
 
                 //If record not found in database with the given ID, then show No record found message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'error',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'error',
                             'message' => 'No record found.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             }
         }
 

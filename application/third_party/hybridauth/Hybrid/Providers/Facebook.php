@@ -2,14 +2,14 @@
 /*!
 * HybridAuth
 * http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
-* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html 
+* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
 */
 
 /**
  * Hybrid_Providers_Facebook provider adapter based on OAuth2 protocol.
- * 
+ *
  * Hybrid_Providers_Facebook use the Facebook PHP SDK created by Facebook
- * 
+ *
  * http://hybridauth.sourceforge.net/userguide/IDProvider_info_Facebook.html
  */
 class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
@@ -35,7 +35,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
             BaseFacebook::$CURL_OPTS[CURLOPT_PROXY] = Hybrid_Auth::$config['proxy'];
         }
 
-        $this->api = new Facebook(array('appId' => $this->config['keys']['id'], 'secret' => $this->config['keys']['secret']));
+        $this->api = new Facebook(['appId' => $this->config['keys']['id'], 'secret' => $this->config['keys']['secret']]);
 
         if ($this->token('access_token')) {
             $this->api->setAccessToken($this->token('access_token'));
@@ -55,13 +55,13 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
 
     /**
      * begin login step.
-     * 
-     * simply call Facebook::require_login(). 
+     *
+     * simply call Facebook::require_login().
      */
     public function loginBegin()
     {
-        $parameters = array('scope' => $this->scope, 'redirect_uri' => $this->endpoint, 'display' => 'page');
-        $optionals = array('scope', 'redirect_uri', 'display');
+        $parameters = ['scope' => $this->scope, 'redirect_uri' => $this->endpoint, 'display' => 'page'];
+        $optionals = ['scope', 'redirect_uri', 'display'];
 
         foreach ($optionals as $parameter) {
             if (isset($this->config[$parameter]) && !empty($this->config[$parameter])) {
@@ -69,7 +69,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
             }
         }
 
-        // get the login url 
+        // get the login url
         $url = $this->api->getLoginUrl($parameters);
 
         // redirect to facebook
@@ -86,7 +86,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
             throw new Exception('Authentication failed! The user denied your request.', 5);
         }
 
-        // try to get the UID of the connected user from fb, should be > 0 
+        // try to get the UID of the connected user from fb, should be > 0
         if (!$this->api->getUser()) {
             throw new Exception("Authentication failed! {$this->providerId} returned an invalid user id.", 5);
         }
@@ -94,7 +94,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
         // set user as logged in
         $this->setUserConnected();
 
-        // store facebook access token 
+        // store facebook access token
         $this->token('access_token', $this->api->getAccessToken());
     }
 
@@ -125,7 +125,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
             throw new Exception("User profile request failed! {$this->providerId} api returned an invalid response.", 6);
         }
 
-        # store the user profile.
+        // store the user profile.
         $this->user->profile->identifier = (array_key_exists('id', $data)) ? $data['id'] : '';
         $this->user->profile->displayName = (array_key_exists('name', $data)) ? $data['name'] : '';
         $this->user->profile->firstName = (array_key_exists('first_name', $data)) ? $data['first_name'] : '';
@@ -162,10 +162,10 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
         }
 
         if (!$response || !count($response['data'])) {
-            return array();
+            return [];
         }
 
-        $contacts = array();
+        $contacts = [];
 
         foreach ($response['data'] as $item) {
             $uc = new Hybrid_User_Contact();
@@ -186,7 +186,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
      */
     public function setUserStatus($status)
     {
-        $parameters = array();
+        $parameters = [];
 
         if (is_array($status)) {
             $parameters = $status;
@@ -202,7 +202,7 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
     }
 
     /**
-     * load the user latest activity  
+     * load the user latest activity
      *    - timeline : all the stream
      *    - me       : the user activity only.
      */
@@ -219,10 +219,10 @@ class Hybrid_Providers_Facebook extends Hybrid_Provider_Model
         }
 
         if (!$response || !count($response['data'])) {
-            return array();
+            return [];
         }
 
-        $activities = array();
+        $activities = [];
 
         foreach ($response['data'] as $item) {
             if ($stream == 'me' && $item['from']['id'] != $this->api->getUser()) {

@@ -89,7 +89,7 @@ class CI_DB_pdo_odbc_driver extends CI_DB_pdo_driver
      *
      * @var array
      */
-    protected $_random_keyword = array('RND()', 'RND(%d)');
+    protected $_random_keyword = ['RND()', 'RND(%d)'];
 
     // --------------------------------------------------------------------
 
@@ -197,7 +197,7 @@ class CI_DB_pdo_odbc_driver extends CI_DB_pdo_driver
     protected function _update($table, $values)
     {
         $this->qb_limit = false;
-        $this->qb_orderby = array();
+        $this->qb_orderby = [];
 
         return parent::_update($table, $values);
     }

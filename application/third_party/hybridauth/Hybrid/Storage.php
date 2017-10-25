@@ -2,7 +2,7 @@
 /*!
 * HybridAuth
 * http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
-* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html 
+* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
 */
 
 /**
@@ -31,8 +31,6 @@ class Hybrid_Storage
         } elseif (isset($_SESSION['HA::CONFIG'][$key])) {
             return unserialize($_SESSION['HA::CONFIG'][$key]);
         }
-
-        return;
     }
 
     public function get($key)
@@ -42,8 +40,6 @@ class Hybrid_Storage
         if (isset($_SESSION['HA::STORE'], $_SESSION['HA::STORE'][$key])) {
             return unserialize($_SESSION['HA::STORE'][$key]);
         }
-
-        return;
     }
 
     public function set($key, $value)
@@ -55,7 +51,7 @@ class Hybrid_Storage
 
     public function clear()
     {
-        $_SESSION['HA::STORE'] = array();
+        $_SESSION['HA::STORE'] = [];
     }
 
     public function delete($key)
@@ -77,7 +73,7 @@ class Hybrid_Storage
             $f = $_SESSION['HA::STORE'];
             foreach ($f as $k => $v) {
                 if (strstr($k, $key)) {
-                    unset($f[ $k ]);
+                    unset($f[$k]);
                 }
             }
             $_SESSION['HA::STORE'] = $f;
@@ -89,8 +85,6 @@ class Hybrid_Storage
         if (isset($_SESSION['HA::STORE'])) {
             return serialize($_SESSION['HA::STORE']);
         }
-
-        return;
     }
 
     public function restoreSessionData($sessiondata = null)

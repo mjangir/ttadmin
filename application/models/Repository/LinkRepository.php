@@ -31,7 +31,7 @@ class LinkRepository extends EntityRepository
 {
     /**
      * Get dropdown list.
-     * 
+     *
      * @return object
      */
     public function getList()
@@ -48,17 +48,17 @@ class LinkRepository extends EntityRepository
 
     /**
      * Get links by user group.
-     * 
+     *
      * @param int $userGroupId
      * @param int $roleId
-     * 
+     *
      * @return object
      */
     public function getLinksByGroupId($userGroupId, $roleId)
     {
         $querybuilder = $this->_em->createQueryBuilder();
 
-        $querybuilder->select(array('l.id', 'l.name', 'l.alias', 'l.parentId', 'l.href', 'l.actions', 'lp.permissions', 'lc.name as categoryName', 'lc.alias as categoryAlias'))
+        $querybuilder->select(['l.id', 'l.name', 'l.alias', 'l.parentId', 'l.href', 'l.actions', 'lp.permissions', 'lc.name as categoryName', 'lc.alias as categoryAlias'])
                 ->from('Entity\Link', 'l')
                 ->innerJoin('l.linkCategory', 'lc')
                 ->leftJoin('Entity\LinkPermission', 'lp', 'WITH', 'lp.link = l AND lp.group = :userGroupId')
@@ -69,8 +69,9 @@ class LinkRepository extends EntityRepository
 
         return $querybuilder->getQuery()->getResult(\Doctrine\ORM\AbstractQuery::HYDRATE_ARRAY);
     }
-    
-    public function getMenus($userGroupId) {
+
+    public function getMenus($userGroupId)
+    {
         $querybuilder = $this->_em->createQueryBuilder();
 
         $querybuilder->select('lp')
@@ -90,10 +91,10 @@ class LinkRepository extends EntityRepository
      * @param int   $offset
      * @param int   $limit
      * @param array $postParams
-     * 
+     *
      * @return Paginator
      */
-    public function getPagedLinks($offset = 0, $limit = 10, $postParams)
+    public function getPagedLinks($offset, $limit, $postParams)
     {
         $em = $this->_em;
         $qb = $em->createQueryBuilder();

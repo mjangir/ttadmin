@@ -3,14 +3,14 @@ echo form_open($form['action'], $form['attributes']);
 ?>
 <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title"><?php echo $pageHeading;?></h3>
+        <h3 class="panel-title"><?php echo $pageHeading; ?></h3>
       </div>
       <div class="panel-body">
             <div class="form-group">
                 <div class="row">
                     <div class="col-xs-12">
                         <label class="control-label">Jackpot Title*</label>
-                        <?php echo form_input(array('name' => 'title', 'class' => 'form-control', 'value' => $jackpot->getTitle()));?>
+                        <?php echo form_input(['name' => 'title', 'class' => 'form-control', 'value' => $jackpot->getTitle()]); ?>
                     </div>
                </div>
             </div>
@@ -18,7 +18,7 @@ echo form_open($form['action'], $form['attributes']);
                 <div class="row">
                     <div class="col-xs-12">
                         <label class="control-label">Jackpot Amount*</label>
-                        <?php echo form_input(array('name' => 'amount', 'class' => 'form-control', 'value' => $jackpot->getAmount()));?>
+                        <?php echo form_input(['name' => 'amount', 'class' => 'form-control', 'value' => $jackpot->getAmount()]); ?>
                     </div>
                </div>
             </div>
@@ -26,7 +26,7 @@ echo form_open($form['action'], $form['attributes']);
                 <div class="row">
                     <div class="col-xs-12">
                         <label class="control-label">Minimum Players Required To Start*</label>
-                        <?php echo form_input(array('name' => 'min_players_required', 'type' => 'number', 'min' => '1', 'class' => 'form-control', 'value' => $jackpot->getMinPlayersRequired()));?>
+                        <?php echo form_input(['name' => 'min_players_required', 'type' => 'number', 'min' => '1', 'class' => 'form-control', 'value' => $jackpot->getMinPlayersRequired()]); ?>
                     </div>
                </div>
             </div>
@@ -34,7 +34,7 @@ echo form_open($form['action'], $form['attributes']);
                 <div class="row">
                     <div class="col-xs-12">
                         <label class="control-label">Game Clock Time*</label>
-                        <?php echo form_input(array('name' => 'game_clock_time', 'class' => 'form-control timepicker', 'value' => convertSecondsToTimeFormat($jackpot->getGameClockTime())));?>
+                        <?php echo form_input(['name' => 'game_clock_time', 'class' => 'form-control timepicker', 'value' => convertSecondsToTimeFormat($jackpot->getGameClockTime())]); ?>
                     </div>
                </div>
             </div>
@@ -42,7 +42,7 @@ echo form_open($form['action'], $form['attributes']);
                 <div class="row">
                     <div class="col-xs-12">
                         <label class="control-label">Dooms Day Clock Time*</label>
-                        <?php echo form_input(array('name' => 'dooms_day_time', 'class' => 'form-control timepicker', 'value' => convertSecondsToTimeFormat($jackpot->getDoomsDayTime())));?>
+                        <?php echo form_input(['name' => 'dooms_day_time', 'class' => 'form-control timepicker', 'value' => convertSecondsToTimeFormat($jackpot->getDoomsDayTime())]); ?>
                     </div>
                </div>
             </div>
@@ -59,11 +59,11 @@ echo form_open($form['action'], $form['attributes']);
                 <div class="row">
                     <div class="col-xs-4">
                         <label class="control-label">Every Below Seconds</label>
-                        <?php echo form_input(array('type' => 'number', 'name' => 'increase_amount_seconds', 'class' => 'form-control','value' => $jackpot->getIncreaseAmountSeconds()));?>
+                        <?php echo form_input(['type' => 'number', 'name' => 'increase_amount_seconds', 'class' => 'form-control', 'value' => $jackpot->getIncreaseAmountSeconds()]); ?>
                     </div>
                     <div class="col-xs-4">
                         <label class="control-label">Below Amount Should Be Increased</label>
-                        <?php echo form_input(array('type' => 'number','name' => 'increase_amount', 'class' => 'form-control', 'value' => $jackpot->getIncreaseAmount()));?>
+                        <?php echo form_input(['type' => 'number', 'name' => 'increase_amount', 'class' => 'form-control', 'value' => $jackpot->getIncreaseAmount()]); ?>
                     </div>
                </div>
             </div>
@@ -80,17 +80,14 @@ echo form_open($form['action'], $form['attributes']);
                 </div>
                 <?php
                   $dsStatus = false;
-                  if($jackpot->getDurationSetting() && !empty($jackpot->getDurationSetting()))
-                  {
-                    $dsStatus = true;
-                    $durationSettings = json_decode($jackpot->getDurationSetting(), true);
-                    if(is_array($durationSettings) && !empty($durationSettings))
-                    {
+                  if ($jackpot->getDurationSetting() && !empty($jackpot->getDurationSetting())) {
                       $dsStatus = true;
-                      $i = 0;
-                      foreach($durationSettings as $ds)
-                      {
-                ?>
+                      $durationSettings = json_decode($jackpot->getDurationSetting(), true);
+                      if (is_array($durationSettings) && !empty($durationSettings)) {
+                          $dsStatus = true;
+                          $i = 0;
+                          foreach ($durationSettings as $ds) {
+                              ?>
                 <div class="col-md-12 pivot-inner mbt10 inner-col-8p">
                     <div class="col-md-2">
                       <?php 
@@ -106,7 +103,7 @@ echo form_open($form['action'], $form['attributes']);
                         //   'data-fv-numeric-message' => 'Duration Seconds Must Be Numeric',
                         //   'data-fv-numeric-thousandsseparator' => '',
                         //   'data-fv-numeric-decimalseparator' => '.'
-                        // )); 
+                        // ));
                       ?>
                     </div>
                     <div class="col-md-2">
@@ -123,7 +120,7 @@ echo form_open($form['action'], $form['attributes']);
                         //   'data-fv-numeric-message' => 'Amount Must Be Numeric',
                         //   'data-fv-numeric-thousandsseparator' => '',
                         //   'data-fv-numeric-decimalseparator' => '.'
-                        // )); 
+                        // ));
                       ?>
                     </div>
                     <div class="col-md-2">
@@ -133,12 +130,12 @@ echo form_open($form['action'], $form['attributes']);
                 </div>
                 <?php
                 $i++;
+                          }
                       }
-                    }
                   }
 
-                  if($dsStatus == false) {
-                ?>
+                  if ($dsStatus == false) {
+                      ?>
                 <div class="col-md-12 pivot-inner mbt10 inner-col-8p">
                     <div class="col-md-2">
                       <?php 
@@ -154,7 +151,7 @@ echo form_open($form['action'], $form['attributes']);
                         //   'data-fv-numeric-message' => 'Duration Seconds Must Be Numeric',
                         //   'data-fv-numeric-thousandsseparator' => '',
                         //   'data-fv-numeric-decimalseparator' => '.'
-                        // )); 
+                        // ));
                       ?>
                     </div>
                     <div class="col-md-2">
@@ -171,7 +168,7 @@ echo form_open($form['action'], $form['attributes']);
                         //   'data-fv-numeric-message' => 'Amount Must Be Numeric',
                         //   'data-fv-numeric-thousandsseparator' => '',
                         //   'data-fv-numeric-decimalseparator' => '.'
-                        // )); 
+                        // ));
                       ?>
                     </div>
                     <div class="col-md-2">
@@ -179,12 +176,13 @@ echo form_open($form['action'], $form['attributes']);
                         <button type="button" class="btn bg-maroon btn-flat remove hide" style="margin-left: -12px;"><i class="fa fa-minus"></i></button>
                     </div>
                 </div>
-                <?php } ?>
+                <?php
+                  } ?>
                 <div class="clearfix"></div>
             </div> -->
       </div>
       <div class="panel-footer">
             <button type="submit" name="submitForm" class="btn btn-primary">Save</button>
-            <a href="<?php echo $form['cancelUrl'];?>" class="btn btn-danger">Cancel</a>
+            <a href="<?php echo $form['cancelUrl']; ?>" class="btn btn-danger">Cancel</a>
       </div>
-<?php echo form_close();?>
+<?php echo form_close(); ?>

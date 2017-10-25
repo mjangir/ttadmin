@@ -15,7 +15,7 @@
         ?>
         <p class="login-box-msg"><i class="fa fa-phone"></i><strong> Contact Us</strong></p>
 
-        <form action="<?php echo base_url('page/contact');?>" id="form-contact" method="post">
+        <form action="<?php echo base_url('page/contact'); ?>" id="form-contact" method="post">
             <div class="form-group has-feedback">
                 <input type="text" name="subject" class="form-control" placeholder="Subject" value="<?php echo (isset($subject)) ? $subject : '' ?>">
                 <span class="glyphicon glyphicon-pencil form-control-feedback"></span>
@@ -45,11 +45,11 @@
     </div>
     <div class="col-xs-4 pull-right">
         <div class="register-box-body">
-            <strong>Contact Person:</strong> <?php echo $settings['contact_person'];?><br/><br/>
-            <strong>Contact Email:</strong> <?php echo $settings['contact_email'];?><br/><br/>
-            <strong>Contact Number:</strong> <?php echo $settings['contact_number'];?><br/><br/>
-            <strong>Fax Number:</strong> <?php echo $settings['fax_number'];?><br/><br/>
-            <strong>Contact Address:</strong> <?php echo $settings['contact_address'];?><br/><br/>
+            <strong>Contact Person:</strong> <?php echo $settings['contact_person']; ?><br/><br/>
+            <strong>Contact Email:</strong> <?php echo $settings['contact_email']; ?><br/><br/>
+            <strong>Contact Number:</strong> <?php echo $settings['contact_number']; ?><br/><br/>
+            <strong>Fax Number:</strong> <?php echo $settings['fax_number']; ?><br/><br/>
+            <strong>Contact Address:</strong> <?php echo $settings['contact_address']; ?><br/><br/>
         </div>
     </div>
 </div>

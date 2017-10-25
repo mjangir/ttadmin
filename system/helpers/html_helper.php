@@ -120,7 +120,7 @@ if (!function_exists('_list')) {
      *
      * @return string
      */
-    function _list($type = 'ul', $list = array(), $attributes = '', $depth = 0)
+    function _list($type = 'ul', $list = [], $attributes = '', $depth = 0)
     {
         // If an array wasn't submitted there's nothing to do...
         if (!is_array($list)) {
@@ -172,7 +172,7 @@ if (!function_exists('img')) {
     function img($src = '', $index_page = false, $attributes = '')
     {
         if (!is_array($src)) {
-            $src = array('src' => $src);
+            $src = ['src' => $src];
         }
 
         // If there is no alt attribute defined, set it to an empty string
@@ -228,7 +228,7 @@ if (!function_exists('doctype')) {
             }
 
             if (empty($_doctypes) or !is_array($_doctypes)) {
-                $doctypes = array();
+                $doctypes = [];
 
                 return false;
             }
@@ -316,18 +316,18 @@ if (!function_exists('meta')) {
         // Since we allow the data to be passes as a string, a simple array
         // or a multidimensional one, we need to do a little prepping.
         if (!is_array($name)) {
-            $name = array(array('name' => $name, 'content' => $content, 'type' => $type, 'newline' => $newline));
+            $name = [['name' => $name, 'content' => $content, 'type' => $type, 'newline' => $newline]];
         } elseif (isset($name['name'])) {
             // Turn single array into multidimensional
-            $name = array($name);
+            $name = [$name];
         }
 
         $str = '';
         foreach ($name as $meta) {
-            $type = (isset($meta['type']) && $meta['type'] !== 'name')    ? 'http-equiv' : 'name';
-            $name = isset($meta['name'])                    ? $meta['name'] : '';
-            $content = isset($meta['content'])                ? $meta['content'] : '';
-            $newline = isset($meta['newline'])                ? $meta['newline'] : "\n";
+            $type = (isset($meta['type']) && $meta['type'] !== 'name') ? 'http-equiv' : 'name';
+            $name = isset($meta['name']) ? $meta['name'] : '';
+            $content = isset($meta['content']) ? $meta['content'] : '';
+            $newline = isset($meta['newline']) ? $meta['newline'] : "\n";
 
             $str .= '<meta '.$type.'="'.$name.'" content="'.$content.'" />'.$newline;
         }

@@ -2,12 +2,12 @@
 /*!
 * HybridAuth
 * http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
-* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html 
+* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
 */
 
 /**
  * Hybrid_Providers_MySpace provider adapter based on OAuth1 protocol.
- * 
+ *
  * http://hybridauth.sourceforge.net/userguide/IDProvider_info_MySpace.html
  */
 class Hybrid_Providers_MySpace extends Hybrid_Provider_Model_OAuth1
@@ -81,7 +81,7 @@ class Hybrid_Providers_MySpace extends Hybrid_Provider_Model_OAuth1
             throw new Exception("User profile request failed! {$this->providerId} returned an invalid response.", 6);
         }
 
-        $contacts = array();
+        $contacts = [];
 
         foreach ($response->Friends as $item) {
             $uc = new Hybrid_User_Contact();
@@ -106,7 +106,7 @@ class Hybrid_Providers_MySpace extends Hybrid_Provider_Model_OAuth1
         // crappy myspace... gonna see this asaic
         $userId = $this->getCurrentUserId();
 
-        $parameters = array('status' => $status);
+        $parameters = ['status' => $status];
 
         $response = $this->api->api('http://api.myspace.com/v1/users/'.$userId.'/status', 'PUT', $parameters);
 
@@ -117,7 +117,7 @@ class Hybrid_Providers_MySpace extends Hybrid_Provider_Model_OAuth1
     }
 
     /**
-     * load the user latest activity  
+     * load the user latest activity
      *    - timeline : all the stream
      *    - me       : the user activity only.
      */
@@ -135,7 +135,7 @@ class Hybrid_Providers_MySpace extends Hybrid_Provider_Model_OAuth1
             throw new Exception("User profile request failed! {$this->providerId} returned an invalid response.", 6);
         }
 
-        $activities = array();
+        $activities = [];
 
         if ($stream == 'me') {
             // todo

@@ -63,9 +63,9 @@ class CI_Javascript
      *
      * @param array $params
      */
-    public function __construct($params = array())
+    public function __construct($params = [])
     {
-        $defaults = array('js_library_driver' => 'jquery', 'autoload' => true);
+        $defaults = ['js_library_driver' => 'jquery', 'autoload' => true];
 
         foreach ($defaults as $key => $val) {
             if (isset($params[$key]) && $params[$key] !== '') {
@@ -78,7 +78,7 @@ class CI_Javascript
         $this->CI = &get_instance();
 
         // load the requested js library
-        $this->CI->load->library('Javascript/'.$js_library_driver, array('autoload' => $autoload));
+        $this->CI->load->library('Javascript/'.$js_library_driver, ['autoload' => $autoload]);
         // make js to refer to current library
         $this->js = &$this->CI->$js_library_driver;
 
@@ -443,7 +443,7 @@ class CI_Javascript
      *
      * @return string
      */
-    public function animate($element = 'this', $params = array(), $speed = '', $extra = '')
+    public function animate($element = 'this', $params = [], $speed = '', $extra = '')
     {
         return $this->js->_animate($element, $params, $speed, $extra);
     }
@@ -483,6 +483,7 @@ class CI_Javascript
     {
         return $this->js->_fadeOut($element, $speed, $callback);
     }
+
     // --------------------------------------------------------------------
 
     /**
@@ -773,7 +774,7 @@ class CI_Javascript
         // either as a database result object or an array, or a user supplied array
         if ($result !== null) {
             if (is_object($result)) {
-                $json_result = is_callable(array($result, 'result_array')) ? $result->result_array() : (array) $result;
+                $json_result = is_callable([$result, 'result_array']) ? $result->result_array() : (array) $result;
             } elseif (is_array($result)) {
                 $json_result = $result;
             } else {
@@ -783,7 +784,7 @@ class CI_Javascript
             return 'null';
         }
 
-        $json = array();
+        $json = [];
         $_is_assoc = true;
 
         if (!is_array($json_result) && empty($json_result)) {
@@ -846,7 +847,7 @@ class CI_Javascript
         } elseif (is_bool($result)) {
             return ($result === true) ? 'true' : 'false';
         } elseif (is_string($result) or $is_key) {
-            return '"'.str_replace(array('\\', "\t", "\n", "\r", '"', '/'), array('\\\\', '\\t', '\\n', '\\r', '\"', '\/'), $result).'"';
+            return '"'.str_replace(['\\', "\t", "\n", "\r", '"', '/'], ['\\\\', '\\t', '\\n', '\\r', '\"', '\/'], $result).'"';
         } elseif (is_scalar($result)) {
             return $result;
         }

@@ -83,42 +83,42 @@ class CI_User_agent
      *
      * @var array
      */
-    public $languages = array();
+    public $languages = [];
 
     /**
      * Character sets accepted by the current user agent.
      *
      * @var array
      */
-    public $charsets = array();
+    public $charsets = [];
 
     /**
      * List of platforms to compare against current user agent.
      *
      * @var array
      */
-    public $platforms = array();
+    public $platforms = [];
 
     /**
      * List of browsers to compare against current user agent.
      *
      * @var array
      */
-    public $browsers = array();
+    public $browsers = [];
 
     /**
      * List of mobile browsers to compare against current user agent.
      *
      * @var array
      */
-    public $mobiles = array();
+    public $mobiles = [];
 
     /**
      * List of robots to compare against current user agent.
      *
      * @var array
      */
-    public $robots = array();
+    public $robots = [];
 
     /**
      * Current user-agent platform.
@@ -244,7 +244,7 @@ class CI_User_agent
     {
         $this->_set_platform();
 
-        foreach (array('_set_robot', '_set_browser', '_set_mobile') as $function) {
+        foreach (['_set_robot', '_set_browser', '_set_mobile'] as $function) {
             if ($this->$function() === true) {
                 break;
             }
@@ -359,7 +359,7 @@ class CI_User_agent
         }
 
         if (count($this->languages) === 0) {
-            $this->languages = array('Undefined');
+            $this->languages = ['Undefined'];
         }
     }
 
@@ -375,7 +375,7 @@ class CI_User_agent
         }
 
         if (count($this->charsets) === 0) {
-            $this->charsets = array('Undefined');
+            $this->charsets = ['Undefined'];
         }
     }
 
@@ -533,6 +533,7 @@ class CI_User_agent
     {
         return $this->robot;
     }
+
     // --------------------------------------------------------------------
 
     /**

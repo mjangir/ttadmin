@@ -31,7 +31,7 @@ class UserGroupRepository extends EntityRepository
 {
     /**
      * Get User Groups.
-     * 
+     *
      * @return object
      */
     public function getUserGroups()
@@ -46,13 +46,13 @@ class UserGroupRepository extends EntityRepository
 
     /**
      * Get User Groups With Their Roles.
-     * 
+     *
      * @return object
      */
     public function getUserGroupsWithRole()
     {
         $querybuilder = $this->_em->createQueryBuilder();
-        $querybuilder->select(array('ug.id', 'ug.alias', 'ug.description', 'CONCAT(ug.groupName,\' - \',r.role) AS groupName'))
+        $querybuilder->select(['ug.id', 'ug.alias', 'ug.description', 'CONCAT(ug.groupName,\' - \',r.role) AS groupName'])
                 ->from('Application\Entity\UserGroup', 'ug')
                 ->innerJoin('ug.role', 'r');
 
@@ -61,13 +61,13 @@ class UserGroupRepository extends EntityRepository
 
     /**
      * Get User Groups List.
-     * 
+     *
      * @return object
      */
     public function getUserGroupsList()
     {
         $querybuilder = $this->_em->createQueryBuilder();
-        $querybuilder->select(array('ug.id', 'ug.groupName'))
+        $querybuilder->select(['ug.id', 'ug.groupName'])
                 ->from('Application\Entity\UserGroup', 'ug')
                 ->orderBy('ug.groupName', 'ASC');
 
@@ -80,10 +80,10 @@ class UserGroupRepository extends EntityRepository
      * @param int $offset
      * @param int $limit
      * @param int $postParams
-     * 
+     *
      * @return Paginator
      */
-    public function getPagedList($offset = 0, $limit = 10, $postParams)
+    public function getPagedList($offset, $limit, $postParams)
     {
         $em = $this->_em;
         $qb = $em->createQueryBuilder();

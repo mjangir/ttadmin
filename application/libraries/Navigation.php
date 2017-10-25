@@ -27,14 +27,14 @@ class Navigation
 {
     /**
      * Codeigniter Singleton Instance.
-     * 
+     *
      * @var object
      */
     private $ci;
 
     /**
      * Class constructor.
-     * 
+     *
      * Sets Codeigniter instance
      */
     public function __construct()
@@ -46,15 +46,15 @@ class Navigation
 
     /**
      * Method to prepare nested array of menus.
-     * 
+     *
      * @param array $arr
      * @param int   $parent
-     * 
+     *
      * @return array
      */
     public function getNestedMenus($arr, $parent = 0)
     {
-        $navigation = array();
+        $navigation = [];
         foreach ($arr as $menu) {
             if ($menu['parent_id'] == $parent) {
                 $menu['sub'] = isset($menu['sub']) ? $menu['sub'] : $this->getNestedMenus($arr, $menu['link_id']);
@@ -67,7 +67,7 @@ class Navigation
 
     /**
      * Returns permitted menus for logged in user.
-     * 
+     *
      * @return array $navigationMenus
      */
     public function getPermittedLinks()
@@ -80,7 +80,7 @@ class Navigation
         $loggedUser = getLoggedUserData();
 
         //Set guest user group id by default as it is accessible to all
-        $groupIds = array(1);
+        $groupIds = [1];
 
         //If user is logged in then get his role id and accessible user group id
         //If user is admin then he can access all portals
@@ -93,15 +93,15 @@ class Navigation
             }
         }
         sort($groupIds);
-        $whereGroup = array();
+        $whereGroup = [];
         foreach ($groupIds as $groupId) {
             $whereGroup[] = $objectManager->getRepository('Entity\UserGroup')->find($groupId);
         }
 
         //$links = $objectManager->getRepository('Entity\LinkPermission')->findBy(array('group' => $whereGroup));
         $links = $objectManager->getRepository('Entity\Link')->getMenus($groupIds);
-        
-        $linkArray = array();
+
+        $linkArray = [];
         foreach ($links as $link) {
             if ($link->getLink()->getStatus() == 'INACTIVE') {
                 continue;
@@ -121,19 +121,19 @@ class Navigation
                 $href = base_url($href);
             }
 
-            $linkArray[$linkCategoryAlias][] = array(
-                'link_id' => $linkId,
-                'link_name' => $linkName,
-                'link_alias' => $linkAlias,
-                'parent_id' => $parentLinkId,
-                'permissions' => $permissions,
+            $linkArray[$linkCategoryAlias][] = [
+                'link_id'       => $linkId,
+                'link_name'     => $linkName,
+                'link_alias'    => $linkAlias,
+                'parent_id'     => $parentLinkId,
+                'permissions'   => $permissions,
                 'user_group_id' => $userGroupId,
-                'anchor_href' => $href,
-                'link_icon' => $icon,
-                'order' => $linkOrder
-            );
+                'anchor_href'   => $href,
+                'link_icon'     => $icon,
+                'order'         => $linkOrder,
+            ];
         }
-        $navigationMenus = array();
+        $navigationMenus = [];
         foreach ($linkArray as $linkCategoryAlias => $menuGroup) {
             $navigationMenus[$linkCategoryAlias] = $this->getNestedMenus($menuGroup);
         }
@@ -146,12 +146,12 @@ class Navigation
      */
     public function setSessionMenuPermissions()
     {
-        $menuPermissions = array();
+        $menuPermissions = [];
         $objectManager = $this->ci->doctrine->em;
         $loggedUser = getLoggedUserData();
         $userGroupId = $loggedUser['userGroupId'];
         $userGroup = $objectManager->getRepository('Entity\UserGroup')->find($userGroupId);
-        $links = $objectManager->getRepository('Entity\LinkPermission')->findBy(array('group' => $userGroup));
+        $links = $objectManager->getRepository('Entity\LinkPermission')->findBy(['group' => $userGroup]);
 
         foreach ($links as $link) {
             $alias = $link->getLink()->getAlias();
@@ -164,7 +164,7 @@ class Navigation
 
     /**
      * Get sessionMenuPermissions method.
-     * 
+     *
      * @return array Returns array of menus stored in session
      */
     public function getSessionMenuPermissions()

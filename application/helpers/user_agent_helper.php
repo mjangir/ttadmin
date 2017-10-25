@@ -140,12 +140,12 @@ if (!function_exists('user_agent_ie')) {
     {
         static $result = null;
         if (!is_array($result)) {
-            $result = array(
-                'is_ie' => false,
-                'ie_version' => null,
-                'is_ie_mobile' => false,
+            $result = [
+                'is_ie'             => false,
+                'ie_version'        => null,
+                'is_ie_mobile'      => false,
                 'ie_mobile_version' => null,
-            );
+            ];
             $data = user_agent();
             $result['is_ie'] = $data['browser'] == 'Internet Explorer';
             if ($result['is_ie']) {
@@ -174,9 +174,9 @@ if (!function_exists('user_agent_ios')) {
     {
         static $result = null;
         if (!is_array($result)) {
-            $result = array(
+            $result = [
                 'is_ios' => false,
-            );
+            ];
             $data = user_agent();
             $result['is_ios'] = $data['platform'] == 'iOS';
         }

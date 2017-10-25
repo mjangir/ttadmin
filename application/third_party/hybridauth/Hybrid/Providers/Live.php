@@ -2,12 +2,12 @@
 /*!
 * HybridAuth
 * http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
-* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html 
+* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
 */
 
-/** 
+/**
  * Windows Live OAuth2 Class.
- * 
+ *
  * @author              Lukasz Koprowski <azram19@gmail.com>
  *
  * @version             0.2
@@ -20,7 +20,7 @@
  */
 class Hybrid_Providers_Live extends Hybrid_Provider_Model_OAuth2
 {
-    // default permissions 
+    // default permissions
     public $scope = 'wl.basic wl.emails wl.signin wl.share wl.birthday';
 
     /**
@@ -84,10 +84,10 @@ class Hybrid_Providers_Live extends Hybrid_Provider_Model_OAuth2
         }
 
         if (!$response->data && ($response->error != 0)) {
-            return array();
+            return [];
         }
 
-        $contacts = array();
+        $contacts = [];
 
         foreach ($response->data as $item) {
             $uc = new Hybrid_User_Contact();

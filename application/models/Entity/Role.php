@@ -1,11 +1,11 @@
 <?php
-namespace Entity;
 
+namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Role
+ * Role.
  *
  * @ORM\Table(name="role")
  * @ORM\Entity(repositoryClass="Repository\RoleRepository")
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Role
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -49,12 +49,10 @@ class Role
      */
     private $updatedAt;
 
-
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -62,9 +60,10 @@ class Role
     }
 
     /**
-     * Set role
+     * Set role.
      *
      * @param string $role
+     *
      * @return Role
      */
     public function setRole($role)
@@ -75,9 +74,9 @@ class Role
     }
 
     /**
-     * Get role
+     * Get role.
      *
-     * @return string 
+     * @return string
      */
     public function getRole()
     {
@@ -85,9 +84,10 @@ class Role
     }
 
     /**
-     * Set status
+     * Set status.
      *
      * @param string $status
+     *
      * @return Role
      */
     public function setStatus($status)
@@ -98,9 +98,9 @@ class Role
     }
 
     /**
-     * Get status
+     * Get status.
      *
-     * @return string 
+     * @return string
      */
     public function getStatus()
     {
@@ -108,9 +108,10 @@ class Role
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return Role
      */
     public function setCreatedAt($createdAt)
@@ -121,9 +122,9 @@ class Role
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -131,9 +132,10 @@ class Role
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return Role
      */
     public function setUpdatedAt($updatedAt)
@@ -144,9 +146,9 @@ class Role
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {

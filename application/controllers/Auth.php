@@ -52,11 +52,11 @@ class Auth extends MY_GuestUserController
 
             //Validate form fields
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email',
-                    array('required' => 'Please enter Email ID',
-                          'valid_email' => 'Please enter a valid Email ID'
-                    ));
+                    ['required'         => 'Please enter Email ID',
+                          'valid_email' => 'Please enter a valid Email ID',
+                    ]);
             $this->form_validation->set_rules('password', 'Password', 'trim|required',
-                        array('required' => 'Please enter Password'));
+                        ['required' => 'Please enter Password']);
 
             //If form is successfully validated
             if ($this->form_validation->run() == true) {
@@ -71,11 +71,11 @@ class Auth extends MY_GuestUserController
                 $client = new Client();
 
                 try {
-                    $result = $client->post(API_BASE_PATH.'/auth/login', array(
-                                'json' => array(
+                    $result = $client->post(API_BASE_PATH.'/auth/login', [
+                                'json' => [
                                     'email'     => $email,
-                                    'password'  => $password
-                                )));
+                                    'password'  => $password,
+                                ], ]);
 
                     $response = json_decode($result->getBody()->getContents(), true);
 
@@ -86,28 +86,27 @@ class Auth extends MY_GuestUserController
                            !empty($settings['invalid_login_message'])) {
                             $loginErr = $settings['invalid_login_message'];
                         }
-                        $this->session->set_flashdata('formErrors', array($loginErr));
+                        $this->session->set_flashdata('formErrors', [$loginErr]);
                         redirect(base_url('auth/login'));
                     } else {
-
                         $user = $this->doctrine->em->getRepository('Entity\User')
-                                                ->findOneBy(array(
-                                                    'email' => $email,
+                                                ->findOneBy([
+                                                    'email'  => $email,
                                                     'status' => 'ACTIVE',
-                                                ));
+                                                ]);
 
                         //If user matched successfully, then store user in session
-                        $loggedUser = array(
+                        $loggedUser = [
                             'id'            => $user->getId(),
                             'email'         => $user->getEmail(),
-                            'userGroupId'   => (string)$user->getUserGroup()->getId(),
+                            'userGroupId'   => (string) $user->getUserGroup()->getId(),
                             'roleId'        => $user->getUserGroup()->getRole()->getId(),
                             'firstName'     => $user->getName(),
                             'lastName'      => $user->getName(),
                             'fullName'      => $user->getName(),
                             'photo'         => $user->getPhoto(),
                             'createdOn'     => $user->getCreatedAt()->format('Y-m-d'),
-                        );
+                        ];
 
                         $this->session->set_userdata('loggedUser', $loggedUser);
                         $this->session->set_userdata('accessToken', $response['data']['token']);
@@ -118,21 +117,16 @@ class Auth extends MY_GuestUserController
                         //Redirect to user dashboard
                         redirect(base_url('my-account'));
                     }
-                } catch(GuzzleHttp\Exception\ClientException $e)
-                {
-                    $this->session->set_flashdata('formErrors', array('Invalid Email or Password!'));
+                } catch (GuzzleHttp\Exception\ClientException $e) {
+                    $this->session->set_flashdata('formErrors', ['Invalid Email or Password!']);
                     redirect(base_url('auth/login'));
-                } catch(GuzzleHttp\Exception\ConnectException $e)
-                {
-                    $this->session->set_flashdata('formErrors', array('Some Internal Error Occured. Please try again later.'));
+                } catch (GuzzleHttp\Exception\ConnectException $e) {
+                    $this->session->set_flashdata('formErrors', ['Some Internal Error Occured. Please try again later.']);
                     redirect(base_url('auth/login'));
-                }
-                 catch(Exception $e)
-                {
-                    $this->session->set_flashdata('formErrors', array('Some Internal Error Occured. Please try again later.'));
+                } catch (Exception $e) {
+                    $this->session->set_flashdata('formErrors', ['Some Internal Error Occured. Please try again later.']);
                     redirect(base_url('auth/login'));
                 }
-
             } else {
 
                 //Throw the validation errors, if validation not successful
@@ -143,10 +137,10 @@ class Auth extends MY_GuestUserController
         } else {
 
             //If get request instead of form submission, show view form
-            return $this->load->view('layout/frontend', array(
-                'content' => $this->load->view('auth/login', array(), true),
+            return $this->load->view('layout/frontend', [
+                'content'   => $this->load->view('auth/login', [], true),
                 'metaTitle' => 'Login Into Your Account',
-            ));
+            ]);
         }
     }
 
@@ -161,7 +155,7 @@ class Auth extends MY_GuestUserController
      */
     public function email_exists($email)
     {
-        $record = $this->objectManager->getRepository('Entity\User')->findOneBy(array('email' => $email));
+        $record = $this->objectManager->getRepository('Entity\User')->findOneBy(['email' => $email]);
 
         return $record === null;
     }
@@ -179,17 +173,17 @@ class Auth extends MY_GuestUserController
 
             //Validate form fields
             $this->form_validation->set_rules('first_name', 'First Name', 'trim|required|xss_clean',
-                    array('required' => 'Please enter First Name'));
+                    ['required' => 'Please enter First Name']);
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|callback_email_exists|xss_clean',
-                    array('required' => 'Please enter Email ID',
-                        'valid_email' => 'Please enter valid a Email ID',
-                        'email_exists' => 'Email ID already taken'));
+                    ['required'        => 'Please enter Email ID',
+                        'valid_email'  => 'Please enter valid a Email ID',
+                        'email_exists' => 'Email ID already taken', ]);
             $this->form_validation->set_rules('password', 'Password', 'trim|required',
-                    array('required' => 'Please enter Password'));
+                    ['required' => 'Please enter Password']);
             $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|matches[password]',
-                    array('required' => 'Please enter Confirm Password',
-                          'matches' => 'Password does not match with Confirm Password'
-                    ));
+                    ['required'     => 'Please enter Confirm Password',
+                          'matches' => 'Password does not match with Confirm Password',
+                    ]);
 
             //If form is successfully validated
             if ($this->form_validation->run() == true) {
@@ -229,15 +223,15 @@ class Auth extends MY_GuestUserController
                     if ($settings['enable_signup_email_confirmation'] == 1) {
 
                         //Create confirmation link
-                        $userInfoString = json_encode(array('userId' => $user->getId(), 'dateCreated' => date('Y-m-d')));
+                        $userInfoString = json_encode(['userId' => $user->getId(), 'dateCreated' => date('Y-m-d')]);
                         $encryptedString = rawurlencode($this->utils->encrypt($userInfoString));
                         $confirmationLink = base_url('auth/confirm-registration').'?salt='.$encryptedString;
 
                         //Send the email with confirmation link
-                        $mailReplaceArray = array(
-                            '[NAME]' => $firstName.' '.$lastName,
+                        $mailReplaceArray = [
+                            '[NAME]'              => $firstName.' '.$lastName,
                             '[CONFIRMATION_LINK]' => $confirmationLink,
-                        );
+                        ];
                         $send = $this->swiftmailer->sendmail('signup_confirm', $email, $mailReplaceArray);
 
                         //If sign up confirm notification message is set from backend
@@ -246,11 +240,11 @@ class Auth extends MY_GuestUserController
 
                         //If sign up success email is enabled from backend then send a mail to respected user
                         if (isset($settings['send_signup_success_email']) && $settings['send_signup_success_email'] == 1) {
-                            $mailReplaceArray = array(
-                                '[NAME]' => $firstName.' '.$lastName,
-                                '[EMAIL]' => $email,
+                            $mailReplaceArray = [
+                                '[NAME]'     => $firstName.' '.$lastName,
+                                '[EMAIL]'    => $email,
                                 '[PASSWORD]' => $password,
-                            );
+                            ];
                             $send = $this->swiftmailer->sendmail('signup_success', $email, $mailReplaceArray);
                         }
 
@@ -260,7 +254,7 @@ class Auth extends MY_GuestUserController
 
                     //Set notification message in session flash messanger for next request
                     //and redirect to login page
-                    $this->session->set_flashdata('messages', array('success@#@'.$message));
+                    $this->session->set_flashdata('messages', ['success@#@'.$message]);
                     redirect(base_url('auth/login'));
                 } catch (Exception $e) {
 
@@ -271,7 +265,7 @@ class Auth extends MY_GuestUserController
                         $message = 'Registration failed due to some error';
                     }
                     $message = (isset($settings['signup_failed_message']) && !empty($settings['signup_failed_message'])) ? $settings['signup_failed_message'] : $message;
-                    $this->session->set_flashdata('messages', array('danger@#@'.$message));
+                    $this->session->set_flashdata('messages', ['danger@#@'.$message]);
                     redirect(base_url('auth/register'));
                 }
             } else {
@@ -280,17 +274,17 @@ class Auth extends MY_GuestUserController
                 $afterValidationData = $this->input->post();
                 $afterValidationData['formErrors'] = $errors;
 
-                return $this->load->view('layout/frontend', array(
-                    'content' => $this->load->view('auth/register', $afterValidationData, true),
+                return $this->load->view('layout/frontend', [
+                    'content'   => $this->load->view('auth/register', $afterValidationData, true),
                     'metaTitle' => 'Create Your Account',
-                ));
+                ]);
             }
         } else {
             //If request is get instead of form submission, show view form
-            return $this->load->view('layout/frontend', array(
-                'content' => $this->load->view('auth/register', array(), true),
+            return $this->load->view('layout/frontend', [
+                'content'   => $this->load->view('auth/register', [], true),
                 'metaTitle' => 'Create Your Account',
-            ));
+            ]);
         }
     }
 
@@ -328,12 +322,12 @@ class Auth extends MY_GuestUserController
 
             //Set success notification message in session flash messanger for next request
             $message = (isset($settings['signup_success_message']) && !empty($settings['signup_success_message'])) ? $settings['signup_success_message'] : 'Registration successfully!!';
-            $this->session->set_flashdata('messages', array('success@#@'.$message));
+            $this->session->set_flashdata('messages', ['success@#@'.$message]);
             redirect(base_url('auth/login'));
         } else {
             //Set error notification message in session flash messanger for next request
             $message = (isset($settings['confirm_email_failed_message']) && !empty($settings['confirm_email_failed_message'])) ? $settings['confirm_email_failed_message'] : 'Confirmation link seems to be expired or invalid.';
-            $this->session->set_flashdata('messages', array('danger@#@'.$message));
+            $this->session->set_flashdata('messages', ['danger@#@'.$message]);
             redirect(base_url('auth/register'));
         }
     }
@@ -351,9 +345,9 @@ class Auth extends MY_GuestUserController
 
             //Validate signup form
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|xss_clean',
-                    array('required' => 'Please enter your registered Email ID',
-                          'valid_email' => 'Please enter a valid Email ID'
-                    ));
+                    ['required'         => 'Please enter your registered Email ID',
+                          'valid_email' => 'Please enter a valid Email ID',
+                    ]);
 
             //If form is successfully validated
             if ($this->form_validation->run() == true) {
@@ -369,40 +363,40 @@ class Auth extends MY_GuestUserController
                     $emailId = $this->input->post('email');
 
                     //Get the user for given email id
-                    $user = $this->doctrine->em->getRepository('Entity\User')->findOneBy(array('email' => $emailId));
+                    $user = $this->doctrine->em->getRepository('Entity\User')->findOneBy(['email' => $emailId]);
 
                     //If user not found in database
                     if ($user === null) {
-                        return $this->load->view('layout/frontend', array(
+                        return $this->load->view('layout/frontend', [
                             'content' => $this->load->view('auth/forgotpassword', $_POST, true),
-                            'errors' => array('No user found regarding this email'),
-                        ));
+                            'errors'  => ['No user found regarding this email'],
+                        ]);
                     }
 
                     //If user found, get user ID
                     $userId = $user->getId();
 
                     //Prepare Encrypted String
-                    $userInfoString = json_encode(array('userId' => $userId, 'dateCreated' => date('Y-m-d H:i:s')));
+                    $userInfoString = json_encode(['userId' => $userId, 'dateCreated' => date('Y-m-d H:i:s')]);
                     $encryptedString = rawurlencode($this->utils->encrypt($userInfoString));
                     $resetPasswordLink = base_url('auth/reset-password').'?salt='.$encryptedString;
 
                     //Send the email with password reset link
-                    $mailReplaceArray = array(
-                        '[NAME]' => $user->getFirstName().' '.$user->getLastName(),
+                    $mailReplaceArray = [
+                        '[NAME]'                => $user->getFirstName().' '.$user->getLastName(),
                         '[PASSWORD_RESET_LINK]' => $resetPasswordLink,
-                    );
+                    ];
                     $send = $this->swiftmailer->sendmail('forgot_password', $emailId, $mailReplaceArray);
 
                     //Set success notification message in session flash messanger for next request
                     $message = (isset($settings['send_password_reset_link_success_message']) && !empty($settings['send_password_reset_link_success_message'])) ? $settings['send_password_reset_link_success_message'] : 'A password reset link has been sent to your email';
-                    $this->session->set_flashdata('messages', array('success@#@'.$message));
+                    $this->session->set_flashdata('messages', ['success@#@'.$message]);
                     redirect(base_url('auth/forgot-password'));
                 } catch (Exception $e) {
 
                     //Set error notification message in session flash messanger for next request
                     $message = (isset($settings['send_password_reset_link_failed_message']) && !empty($settings['send_password_reset_link_failed_message'])) ? $settings['send_password_reset_link_failed_message'] : 'Password reset link could not be sent';
-                    $this->session->set_flashdata('messages', array('danger@#@'.$message));
+                    $this->session->set_flashdata('messages', ['danger@#@'.$message]);
                     redirect(base_url('auth/forgot-password'));
                 }
             } else {
@@ -411,17 +405,17 @@ class Auth extends MY_GuestUserController
                 $afterValidationData = $this->input->post();
                 $afterValidationData['formErrors'] = $errors;
 
-                return $this->load->view('layout/frontend', array(
-                    'content' => $this->load->view('auth/forgotpassword', $afterValidationData, true),
+                return $this->load->view('layout/frontend', [
+                    'content'   => $this->load->view('auth/forgotpassword', $afterValidationData, true),
                     'metaTitle' => 'Forgot Your Password?',
-                ));
+                ]);
             }
         } else {
             //If request is get instead of form submission, show view form
-            return $this->load->view('layout/frontend', array(
-                'content' => $this->load->view('auth/forgotpassword', array(), true),
+            return $this->load->view('layout/frontend', [
+                'content'   => $this->load->view('auth/forgotpassword', [], true),
                 'metaTitle' => 'Forgot Your Password',
-            ));
+            ]);
         }
     }
 
@@ -446,12 +440,12 @@ class Auth extends MY_GuestUserController
 
             //Set form validation rules
             $this->form_validation->set_rules('password', 'Password', 'trim|required',
-                    array('required' => 'Please enter Password',
-                    ));
+                    ['required' => 'Please enter Password',
+                    ]);
             $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|matches[password]',
-                    array('required' => 'Please enter Confirm Password',
-                          'matches' => 'Password does not match with Confirm Password'
-                    ));
+                    ['required'     => 'Please enter Confirm Password',
+                          'matches' => 'Password does not match with Confirm Password',
+                    ]);
 
             //If form is successfully validated
             if ($this->form_validation->run() == true) {
@@ -481,35 +475,35 @@ class Auth extends MY_GuestUserController
 
                     //Set success notification message in session flash messanger for next request
                     $message = (isset($settings['password_reset_success_message']) && !empty($settings['password_reset_success_message'])) ? $settings['password_reset_success_message'] : 'Password reset successfully';
-                    $this->session->set_flashdata('messages', array('success@#@'.$message));
+                    $this->session->set_flashdata('messages', ['success@#@'.$message]);
                     redirect(base_url('auth/login'));
                 } else {
 
                     //Set error notification message in session flash messanger for next request
                     $message = (isset($settings['password_reset_failed_message']) && !empty($settings['password_reset_failed_message'])) ? $settings['password_reset_failed_message'] : 'Password reset link seems to be invalid or expired';
-                    $this->session->set_flashdata('messages', array('danger@#@'.$message));
+                    $this->session->set_flashdata('messages', ['danger@#@'.$message]);
                     redirect(base_url('auth/reset-password?salt='.rawurlencode($salt)));
                 }
             } else {
 
                 //If form not validated then show errors
                 $errors = $this->form_validation->error_array();
-                $afterValidationData = array();
+                $afterValidationData = [];
                 $afterValidationData['formErrors'] = $errors;
                 $afterValidationData['salt'] = $salt;
 
-                return $this->load->view('layout/frontend', array(
-                    'content' => $this->load->view('auth/resetpassword', $afterValidationData, true),
+                return $this->load->view('layout/frontend', [
+                    'content'   => $this->load->view('auth/resetpassword', $afterValidationData, true),
                     'metaTitle' => 'Reset Your Password',
-                ));
+                ]);
             }
         } else {
 
             //If request is get instead of form submission, show view form
-            return $this->load->view('layout/frontend', array(
-                'content' => $this->load->view('auth/resetpassword', array('salt' => $salt), true),
+            return $this->load->view('layout/frontend', [
+                'content'   => $this->load->view('auth/resetpassword', ['salt' => $salt], true),
                 'metaTitle' => 'Reset Your Password',
-            ));
+            ]);
         }
     }
 
@@ -578,17 +572,17 @@ class Auth extends MY_GuestUserController
 
                     //If user registered successfully, create user session and let the user login
                     if ($registeredUser) {
-                        $loggedUser = array(
-                            'id' => $registeredUser->getId(),
-                            'email' => $registeredUser->getEmail(),
+                        $loggedUser = [
+                            'id'          => $registeredUser->getId(),
+                            'email'       => $registeredUser->getEmail(),
                             'userGroupId' => $registeredUser->getUserGroup()->getId(),
-                            'roleId' => $registeredUser->getUserGroup()->getRole()->getId(),
-                            'firstName' => $registeredUser->getFirstName(),
-                            'lastName' => $registeredUser->getLastName(),
-                            'fullName' => $registeredUser->getFirstName().' '.$registeredUser->getLastName(),
-                            'photo' => $registeredUser->getPhoto(),
-                            'createdOn' => $registeredUser->getCreatedOn()->format('Y-m-d'),
-                        );
+                            'roleId'      => $registeredUser->getUserGroup()->getRole()->getId(),
+                            'firstName'   => $registeredUser->getFirstName(),
+                            'lastName'    => $registeredUser->getLastName(),
+                            'fullName'    => $registeredUser->getFirstName().' '.$registeredUser->getLastName(),
+                            'photo'       => $registeredUser->getPhoto(),
+                            'createdOn'   => $registeredUser->getCreatedOn()->format('Y-m-d'),
+                        ];
 
                         $this->session->set_userdata('loggedUser', $loggedUser);
 
@@ -612,17 +606,17 @@ class Auth extends MY_GuestUserController
 
             switch ($e->getCode()) {
 
-                case 0 : $error = 'Unspecified error.';
+                case 0: $error = 'Unspecified error.';
                     break;
-                case 1 : $error = 'Hybriauth configuration error.';
+                case 1: $error = 'Hybriauth configuration error.';
                     break;
-                case 2 : $error = 'Provider not properly configured.';
+                case 2: $error = 'Provider not properly configured.';
                     break;
-                case 3 : $error = 'Unknown or disabled provider.';
+                case 3: $error = 'Unknown or disabled provider.';
                     break;
-                case 4 : $error = 'Missing provider application credentials.';
+                case 4: $error = 'Missing provider application credentials.';
                     break;
-                case 5 : log_message('debug', 'controllers.HAuth.login: Authentification failed. The user has canceled the authentication or the provider refused the connection.');
+                case 5: log_message('debug', 'controllers.HAuth.login: Authentification failed. The user has canceled the authentication or the provider refused the connection.');
                     //redirect();
                     if (isset($service)) {
                         log_message('debug', 'controllers.HAuth.login: logging out from service.');
@@ -630,9 +624,9 @@ class Auth extends MY_GuestUserController
                     }
                     show_error('User has cancelled the authentication or the provider refused the connection.');
                     break;
-                case 6 : $error = 'User profile request failed. Most likely the user is not connected to the provider and he should to authenticate again.';
+                case 6: $error = 'User profile request failed. Most likely the user is not connected to the provider and he should to authenticate again.';
                     break;
-                case 7 : $error = 'User not connected to the provider.';
+                case 7: $error = 'User not connected to the provider.';
                     break;
             }
 
@@ -718,15 +712,15 @@ class Auth extends MY_GuestUserController
         }
 
         //Find if a user already exists
-        $user = $this->objectManager->getRepository('Entity\User')->findOneBy(array('email' => $email));
+        $user = $this->objectManager->getRepository('Entity\User')->findOneBy(['email' => $email]);
 
         //If user not found then register as a new user with random password
         if ($user === null) {
 
             //Create User object
             $user = new User();
-            $userGroup = $this->objectManager->getRepository('Entity\UserGroup')->findOneBy(array('id' => GUEST_ROLE_ID));
-            $role = $this->objectManager->getRepository('Entity\Role')->findOneBy(array('id' => GUEST_GROUP_ID));
+            $userGroup = $this->objectManager->getRepository('Entity\UserGroup')->findOneBy(['id' => GUEST_ROLE_ID]);
+            $role = $this->objectManager->getRepository('Entity\Role')->findOneBy(['id' => GUEST_GROUP_ID]);
             $password = Utils::generateRandomString();
             $encryptedPass = Utils::hash($password);
 
@@ -769,12 +763,12 @@ class Auth extends MY_GuestUserController
 
             //Try to send the email to user with login credentials for future
             try {
-                $mailReplaceArray = array(
-                    '[NAME]' => $displayName,
+                $mailReplaceArray = [
+                    '[NAME]'     => $displayName,
                     '[PROVIDER]' => $provider,
-                    '[EMAIL]' => $email,
+                    '[EMAIL]'    => $email,
                     '[PASSWORD]' => $password,
-                );
+                ];
                 $this->swiftmailer->sendmail('signup_through_social_media', $email, $mailReplaceArray);
             } catch (Exception $exc) {
                 //TO DO
@@ -782,10 +776,10 @@ class Auth extends MY_GuestUserController
         } else {
 
             //If user already exists then update his/her access token
-            $user = $this->objectManager->getRepository('Entity\User')->findOneBy(array('email' => $email));
+            $user = $this->objectManager->getRepository('Entity\User')->findOneBy(['email' => $email]);
             $user->setPhoto($photoURL);
 
-            $socialLogin = $this->objectManager->getRepository('Entity\SocialLogin')->findOneBy(array('user' => $user, 'socialType' => $socialType));
+            $socialLogin = $this->objectManager->getRepository('Entity\SocialLogin')->findOneBy(['user' => $user, 'socialType' => $socialType]);
             if ($socialLogin === null) {
                 $socialLogin = new SocialLogin();
                 $socialLogin->setUser($user);

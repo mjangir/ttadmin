@@ -27,84 +27,84 @@ class Paginator
 {
     /**
      * Records to show per page.
-     * 
+     *
      * @var int
      */
     private $resultsPerPage;
 
     /**
      * Total number of records.
-     * 
+     *
      * @var int
      */
     private $totalResults;
 
     /**
      * Result data.
-     * 
+     *
      * @var object
      */
     private $results;
 
     /**
      * Base URL of paginated data.
-     * 
+     *
      * @var string
      */
     private $baseUrl;
 
     /**
      * Main pagination list.
-     * 
+     *
      * @var string
      */
     private $paging;
 
     /**
      * Page number.
-     * 
+     *
      * @var int
      */
     private $page;
 
     /**
      * Pagination adjacents.
-     * 
+     *
      * @var int
      */
     private $adjacents;
 
     /**
      * Show only previous and next links.
-     * 
+     *
      * @var bool
      */
     private $onlyPrevNext;
 
     /**
      * CSS class applied to link.
-     * 
+     *
      * @var string
      */
     private $linkClass;
 
     /**
      * Total number of pages.
-     * 
+     *
      * @var int
      */
     private $totalPages;
 
     /**
      * Previous page label.
-     * 
+     *
      * @var string
      */
     public $prevLabel = '&larr;Previous';
 
     /**
      * Next page label.
-     * 
+     *
      * @var string
      */
     public $nextLabel = 'Next&rarr;';
@@ -118,7 +118,7 @@ class Paginator
 
     /**
      * Set paginator options.
-     * 
+     *
      * @param object $pagedResults
      * @param int    $page
      * @param string $baseUrl
@@ -126,7 +126,7 @@ class Paginator
      * @param int    $adjacents
      * @param bool   $isAjax
      * @param bool   $onlyPrevNext
-     * 
+     *
      * @return \Paginator
      */
     public function setOptions($pagedResults, $page, $baseUrl, $resultsPerPage = 10, $adjacents = 3, $isAjax = true, $onlyPrevNext = false)
@@ -138,7 +138,7 @@ class Paginator
         $this->page = $page;
         $this->adjacents = $adjacents;
         $this->onlyPrevNext = $onlyPrevNext;
-        $this->linkClass = ($isAjax) ? 'ajax'  : '';
+        $this->linkClass = ($isAjax) ? 'ajax' : '';
         $this->totalPages = ceil($this->totalResults / $this->resultsPerPage);
 
         return $this;
@@ -146,7 +146,7 @@ class Paginator
 
     /**
      * Get pagination links.
-     * 
+     *
      * @return string
      */
     public function getPagination()
@@ -156,7 +156,7 @@ class Paginator
 
     /**
      * Get total records.
-     * 
+     *
      * @return int
      */
     public function getTotalRecords()
@@ -166,7 +166,7 @@ class Paginator
 
     /**
      * Get page number.
-     * 
+     *
      * @return int
      */
     public function getPage()
@@ -186,7 +186,7 @@ class Paginator
 
     /**
      * Generate pagination links.
-     * 
+     *
      * @return string
      */
     private function generatePaging()

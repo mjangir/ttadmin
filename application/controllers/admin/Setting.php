@@ -38,7 +38,7 @@ class Setting extends MY_AdminController
     /**
      * Module Name.
      *
-     * @var string Name of the entity which the controller is for 
+     * @var string Name of the entity which the controller is for
      */
     protected $crudName;
 
@@ -51,7 +51,7 @@ class Setting extends MY_AdminController
 
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor and sets base url of the controller,
      * module name and doctrine entity name
      */
@@ -71,7 +71,7 @@ class Setting extends MY_AdminController
 
     /**
      * index action.
-     * 
+     *
      * Index page of Setting module
      */
     public function index()
@@ -79,44 +79,41 @@ class Setting extends MY_AdminController
 
         //Get all settings from database
         $settingEntity = $this->objectManager->getRepository($this->entityName)->findAll();
-        $settings = array();
+        $settings = [];
         foreach ($settingEntity as $setting) {
             $settings[$setting->getKey()] = $setting->getValue();
         }
 
         //Set view parameters
-        $view_data = array();
+        $view_data = [];
         $view_data['settings'] = $settings;
         $view_data['saveUrl'] = $this->baseControllerUrl.'/save';
 
         //Render index page with layout
-        return $this->load->view('layout/backend', array(
-            'content' => $this->load->view('admin/setting', $view_data, true),
-            'pageHeading' => 'Manage Settings',
-            'pageSubHeading' => '',
-            'activeLinksAlias' => array('admin_setting'),
-            'breadCrumbs' => array('Manage Settings' => ''),
-        ));
+        return $this->load->view('layout/backend', [
+            'content'          => $this->load->view('admin/setting', $view_data, true),
+            'pageHeading'      => 'Manage Settings',
+            'pageSubHeading'   => '',
+            'activeLinksAlias' => ['admin_setting'],
+            'breadCrumbs'      => ['Manage Settings' => ''],
+        ]);
     }
 
     /**
      * save action.
-     * 
+     *
      * Saves updated settings
      */
     public function save()
     {
-
         $isAjax = false;
 
         //Check if request is POST. If yes then proceed with add or update
         if ($this->input->server('REQUEST_METHOD') == 'POST') {
-
-            if($this->input->post('normal_battle_levels') && $this->input->post('normal_battle_levels') == 1)
-            {
-                $levels = $this->input->post('levels') ? json_encode($this->input->post('levels')) : json_encode(array());
+            if ($this->input->post('normal_battle_levels') && $this->input->post('normal_battle_levels') == 1) {
+                $levels = $this->input->post('levels') ? json_encode($this->input->post('levels')) : json_encode([]);
                 //Get setting entity by key
-                $settingEntity = $this->objectManager->getRepository($this->entityName)->findOneBy(array('key' => 'normal_battle_levels_json'));
+                $settingEntity = $this->objectManager->getRepository($this->entityName)->findOneBy(['key' => 'normal_battle_levels_json']);
 
                 //If key is not empty them update the new value
                 if (!empty($settingEntity)) {
@@ -126,16 +123,14 @@ class Setting extends MY_AdminController
                 }
 
                 $isAjax = true;
-            }
-            else
-            {
+            } else {
                 //Get all posted data
                 $settings = $this->input->post('settings');
 
                 foreach ($settings as $key => $value) {
 
                     //Get setting entity by key
-                    $settingEntity = $this->objectManager->getRepository($this->entityName)->findOneBy(array('key' => $key));
+                    $settingEntity = $this->objectManager->getRepository($this->entityName)->findOneBy(['key' => $key]);
 
                     //If key is not empty them update the new value
                     if (!empty($settingEntity)) {
@@ -143,39 +138,35 @@ class Setting extends MY_AdminController
                         $this->objectManager->persist($settingEntity);
                         $this->objectManager->flush();
                     }
-
+                }
             }
-        }
 
             // Update Global Settings In NodeJS
-            $client         = new Client();
-            $accessToken    = $this->session->userdata('accessToken');
-            $result         = $client->post(API_BASE_PATH.'/api/settings/update-global-settings?access_token='.$accessToken);
+            $client = new Client();
+            $accessToken = $this->session->userdata('accessToken');
+            $result = $client->post(API_BASE_PATH.'/api/settings/update-global-settings?access_token='.$accessToken);
 
-            if($isAjax)
-            {
+            if ($isAjax) {
                 //Return success if added successfully
-                echo json_encode(array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'success',
+                echo json_encode([
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'success',
                             'message' => 'Settings updated successfully',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                    'location' => array(
-                        'redirect' => array(
-                            'url' => base_url('admin/setting'),
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                    'location' => [
+                        'redirect' => [
+                            'url'     => base_url('admin/setting'),
                             'timeout' => 2000,
-                        ),
-                    ),
-                ));
-            }
-            else
-            {
+                        ],
+                    ],
+                ]);
+            } else {
                 //Return success if added successfully
-                $this->session->set_flashdata('messages', array('success@#@Settings updated successfully'));
+                $this->session->set_flashdata('messages', ['success@#@Settings updated successfully']);
                 redirect(base_url('admin/setting'));
             }
         }

@@ -36,7 +36,7 @@ class User extends MY_AdminController
     /**
      * Module Name.
      *
-     * @var string Name of the entity which the controller is for 
+     * @var string Name of the entity which the controller is for
      */
     protected $crudName;
 
@@ -49,7 +49,7 @@ class User extends MY_AdminController
 
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor and sets base url of the controller,
      * module name and doctrine entity name
      */
@@ -69,7 +69,7 @@ class User extends MY_AdminController
 
     /**
      * index action.
-     * 
+     *
      * Index page of User module
      */
     public function index()
@@ -85,7 +85,7 @@ class User extends MY_AdminController
         $paginator = $this->paginator->setOptions($data, $this->page, $this->baseControllerUrl, $this->limit);
 
         //Prepare the view parameters
-        $view_data = array();
+        $view_data = [];
         $view_data['data'] = $data;                            //Data got from model
         $view_data['page'] = $this->page;                      //Current page number
         $view_data['listStartFrom'] = $this->offset + 1;                  //Serial number of the table records
@@ -104,60 +104,61 @@ class User extends MY_AdminController
 
         //Check if the request is ajax. If yes then only render the view
         if ($this->input->is_ajax_request()) {
-            $jsonResponse = array();
+            $jsonResponse = [];
             $jsonResponse['html'] = $this->load->view('admin/user/index', $view_data, true);
             echo json_encode($jsonResponse);
         } else {
 
             //If request is not ajax then render the view with layout
-            return $this->load->view('layout/backend', array(
-                'content' => $this->load->view('admin/user/index', $view_data, true),
-                'pageHeading' => 'System Users',
-                'pageSubHeading' => '',
-                'activeLinksAlias' => array('admin_users'),
-                'breadCrumbs' => array('Manage Users' => ''),
-            ));
+            return $this->load->view('layout/backend', [
+                'content'          => $this->load->view('admin/user/index', $view_data, true),
+                'pageHeading'      => 'System Users',
+                'pageSubHeading'   => '',
+                'activeLinksAlias' => ['admin_users'],
+                'breadCrumbs'      => ['Manage Users' => ''],
+            ]);
         }
     }
-    
+
     /**
      * email_exists function.
-     * 
+     *
      * Checks weather given email exists in database or not
-     * 
+     *
      * @param string $email Email to check in database
-     * 
+     *
      * @return bool
      */
     public function email_exists($email, $id)
     {
-        $record = $this->objectManager->getRepository('Entity\User')->findOneBy(array('email' => $email));
-        
-        if($record !== NULL && $record->getId() == $id) {
+        $record = $this->objectManager->getRepository('Entity\User')->findOneBy(['email' => $email]);
+
+        if ($record !== null && $record->getId() == $id) {
             return true;
         }
-        return ($record === NULL);
+
+        return $record === null;
     }
-    
+
     /**
      * valid_user_group function.
-     * 
+     *
      * Checks weather given user group exists in selected role or not
-     * 
+     *
      * @param string $groupId User Group check for
-     * 
+     *
      * @return bool
      */
     public function valid_user_group($groupId)
     {
         $record = $this->objectManager->getRepository('Entity\UserGroup')->find($groupId);
-        
-        return ($record->getRole()->getId() == $this->input->post('roleId'));
+
+        return $record->getRole()->getId() == $this->input->post('roleId');
     }
 
     /**
      * addupdate action.
-     * 
+     *
      * The common action to add or update a record for this controller. In case of update record,
      * the ID of record will be provide. It will render the form only if the request to this action
      * is not POST.
@@ -183,29 +184,28 @@ class User extends MY_AdminController
 
             //Set validation rules
             $this->form_validation->set_rules('userGroupId', 'User Group', 'trim|required|callback_valid_user_group',
-                    array('required' => 'Please select User Group',
-                            'valid_user_group' => 'This User Group does not exist in Selected Role'
-                    ));
+                    ['required'                => 'Please select User Group',
+                            'valid_user_group' => 'This User Group does not exist in Selected Role',
+                    ]);
             $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean',
-                    array('required' => 'Please enter Name'));
+                    ['required' => 'Please enter Name']);
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|callback_email_exists['.$id.']|xss_clean',
-                    array('required' => 'Please enter Email ID',
+                    ['required'       => 'Please enter Email ID',
                         'valid_email' => 'Please enter valid a Email ID',
-                        'email_exists'=> 'Email ID is already taken'
-                    ));
+                        'email_exists'=> 'Email ID is already taken',
+                    ]);
             if ($id === null) {
                 $this->form_validation->set_rules('password', 'Password', 'trim|required',
-                            array('required' => 'Please enter Password'));
+                            ['required' => 'Please enter Password']);
                 $this->form_validation->set_rules('confirmPassword', 'Confirm Password', 'trim|required|matches[password]',
-                            array('required' => 'Please enter Confirm Password',
-                                'matches' => 'Password does not match with Confirm Password'
-                ));
+                            ['required'   => 'Please enter Confirm Password',
+                                'matches' => 'Password does not match with Confirm Password',
+                ]);
             }
 
             //If form is successfully validated
             if ($this->form_validation->run() == true) {
-
-                $request = array(
+                $request = [
                     'name'          => $this->postParams['name'],
                     'email'         => $this->postParams['email'],
                     'userGroupId'   => $this->postParams['userGroupId'],
@@ -213,78 +213,75 @@ class User extends MY_AdminController
                     'phone'         => $this->postParams['phone'],
                     'countryId'     => !empty($this->postParams['countryId']) ? $this->postParams['country'] : null,
                     'createdBy'     => $this->loggedUserId,
-                    'updatedBy'     => $this->loggedUserId
-                );
+                    'updatedBy'     => $this->loggedUserId,
+                ];
 
-                $client = new Client(); 
-                
+                $client = new Client();
+
                 //Create the User object
                 if ($id === null) {
                     $request['password'] = $this->postParams['password'];
-                    $result = $client->post(API_BASE_PATH.'/api/users?access_token='.$this->session->userdata('accessToken'), array(
-                        'json' => $request
-                    ));
+                    $result = $client->post(API_BASE_PATH.'/api/users?access_token='.$this->session->userdata('accessToken'), [
+                        'json' => $request,
+                    ]);
                 } else {
-                    $result = $client->put(API_BASE_PATH.'/api/users/'.$id.'?access_token='.$this->session->userdata('accessToken'), array(
-                        'json' => $request
-                    ));
+                    $result = $client->put(API_BASE_PATH.'/api/users/'.$id.'?access_token='.$this->session->userdata('accessToken'), [
+                        'json' => $request,
+                    ]);
                 }
 
                 $response = json_decode($result->getBody()->getContents(), true);
 
-                if(isset($response['status']) && $response['status'] == 'success')
-                {
+                if (isset($response['status']) && $response['status'] == 'success') {
                     //Return success if added successfully
-                    echo json_encode(array(
-                        'html' => '',
-                        'notification' => array(
-                            array(
-                                'status' => 'success',
+                    echo json_encode([
+                        'html'         => '',
+                        'notification' => [
+                            [
+                                'status'  => 'success',
                                 'message' => $this->crudName.' saved successfully.',
-                                'type' => 'toastr',
-                            ),
-                        ),
-                        'location' => array(
-                            'redirect' => array(
-                                'url' => $this->baseControllerUrl,
+                                'type'    => 'toastr',
+                            ],
+                        ],
+                        'location' => [
+                            'redirect' => [
+                                'url'     => $this->baseControllerUrl,
                                 'timeout' => 2000,
-                            ),
-                        ),
-                    ));
+                            ],
+                        ],
+                    ]);
                     exit;
-                }
-                else
-                {
-                    echo json_encode(array(
-                        'html' => '',
-                        'notification' => array(
-                            array(
-                                'status' => 'error',
+                } else {
+                    echo json_encode([
+                        'html'         => '',
+                        'notification' => [
+                            [
+                                'status'  => 'error',
                                 'message' => 'Error occured while processing.',
-                                'type' => 'toastr',
-                            ),
-                        ),
-                    ));
+                                'type'    => 'toastr',
+                            ],
+                        ],
+                    ]);
                     exit;
                 }
             } else {
                 //Throw the validation errors, if validation not successfully
                 $errors = $this->form_validation->error_array();
-                echo json_encode(array(
-                    'validation' => array(
-                        'form' => '#form_user',
+                echo json_encode([
+                    'validation' => [
+                        'form'   => '#form_user',
                         'errors' => $errors,
-                    ),
-                ));
+                    ],
+                ]);
                 exit;
             }
         } else {
             //If request method is not post then render the form with layout
 
             //Set view form attributes and variables
-            $view_data['form']['attributes'] = array(
+            $view_data['form']['attributes'] = [
                 'id' => 'form_user',
-            );
+            ];
             $view_data['form']['action'] = ($id === null) ? $this->baseControllerUrl.'/add-update' : $this->baseControllerUrl.'/add-update?id='.$id;
             $view_data['form']['cancelUrl'] = $this->baseControllerUrl;
             $view_data['form']['viewUrl'] = $this->baseControllerUrl.'/view?id='.$id;
@@ -311,7 +308,7 @@ class User extends MY_AdminController
 
     /**
      * view action.
-     * 
+     *
      * View a user details
      */
     public function view()
@@ -334,16 +331,16 @@ class User extends MY_AdminController
             $record = $this->objectManager->getRepository($this->entityName)->find($id);
 
             //Render view popup page
-            $this->load->view('admin/user/view', array('record' => $record));
+            $this->load->view('admin/user/view', ['record' => $record]);
         }
     }
 
     /**
      * delete action.
-     * 
+     *
      * Action to delete a record from the table. It will permanent remove the record from database.
      * There is no soft delete functionality as of now
-     * 
+     *
      * @return delete
      */
     public function delete()
@@ -374,29 +371,29 @@ class User extends MY_AdminController
                 $this->objectManager->flush();
 
                 //If record deleted successfully then show the success message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'success',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'success',
                             'message' => $this->crudName.' deleted successfully.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             } else {
 
                 //If record not found in database with the given ID, then show No record found message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'error',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'error',
                             'message' => 'No record found.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             }
         }
 
@@ -407,7 +404,7 @@ class User extends MY_AdminController
 
     /**
      * status action.
-     * 
+     *
      * Make a user Active or Inactive
      */
     public function status()
@@ -445,29 +442,29 @@ class User extends MY_AdminController
                 $this->objectManager->flush();
 
                 //If record marked as active or in-active then show the success message
-                $response = array(
-                        'html' => '',
-                        'notification' => array(
-                            array(
-                                'status' => 'success',
+                $response = [
+                        'html'         => '',
+                        'notification' => [
+                            [
+                                'status'  => 'success',
                                 'message' => $this->crudName.' marked as '.strtolower($newStatus).' successfully.',
-                                'type' => 'toastr',
-                            ),
-                        ),
-                );
+                                'type'    => 'toastr',
+                            ],
+                        ],
+                ];
             } else {
 
                 //If record not found in database with the given ID, then show No record found message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'error',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'error',
                             'message' => 'No record found.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             }
         }
 

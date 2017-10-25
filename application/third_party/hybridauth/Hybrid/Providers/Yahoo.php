@@ -2,12 +2,12 @@
 /*!
 * HybridAuth
 * http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
-* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html 
+* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
 */
 
-/** 
+/**
  * Yahoo OAuth Class.
- * 
+ *
  * @author              Lukasz Koprowski <azram19@gmail.com>
  *
  * @version             0.2
@@ -35,7 +35,7 @@ class Hybrid_Providers_Yahoo extends Hybrid_Provider_Model_OAuth1
     {
         $userId = $this->getCurrentUserId();
 
-        $parameters = array();
+        $parameters = [];
         $parameters['format'] = 'json';
 
         $response = $this->api->get('user/'.$userId.'/profile', $parameters);
@@ -91,7 +91,7 @@ class Hybrid_Providers_Yahoo extends Hybrid_Provider_Model_OAuth1
     {
         $userId = $this->getCurrentUserId();
 
-        $parameters = array();
+        $parameters = [];
         $parameters['format'] = 'json';
         $parameters['count'] = 'max';
 
@@ -102,10 +102,10 @@ class Hybrid_Providers_Yahoo extends Hybrid_Provider_Model_OAuth1
         }
 
         if (!$response->contacts->contact && ($response->errcode != 0)) {
-            return array();
+            return [];
         }
 
-        $contacts = array();
+        $contacts = [];
 
         foreach ($response->contacts->contact as $item) {
             $uc = new Hybrid_User_Contact();
@@ -128,7 +128,7 @@ class Hybrid_Providers_Yahoo extends Hybrid_Provider_Model_OAuth1
     {
         $userId = $this->getCurrentUserId();
 
-        $parameters = array();
+        $parameters = [];
         $parameters['format'] = 'json';
         $parameters['count'] = 'max';
 
@@ -138,7 +138,7 @@ class Hybrid_Providers_Yahoo extends Hybrid_Provider_Model_OAuth1
             throw new Exception('User activity request failed! '.$this->providerId.' returned an error: '.$this->errorMessageByStatus($this->api->http_code));
         }
 
-        $activities = array();
+        $activities = [];
 
         foreach ($response->updates as $item) {
             $ua = new Hybrid_User_Activity();
@@ -157,7 +157,7 @@ class Hybrid_Providers_Yahoo extends Hybrid_Provider_Model_OAuth1
 
         if ($stream == 'me') {
             $userId = $this->getCurrentUserId();
-            $my_activities = array();
+            $my_activities = [];
 
             foreach ($activities as $a) {
                 if ($a->user->identifier == $userId) {
@@ -180,8 +180,6 @@ class Hybrid_Providers_Yahoo extends Hybrid_Provider_Model_OAuth1
                 return $v;
             }
         }
-
-        return;
     }
 
     public function selectGUID($v)
@@ -225,7 +223,7 @@ class Hybrid_Providers_Yahoo extends Hybrid_Provider_Model_OAuth1
 
     public function getCurrentUserId()
     {
-        $parameters = array();
+        $parameters = [];
         $parameters['format'] = 'json';
 
         $response = $this->api->get('me/guid', $parameters);

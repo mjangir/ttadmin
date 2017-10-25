@@ -35,7 +35,7 @@ class Linkcategory extends MY_AdminController
     /**
      * Module Name.
      *
-     * @var string Name of the entity which the controller is for 
+     * @var string Name of the entity which the controller is for
      */
     protected $crudName;
 
@@ -48,7 +48,7 @@ class Linkcategory extends MY_AdminController
 
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor and sets base url of the controller,
      * module name and doctrine entity name
      */
@@ -68,7 +68,7 @@ class Linkcategory extends MY_AdminController
 
     /**
      * index action.
-     * 
+     *
      * Index page of Link Category module
      */
     public function index()
@@ -84,7 +84,7 @@ class Linkcategory extends MY_AdminController
         $paginator = $this->paginator->setOptions($data, $this->page, $this->baseControllerUrl, $this->limit);
 
         //Prepare the view parameters
-        $view_data = array();
+        $view_data = [];
         $view_data['data'] = $data;                            //Data got from model
         $view_data['page'] = $this->page;                      //Current page number
         $view_data['listStartFrom'] = $this->offset + 1;                  //Serial number of the table records
@@ -102,19 +102,19 @@ class Linkcategory extends MY_AdminController
 
         //Check if the request is ajax. If yes then only render the view
         if ($this->input->is_ajax_request()) {
-            $jsonResponse = array();
+            $jsonResponse = [];
             $jsonResponse['html'] = $this->load->view('admin/linkcategory/index', $view_data, true);
             echo json_encode($jsonResponse);
         } else {
 
             //If request is not ajax then render the view with layout
-            return $this->load->view('layout/backend', array(
-                'content' => $this->load->view('admin/linkcategory/index', $view_data, true),
-                'pageHeading' => 'Manage Link Categories',
-                'pageSubHeading' => '',
-                'activeLinksAlias' => array('admin_manage_system_links', 'admin_manage_system_links_categories'),
-                'breadCrumbs' => array('Manage System Links' => '', 'Link Categories' => ''),
-            ));
+            return $this->load->view('layout/backend', [
+                'content'          => $this->load->view('admin/linkcategory/index', $view_data, true),
+                'pageHeading'      => 'Manage Link Categories',
+                'pageSubHeading'   => '',
+                'activeLinksAlias' => ['admin_manage_system_links', 'admin_manage_system_links_categories'],
+                'breadCrumbs'      => ['Manage System Links' => '', 'Link Categories' => ''],
+            ]);
         }
     }
 }

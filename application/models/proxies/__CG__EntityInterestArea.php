@@ -36,7 +36,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\InterestArea'."\0".'id', ''."\0".'Entity\\InterestArea'."\0".'block', ''."\0".'Entity\\InterestArea'."\0".'interestArea', ''."\0".'Entity\\InterestArea'."\0".'maxScore', ''."\0".'Entity\\InterestArea'."\0".'createdOn', ''."\0".'Entity\\InterestArea'."\0".'updatedOn', ''."\0".'Entity\\InterestArea'."\0".'questionCategory');
+            return ['__isInitialized__', ''."\0".'Entity\\InterestArea'."\0".'id', ''."\0".'Entity\\InterestArea'."\0".'block', ''."\0".'Entity\\InterestArea'."\0".'interestArea', ''."\0".'Entity\\InterestArea'."\0".'maxScore', ''."\0".'Entity\\InterestArea'."\0".'createdOn', ''."\0".'Entity\\InterestArea'."\0".'updatedOn', ''."\0".'Entity\\InterestArea'."\0".'questionCategory'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\InterestArea'."\0".'id', ''."\0".'Entity\\InterestArea'."\0".'block', ''."\0".'Entity\\InterestArea'."\0".'interestArea', ''."\0".'Entity\\InterestArea'."\0".'maxScore', ''."\0".'Entity\\InterestArea'."\0".'createdOn', ''."\0".'Entity\\InterestArea'."\0".'updatedOn', ''."\0".'Entity\\InterestArea'."\0".'questionCategory');
+        return ['__isInitialized__', ''."\0".'Entity\\InterestArea'."\0".'id', ''."\0".'Entity\\InterestArea'."\0".'block', ''."\0".'Entity\\InterestArea'."\0".'interestArea', ''."\0".'Entity\\InterestArea'."\0".'maxScore', ''."\0".'Entity\\InterestArea'."\0".'createdOn', ''."\0".'Entity\\InterestArea'."\0".'updatedOn', ''."\0".'Entity\\InterestArea'."\0".'questionCategory'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      */
     public function setBlock($block)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBlock', array($block));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBlock', [$block]);
 
         return parent::setBlock($block);
     }
@@ -197,7 +191,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      */
     public function getBlock()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBlock', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBlock', []);
 
         return parent::getBlock();
     }
@@ -207,7 +201,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      */
     public function setInterestArea($interestArea)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInterestArea', array($interestArea));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInterestArea', [$interestArea]);
 
         return parent::setInterestArea($interestArea);
     }
@@ -217,7 +211,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      */
     public function getInterestArea()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInterestArea', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInterestArea', []);
 
         return parent::getInterestArea();
     }
@@ -227,7 +221,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      */
     public function setMaxScore($maxScore)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMaxScore', array($maxScore));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMaxScore', [$maxScore]);
 
         return parent::setMaxScore($maxScore);
     }
@@ -237,7 +231,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      */
     public function getMaxScore()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMaxScore', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMaxScore', []);
 
         return parent::getMaxScore();
     }
@@ -247,7 +241,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      */
     public function setCreatedOn($createdOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', array($createdOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', [$createdOn]);
 
         return parent::setCreatedOn($createdOn);
     }
@@ -257,7 +251,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      */
     public function getCreatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', []);
 
         return parent::getCreatedOn();
     }
@@ -267,7 +261,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      */
     public function setUpdatedOn($updatedOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', array($updatedOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', [$updatedOn]);
 
         return parent::setUpdatedOn($updatedOn);
     }
@@ -277,7 +271,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      */
     public function getUpdatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', []);
 
         return parent::getUpdatedOn();
     }
@@ -287,7 +281,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      */
     public function setQuestionCategory(\Entity\QuestionCategory $questionCategory = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestionCategory', array($questionCategory));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setQuestionCategory', [$questionCategory]);
 
         return parent::setQuestionCategory($questionCategory);
     }
@@ -297,7 +291,7 @@ class __CG__EntityInterestArea extends \Entity\InterestArea implements \Doctrine
      */
     public function getQuestionCategory()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestionCategory', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getQuestionCategory', []);
 
         return parent::getQuestionCategory();
     }

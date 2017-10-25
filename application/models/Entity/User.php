@@ -1,11 +1,11 @@
 <?php
-namespace Entity;
 
+namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * User
+ * User.
  *
  * @ORM\Table(name="user", indexes={@ORM\Index(name="user_group_id", columns={"user_group_id"}), @ORM\Index(name="country_id", columns={"country_id"}), @ORM\Index(name="created_by", columns={"created_by"}), @ORM\Index(name="updated_by", columns={"updated_by"})})
  * @ORM\Entity(repositoryClass="Repository\UserRepository")
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class User
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -159,12 +159,10 @@ class User
      */
     private $updatedBy;
 
-
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -172,9 +170,10 @@ class User
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
+     *
      * @return User
      */
     public function setName($name)
@@ -185,9 +184,9 @@ class User
     }
 
     /**
-     * Get name
+     * Get name.
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -195,9 +194,10 @@ class User
     }
 
     /**
-     * Set facebookId
+     * Set facebookId.
      *
      * @param string $facebookId
+     *
      * @return User
      */
     public function setFacebookId($facebookId)
@@ -208,9 +208,9 @@ class User
     }
 
     /**
-     * Get facebookId
+     * Get facebookId.
      *
-     * @return string 
+     * @return string
      */
     public function getFacebookId()
     {
@@ -218,9 +218,10 @@ class User
     }
 
     /**
-     * Set email
+     * Set email.
      *
      * @param string $email
+     *
      * @return User
      */
     public function setEmail($email)
@@ -231,9 +232,9 @@ class User
     }
 
     /**
-     * Get email
+     * Get email.
      *
-     * @return string 
+     * @return string
      */
     public function getEmail()
     {
@@ -241,9 +242,10 @@ class User
     }
 
     /**
-     * Set salt
+     * Set salt.
      *
      * @param string $salt
+     *
      * @return User
      */
     public function setSalt($salt)
@@ -254,9 +256,9 @@ class User
     }
 
     /**
-     * Get salt
+     * Get salt.
      *
-     * @return string 
+     * @return string
      */
     public function getSalt()
     {
@@ -264,9 +266,10 @@ class User
     }
 
     /**
-     * Set password
+     * Set password.
      *
      * @param string $password
+     *
      * @return User
      */
     public function setPassword($password)
@@ -277,9 +280,9 @@ class User
     }
 
     /**
-     * Get password
+     * Get password.
      *
-     * @return string 
+     * @return string
      */
     public function getPassword()
     {
@@ -287,9 +290,10 @@ class User
     }
 
     /**
-     * Set forgotPwdSalt
+     * Set forgotPwdSalt.
      *
      * @param string $forgotPwdSalt
+     *
      * @return User
      */
     public function setForgotPwdSalt($forgotPwdSalt)
@@ -300,9 +304,9 @@ class User
     }
 
     /**
-     * Get forgotPwdSalt
+     * Get forgotPwdSalt.
      *
-     * @return string 
+     * @return string
      */
     public function getForgotPwdSalt()
     {
@@ -310,9 +314,10 @@ class User
     }
 
     /**
-     * Set gender
+     * Set gender.
      *
      * @param string $gender
+     *
      * @return User
      */
     public function setGender($gender)
@@ -323,9 +328,9 @@ class User
     }
 
     /**
-     * Get gender
+     * Get gender.
      *
-     * @return string 
+     * @return string
      */
     public function getGender()
     {
@@ -333,9 +338,10 @@ class User
     }
 
     /**
-     * Set birthDate
+     * Set birthDate.
      *
      * @param \DateTime $birthDate
+     *
      * @return User
      */
     public function setBirthDate($birthDate)
@@ -346,9 +352,9 @@ class User
     }
 
     /**
-     * Get birthDate
+     * Get birthDate.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getBirthDate()
     {
@@ -356,9 +362,10 @@ class User
     }
 
     /**
-     * Set bloodGroup
+     * Set bloodGroup.
      *
      * @param string $bloodGroup
+     *
      * @return User
      */
     public function setBloodGroup($bloodGroup)
@@ -369,9 +376,9 @@ class User
     }
 
     /**
-     * Get bloodGroup
+     * Get bloodGroup.
      *
-     * @return string 
+     * @return string
      */
     public function getBloodGroup()
     {
@@ -379,9 +386,10 @@ class User
     }
 
     /**
-     * Set phone
+     * Set phone.
      *
      * @param string $phone
+     *
      * @return User
      */
     public function setPhone($phone)
@@ -392,9 +400,9 @@ class User
     }
 
     /**
-     * Get phone
+     * Get phone.
      *
-     * @return string 
+     * @return string
      */
     public function getPhone()
     {
@@ -402,9 +410,10 @@ class User
     }
 
     /**
-     * Set photo
+     * Set photo.
      *
      * @param string $photo
+     *
      * @return User
      */
     public function setPhoto($photo)
@@ -415,9 +424,9 @@ class User
     }
 
     /**
-     * Get photo
+     * Get photo.
      *
-     * @return string 
+     * @return string
      */
     public function getPhoto()
     {
@@ -425,9 +434,10 @@ class User
     }
 
     /**
-     * Set status
+     * Set status.
      *
      * @param string $status
+     *
      * @return User
      */
     public function setStatus($status)
@@ -438,9 +448,9 @@ class User
     }
 
     /**
-     * Get status
+     * Get status.
      *
-     * @return string 
+     * @return string
      */
     public function getStatus()
     {
@@ -448,9 +458,10 @@ class User
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return User
      */
     public function setCreatedAt($createdAt)
@@ -461,9 +472,9 @@ class User
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -471,9 +482,10 @@ class User
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return User
      */
     public function setUpdatedAt($updatedAt)
@@ -484,9 +496,9 @@ class User
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -494,9 +506,10 @@ class User
     }
 
     /**
-     * Set userGroup
+     * Set userGroup.
      *
      * @param UserGroup $userGroup
+     *
      * @return User
      */
     public function setUserGroup(UserGroup $userGroup = null)
@@ -507,9 +520,9 @@ class User
     }
 
     /**
-     * Get userGroup
+     * Get userGroup.
      *
-     * @return UserGroup 
+     * @return UserGroup
      */
     public function getUserGroup()
     {
@@ -517,9 +530,10 @@ class User
     }
 
     /**
-     * Set country
+     * Set country.
      *
      * @param Country $country
+     *
      * @return User
      */
     public function setCountry(Country $country = null)
@@ -530,9 +544,9 @@ class User
     }
 
     /**
-     * Get country
+     * Get country.
      *
-     * @return Country 
+     * @return Country
      */
     public function getCountry()
     {
@@ -540,9 +554,10 @@ class User
     }
 
     /**
-     * Set createdBy
+     * Set createdBy.
      *
      * @param User $createdBy
+     *
      * @return User
      */
     public function setCreatedBy(User $createdBy = null)
@@ -553,9 +568,9 @@ class User
     }
 
     /**
-     * Get createdBy
+     * Get createdBy.
      *
-     * @return User 
+     * @return User
      */
     public function getCreatedBy()
     {
@@ -563,9 +578,10 @@ class User
     }
 
     /**
-     * Set updatedBy
+     * Set updatedBy.
      *
      * @param User $updatedBy
+     *
      * @return User
      */
     public function setUpdatedBy(User $updatedBy = null)
@@ -576,9 +592,9 @@ class User
     }
 
     /**
-     * Get updatedBy
+     * Get updatedBy.
      *
-     * @return User 
+     * @return User
      */
     public function getUpdatedBy()
     {

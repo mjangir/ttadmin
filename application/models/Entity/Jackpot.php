@@ -1,13 +1,12 @@
 <?php
+
 namespace Entity;
 
-
-use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Jackpot
+ * Jackpot.
  *
  * @ORM\Table(name="jackpot", indexes={@ORM\Index(name="created_by", columns={"created_by"}), @ORM\Index(name="updated_by", columns={"updated_by"})})
  * @ORM\Entity(repositoryClass="Repository\JackpotRepository")
@@ -15,7 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Jackpot
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -38,56 +37,56 @@ class Jackpot
     private $amount;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="min_players_required", type="integer", nullable=false)
      */
     private $minPlayersRequired;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="duration_setting", type="text", nullable=true)
      */
     private $durationSetting;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="game_clock_time", type="integer", nullable=false)
      */
     private $gameClockTime;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="dooms_day_time", type="integer", nullable=false)
      */
     private $doomsDayTime;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="game_clock_remaining", type="integer", nullable=false)
      */
     private $gameClockRemaining;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="dooms_day_remaining", type="integer", nullable=false)
      */
     private $doomsDayRemaining;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="increase_amount_seconds", type="integer", nullable=false)
      */
     private $increaseAmountSeconds;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="increase_amount", type="integer", nullable=false)
      */
@@ -174,9 +173,9 @@ class Jackpot
     }
 
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -184,9 +183,10 @@ class Jackpot
     }
 
     /**
-     * Set title
+     * Set title.
      *
      * @param string $title
+     *
      * @return Jackpot
      */
     public function setTitle($title)
@@ -197,7 +197,7 @@ class Jackpot
     }
 
     /**
-     * Get title
+     * Get title.
      *
      * @return string
      */
@@ -207,9 +207,10 @@ class Jackpot
     }
 
     /**
-     * Set amount
+     * Set amount.
      *
      * @param string $amount
+     *
      * @return Jackpot
      */
     public function setAmount($amount)
@@ -220,7 +221,7 @@ class Jackpot
     }
 
     /**
-     * Get amount
+     * Get amount.
      *
      * @return string
      */
@@ -230,9 +231,10 @@ class Jackpot
     }
 
     /**
-     * Set minPlayersRequired
+     * Set minPlayersRequired.
      *
-     * @param integer $minPlayersRequired
+     * @param int $minPlayersRequired
+     *
      * @return Jackpot
      */
     public function setMinPlayersRequired($minPlayersRequired)
@@ -243,9 +245,9 @@ class Jackpot
     }
 
     /**
-     * Get minPlayersRequired
+     * Get minPlayersRequired.
      *
-     * @return integer
+     * @return int
      */
     public function getMinPlayersRequired()
     {
@@ -255,6 +257,7 @@ class Jackpot
     public function setDurationSetting($durationSetting)
     {
         $this->durationSetting = $durationSetting;
+
         return $this;
     }
 
@@ -264,9 +267,10 @@ class Jackpot
     }
 
     /**
-     * Set gameClockTime
+     * Set gameClockTime.
      *
-     * @param integer $gameClockTime
+     * @param int $gameClockTime
+     *
      * @return Jackpot
      */
     public function setGameClockTime($gameClockTime)
@@ -277,9 +281,9 @@ class Jackpot
     }
 
     /**
-     * Get gameClockTime
+     * Get gameClockTime.
      *
-     * @return integer
+     * @return int
      */
     public function getGameClockTime()
     {
@@ -287,9 +291,10 @@ class Jackpot
     }
 
     /**
-     * Set doomsDayTime
+     * Set doomsDayTime.
      *
-     * @param integer $doomsDayTime
+     * @param int $doomsDayTime
+     *
      * @return Jackpot
      */
     public function setDoomsDayTime($doomsDayTime)
@@ -300,9 +305,9 @@ class Jackpot
     }
 
     /**
-     * Get doomsDayTime
+     * Get doomsDayTime.
      *
-     * @return integer
+     * @return int
      */
     public function getDoomsDayTime()
     {
@@ -310,9 +315,10 @@ class Jackpot
     }
 
     /**
-     * Set gameClockRemaining
+     * Set gameClockRemaining.
      *
-     * @param integer $gameClockRemaining
+     * @param int $gameClockRemaining
+     *
      * @return Jackpot
      */
     public function setGameClockRemaining($gameClockRemaining)
@@ -323,9 +329,9 @@ class Jackpot
     }
 
     /**
-     * Get gameClockRemaining
+     * Get gameClockRemaining.
      *
-     * @return integer
+     * @return int
      */
     public function getGameClockRemaining()
     {
@@ -333,9 +339,10 @@ class Jackpot
     }
 
     /**
-     * Set doomsDayRemaining
+     * Set doomsDayRemaining.
      *
-     * @param integer $doomsDayRemaining
+     * @param int $doomsDayRemaining
+     *
      * @return Jackpot
      */
     public function setDoomsDayRemaining($doomsDayRemaining)
@@ -346,9 +353,9 @@ class Jackpot
     }
 
     /**
-     * Get doomsDayRemaining
+     * Get doomsDayRemaining.
      *
-     * @return integer
+     * @return int
      */
     public function getDoomsDayRemaining()
     {
@@ -356,9 +363,10 @@ class Jackpot
     }
 
     /**
-     * Set increaseAmountSeconds
+     * Set increaseAmountSeconds.
      *
-     * @param integer $increaseAmountSeconds
+     * @param int $increaseAmountSeconds
+     *
      * @return Jackpot
      */
     public function setIncreaseAmountSeconds($increaseAmountSeconds)
@@ -369,9 +377,9 @@ class Jackpot
     }
 
     /**
-     * Get increaseAmountSeconds
+     * Get increaseAmountSeconds.
      *
-     * @return integer
+     * @return int
      */
     public function getIncreaseAmountSeconds()
     {
@@ -379,9 +387,10 @@ class Jackpot
     }
 
     /**
-     * Set increaseAmount
+     * Set increaseAmount.
      *
-     * @param integer $increaseAmount
+     * @param int $increaseAmount
+     *
      * @return Jackpot
      */
     public function setIncreaseAmount($increaseAmount)
@@ -392,9 +401,9 @@ class Jackpot
     }
 
     /**
-     * Get increaseAmount
+     * Get increaseAmount.
      *
-     * @return integer
+     * @return int
      */
     public function getIncreaseAmount()
     {
@@ -402,9 +411,10 @@ class Jackpot
     }
 
     /**
-     * Set gameStatus
+     * Set gameStatus.
      *
      * @param string $gameStatus
+     *
      * @return Jackpot
      */
     public function setGameStatus($gameStatus)
@@ -415,7 +425,7 @@ class Jackpot
     }
 
     /**
-     * Get gameStatus
+     * Get gameStatus.
      *
      * @return string
      */
@@ -425,9 +435,10 @@ class Jackpot
     }
 
     /**
-     * Set uniqueId
+     * Set uniqueId.
      *
      * @param string $uniqueId
+     *
      * @return Jackpot
      */
     public function setUniqueId($uniqueId)
@@ -438,7 +449,7 @@ class Jackpot
     }
 
     /**
-     * Get uniqueId
+     * Get uniqueId.
      *
      * @return string
      */
@@ -448,9 +459,10 @@ class Jackpot
     }
 
     /**
-     * Set startedOn
+     * Set startedOn.
      *
      * @param \DateTime $startedOn
+     *
      * @return Jackpot
      */
     public function setStartedOn($startedOn)
@@ -461,7 +473,7 @@ class Jackpot
     }
 
     /**
-     * Get startedOn
+     * Get startedOn.
      *
      * @return \DateTime
      */
@@ -471,9 +483,10 @@ class Jackpot
     }
 
     /**
-     * Set status
+     * Set status.
      *
      * @param string $status
+     *
      * @return Jackpot
      */
     public function setStatus($status)
@@ -484,7 +497,7 @@ class Jackpot
     }
 
     /**
-     * Get status
+     * Get status.
      *
      * @return string
      */
@@ -494,9 +507,10 @@ class Jackpot
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return Jackpot
      */
     public function setCreatedAt($createdAt)
@@ -507,7 +521,7 @@ class Jackpot
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
      * @return \DateTime
      */
@@ -517,9 +531,10 @@ class Jackpot
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return Jackpot
      */
     public function setUpdatedAt($updatedAt)
@@ -530,7 +545,7 @@ class Jackpot
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
      * @return \DateTime
      */
@@ -540,9 +555,10 @@ class Jackpot
     }
 
     /**
-     * Set createdBy
+     * Set createdBy.
      *
      * @param User $createdBy
+     *
      * @return Jackpot
      */
     public function setCreatedBy(User $createdBy = null)
@@ -553,7 +569,7 @@ class Jackpot
     }
 
     /**
-     * Get createdBy
+     * Get createdBy.
      *
      * @return User
      */
@@ -563,9 +579,10 @@ class Jackpot
     }
 
     /**
-     * Set updatedBy
+     * Set updatedBy.
      *
      * @param User $updatedBy
+     *
      * @return Jackpot
      */
     public function setUpdatedBy(User $updatedBy = null)
@@ -576,7 +593,7 @@ class Jackpot
     }
 
     /**
-     * Get updatedBy
+     * Get updatedBy.
      *
      * @return User
      */

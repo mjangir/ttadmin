@@ -10,7 +10,7 @@ echo form_open($form['action'], $form['attributes']);
             <div class="row">
                 <div class="col-xs-12">
                     <label class="control-label">Template Name*</label>
-                    <?php echo form_input(array('name' => 'templateName', 'class' => 'form-control')); ?>
+                    <?php echo form_input(['name' => 'templateName', 'class' => 'form-control']); ?>
                 </div>
             </div>
         </div>
@@ -18,21 +18,21 @@ echo form_open($form['action'], $form['attributes']);
             <div class="row">
                 <div class="col-xs-12">
                     <label class="control-label">Subject*</label>
-                    <?php echo form_input(array('name' => 'subject', 'class' => 'form-control')); ?>
+                    <?php echo form_input(['name' => 'subject', 'class' => 'form-control']); ?>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12">
                 <label class="control-label">Alias Name*</label>
-                <?php echo form_input(array('name' => 'alias', 'class' => 'form-control')); ?>
+                <?php echo form_input(['name' => 'alias', 'class' => 'form-control']); ?>
             </div>
         </div>
         <div class="form-group">
             <div class="row">
                 <div class="col-xs-12">
                     <label class="control-label">Content*</label>
-                    <?php echo form_textarea(array('name' => 'content', 'class' => 'form-control wysihtml5', 'row' => '5')); ?>
+                    <?php echo form_textarea(['name' => 'content', 'class' => 'form-control wysihtml5', 'row' => '5']); ?>
                 </div>
             </div>
         </div>

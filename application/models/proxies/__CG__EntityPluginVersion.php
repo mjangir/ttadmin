@@ -36,7 +36,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\PluginVersion'."\0".'id', ''."\0".'Entity\\PluginVersion'."\0".'version', ''."\0".'Entity\\PluginVersion'."\0".'fileName', ''."\0".'Entity\\PluginVersion'."\0".'description', ''."\0".'Entity\\PluginVersion'."\0".'createdOn', ''."\0".'Entity\\PluginVersion'."\0".'updatedOn', ''."\0".'Entity\\PluginVersion'."\0".'pluginComponent');
+            return ['__isInitialized__', ''."\0".'Entity\\PluginVersion'."\0".'id', ''."\0".'Entity\\PluginVersion'."\0".'version', ''."\0".'Entity\\PluginVersion'."\0".'fileName', ''."\0".'Entity\\PluginVersion'."\0".'description', ''."\0".'Entity\\PluginVersion'."\0".'createdOn', ''."\0".'Entity\\PluginVersion'."\0".'updatedOn', ''."\0".'Entity\\PluginVersion'."\0".'pluginComponent'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\PluginVersion'."\0".'id', ''."\0".'Entity\\PluginVersion'."\0".'version', ''."\0".'Entity\\PluginVersion'."\0".'fileName', ''."\0".'Entity\\PluginVersion'."\0".'description', ''."\0".'Entity\\PluginVersion'."\0".'createdOn', ''."\0".'Entity\\PluginVersion'."\0".'updatedOn', ''."\0".'Entity\\PluginVersion'."\0".'pluginComponent');
+        return ['__isInitialized__', ''."\0".'Entity\\PluginVersion'."\0".'id', ''."\0".'Entity\\PluginVersion'."\0".'version', ''."\0".'Entity\\PluginVersion'."\0".'fileName', ''."\0".'Entity\\PluginVersion'."\0".'description', ''."\0".'Entity\\PluginVersion'."\0".'createdOn', ''."\0".'Entity\\PluginVersion'."\0".'updatedOn', ''."\0".'Entity\\PluginVersion'."\0".'pluginComponent'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      */
     public function setVersion($version)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVersion', array($version));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setVersion', [$version]);
 
         return parent::setVersion($version);
     }
@@ -197,7 +191,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      */
     public function getVersion()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVersion', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getVersion', []);
 
         return parent::getVersion();
     }
@@ -207,7 +201,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      */
     public function setFileName($fileName)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFileName', array($fileName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFileName', [$fileName]);
 
         return parent::setFileName($fileName);
     }
@@ -217,7 +211,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      */
     public function getFileName()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFileName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFileName', []);
 
         return parent::getFileName();
     }
@@ -227,7 +221,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      */
     public function setDescription($description)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -237,7 +231,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      */
     public function getDescription()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -247,7 +241,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      */
     public function setCreatedOn($createdOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', array($createdOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', [$createdOn]);
 
         return parent::setCreatedOn($createdOn);
     }
@@ -257,7 +251,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      */
     public function getCreatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', []);
 
         return parent::getCreatedOn();
     }
@@ -267,7 +261,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      */
     public function setUpdatedOn($updatedOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', array($updatedOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', [$updatedOn]);
 
         return parent::setUpdatedOn($updatedOn);
     }
@@ -277,7 +271,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      */
     public function getUpdatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', []);
 
         return parent::getUpdatedOn();
     }
@@ -287,7 +281,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      */
     public function setPluginComponent(\Entity\PluginComponent $pluginComponent = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPluginComponent', array($pluginComponent));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPluginComponent', [$pluginComponent]);
 
         return parent::setPluginComponent($pluginComponent);
     }
@@ -297,7 +291,7 @@ class __CG__EntityPluginVersion extends \Entity\PluginVersion implements \Doctri
      */
     public function getPluginComponent()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPluginComponent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPluginComponent', []);
 
         return parent::getPluginComponent();
     }

@@ -55,13 +55,13 @@ class CI_Cache_redis extends CI_Driver
      *
      * @var array
      */
-    protected static $_default_config = array(
+    protected static $_default_config = [
         'socket_type' => 'tcp',
-        'host' => '127.0.0.1',
-        'password' => null,
-        'port' => 6379,
-        'timeout' => 0,
-    );
+        'host'        => '127.0.0.1',
+        'password'    => null,
+        'port'        => 6379,
+        'timeout'     => 0,
+    ];
 
     /**
      * Redis connection.
@@ -75,7 +75,7 @@ class CI_Cache_redis extends CI_Driver
      *
      * @var array
      */
-    protected $_serialized = array();
+    protected $_serialized = [];
 
     // ------------------------------------------------------------------------
 
@@ -91,7 +91,7 @@ class CI_Cache_redis extends CI_Driver
      */
     public function __construct()
     {
-        $config = array();
+        $config = [];
         $CI = &get_instance();
 
         if ($CI->config->load('redis', true, true)) {
@@ -274,10 +274,10 @@ class CI_Cache_redis extends CI_Driver
         $value = $this->get($key);
 
         if ($value !== false) {
-            return array(
+            return [
                 'expire' => time() + $this->_redis->ttl($key),
-                'data' => $value,
-            );
+                'data'   => $value,
+            ];
         }
 
         return false;

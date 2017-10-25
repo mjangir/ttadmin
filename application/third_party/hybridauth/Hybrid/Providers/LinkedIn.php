@@ -7,9 +7,9 @@
 
 /**
  * Hybrid_Providers_LinkedIn provider adapter based on OAuth1 protocol.
- * 
+ *
  * Hybrid_Providers_LinkedIn use linkedinPHP library created by fiftyMission Inc.
- * 
+ *
  * http://hybridauth.sourceforge.net/userguide/IDProvider_info_LinkedIn.html
  */
 class Hybrid_Providers_LinkedIn extends Hybrid_Provider_Model
@@ -26,7 +26,7 @@ class Hybrid_Providers_LinkedIn extends Hybrid_Provider_Model
         require_once Hybrid_Auth::$config['path_libraries'].'OAuth/OAuth.php';
         require_once Hybrid_Auth::$config['path_libraries'].'LinkedIn/LinkedIn.php';
 
-        $this->api = new LinkedIn(array('appKey' => $this->config['keys']['key'], 'appSecret' => $this->config['keys']['secret'], 'callbackUrl' => $this->endpoint));
+        $this->api = new LinkedIn(['appKey' => $this->config['keys']['key'], 'appSecret' => $this->config['keys']['secret'], 'callbackUrl' => $this->endpoint]);
 
         if ($this->token('access_token_linkedin')) {
             $this->api->setTokenAccess($this->token('access_token_linkedin'));
@@ -42,10 +42,10 @@ class Hybrid_Providers_LinkedIn extends Hybrid_Provider_Model
         $response = $this->api->retrieveTokenRequest();
 
         if (isset($response['success']) && $response['success'] === true) {
-            $this->token('oauth_token',        $response['linkedin']['oauth_token']);
+            $this->token('oauth_token', $response['linkedin']['oauth_token']);
             $this->token('oauth_token_secret', $response['linkedin']['oauth_token_secret']);
 
-            # redirect user to LinkedIn authorisation web page
+            // redirect user to LinkedIn authorisation web page
             Hybrid_Auth::redirect(LINKEDIN::_URL_AUTH.$response['linkedin']['oauth_token']);
         } else {
             throw new Exception("Authentication failed! {$this->providerId} returned an invalid Token.", 5);
@@ -142,12 +142,12 @@ class Hybrid_Providers_LinkedIn extends Hybrid_Provider_Model
         }
 
         if (!$response || !$response['success']) {
-            return array();
+            return [];
         }
 
         $connections = new SimpleXMLElement($response['linkedin']);
 
-        $contacts = array();
+        $contacts = [];
 
         foreach ($connections->person as $connection) {
             $uc = new Hybrid_User_Contact();
@@ -169,7 +169,7 @@ class Hybrid_Providers_LinkedIn extends Hybrid_Provider_Model
      */
     public function setUserStatus($status)
     {
-        $parameters = array();
+        $parameters = [];
         $private = true; // share with your connections only
 
         if (is_array($status)) {
@@ -221,12 +221,12 @@ class Hybrid_Providers_LinkedIn extends Hybrid_Provider_Model
         }
 
         if (!$response || !$response['success']) {
-            return array();
+            return [];
         }
 
         $updates = new SimpleXMLElement($response['linkedin']);
 
-        $activities = array();
+        $activities = [];
 
         foreach ($updates->update as $update) {
             $person = $update->{'update-content'}->person;

@@ -44,7 +44,7 @@ class Settings extends MY_LoggedUserController
     {
 
         //Set view data on rendered page
-        $view_data = array();
+        $view_data = [];
 
         $view_data['countries'] = getCountryDropdown(true);
 
@@ -54,9 +54,9 @@ class Settings extends MY_LoggedUserController
         $view_data['country'] = ($this->loggedUserObject->getCountry()) ? $this->loggedUserObject->getCountry()->getId() : '';
 
         //Render index page
-        return $this->load->view('layout/frontend_authenticated', array(
+        return $this->load->view('layout/frontend_authenticated', [
             'content' => $this->load->view('frontend/settings/index', $view_data, true),
-        ));
+        ]);
     }
 
     /**
@@ -101,7 +101,7 @@ class Settings extends MY_LoggedUserController
                 $this->objectManager->flush();
 
                 //Set success notification message in flash messanger for next request
-                $this->session->set_flashdata('messages', array('success@#@Profile updated successfully'));
+                $this->session->set_flashdata('messages', ['success@#@Profile updated successfully']);
                 redirect(base_url('settings'));
             } else {
                 //If form validation not successfully, throw validation errors
@@ -118,9 +118,9 @@ class Settings extends MY_LoggedUserController
                 $view_data['countries'] = getCountryDropdown(true);
 
                 //Render the same form with previous filled data
-                return $this->load->view('layout/frontend_authenticated', array(
+                return $this->load->view('layout/frontend_authenticated', [
                     'content' => $this->load->view('frontend/settings/index', $view_data, true),
-                ));
+                ]);
             }
         }
     }
@@ -155,12 +155,12 @@ class Settings extends MY_LoggedUserController
                 $this->objectManager->flush();
 
                 //Set success notification message in flash messanger for next request
-                $this->session->set_flashdata('messages', array('success@#@Password changed successfully'));
+                $this->session->set_flashdata('messages', ['success@#@Password changed successfully']);
                 redirect(base_url('settings'));
             } else {
 
                 //Set error notification message in flash messanger for next request
-                $this->session->set_flashdata('messages', array('danger@#@Password is required field'));
+                $this->session->set_flashdata('messages', ['danger@#@Password is required field']);
                 redirect(base_url('settings'));
             }
         }

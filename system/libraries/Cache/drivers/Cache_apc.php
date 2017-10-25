@@ -90,7 +90,7 @@ class CI_Cache_apc extends CI_Driver
 
         return apc_store(
             $id,
-            ($raw === true ? $data : array(serialize($data), time(), $ttl)),
+            ($raw === true ? $data : [serialize($data), time(), $ttl]),
             $ttl
         );
     }
@@ -153,17 +153,17 @@ class CI_Cache_apc extends CI_Driver
 
     // ------------------------------------------------------------------------
 
-     /**
-      * Cache Info.
-      *
-      * @param	string	user/filehits
-      *
-      * @return	mixed	array on success, false on failure
-      */
-     public function cache_info($type = null)
-     {
-         return apc_cache_info($type);
-     }
+    /**
+     * Cache Info.
+     *
+     * @param	string	user/filehits
+     *
+     * @return	mixed	array on success, false on failure
+     */
+    public function cache_info($type = null)
+    {
+        return apc_cache_info($type);
+    }
 
     // ------------------------------------------------------------------------
 
@@ -185,11 +185,11 @@ class CI_Cache_apc extends CI_Driver
 
         list($data, $time, $ttl) = $stored;
 
-        return array(
+        return [
             'expire' => $time + $ttl,
-            'mtime' => $time,
-            'data' => unserialize($data),
-        );
+            'mtime'  => $time,
+            'data'   => unserialize($data),
+        ];
     }
 
     // ------------------------------------------------------------------------

@@ -36,7 +36,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\QuestionCategory'."\0".'id', ''."\0".'Entity\\QuestionCategory'."\0".'parentId', ''."\0".'Entity\\QuestionCategory'."\0".'categoryCode', ''."\0".'Entity\\QuestionCategory'."\0".'categoryName', ''."\0".'Entity\\QuestionCategory'."\0".'maxMarks', ''."\0".'Entity\\QuestionCategory'."\0".'description', ''."\0".'Entity\\QuestionCategory'."\0".'createdOn');
+            return ['__isInitialized__', ''."\0".'Entity\\QuestionCategory'."\0".'id', ''."\0".'Entity\\QuestionCategory'."\0".'parentId', ''."\0".'Entity\\QuestionCategory'."\0".'categoryCode', ''."\0".'Entity\\QuestionCategory'."\0".'categoryName', ''."\0".'Entity\\QuestionCategory'."\0".'maxMarks', ''."\0".'Entity\\QuestionCategory'."\0".'description', ''."\0".'Entity\\QuestionCategory'."\0".'createdOn'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\QuestionCategory'."\0".'id', ''."\0".'Entity\\QuestionCategory'."\0".'parentId', ''."\0".'Entity\\QuestionCategory'."\0".'categoryCode', ''."\0".'Entity\\QuestionCategory'."\0".'categoryName', ''."\0".'Entity\\QuestionCategory'."\0".'maxMarks', ''."\0".'Entity\\QuestionCategory'."\0".'description', ''."\0".'Entity\\QuestionCategory'."\0".'createdOn');
+        return ['__isInitialized__', ''."\0".'Entity\\QuestionCategory'."\0".'id', ''."\0".'Entity\\QuestionCategory'."\0".'parentId', ''."\0".'Entity\\QuestionCategory'."\0".'categoryCode', ''."\0".'Entity\\QuestionCategory'."\0".'categoryName', ''."\0".'Entity\\QuestionCategory'."\0".'maxMarks', ''."\0".'Entity\\QuestionCategory'."\0".'description', ''."\0".'Entity\\QuestionCategory'."\0".'createdOn'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      */
     public function setParentId($parentId)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentId', array($parentId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setParentId', [$parentId]);
 
         return parent::setParentId($parentId);
     }
@@ -197,7 +191,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      */
     public function getParentId()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getParentId', []);
 
         return parent::getParentId();
     }
@@ -207,7 +201,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      */
     public function setCategoryCode($categoryCode)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryCode', array($categoryCode));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryCode', [$categoryCode]);
 
         return parent::setCategoryCode($categoryCode);
     }
@@ -217,7 +211,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      */
     public function getCategoryCode()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryCode', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryCode', []);
 
         return parent::getCategoryCode();
     }
@@ -227,7 +221,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      */
     public function setCategoryName($categoryName)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryName', array($categoryName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategoryName', [$categoryName]);
 
         return parent::setCategoryName($categoryName);
     }
@@ -237,7 +231,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      */
     public function getCategoryName()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategoryName', []);
 
         return parent::getCategoryName();
     }
@@ -247,7 +241,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      */
     public function setMaxMarks($maxMarks)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMaxMarks', array($maxMarks));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMaxMarks', [$maxMarks]);
 
         return parent::setMaxMarks($maxMarks);
     }
@@ -257,7 +251,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      */
     public function getMaxMarks()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMaxMarks', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMaxMarks', []);
 
         return parent::getMaxMarks();
     }
@@ -267,7 +261,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      */
     public function setDescription($description)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -277,7 +271,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      */
     public function getDescription()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }
@@ -287,7 +281,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      */
     public function setCreatedOn($createdOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', array($createdOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', [$createdOn]);
 
         return parent::setCreatedOn($createdOn);
     }
@@ -297,7 +291,7 @@ class __CG__EntityQuestionCategory extends \Entity\QuestionCategory implements \
      */
     public function getCreatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', []);
 
         return parent::getCreatedOn();
     }
