@@ -60,13 +60,13 @@ class CI_DB_pdo_informix_forge extends CI_DB_pdo_forge
      *
      * @var array
      */
-    protected $_unsigned = array(
-        'SMALLINT' => 'INTEGER',
-        'INT' => 'BIGINT',
-        'INTEGER' => 'BIGINT',
-        'REAL' => 'DOUBLE PRECISION',
+    protected $_unsigned = [
+        'SMALLINT'   => 'INTEGER',
+        'INT'        => 'BIGINT',
+        'INTEGER'    => 'BIGINT',
+        'REAL'       => 'DOUBLE PRECISION',
         'SMALLFLOAT' => 'DOUBLE PRECISION',
-    );
+    ];
 
     /**
      * DEFAULT value representation in CREATE/ALTER TABLE statements.

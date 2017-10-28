@@ -62,8 +62,8 @@ if (!function_exists('getCountryDropdown')) {
     {
         $ci = &get_instance();
         $ci->load->library('doctrine');
-        $countries = $ci->doctrine->em->getRepository('Entity\Country')->findBy(array(), array('countryName' => 'ASC'));
-        $dropdown = array();
+        $countries = $ci->doctrine->em->getRepository('Entity\Country')->findBy([], ['countryName' => 'ASC']);
+        $dropdown = [];
         if ($selectOption) {
             $dropdown[''] = 'Select Country';
         }
@@ -92,12 +92,12 @@ if (!function_exists('getStateDropdown')) {
         $ci = &get_instance();
         $ci->load->library('doctrine');
         if ($countryId !== null) {
-            $states = $ci->doctrine->em->getRepository('Entity\State')->findBy(array('countryId' => $countryId), array('stateName' => 'ASC'));
+            $states = $ci->doctrine->em->getRepository('Entity\State')->findBy(['countryId' => $countryId], ['stateName' => 'ASC']);
         } else {
-            $states = $ci->doctrine->em->getRepository('Entity\State')->findBy(array(), array('stateName' => 'ASC'));
+            $states = $ci->doctrine->em->getRepository('Entity\State')->findBy([], ['stateName' => 'ASC']);
         }
 
-        $dropdown = array();
+        $dropdown = [];
         if ($selectOption) {
             $dropdown[''] = 'Select State';
         }
@@ -126,12 +126,12 @@ if (!function_exists('getCityDropdown')) {
         $ci = &get_instance();
         $ci->load->library('doctrine');
         if ($stateId !== null) {
-            $cities = $ci->doctrine->em->getRepository('Entity\City')->findBy(array('stateId' => $stateId), array('cityName' => 'ASC'));
+            $cities = $ci->doctrine->em->getRepository('Entity\City')->findBy(['stateId' => $stateId], ['cityName' => 'ASC']);
         } else {
-            $cities = $ci->doctrine->em->getRepository('Entity\City')->findBy(array(), array('cityName' => 'ASC'));
+            $cities = $ci->doctrine->em->getRepository('Entity\City')->findBy([], ['cityName' => 'ASC']);
         }
 
-        $dropdown = array();
+        $dropdown = [];
         if ($selectOption) {
             $dropdown[''] = 'Select City';
         }
@@ -158,8 +158,8 @@ if (!function_exists('getUserDropdown')) {
     {
         $ci = &get_instance();
         $ci->load->library('doctrine');
-        $users = $ci->doctrine->em->getRepository('Entity\User')->findBy(array(), array('firstName' => 'ASC'));
-        $dropdown = array();
+        $users = $ci->doctrine->em->getRepository('Entity\User')->findBy([], ['firstName' => 'ASC']);
+        $dropdown = [];
         if (!empty($users)) {
             foreach ($users as $user) {
                 if ($excludeInActive && $user->getStatus() == 'INACTIVE') {
@@ -187,7 +187,7 @@ if (!function_exists('getLinkCategoryDropdown')) {
         $ci = &get_instance();
         $ci->load->library('doctrine');
         $categories = $ci->doctrine->em->getRepository('Entity\LinkCategory')->findAll();
-        $dropdown = array();
+        $dropdown = [];
         if ($selectOption) {
             $dropdown[''] = 'Select Link Category';
         }
@@ -219,9 +219,9 @@ if (!function_exists('getLinkDropdown')) {
             $links = $ci->doctrine->em->getRepository('Entity\Link')->findAll();
         } else {
             $linkCategory = $ci->doctrine->em->getRepository('Entity\LinkCategory')->find($linkCategoryId);
-            $links = $ci->doctrine->em->getRepository('Entity\Link')->findBy(array('linkCategory' => $linkCategory));
+            $links = $ci->doctrine->em->getRepository('Entity\Link')->findBy(['linkCategory' => $linkCategory]);
         }
-        $dropdown = array();
+        $dropdown = [];
         if (!empty($links)) {
             foreach ($links as $link) {
                 if ($onlyParent && $link->getParentId() != 0) {
@@ -249,7 +249,7 @@ if (!function_exists('getUserRoleDropdown')) {
         $ci = &get_instance();
         $ci->load->library('doctrine');
         $roles = $ci->doctrine->em->getRepository('Entity\Role')->findAll();
-        $dropdown = array();
+        $dropdown = [];
         if ($selectOption) {
             $dropdown[''] = 'Select User Role';
         }
@@ -278,7 +278,7 @@ if (!function_exists('getUserGroupDropdown')) {
         $ci = &get_instance();
         $ci->load->library('doctrine');
         $groups = $ci->doctrine->em->getRepository('Entity\UserGroup')->findAll();
-        $dropdown = array();
+        $dropdown = [];
         if ($selectOption) {
             $dropdown[''] = 'Select User Group';
         }
@@ -358,19 +358,19 @@ function checkMenuPermission($alias, $permission, $redirect = false)
         if ($redirect) {
             if ($ci->input->is_ajax_request()) {
                 header('Content-Type: application/json');
-                echo json_encode(array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'error',
+                echo json_encode([
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'error',
                             'message' => 'Sorry! You are not authorised to access this resource',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                ));
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ]);
                 exit;
             } else {
-                $ci->session->set_flashdata('messages', array('danger@#@Sorry! You are not authorised to access this resource'));
+                $ci->session->set_flashdata('messages', ['danger@#@Sorry! You are not authorised to access this resource']);
                 redirect($_SERVER['HTTP_REFERER']);
             }
         } else {
@@ -441,7 +441,7 @@ function generateRandomPassword($length = 8)
 function getSettings()
 {
     $ci = &get_instance();
-    $settings = array();
+    $settings = [];
     $settingEntity = $ci->doctrine->em->getRepository('Entity\Setting')->findAll();
     foreach ($settingEntity as $setting) {
         $settings[$setting->getKey()] = $setting->getValue();
@@ -451,7 +451,7 @@ function getSettings()
 }
 
 /**
- * Generate Random String
+ * Generate Random String.
  *
  * @return array $settings
  */
@@ -463,27 +463,28 @@ function generateRandomString($length = 20)
     for ($i = 0; $i < $length; $i++) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
+
     return $randomString;
 }
 
 /**
- * Convert Time Format To Seconds
+ * Convert Time Format To Seconds.
  */
 function convertTimeFormatToSeconds($str_time)
 {
-    $str_time = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $str_time);
+    $str_time = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", '00:$1:$2', $str_time);
 
-    sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
+    sscanf($str_time, '%d:%d:%d', $hours, $minutes, $seconds);
 
     return $hours * 3600 + $minutes * 60 + $seconds;
 }
 
 /**
- * Convert Seconds To Time Format
- *
+ * Convert Seconds To Time Format.
  */
 function convertSecondsToTimeFormat($seconds)
 {
     $t = round($seconds);
-    return sprintf('%02d:%02d:%02d', ($t/3600),($t/60%60), $t%60);
+
+    return sprintf('%02d:%02d:%02d', ($t / 3600), ($t / 60 % 60), $t % 60);
 }

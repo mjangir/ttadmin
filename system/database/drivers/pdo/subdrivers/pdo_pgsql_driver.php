@@ -73,7 +73,7 @@ class CI_DB_pdo_pgsql_driver extends CI_DB_pdo_driver
      *
      * @var array
      */
-    protected $_random_keyword = array('RANDOM()', 'RANDOM()');
+    protected $_random_keyword = ['RANDOM()', 'RANDOM()'];
 
     // --------------------------------------------------------------------
 
@@ -153,7 +153,7 @@ class CI_DB_pdo_pgsql_driver extends CI_DB_pdo_driver
      */
     public function is_write_type($sql)
     {
-        return (bool) preg_match('/^\s*"?(SET|INSERT(?![^\)]+\)\s+RETURNING)|UPDATE(?!.*\sRETURNING)|DELETE|CREATE|DROP|TRUNCATE|LOAD|COPY|ALTER|RENAME|GRANT|REVOKE|LOCK|UNLOCK|REINDEX)\s/i', str_replace(array("\r\n", "\r", "\n"), ' ', $sql));
+        return (bool) preg_match('/^\s*"?(SET|INSERT(?![^\)]+\)\s+RETURNING)|UPDATE(?!.*\sRETURNING)|DELETE|CREATE|DROP|TRUNCATE|LOAD|COPY|ALTER|RENAME|GRANT|REVOKE|LOCK|UNLOCK|REINDEX)\s/i', str_replace(["\r\n", "\r", "\n"], ' ', $sql));
     }
 
     // --------------------------------------------------------------------
@@ -271,7 +271,7 @@ class CI_DB_pdo_pgsql_driver extends CI_DB_pdo_driver
         }
         $query = $query->result_object();
 
-        $retval = array();
+        $retval = [];
         for ($i = 0, $c = count($query); $i < $c; ++$i) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = $query[$i]->column_name;
@@ -298,7 +298,7 @@ class CI_DB_pdo_pgsql_driver extends CI_DB_pdo_driver
     protected function _update($table, $values)
     {
         $this->qb_limit = false;
-        $this->qb_orderby = array();
+        $this->qb_orderby = [];
 
         return parent::_update($table, $values);
     }
@@ -318,7 +318,7 @@ class CI_DB_pdo_pgsql_driver extends CI_DB_pdo_driver
      */
     protected function _update_batch($table, $values, $index)
     {
-        $ids = array();
+        $ids = [];
         foreach ($values as $key => $val) {
             $ids[] = $val[$index];
 

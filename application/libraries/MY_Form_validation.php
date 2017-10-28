@@ -27,19 +27,19 @@ class MY_Form_validation extends CI_Form_validation
 {
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor
-     * 
+     *
      * @param array $config
      */
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         parent::__construct($config);
     }
 
     /**
      * Return form erros as array.
-     * 
+     *
      * @return bool
      */
     public function error_array()
@@ -53,9 +53,9 @@ class MY_Form_validation extends CI_Form_validation
 
     /**
      * Validate URL string.
-     * 
+     *
      * @param string $url
-     * 
+     *
      * @return bool
      */
     public function valid_url($url)
@@ -70,9 +70,9 @@ class MY_Form_validation extends CI_Form_validation
 
     /**
      * Validate alpha numeric string.
-     * 
+     *
      * @param string $str
-     * 
+     *
      * @return bool
      */
     public function alpha_dash_space($str)

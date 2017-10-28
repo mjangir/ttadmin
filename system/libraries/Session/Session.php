@@ -65,7 +65,7 @@ class CI_Session
      *
      * @param array $params Configuration parameters
      */
-    public function __construct(array $params = array())
+    public function __construct(array $params = [])
     {
         // No sessions under CLI
         if (is_cli()) {
@@ -98,12 +98,12 @@ class CI_Session
                 session_set_save_handler($class, true);
             } else {
                 session_set_save_handler(
-                    array($class, 'open'),
-                    array($class, 'close'),
-                    array($class, 'read'),
-                    array($class, 'write'),
-                    array($class, 'destroy'),
-                    array($class, 'gc')
+                    [$class, 'open'],
+                    [$class, 'close'],
+                    [$class, 'read'],
+                    [$class, 'write'],
+                    [$class, 'destroy'],
+                    [$class, 'gc']
                 );
 
                 register_shutdown_function('session_write_close');
@@ -356,10 +356,10 @@ class CI_Session
     public function get_flash_keys()
     {
         if (!isset($_SESSION['__ci_vars'])) {
-            return array();
+            return [];
         }
 
-        $keys = array();
+        $keys = [];
         foreach (array_keys($_SESSION['__ci_vars']) as $key) {
             is_int($_SESSION['__ci_vars'][$key]) or $keys[] = $key;
         }
@@ -380,7 +380,7 @@ class CI_Session
             return;
         }
 
-        is_array($key) or $key = array($key);
+        is_array($key) or $key = [$key];
 
         foreach ($key as $k) {
             if (isset($_SESSION['__ci_vars'][$k]) && !is_int($_SESSION['__ci_vars'][$k])) {
@@ -408,7 +408,7 @@ class CI_Session
         $ttl += time();
 
         if (is_array($key)) {
-            $temp = array();
+            $temp = [];
 
             foreach ($key as $k => $v) {
                 // Do we have a key => ttl pair, or just a key?
@@ -452,10 +452,10 @@ class CI_Session
     public function get_temp_keys()
     {
         if (!isset($_SESSION['__ci_vars'])) {
-            return array();
+            return [];
         }
 
-        $keys = array();
+        $keys = [];
         foreach (array_keys($_SESSION['__ci_vars']) as $key) {
             is_int($_SESSION['__ci_vars'][$key]) && $keys[] = $key;
         }
@@ -476,7 +476,7 @@ class CI_Session
             return;
         }
 
-        is_array($key) or $key = array($key);
+        is_array($key) or $key = [$key];
 
         foreach ($key as $k) {
             if (isset($_SESSION['__ci_vars'][$k]) && is_int($_SESSION['__ci_vars'][$k])) {
@@ -507,8 +507,6 @@ class CI_Session
         } elseif ($key === 'session_id') {
             return session_id();
         }
-
-        return;
     }
 
     // ------------------------------------------------------------------------
@@ -581,12 +579,12 @@ class CI_Session
         if (isset($key)) {
             return isset($_SESSION[$key]) ? $_SESSION[$key] : null;
         } elseif (empty($_SESSION)) {
-            return array();
+            return [];
         }
 
-        $userdata = array();
+        $userdata = [];
         $_exclude = array_merge(
-            array('__ci_vars'),
+            ['__ci_vars'],
             $this->get_flash_keys(),
             $this->get_temp_keys()
         );
@@ -694,7 +692,7 @@ class CI_Session
                 : null;
         }
 
-        $flashdata = array();
+        $flashdata = [];
 
         if (!empty($_SESSION['__ci_vars'])) {
             foreach ($_SESSION['__ci_vars'] as $key => &$value) {
@@ -754,7 +752,7 @@ class CI_Session
                 : null;
         }
 
-        $tempdata = array();
+        $tempdata = [];
 
         if (!empty($_SESSION['__ci_vars'])) {
             foreach ($_SESSION['__ci_vars'] as $key => &$value) {

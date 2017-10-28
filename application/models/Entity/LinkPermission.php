@@ -1,11 +1,11 @@
 <?php
-namespace Entity;
 
+namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * LinkPermission
+ * LinkPermission.
  *
  * @ORM\Table(name="link_permission", indexes={@ORM\Index(name="link_id", columns={"link_id"}), @ORM\Index(name="group_id", columns={"group_id"})})
  * @ORM\Entity(repositoryClass="Repository\LinkPermissionRepository")
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class LinkPermission
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -62,12 +62,10 @@ class LinkPermission
      */
     private $group;
 
-
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -75,9 +73,10 @@ class LinkPermission
     }
 
     /**
-     * Set permissions
+     * Set permissions.
      *
      * @param string $permissions
+     *
      * @return LinkPermission
      */
     public function setPermissions($permissions)
@@ -88,9 +87,9 @@ class LinkPermission
     }
 
     /**
-     * Get permissions
+     * Get permissions.
      *
-     * @return string 
+     * @return string
      */
     public function getPermissions()
     {
@@ -98,9 +97,10 @@ class LinkPermission
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return LinkPermission
      */
     public function setCreatedAt($createdAt)
@@ -111,9 +111,9 @@ class LinkPermission
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -121,9 +121,10 @@ class LinkPermission
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return LinkPermission
      */
     public function setUpdatedAt($updatedAt)
@@ -134,9 +135,9 @@ class LinkPermission
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -144,9 +145,10 @@ class LinkPermission
     }
 
     /**
-     * Set link
+     * Set link.
      *
      * @param Link $link
+     *
      * @return LinkPermission
      */
     public function setLink(Link $link = null)
@@ -157,9 +159,9 @@ class LinkPermission
     }
 
     /**
-     * Get link
+     * Get link.
      *
-     * @return Link 
+     * @return Link
      */
     public function getLink()
     {
@@ -167,9 +169,10 @@ class LinkPermission
     }
 
     /**
-     * Set group
+     * Set group.
      *
      * @param UserGroup $group
+     *
      * @return LinkPermission
      */
     public function setGroup(UserGroup $group = null)
@@ -180,9 +183,9 @@ class LinkPermission
     }
 
     /**
-     * Get group
+     * Get group.
      *
-     * @return UserGroup 
+     * @return UserGroup
      */
     public function getGroup()
     {

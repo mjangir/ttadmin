@@ -1,11 +1,11 @@
 <?php
-namespace Entity;
 
+namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Link
+ * Link.
  *
  * @ORM\Table(name="link", indexes={@ORM\Index(name="link_category_id", columns={"link_category_id"})})
  * @ORM\Entity(repositoryClass="Repository\LinkRepository")
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Link
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,14 +22,14 @@ class Link
     private $id;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="parent_id", type="integer", nullable=false)
      */
     private $parentId;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="link_order", type="integer", nullable=true)
      */
@@ -101,12 +101,10 @@ class Link
      */
     private $linkCategory;
 
-
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -114,9 +112,10 @@ class Link
     }
 
     /**
-     * Set parentId
+     * Set parentId.
      *
-     * @param integer $parentId
+     * @param int $parentId
+     *
      * @return Link
      */
     public function setParentId($parentId)
@@ -127,9 +126,9 @@ class Link
     }
 
     /**
-     * Get parentId
+     * Get parentId.
      *
-     * @return integer 
+     * @return int
      */
     public function getParentId()
     {
@@ -137,9 +136,10 @@ class Link
     }
 
     /**
-     * Set linkOrder
+     * Set linkOrder.
      *
-     * @param integer $linkOrder
+     * @param int $linkOrder
+     *
      * @return Link
      */
     public function setLinkOrder($linkOrder)
@@ -150,9 +150,9 @@ class Link
     }
 
     /**
-     * Get linkOrder
+     * Get linkOrder.
      *
-     * @return integer 
+     * @return int
      */
     public function getLinkOrder()
     {
@@ -160,9 +160,10 @@ class Link
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
+     *
      * @return Link
      */
     public function setName($name)
@@ -173,9 +174,9 @@ class Link
     }
 
     /**
-     * Get name
+     * Get name.
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -183,9 +184,10 @@ class Link
     }
 
     /**
-     * Set alias
+     * Set alias.
      *
      * @param string $alias
+     *
      * @return Link
      */
     public function setAlias($alias)
@@ -196,9 +198,9 @@ class Link
     }
 
     /**
-     * Get alias
+     * Get alias.
      *
-     * @return string 
+     * @return string
      */
     public function getAlias()
     {
@@ -206,9 +208,10 @@ class Link
     }
 
     /**
-     * Set icon
+     * Set icon.
      *
      * @param string $icon
+     *
      * @return Link
      */
     public function setIcon($icon)
@@ -219,9 +222,9 @@ class Link
     }
 
     /**
-     * Get icon
+     * Get icon.
      *
-     * @return string 
+     * @return string
      */
     public function getIcon()
     {
@@ -229,9 +232,10 @@ class Link
     }
 
     /**
-     * Set href
+     * Set href.
      *
      * @param string $href
+     *
      * @return Link
      */
     public function setHref($href)
@@ -242,9 +246,9 @@ class Link
     }
 
     /**
-     * Get href
+     * Get href.
      *
-     * @return string 
+     * @return string
      */
     public function getHref()
     {
@@ -252,9 +256,10 @@ class Link
     }
 
     /**
-     * Set actions
+     * Set actions.
      *
      * @param string $actions
+     *
      * @return Link
      */
     public function setActions($actions)
@@ -265,9 +270,9 @@ class Link
     }
 
     /**
-     * Get actions
+     * Get actions.
      *
-     * @return string 
+     * @return string
      */
     public function getActions()
     {
@@ -275,9 +280,10 @@ class Link
     }
 
     /**
-     * Set status
+     * Set status.
      *
      * @param string $status
+     *
      * @return Link
      */
     public function setStatus($status)
@@ -288,9 +294,9 @@ class Link
     }
 
     /**
-     * Get status
+     * Get status.
      *
-     * @return string 
+     * @return string
      */
     public function getStatus()
     {
@@ -298,9 +304,10 @@ class Link
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return Link
      */
     public function setCreatedAt($createdAt)
@@ -311,9 +318,9 @@ class Link
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -321,9 +328,10 @@ class Link
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return Link
      */
     public function setUpdatedAt($updatedAt)
@@ -334,9 +342,9 @@ class Link
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -344,9 +352,10 @@ class Link
     }
 
     /**
-     * Set linkCategory
+     * Set linkCategory.
      *
      * @param LinkCategory $linkCategory
+     *
      * @return Link
      */
     public function setLinkCategory(LinkCategory $linkCategory = null)
@@ -357,9 +366,9 @@ class Link
     }
 
     /**
-     * Get linkCategory
+     * Get linkCategory.
      *
-     * @return LinkCategory 
+     * @return LinkCategory
      */
     public function getLinkCategory()
     {

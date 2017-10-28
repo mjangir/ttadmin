@@ -60,14 +60,14 @@ class CI_Jquery extends CI_Javascript
      *
      * @var array
      */
-    public $jquery_code_for_load = array();
+    public $jquery_code_for_load = [];
 
     /**
      * JQuery code for compile.
      *
      * @var array
      */
-    public $jquery_code_for_compile = array();
+    public $jquery_code_for_compile = [];
 
     /**
      * JQuery corner active flag.
@@ -167,7 +167,7 @@ class CI_Jquery extends CI_Javascript
      */
     protected function _click($element = 'this', $js = '', $ret_false = true)
     {
-        is_array($js) or $js = array($js);
+        is_array($js) or $js = [$js];
 
         if ($ret_false) {
             $js[] = 'return false;';
@@ -377,10 +377,10 @@ class CI_Jquery extends CI_Javascript
      *
      * @param array $array_js = array()
      */
-    protected function _output($array_js = array())
+    protected function _output($array_js = [])
     {
         if (!is_array($array_js)) {
-            $array_js = array($array_js);
+            $array_js = [$array_js];
         }
 
         foreach ($array_js as $js) {
@@ -474,7 +474,7 @@ class CI_Jquery extends CI_Javascript
      *
      * @return string
      */
-    protected function _animate($element = 'this', $params = array(), $speed = '', $extra = '')
+    protected function _animate($element = 'this', $params = [], $speed = '', $extra = '')
     {
         $element = $this->_prep_element($element);
         $speed = $this->_validate_speed($speed);
@@ -893,10 +893,10 @@ class CI_Jquery extends CI_Javascript
      *
      * @return string
      */
-    public function sortable($element, $options = array())
+    public function sortable($element, $options = [])
     {
         if (count($options) > 0) {
-            $sort_options = array();
+            $sort_options = [];
             foreach ($options as $k => $v) {
                 $sort_options[] = "\n\t\t".$k.': '.$v;
             }
@@ -965,7 +965,7 @@ class CI_Jquery extends CI_Javascript
     {
         // External references
         $external_scripts = implode('', $this->jquery_code_for_load);
-        $this->CI->load->vars(array('library_src' => $external_scripts));
+        $this->CI->load->vars(['library_src' => $external_scripts]);
 
         if (count($this->jquery_code_for_compile) === 0) {
             // no inline references, let's just return
@@ -979,7 +979,7 @@ class CI_Jquery extends CI_Javascript
 
         $output = ($script_tags === false) ? $script : $this->inline($script);
 
-        $this->CI->load->vars(array($view_var => $output));
+        $this->CI->load->vars([$view_var => $output]);
     }
 
     // --------------------------------------------------------------------
@@ -991,7 +991,7 @@ class CI_Jquery extends CI_Javascript
      */
     protected function _clear_compile()
     {
-        $this->jquery_code_for_compile = array();
+        $this->jquery_code_for_compile = [];
     }
 
     // --------------------------------------------------------------------
@@ -1005,7 +1005,7 @@ class CI_Jquery extends CI_Javascript
      */
     protected function _document_ready($js)
     {
-        is_array($js) or $js = array($js);
+        is_array($js) or $js = [$js];
 
         foreach ($js as $script) {
             $this->jquery_code_for_compile[] = $script;
@@ -1067,7 +1067,7 @@ class CI_Jquery extends CI_Javascript
      */
     protected function _validate_speed($speed)
     {
-        if (in_array($speed, array('slow', 'normal', 'fast'))) {
+        if (in_array($speed, ['slow', 'normal', 'fast'])) {
             return '"'.$speed.'"';
         } elseif (preg_match('/[^0-9]/', $speed)) {
             return '';

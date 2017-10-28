@@ -60,11 +60,11 @@ class CI_DB_pdo_ibm_forge extends CI_DB_pdo_forge
      *
      * @var array
      */
-    protected $_unsigned = array(
+    protected $_unsigned = [
         'SMALLINT' => 'INTEGER',
-        'INT' => 'BIGINT',
-        'INTEGER' => 'BIGINT',
-    );
+        'INT'      => 'BIGINT',
+        'INTEGER'  => 'BIGINT',
+    ];
 
     /**
      * DEFAULT value representation in CREATE/ALTER TABLE statements.

@@ -101,10 +101,10 @@ define('WS_BASE_PATH', 'ws://18.221.196.29:9000/jackpot');
 |
 */
 
-define('BASE_PATH',                 APPPATH.'../');
-define('ROOT_UPLOAD',               APPPATH.'../uploads/');
-define('USER_PROFILE_UPLOAD_PATH',  ROOT_UPLOAD.'user/');
-define('UPLOAD_TEMP_PATH',  ROOT_UPLOAD.'temp/');
+define('BASE_PATH', APPPATH.'../');
+define('ROOT_UPLOAD', APPPATH.'../uploads/');
+define('USER_PROFILE_UPLOAD_PATH', ROOT_UPLOAD.'user/');
+define('UPLOAD_TEMP_PATH', ROOT_UPLOAD.'temp/');
 
 /*
 |--------------------------------------------------------------------------
@@ -170,17 +170,17 @@ define('__SENDMAIL_PATH__', '/usr/sbin/sendmail -bs');
 */
 
 //Facebook App Credentials
-define('FACEBOOK_APP_ID',           '243043329392131');
-define('FACEBOOK_APP_SECRET',       '0317a3691bcebf4774261c7adb184255');
+define('FACEBOOK_APP_ID', '243043329392131');
+define('FACEBOOK_APP_SECRET', '0317a3691bcebf4774261c7adb184255');
 
 //Google App Credentials
-define('GOOGLE_APP_ID',           '719554222020-n77b0nkdd3tjtreq0e3kngf769ajgggq.apps.googleusercontent.com');
-define('GOOGLE_APP_SECRET',       'hYaQ3sA72uUn814Gc_qWwOzI');
+define('GOOGLE_APP_ID', '719554222020-n77b0nkdd3tjtreq0e3kngf769ajgggq.apps.googleusercontent.com');
+define('GOOGLE_APP_SECRET', 'hYaQ3sA72uUn814Gc_qWwOzI');
 
 //Twitter App Credentials
-define('TWITTER_APP_ID',           'bQOf33ZHxvdzUk4EjYyrrDQRD');
-define('TWITTER_APP_SECRET',       'ciwgkzVojCegxltzcjz697NBkCABJ2ZPrc2vbd0n5gZHnxH8eW');
+define('TWITTER_APP_ID', 'bQOf33ZHxvdzUk4EjYyrrDQRD');
+define('TWITTER_APP_SECRET', 'ciwgkzVojCegxltzcjz697NBkCABJ2ZPrc2vbd0n5gZHnxH8eW');
 
 //Linkedin App Credentials
-define('LINKEDIN_APP_ID',           '759vbya4o27wt9');
-define('LINKEDIN_APP_SECRET',       'e08yU3T1LWxaZFF3');
+define('LINKEDIN_APP_ID', '759vbya4o27wt9');
+define('LINKEDIN_APP_SECRET', 'e08yU3T1LWxaZFF3');

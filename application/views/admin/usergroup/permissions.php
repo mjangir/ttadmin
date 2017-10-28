@@ -1,7 +1,7 @@
 <form method="post" name="updateMenuPermissionForm" action="<?php echo $saveUrl; ?>" class="ajax" id="updateMenuPermissionForm">
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"><i class="fa fa-lock"></i> Update Permissions - <?php echo $groupName;?></h3>
+        <h3 class="box-title"><i class="fa fa-lock"></i> Update Permissions - <?php echo $groupName; ?></h3>
     </div>
     <div class="box-body">
         <input type="hidden" name="userGroupId" value="<?php echo $userGroupId; ?>">
@@ -13,15 +13,11 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <a class="block-collapse" data-parent="#accordion" data-toggle="collapse" href="#child-link-<?php echo $i;
-                ?>"><?php echo $link['name'];
-                ?> <div class="pull-right"><?php echo $link['categoryName'];
-                ?></div>
+                            <a class="block-collapse" data-parent="#accordion" data-toggle="collapse" href="#child-link-<?php echo $i; ?>"><?php echo $link['name']; ?> <div class="pull-right"><?php echo $link['categoryName']; ?></div>
                             </a>
                         </h3>
                     </div>
-                    <div id="child-link-<?php echo $i;
-                ?>" class="collapse parent-link">
+                    <div id="child-link-<?php echo $i; ?>" class="collapse parent-link">
                         <div class="panel-body">
                             <?php
                             if (!empty($link['sub'])) {
@@ -34,28 +30,22 @@
                                     }
                                     ++$totalSubMenus;
                                 }
-                                $permitAllChecked = ($totalSubMenus == $leastPermission) ? 'checked="checked"' : '';
-                                ?>
+                                $permitAllChecked = ($totalSubMenus == $leastPermission) ? 'checked="checked"' : ''; ?>
                                 <div class="col-md-6 col-sm-6">
-                                    <label><input type="checkbox" name="menu[<?php echo $link['id'] ?>][permissions][]" value="ALL" class="parent-link-check-all" <?php echo $permitAllChecked;
-                                ?>> Permit <?php echo $link['name'];
-                                ?></label>
+                                    <label><input type="checkbox" name="menu[<?php echo $link['id'] ?>][permissions][]" value="ALL" class="parent-link-check-all" <?php echo $permitAllChecked; ?>> Permit <?php echo $link['name']; ?></label>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="child-links">
                                     <?php
                                     $smCnt = 1;
                                 foreach ($link['sub'] as $subMenu) {
-                                    $permittedSmActions = (!empty($subMenu['permissions'])) ? json_decode($subMenu['permissions']) : array();
-                                    $smAllActionChecked = (in_array('ALL', $permittedSmActions)) ? 'checked="checked"' : '';
-                                    ?>
+                                    $permittedSmActions = (!empty($subMenu['permissions'])) ? json_decode($subMenu['permissions']) : [];
+                                    $smAllActionChecked = (in_array('ALL', $permittedSmActions)) ? 'checked="checked"' : ''; ?>
                                         <div class="col-md-6 col-sm-6 child-link">
-                                            <div class="the-box bg-dark no-border child-menu-permission"><?php echo $subMenu['name'];
-                                    ?></div>
+                                            <div class="the-box bg-dark no-border child-menu-permission"><?php echo $subMenu['name']; ?></div>
                                             <div class="col-md-6 col-sm-6 menu-action">
                                                 <div class="checkbox">
-                                                    <label><input type="checkbox" name="menu[<?php echo $subMenu['id'] ?>][permissions][]" value="ALL" class="child-link-check-all" <?php echo $smAllActionChecked;
-                                    ?>>All Rights</label>
+                                                    <label><input type="checkbox" name="menu[<?php echo $subMenu['id'] ?>][permissions][]" value="ALL" class="child-link-check-all" <?php echo $smAllActionChecked; ?>>All Rights</label>
                                                 </div>
                                             </div>
                                             <?php
@@ -64,14 +54,10 @@
                                                 $subMenuActions = json_decode($subMenu['actions'], true);
                                                 $actionCnt = 1;
                                                 foreach ($subMenuActions as $smActionKey => $smActionValue) {
-                                                    $smActionChecked = (in_array($smActionKey, $permittedSmActions)) ? 'checked="checked"' : '';
-                                                    ?>
+                                                    $smActionChecked = (in_array($smActionKey, $permittedSmActions)) ? 'checked="checked"' : ''; ?>
                                                     <div class="col-md-6 col-sm-6 menu-action">
                                                         <div class="checkbox">
-                                                            <label><input type="checkbox" name="menu[<?php echo $subMenu['id'] ?>][permissions][]" value="<?php echo $smActionKey;
-                                                    ?>" class="child-link-check-action" <?php echo $smActionChecked;
-                                                    ?>> <?php echo $smActionValue;
-                                                    ?></label>
+                                                            <label><input type="checkbox" name="menu[<?php echo $subMenu['id'] ?>][permissions][]" value="<?php echo $smActionKey; ?>" class="child-link-check-action" <?php echo $smActionChecked; ?>> <?php echo $smActionValue; ?></label>
                                                         </div>
                                                     </div>
                                                     <?php
@@ -81,8 +67,7 @@
                                                     ++$actionCnt;
                                                 }
                                                 echo '</div>';
-                                            }
-                                    ?>
+                                            } ?>
                                         </div>
                                         <?php
                                         if ($smCnt % 2 == 0) {
@@ -94,7 +79,7 @@
                                 echo '</div>';
                             } else {
                                 if (!empty($link['actions'])) {
-                                    $permittedLinkActions = (!empty($link['permissions'])) ? json_decode($link['permissions']) : array();
+                                    $permittedLinkActions = (!empty($link['permissions'])) ? json_decode($link['permissions']) : [];
                                     $linkActions = json_decode($link['actions'], true);
                                     $linkAllActionChecked = (in_array('ALL', $permittedLinkActions)) ? 'checked="checked"' : '';
 
@@ -102,14 +87,10 @@
 
                                     $linkActionCnt = 1;
                                     foreach ($linkActions as $linkActionKey => $linkActionValue) {
-                                        $linkActionChecked = (in_array($linkActionKey, $permittedLinkActions)) ? 'checked="checked"' : '';
-                                        ?>
+                                        $linkActionChecked = (in_array($linkActionKey, $permittedLinkActions)) ? 'checked="checked"' : ''; ?>
                                             <div class="col-md-3 col-sm-3 menu-action">
                                                 <div class="checkbox">
-                                                    <label><input type="checkbox" name="menu[<?php echo $link['id'] ?>][permissions][]" value="<?php echo $linkActionKey;
-                                        ?>" class="child-link-check-action" <?php echo $linkActionChecked;
-                                        ?>> <?php echo $linkActionValue;
-                                        ?></label>
+                                                    <label><input type="checkbox" name="menu[<?php echo $link['id'] ?>][permissions][]" value="<?php echo $linkActionKey; ?>" class="child-link-check-action" <?php echo $linkActionChecked; ?>> <?php echo $linkActionValue; ?></label>
                                                 </div>
                                             </div>
                                 <?php
@@ -125,8 +106,7 @@
                                 </div>';
                                     echo '</div>';
                                 }
-                            }
-                ?>
+                            } ?>
                             </div><!-- /.panel-body -->
                         </div><!-- /.collapse in -->
                     </div><!-- /.panel panel-default -->

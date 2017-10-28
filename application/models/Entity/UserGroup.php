@@ -1,11 +1,11 @@
 <?php
-namespace Entity;
 
+namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * UserGroup
+ * UserGroup.
  *
  * @ORM\Table(name="user_group", indexes={@ORM\Index(name="role_id", columns={"role_id"})})
  * @ORM\Entity(repositoryClass="Repository\UserGroupRepository")
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class UserGroup
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -73,12 +73,10 @@ class UserGroup
      */
     private $role;
 
-
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -86,9 +84,10 @@ class UserGroup
     }
 
     /**
-     * Set groupName
+     * Set groupName.
      *
      * @param string $groupName
+     *
      * @return UserGroup
      */
     public function setGroupName($groupName)
@@ -99,9 +98,9 @@ class UserGroup
     }
 
     /**
-     * Get groupName
+     * Get groupName.
      *
-     * @return string 
+     * @return string
      */
     public function getGroupName()
     {
@@ -109,9 +108,10 @@ class UserGroup
     }
 
     /**
-     * Set alias
+     * Set alias.
      *
      * @param string $alias
+     *
      * @return UserGroup
      */
     public function setAlias($alias)
@@ -122,9 +122,9 @@ class UserGroup
     }
 
     /**
-     * Get alias
+     * Get alias.
      *
-     * @return string 
+     * @return string
      */
     public function getAlias()
     {
@@ -132,9 +132,10 @@ class UserGroup
     }
 
     /**
-     * Set description
+     * Set description.
      *
      * @param string $description
+     *
      * @return UserGroup
      */
     public function setDescription($description)
@@ -145,9 +146,9 @@ class UserGroup
     }
 
     /**
-     * Get description
+     * Get description.
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -155,9 +156,10 @@ class UserGroup
     }
 
     /**
-     * Set status
+     * Set status.
      *
      * @param string $status
+     *
      * @return UserGroup
      */
     public function setStatus($status)
@@ -168,9 +170,9 @@ class UserGroup
     }
 
     /**
-     * Get status
+     * Get status.
      *
-     * @return string 
+     * @return string
      */
     public function getStatus()
     {
@@ -178,9 +180,10 @@ class UserGroup
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return UserGroup
      */
     public function setCreatedAt($createdAt)
@@ -191,9 +194,9 @@ class UserGroup
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -201,9 +204,10 @@ class UserGroup
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return UserGroup
      */
     public function setUpdatedAt($updatedAt)
@@ -214,9 +218,9 @@ class UserGroup
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -224,9 +228,10 @@ class UserGroup
     }
 
     /**
-     * Set role
+     * Set role.
      *
      * @param Role $role
+     *
      * @return UserGroup
      */
     public function setRole(Role $role = null)
@@ -237,9 +242,9 @@ class UserGroup
     }
 
     /**
-     * Get role
+     * Get role.
      *
-     * @return Role 
+     * @return Role
      */
     public function getRole()
     {

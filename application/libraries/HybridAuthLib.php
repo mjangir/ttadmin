@@ -8,7 +8,7 @@ require APPPATH.'/third_party/hybridauth/Hybrid/Auth.php';
 
 class HybridAuthLib extends Hybrid_Auth
 {
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         $ci = &get_instance();
         $ci->load->helper('url_helper');

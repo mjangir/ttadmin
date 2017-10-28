@@ -26,7 +26,7 @@ class Page extends MY_GuestUserController
 {
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor
      */
     public function __construct()
@@ -36,16 +36,16 @@ class Page extends MY_GuestUserController
 
     /**
      * index action.
-     * 
+     *
      * Index action which resolves pages by their slug
-     * 
+     *
      * @param string $slug Slug of the page
      */
     public function index($slug = 'any')
     {
 
         //Get page by slug
-        $page = $this->doctrine->em->getRepository('Entity\Page')->findOneBy(array('alias' => $slug));
+        $page = $this->doctrine->em->getRepository('Entity\Page')->findOneBy(['alias' => $slug]);
 
         //If page is not found or inactive, redirect to home page
         if (!$page || $page->getStatus() == 'INACTIVE') {
@@ -53,22 +53,22 @@ class Page extends MY_GuestUserController
         }
 
         //Set view data
-        $view_data = array(
+        $view_data = [
             'pageContent' => $page->getContent(),
-        );
+        ];
 
         //Render requested page with meta tags
-        return $this->load->view('layout/frontend', array(
-            'content' => $this->load->view('frontend/page/index', $view_data, true),
-            'metaTitle' => $page->getTitle(),
+        return $this->load->view('layout/frontend', [
+            'content'         => $this->load->view('frontend/page/index', $view_data, true),
+            'metaTitle'       => $page->getTitle(),
             'metaDescription' => $page->getMetaDescription(),
-            'metaKeywords' => $page->getMetaKeywords(),
-        ));
+            'metaKeywords'    => $page->getMetaKeywords(),
+        ]);
     }
 
     /**
      * contact action.
-     * 
+     *
      * Handles contact us form
      */
     public function contact()
@@ -113,27 +113,27 @@ class Page extends MY_GuestUserController
                     $this->objectManager->flush();
 
                     //Send the form data to admin email
-                    $mailReplaceArray = array(
-                        '[NAME]' => $name,
-                        '[EMAIL]' => $email,
-                        '[PHONE]' => $phone,
+                    $mailReplaceArray = [
+                        '[NAME]'    => $name,
+                        '[EMAIL]'   => $email,
+                        '[PHONE]'   => $phone,
                         '[MESSAGE]' => $message,
-                    );
+                    ];
                     $this->swiftmailer->sendmail('contact_us_admin_copy', ADMIN_EMAIL, $mailReplaceArray, $subject);
 
                     //If Auto-Reply on contact us form is enabled from backend, send an email back to visitor
                     if (isset($settings['enable_contact_us_auto_reply']) && $settings['enable_contact_us_auto_reply'] == 1) {
-                        $mailReplaceArray = array(
+                        $mailReplaceArray = [
                             '[NAME]' => $name,
-                        );
+                        ];
                         $this->swiftmailer->sendmail('contact_us_auto_reply', $email, $mailReplaceArray);
                     }
 
                     //Set success notification message in flash messanger for next request
-                    $this->session->set_flashdata('messages', array('success@#@Thank you for contacting us. We will get you soon!'));
+                    $this->session->set_flashdata('messages', ['success@#@Thank you for contacting us. We will get you soon!']);
                     redirect(base_url('page/contact'));
                 } catch (Exception $e) {
-                    $this->session->set_flashdata('messages', array('danger@#@Error occured while processing your request. Please try again later.'));
+                    $this->session->set_flashdata('messages', ['danger@#@Error occured while processing your request. Please try again later.']);
                     redirect(base_url('page/contact'));
                 }
             } else {
@@ -141,17 +141,17 @@ class Page extends MY_GuestUserController
                 $errors = $this->form_validation->error_array();
                 $this->session->set_flashdata('formErrors', $errors);
 
-                return $this->load->view('layout/frontend', array(
-                    'content' => $this->load->view('frontend/page/contact', $_POST, true),
+                return $this->load->view('layout/frontend', [
+                    'content'   => $this->load->view('frontend/page/contact', $_POST, true),
                     'metaTitle' => 'Contact Us',
-                ));
+                ]);
             }
         } else {
             //If request is get instead of form submission, show view form
-            return $this->load->view('layout/frontend', array(
-                'content' => $this->load->view('frontend/page/contact', array(), true),
+            return $this->load->view('layout/frontend', [
+                'content'   => $this->load->view('frontend/page/contact', [], true),
                 'metaTitle' => 'Contact Us',
-            ));
+            ]);
         }
     }
 }

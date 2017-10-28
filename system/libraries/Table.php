@@ -55,14 +55,14 @@ class CI_Table
      *
      * @var array
      */
-    public $rows = array();
+    public $rows = [];
 
     /**
      * Data for table heading.
      *
      * @var array
      */
-    public $heading = array();
+    public $heading = [];
 
     /**
      * Whether or not to automatically create the table header.
@@ -111,7 +111,7 @@ class CI_Table
      *
      * @param array $config (default: array())
      */
-    public function __construct($config = array())
+    public function __construct($config = [])
     {
         // initialize config
         foreach ($config as $key => $val) {
@@ -152,7 +152,7 @@ class CI_Table
      *
      * @return CI_Table
      */
-    public function set_heading($args = array())
+    public function set_heading($args = [])
     {
         $this->heading = $this->_prep_args(func_get_args());
 
@@ -172,7 +172,7 @@ class CI_Table
      *
      * @return array
      */
-    public function make_columns($array = array(), $col_limit = 0)
+    public function make_columns($array = [], $col_limit = 0)
     {
         if (!is_array($array) or count($array) === 0 or !is_int($col_limit)) {
             return false;
@@ -186,7 +186,7 @@ class CI_Table
             return $array;
         }
 
-        $new = array();
+        $new = [];
         do {
             $temp = array_splice($array, 0, $col_limit);
 
@@ -231,7 +231,7 @@ class CI_Table
      *
      * @return CI_Table
      */
-    public function add_row($args = array())
+    public function add_row($args = [])
     {
         $this->rows[] = $this->_prep_args(func_get_args());
 
@@ -259,7 +259,7 @@ class CI_Table
         }
 
         foreach ($args as $key => $val) {
-            is_array($val) or $args[$key] = array('data' => $val);
+            is_array($val) or $args[$key] = ['data' => $val];
         }
 
         return $args;
@@ -402,8 +402,8 @@ class CI_Table
      */
     public function clear()
     {
-        $this->rows = array();
-        $this->heading = array();
+        $this->rows = [];
+        $this->heading = [];
         $this->auto_heading = true;
 
         return $this;
@@ -460,7 +460,7 @@ class CI_Table
         }
 
         $this->temp = $this->_default_template();
-        foreach (array('table_open', 'thead_open', 'thead_close', 'heading_row_start', 'heading_row_end', 'heading_cell_start', 'heading_cell_end', 'tbody_open', 'tbody_close', 'row_start', 'row_end', 'cell_start', 'cell_end', 'row_alt_start', 'row_alt_end', 'cell_alt_start', 'cell_alt_end', 'table_close') as $val) {
+        foreach (['table_open', 'thead_open', 'thead_close', 'heading_row_start', 'heading_row_end', 'heading_cell_start', 'heading_cell_end', 'tbody_open', 'tbody_close', 'row_start', 'row_end', 'cell_start', 'cell_end', 'row_alt_start', 'row_alt_end', 'cell_alt_start', 'cell_alt_end', 'table_close'] as $val) {
             if (!isset($this->template[$val])) {
                 $this->template[$val] = $this->temp[$val];
             }
@@ -476,31 +476,31 @@ class CI_Table
      */
     protected function _default_template()
     {
-        return array(
+        return [
             'table_open' => '<table border="0" cellpadding="4" cellspacing="0">',
 
-            'thead_open' => '<thead>',
+            'thead_open'  => '<thead>',
             'thead_close' => '</thead>',
 
-            'heading_row_start' => '<tr>',
-            'heading_row_end' => '</tr>',
+            'heading_row_start'  => '<tr>',
+            'heading_row_end'    => '</tr>',
             'heading_cell_start' => '<th>',
-            'heading_cell_end' => '</th>',
+            'heading_cell_end'   => '</th>',
 
-            'tbody_open' => '<tbody>',
+            'tbody_open'  => '<tbody>',
             'tbody_close' => '</tbody>',
 
-            'row_start' => '<tr>',
-            'row_end' => '</tr>',
+            'row_start'  => '<tr>',
+            'row_end'    => '</tr>',
             'cell_start' => '<td>',
-            'cell_end' => '</td>',
+            'cell_end'   => '</td>',
 
-            'row_alt_start' => '<tr>',
-            'row_alt_end' => '</tr>',
+            'row_alt_start'  => '<tr>',
+            'row_alt_end'    => '</tr>',
             'cell_alt_start' => '<td>',
-            'cell_alt_end' => '</td>',
+            'cell_alt_end'   => '</td>',
 
             'table_close' => '</table>',
-        );
+        ];
     }
 }

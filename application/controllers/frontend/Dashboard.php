@@ -26,7 +26,7 @@ class Dashboard extends MY_LoggedUserController
 {
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor
      */
     public function __construct()
@@ -36,15 +36,15 @@ class Dashboard extends MY_LoggedUserController
 
     /**
      * index action.
-     * 
+     *
      * Index page of Dashboard module
      */
     public function index()
     {
 
         //Render index page
-        return $this->load->view('layout/frontend_authenticated', array(
-            'content' => $this->load->view('frontend/dashboard/index', array(), true),
-        ));
+        return $this->load->view('layout/frontend_authenticated', [
+            'content' => $this->load->view('frontend/dashboard/index', [], true),
+        ]);
     }
 }

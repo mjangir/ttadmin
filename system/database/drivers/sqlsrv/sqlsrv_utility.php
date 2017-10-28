@@ -71,7 +71,7 @@ class CI_DB_sqlsrv_utility extends CI_DB_utility
      *
      * @return bool
      */
-    protected function _backup($params = array())
+    protected function _backup($params = [])
     {
         // Currently unsupported
         return $this->db->display_error('db_unsupported_feature');

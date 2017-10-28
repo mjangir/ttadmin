@@ -19,6 +19,7 @@ use GuzzleHttp\Client;
  * Jackpot Class.
  *
  * @category	Controller
+ *
  * @author	Manish Jangir <manishjangir.com>
  */
 class Jackpot extends MY_AdminController
@@ -82,7 +83,7 @@ class Jackpot extends MY_AdminController
         $paginator = $this->paginator->setOptions($data, $this->page, $this->baseControllerUrl, $this->limit);
 
         //Prepare the view parameters
-        $view_data = array();
+        $view_data = [];
         $view_data['data'] = $data;                            //Data got from model
         $view_data['page'] = $this->page;                      //Current jackpot number
         $view_data['listStartFrom'] = $this->offset + 1;                  //Serial number of the table records
@@ -103,19 +104,19 @@ class Jackpot extends MY_AdminController
 
         //Check if the request is ajax. If yes then only render the view
         if ($this->input->is_ajax_request()) {
-            $jsonResponse = array();
+            $jsonResponse = [];
             $jsonResponse['html'] = $this->load->view('admin/jackpot/index', $view_data, true);
             echo json_encode($jsonResponse);
         } else {
 
             //If request is not ajax then render the view with layout
-            return $this->load->view('layout/backend', array(
-                'content' => $this->load->view('admin/jackpot/index', $view_data, true),
-                'pageHeading' => 'Manage Jackpots',
-                'pageSubHeading' => '',
-                'activeLinksAlias' => array('admin_jackpots'),
-                'breadCrumbs' => array('Manage Jackpots' => ''),
-            ));
+            return $this->load->view('layout/backend', [
+                'content'          => $this->load->view('admin/jackpot/index', $view_data, true),
+                'pageHeading'      => 'Manage Jackpots',
+                'pageSubHeading'   => '',
+                'activeLinksAlias' => ['admin_jackpots'],
+                'breadCrumbs'      => ['Manage Jackpots' => ''],
+            ]);
         }
     }
 
@@ -147,23 +148,20 @@ class Jackpot extends MY_AdminController
 
             //Set form validation rules
             $this->form_validation->set_rules('title', 'Jackpot Title', 'trim|required|xss_clean',
-                    array('required' => 'Please enter Jackpot Title'));
+                    ['required' => 'Please enter Jackpot Title']);
             $this->form_validation->set_rules('amount', 'Jackpot Amount', 'trim|required|xss_clean',
-                    array('required' => 'Please enter Jackpot Amount'));
+                    ['required' => 'Please enter Jackpot Amount']);
             $this->form_validation->set_rules('game_clock_time', 'Game Clock Time', 'trim|required|xss_clean',
-                    array('required' => 'Please enter Game Clock Time'));
+                    ['required' => 'Please enter Game Clock Time']);
             $this->form_validation->set_rules('dooms_day_time', 'Dooms Day Clock Time', 'trim|required|xss_clean',
-                    array('required' => 'Please enter Dooms Day Clock Time'));
+                    ['required' => 'Please enter Dooms Day Clock Time']);
 
             //If form is successfully validated
             if ($this->form_validation->run() == true) {
-
-                if(!isset($this->postParams['increase_amount_seconds']) || empty($this->postParams['increase_amount_seconds']))
-                {
+                if (!isset($this->postParams['increase_amount_seconds']) || empty($this->postParams['increase_amount_seconds'])) {
                     $this->postParams['increase_amount_seconds'] = 0;
                 }
-                if(!isset($this->postParams['increase_amount']) || empty($this->postParams['increase_amount']))
-                {
+                if (!isset($this->postParams['increase_amount']) || empty($this->postParams['increase_amount'])) {
                     $this->postParams['increase_amount'] = 0;
                 }
 
@@ -207,84 +205,78 @@ class Jackpot extends MY_AdminController
                     }
 
                     // Update in socket state
-                    $client         = new Client();
-                    $newJpId        = ($id == null) ? $jackpot->getId() : $id;
-                    $accessToken    = $this->session->userdata('accessToken');
+                    $client = new Client();
+                    $newJpId = ($id == null) ? $jackpot->getId() : $id;
+                    $accessToken = $this->session->userdata('accessToken');
 
-                    if($id == null)
-                    {
+                    if ($id == null) {
                         $result = $client->post(API_BASE_PATH.'/api/jackpots/insert-in-socket/'.$newJpId.'?access_token='.$accessToken);
-                    }
-                    else
-                    {
+                    } else {
                         $result = $client->post(API_BASE_PATH.'/api/jackpots/update-in-socket/'.$newJpId.'?access_token='.$accessToken);
                     }
 
                     $response = json_decode($result->getBody()->getContents(), true);
 
-                    if(isset($response['status']) && $response['status'] == 'success')
-                    {
+                    if (isset($response['status']) && $response['status'] == 'success') {
                         $additionalMessage = 'Also updated in socket state.';
-                    }
-                    else
-                    {
+                    } else {
                         $additionalMessage = 'But '.$response['message'];
                     }
 
                     //Return success if added successfully
-                    echo json_encode(array(
-                        'html' => '',
-                        'notification' => array(
-                            array(
-                                'status' => 'success',
+                    echo json_encode([
+                        'html'         => '',
+                        'notification' => [
+                            [
+                                'status'  => 'success',
                                 'message' => $this->crudName.' saved successfully <br/>'.$additionalMessage,
-                                'type' => 'toastr',
-                            ),
-                        ),
-                        'location' => array(
-                            'redirect' => array(
-                                'url' => $this->baseControllerUrl,
+                                'type'    => 'toastr',
+                            ],
+                        ],
+                        'location' => [
+                            'redirect' => [
+                                'url'     => $this->baseControllerUrl,
                                 'timeout' => 2000,
-                            ),
-                        ),
-                    ));
+                            ],
+                        ],
+                    ]);
                     exit;
                 } catch (Exception $ex) {
                     die($ex->getMessage());
                     //show error message to user
-                    echo json_encode(array(
-                        'html' => '',
-                        'notification' => array(
-                            array(
-                                'status' => 'error',
+                    echo json_encode([
+                        'html'         => '',
+                        'notification' => [
+                            [
+                                'status'  => 'error',
                                 'message' => 'Error occured while processing.',
-                                'type' => 'toastr',
-                            ),
-                        ),
-                    ));
+                                'type'    => 'toastr',
+                            ],
+                        ],
+                    ]);
                     exit;
                 }
             } else {
                 //Throw the validation errors, if validation not successful
                 $errors = $this->form_validation->error_array();
-                echo json_encode(array(
-                    'validation' => array(
-                        'form' => '#form_jackpot',
+                echo json_encode([
+                    'validation' => [
+                        'form'   => '#form_jackpot',
                         'errors' => $errors,
-                    ),
-                ));
+                    ],
+                ]);
                 exit;
             }
         } else {
             //If request method is not post then render the form with layout
 
             //Set view form attributes and variables
-            $view_data['form']['attributes'] = array(
+            $view_data['form']['attributes'] = [
                 'id' => 'form_jackpot',
-            );
-            $view_data['form']['action']    = ($id === null) ? $this->baseControllerUrl.'/add-update' : $this->baseControllerUrl.'/add-update?id='.$id;
+            ];
+            $view_data['form']['action'] = ($id === null) ? $this->baseControllerUrl.'/add-update' : $this->baseControllerUrl.'/add-update?id='.$id;
             $view_data['form']['cancelUrl'] = $this->baseControllerUrl;
-            $view_data['form']['viewUrl']   = $this->baseControllerUrl.'/view?id='.$id;
+            $view_data['form']['viewUrl'] = $this->baseControllerUrl.'/view?id='.$id;
 
             //Set other view parameters if new record is added
             if ($id === null) {
@@ -298,27 +290,27 @@ class Jackpot extends MY_AdminController
             }
 
             //Return the layout with view form
-            return $this->load->view('layout/backend', array(
+            return $this->load->view('layout/backend', [
                 'content'           => $this->load->view($viewFile, $view_data, true),
-                'pageHeading'    => $view_data['pageHeading'],
-                'pageSubHeading' => '',
-                'activeLinksAlias'  => array('admin_jackpots'),
-                'breadCrumbs'       => array('Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''),
-            ));
+                'pageHeading'       => $view_data['pageHeading'],
+                'pageSubHeading'    => '',
+                'activeLinksAlias'  => ['admin_jackpots'],
+                'breadCrumbs'       => ['Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''],
+            ]);
         }
     }
 
     public function prepareDurationSetting($post)
     {
-        if(isset($post['duration_setting']))
-        {
+        if (isset($post['duration_setting'])) {
             return json_encode($post['duration_setting']);
         }
+
         return json_encode([]);
     }
 
     /**
-     * add update normal bid battles
+     * add update normal bid battles.
      */
     public function normalbidbattle()
     {
@@ -326,17 +318,15 @@ class Jackpot extends MY_AdminController
         //Get jackpot id from GET requeest
         $id = (!empty($this->queryParams['id'])) ? $this->queryParams['id'] : null;
 
-        if($id == null)
-        {
-        	redirect($this->baseControllerUrl);
+        if ($id == null) {
+            redirect($this->baseControllerUrl);
         }
 
         checkMenuPermission('admin_jackpots', 'NORMAL_BID_BATTLE', true);
 
         // If game is currently running, we dont allow to upate levels
-        if(!$this->input->is_ajax_request() && $this->checkIfGameIsRunning($id, true))
-        {
-            $this->session->set_flashdata('messages', array('error@#@You cannot modify the battle levels because a jackpot game is currently being played'));
+        if (!$this->input->is_ajax_request() && $this->checkIfGameIsRunning($id, true)) {
+            $this->session->set_flashdata('messages', ['error@#@You cannot modify the battle levels because a jackpot game is currently being played']);
             redirect(base_url('admin/jackpots'));
         }
 
@@ -350,123 +340,117 @@ class Jackpot extends MY_AdminController
 
             //If form is successfully validated
             try {
-
-                if($this->input->is_ajax_request() && $this->checkIfGameIsRunning($id, true))
-                {
-                    echo json_encode(array(
-                        'html' => '',
-                        'notification' => array(
-                            array(
-                                'status' => 'error',
+                if ($this->input->is_ajax_request() && $this->checkIfGameIsRunning($id, true)) {
+                    echo json_encode([
+                        'html'         => '',
+                        'notification' => [
+                            [
+                                'status'  => 'error',
                                 'message' => 'You cannot update battle levels as the game is already running',
-                                'type' => 'toastr',
-                            ),
-                        ),
-                    ));
+                                'type'    => 'toastr',
+                            ],
+                        ],
+                    ]);
                     exit;
                 }
 
                 $this->updateNormalBidBattleLevels($jackpot, $this->postParams);
 
-                try{
+                try {
 
                     // Update in socket state
-                    $client         = new Client();
-                    $newJpId        = $jackpot->getId();
-                    $accessToken    = $this->session->userdata('accessToken');
-                    $result         = $client->post(API_BASE_PATH.'/api/jackpots/update-battle-in-socket/'.$newJpId.'?access_token='.$accessToken);
+                    $client = new Client();
+                    $newJpId = $jackpot->getId();
+                    $accessToken = $this->session->userdata('accessToken');
+                    $result = $client->post(API_BASE_PATH.'/api/jackpots/update-battle-in-socket/'.$newJpId.'?access_token='.$accessToken);
 
                     $response = json_decode($result->getBody()->getContents(), true);
-
-                }catch(Exception $e)
-                {
-
+                } catch (Exception $e) {
                 }
 
-
                 //Return success if added successfully
-                echo json_encode(array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'success',
+                echo json_encode([
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'success',
                             'message' => ' Battle levels saved successfully',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                    'location' => array(
-                        'redirect' => array(
-                            'url' => $this->baseControllerUrl.'/normal-bid-battle?id='.$id,
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                    'location' => [
+                        'redirect' => [
+                            'url'     => $this->baseControllerUrl.'/normal-bid-battle?id='.$id,
                             'timeout' => 2000,
-                        ),
-                    ),
-                ));
+                        ],
+                    ],
+                ]);
                 exit;
             } catch (Exception $ex) {
                 //die($ex->getMessage());
                 //show error message to user
-                echo json_encode(array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'error',
+                echo json_encode([
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'error',
                             'message' => 'Error occured while processing.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                ));
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ]);
                 exit;
             }
         } else {
             //If request method is not post then render the form with layout
 
             //Set view form attributes and variables
-            $view_data['form']['attributes'] = array(
+            $view_data['form']['attributes'] = [
                 'id' => 'form_normal_battle_levels',
-            );
-            $view_data['form']['action']    = $this->baseControllerUrl.'/normal-bid-battle?id='.$id;
+            ];
+            $view_data['form']['action'] = $this->baseControllerUrl.'/normal-bid-battle?id='.$id;
             $view_data['form']['cancelUrl'] = $this->baseControllerUrl;
 
-           	//Set other view parameters if a record is updated
-           	$view_data['jackpot'] 		= $jackpot;
-            $view_data['levels'] 		= $this->getBattleLevels($jackpot);
-            $viewFile 					= 'admin/jackpot/normal-bid-battle';
-            $view_data['pageHeading'] 	= 'Manage Normal Bid Battle';
+            //Set other view parameters if a record is updated
+            $view_data['jackpot'] = $jackpot;
+            $view_data['levels'] = $this->getBattleLevels($jackpot);
+            $viewFile = 'admin/jackpot/normal-bid-battle';
+            $view_data['pageHeading'] = 'Manage Normal Bid Battle';
 
             //Return the layout with view form
-            return $this->load->view('layout/backend', array(
+            return $this->load->view('layout/backend', [
                 'content'           => $this->load->view($viewFile, $view_data, true),
-                'pageHeading'    => $view_data['pageHeading'],
-                'pageSubHeading' => '',
-                'activeLinksAlias'  => array('admin_jackpots'),
-                'breadCrumbs'       => array('Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''),
-            ));
+                'pageHeading'       => $view_data['pageHeading'],
+                'pageSubHeading'    => '',
+                'activeLinksAlias'  => ['admin_jackpots'],
+                'breadCrumbs'       => ['Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''],
+            ]);
         }
     }
 
     /**
-     * Update normal battle levels
+     * Update normal battle levels.
+     *
      * @param type $model
      * @param type $params
      */
     public function updateNormalBidBattleLevels($model, $params)
     {
-        $oldRecords = $this->objectManager->getRepository('Entity\JackpotBattleLevel')->findBy( array( 'jackpot' => $model ) );
-        $createdAt  = new \DateTime();
-        $updatedAt 	= new \DateTime();
+        $oldRecords = $this->objectManager->getRepository('Entity\JackpotBattleLevel')->findBy(['jackpot' => $model]);
+        $createdAt = new \DateTime();
+        $updatedAt = new \DateTime();
 
-        if($oldRecords) {
+        if ($oldRecords) {
             foreach ($oldRecords as $record) {
                 $this->objectManager->remove($record);
             }
         }
 
-        if(isset($params['levels']) && !empty($params['levels'])) {
-        	$i = 1;
-        	$total = count($params['levels']);
-            foreach($params['levels'] as $newRecord) {
-
-                if(!empty($newRecord['level_name']) && !empty($newRecord['battle_type'])) {
+        if (isset($params['levels']) && !empty($params['levels'])) {
+            $i = 1;
+            $total = count($params['levels']);
+            foreach ($params['levels'] as $newRecord) {
+                if (!empty($newRecord['level_name']) && !empty($newRecord['battle_type'])) {
                     $entity = new Entity\JackpotBattleLevel();
                     $entity->setJackpot($model);
                     $entity->setBattleType($newRecord['battle_type']);
@@ -484,13 +468,10 @@ class Jackpot extends MY_AdminController
                     $entity->setCreatedAt($createdAt);
                     $entity->setUpdatedAt($updatedAt);
 
-                    if($i == $total)
-                    {
-                    	$entity->setIsLastLevel(1);
-                    }
-                    else
-                    {
-                    	$entity->setIsLastLevel(0);
+                    if ($i == $total) {
+                        $entity->setIsLastLevel(1);
+                    } else {
+                        $entity->setIsLastLevel(0);
                     }
 
                     $this->objectManager->persist($entity);
@@ -500,36 +481,33 @@ class Jackpot extends MY_AdminController
             }
         }
         $this->objectManager->flush();
+
         return $model;
     }
 
     /**
-     * Copy Normal Bid Battle Levels From Settings
-
+     * Copy Normal Bid Battle Levels From Settings.
+     *
      * @param Jackpot $jackpot
      */
     public function copyNormalBidBattleLevelsFromSettings($jackpot)
     {
-        $settingEntity = $this->objectManager->getRepository('Entity\Setting')->findOneBy(array('key' => 'normal_battle_levels_json'));
+        $settingEntity = $this->objectManager->getRepository('Entity\Setting')->findOneBy(['key' => 'normal_battle_levels_json']);
 
         //If key is not empty them update the new value
-        if (!empty($settingEntity))
-        {
+        if (!empty($settingEntity)) {
             $levels = $settingEntity->getValue();
 
             $normalBattleLevels = isset($levels) && !empty($levels) ? json_decode($levels, true) : null;
 
-            if($normalBattleLevels && is_array($normalBattleLevels) && count($normalBattleLevels) > 0)
-            {
-                $i          = 1;
-                $total      = count($normalBattleLevels);
-                $createdAt  = new \DateTime();
-                $updatedAt  = new \DateTime();
+            if ($normalBattleLevels && is_array($normalBattleLevels) && count($normalBattleLevels) > 0) {
+                $i = 1;
+                $total = count($normalBattleLevels);
+                $createdAt = new \DateTime();
+                $updatedAt = new \DateTime();
 
-                foreach($normalBattleLevels as $level)
-                {
-                    if(!empty($level['level_name']) && !empty($level['battle_type']))
-                    {
+                foreach ($normalBattleLevels as $level) {
+                    if (!empty($level['level_name']) && !empty($level['battle_type'])) {
                         $entity = new Entity\JackpotBattleLevel();
                         $entity->setJackpot($jackpot);
                         $entity->setBattleType($level['battle_type']);
@@ -547,12 +525,9 @@ class Jackpot extends MY_AdminController
                         $entity->setCreatedAt($createdAt);
                         $entity->setUpdatedAt($updatedAt);
 
-                        if($i == $total)
-                        {
+                        if ($i == $total) {
                             $entity->setIsLastLevel(1);
-                        }
-                        else
-                        {
+                        } else {
                             $entity->setIsLastLevel(0);
                         }
 
@@ -563,6 +538,7 @@ class Jackpot extends MY_AdminController
                 }
 
                 $this->objectManager->flush();
+
                 return true;
             }
         }
@@ -571,7 +547,7 @@ class Jackpot extends MY_AdminController
     }
 
     /**
-     * add update gambling bid battles
+     * add update gambling bid battles.
      */
     public function gamblingbidbattle()
     {
@@ -579,17 +555,15 @@ class Jackpot extends MY_AdminController
         //Get jackpot id from GET requeest
         $id = (!empty($this->queryParams['id'])) ? $this->queryParams['id'] : null;
 
-        if($id == null)
-        {
+        if ($id == null) {
             redirect($this->baseControllerUrl);
         }
 
         checkMenuPermission('admin_jackpots', 'GAMBLING_BID_BATTLE', true);
 
         // If game is currently running, we dont allow to upate levels
-        if(!$this->input->is_ajax_request() && $this->checkIfGameIsRunning($id, true))
-        {
-            $this->session->set_flashdata('messages', array('error@#@You cannot modify the battle levels because a jackpot game is currently being played'));
+        if (!$this->input->is_ajax_request() && $this->checkIfGameIsRunning($id, true)) {
+            $this->session->set_flashdata('messages', ['error@#@You cannot modify the battle levels because a jackpot game is currently being played']);
             redirect(base_url('admin/jackpots'));
         }
 
@@ -603,123 +577,117 @@ class Jackpot extends MY_AdminController
 
             //If form is successfully validated
             try {
-
-                if($this->input->is_ajax_request() && $this->checkIfGameIsRunning($id, true))
-                {
-                    echo json_encode(array(
-                        'html' => '',
-                        'notification' => array(
-                            array(
-                                'status' => 'error',
+                if ($this->input->is_ajax_request() && $this->checkIfGameIsRunning($id, true)) {
+                    echo json_encode([
+                        'html'         => '',
+                        'notification' => [
+                            [
+                                'status'  => 'error',
                                 'message' => 'You cannot update battle levels as the game is already running',
-                                'type' => 'toastr',
-                            ),
-                        ),
-                    ));
+                                'type'    => 'toastr',
+                            ],
+                        ],
+                    ]);
                     exit;
                 }
 
                 $this->updateGamblingBidBattleLevels($jackpot, $this->postParams);
 
-                try{
+                try {
 
                     // Update in socket state
-                    $client         = new Client();
-                    $newJpId        = $jackpot->getId();
-                    $accessToken    = $this->session->userdata('accessToken');
-                    $result         = $client->post(API_BASE_PATH.'/api/jackpots/update-battle-in-socket/'.$newJpId.'?access_token='.$accessToken);
+                    $client = new Client();
+                    $newJpId = $jackpot->getId();
+                    $accessToken = $this->session->userdata('accessToken');
+                    $result = $client->post(API_BASE_PATH.'/api/jackpots/update-battle-in-socket/'.$newJpId.'?access_token='.$accessToken);
 
                     $response = json_decode($result->getBody()->getContents(), true);
-
-                }catch(Exception $e)
-                {
-
+                } catch (Exception $e) {
                 }
 
-
                 //Return success if added successfully
-                echo json_encode(array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'success',
+                echo json_encode([
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'success',
                             'message' => ' Battle levels saved successfully',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                    'location' => array(
-                        'redirect' => array(
-                            'url' => $this->baseControllerUrl.'/gambling-bid-battle?id='.$id,
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                    'location' => [
+                        'redirect' => [
+                            'url'     => $this->baseControllerUrl.'/gambling-bid-battle?id='.$id,
                             'timeout' => 2000,
-                        ),
-                    ),
-                ));
+                        ],
+                    ],
+                ]);
                 exit;
             } catch (Exception $ex) {
                 //die($ex->getMessage());
                 //show error message to user
-                echo json_encode(array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'error',
+                echo json_encode([
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'error',
                             'message' => 'Error occured while processing.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                ));
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ]);
                 exit;
             }
         } else {
             //If request method is not post then render the form with layout
 
             //Set view form attributes and variables
-            $view_data['form']['attributes'] = array(
+            $view_data['form']['attributes'] = [
                 'id' => 'form_gambling_battle_levels',
-            );
-            $view_data['form']['action']    = $this->baseControllerUrl.'/gambling-bid-battle?id='.$id;
+            ];
+            $view_data['form']['action'] = $this->baseControllerUrl.'/gambling-bid-battle?id='.$id;
             $view_data['form']['cancelUrl'] = $this->baseControllerUrl;
 
             //Set other view parameters if a record is updated
-            $view_data['jackpot']       = $jackpot;
-            $view_data['levels']        = $this->getBattleLevels($jackpot, 'GAMBLING');
-            $viewFile                   = 'admin/jackpot/gambling-bid-battle';
-            $view_data['pageHeading']   = 'Manage Gambling Bid Battle';
+            $view_data['jackpot'] = $jackpot;
+            $view_data['levels'] = $this->getBattleLevels($jackpot, 'GAMBLING');
+            $viewFile = 'admin/jackpot/gambling-bid-battle';
+            $view_data['pageHeading'] = 'Manage Gambling Bid Battle';
 
             //Return the layout with view form
-            return $this->load->view('layout/backend', array(
+            return $this->load->view('layout/backend', [
                 'content'           => $this->load->view($viewFile, $view_data, true),
-                'pageHeading'    => $view_data['pageHeading'],
-                'pageSubHeading' => '',
-                'activeLinksAlias'  => array('admin_jackpots'),
-                'breadCrumbs'       => array('Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''),
-            ));
+                'pageHeading'       => $view_data['pageHeading'],
+                'pageSubHeading'    => '',
+                'activeLinksAlias'  => ['admin_jackpots'],
+                'breadCrumbs'       => ['Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''],
+            ]);
         }
     }
 
     /**
-     * Update gambling battle levels
+     * Update gambling battle levels.
+     *
      * @param type $model
      * @param type $params
      */
     public function updateGamblingBidBattleLevels($model, $params)
     {
-        $oldRecords = $this->objectManager->getRepository('Entity\JackpotBattleLevel')->findBy( array( 'jackpot' => $model ) );
-        $createdAt  = new \DateTime();
-        $updatedAt  = new \DateTime();
+        $oldRecords = $this->objectManager->getRepository('Entity\JackpotBattleLevel')->findBy(['jackpot' => $model]);
+        $createdAt = new \DateTime();
+        $updatedAt = new \DateTime();
 
-        if($oldRecords) {
+        if ($oldRecords) {
             foreach ($oldRecords as $record) {
                 $this->objectManager->remove($record);
             }
         }
 
-        if(isset($params['levels']) && !empty($params['levels'])) {
+        if (isset($params['levels']) && !empty($params['levels'])) {
             $i = 1;
             $total = count($params['levels']);
-            foreach($params['levels'] as $newRecord) {
-
-                if(!empty($newRecord['level_name']) && !empty($newRecord['battle_type'])) {
+            foreach ($params['levels'] as $newRecord) {
+                if (!empty($newRecord['level_name']) && !empty($newRecord['battle_type'])) {
                     $entity = new Entity\JackpotBattleLevel();
                     $entity->setJackpot($model);
                     $entity->setBattleType($newRecord['battle_type']);
@@ -737,12 +705,9 @@ class Jackpot extends MY_AdminController
                     $entity->setCreatedAt($createdAt);
                     $entity->setUpdatedAt($updatedAt);
 
-                    if($i == $total)
-                    {
+                    if ($i == $total) {
                         $entity->setIsLastLevel(1);
-                    }
-                    else
-                    {
+                    } else {
                         $entity->setIsLastLevel(0);
                     }
 
@@ -753,25 +718,23 @@ class Jackpot extends MY_AdminController
             }
         }
         $this->objectManager->flush();
+
         return $model;
     }
 
     public function getBattleLevels($jackpot, $type = 'NORMAL')
     {
-    	$levels = array();
+        $levels = [];
 
-    	if($jackpot->getBattleLevels()->count() > 0)
-    	{
-    		foreach ($jackpot->getBattleLevels() as $level)
-    		{
-    			if($level->getBattleType() == $type)
-    			{
-    				$levels[] = $level;
-    			}
-    		}
-    	}
+        if ($jackpot->getBattleLevels()->count() > 0) {
+            foreach ($jackpot->getBattleLevels() as $level) {
+                if ($level->getBattleType() == $type) {
+                    $levels[] = $level;
+                }
+            }
+        }
 
-    	return $levels;
+        return $levels;
     }
 
     /**
@@ -803,8 +766,7 @@ class Jackpot extends MY_AdminController
             // Check if gameis being played right now
             $gameResponse = $this->checkIfGameIsRunning($id);
 
-            if($gameResponse != false)
-            {
+            if ($gameResponse != false) {
                 echo json_encode($gameResponse);
                 exit;
             }
@@ -817,29 +779,29 @@ class Jackpot extends MY_AdminController
                 $this->objectManager->flush();
 
                 //If record deleted successfully then show the success message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'success',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'success',
                             'message' => $this->crudName.' deleted successfully.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             } else {
 
                 //If record not found in database with the given ID, then show No record found message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'error',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'error',
                             'message' => 'No record found.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             }
         }
 
@@ -879,8 +841,7 @@ class Jackpot extends MY_AdminController
                 // Check if gameis being played right now
                 $gameResponse = $this->checkIfGameIsRunning($id);
 
-                if($gameResponse != false)
-                {
+                if ($gameResponse != false) {
                     echo json_encode($gameResponse);
                     exit;
                 }
@@ -897,29 +858,29 @@ class Jackpot extends MY_AdminController
                 $this->objectManager->flush();
 
                 //If record marked as active or in-active then show the success message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'success',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'success',
                             'message' => $this->crudName.' marked as '.strtolower($newStatus).' successfully.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             } else {
 
                 //If record not found in database with the given ID, then show No record found message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'error',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'error',
                             'message' => 'No record found.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             }
         }
 
@@ -929,42 +890,38 @@ class Jackpot extends MY_AdminController
     }
 
     /**
-     * Check if game is currently being played
+     * Check if game is currently being played.
      *
-     * @param  int $id
+     * @param int $id
+     *
      * @return array
      */
     public function checkIfGameIsRunning($id, $bool = false)
     {
         // Check if gameis being played right now
-        $return         = false;
-        $client         = new Client();
-        $accessToken    = $this->session->userdata('accessToken');
-        $result         = $client->post(API_BASE_PATH.'/api/jackpots/check-socket-game-state/'.$id.'?access_token='.$accessToken);
+        $return = false;
+        $client = new Client();
+        $accessToken = $this->session->userdata('accessToken');
+        $result = $client->post(API_BASE_PATH.'/api/jackpots/check-socket-game-state/'.$id.'?access_token='.$accessToken);
 
         $body = json_decode($result->getBody()->getContents(), true);
 
-        if(isset($body['status']) && $body['status'] == 'success')
-        {
-            if($body['state'] == 'STARTED')
-            {
-            	if($bool == true)
-	        	{
-	        		$return = true;
-	        	}
-	        	else
-	        	{
-	        		$return = array(
-	                    'html' => '',
-	                    'notification' => array(
-	                        array(
-	                            'status' => 'error',
-	                            'message' => 'Sorry but the game is being played currently.',
-	                            'type' => 'toastr',
-	                        ),
-	                    ),
-	                );
-	        	}
+        if (isset($body['status']) && $body['status'] == 'success') {
+            if ($body['state'] == 'STARTED') {
+                if ($bool == true) {
+                    $return = true;
+                } else {
+                    $return = [
+                        'html'         => '',
+                        'notification' => [
+                            [
+                                'status'  => 'error',
+                                'message' => 'Sorry but the game is being played currently.',
+                                'type'    => 'toastr',
+                            ],
+                        ],
+                    ];
+                }
             }
         }
 
@@ -972,7 +929,7 @@ class Jackpot extends MY_AdminController
     }
 
     /**
-     * gamehistory action
+     * gamehistory action.
      *
      * View jackpot game history
      */
@@ -995,18 +952,16 @@ class Jackpot extends MY_AdminController
             $recordObj = $this->objectManager->getRepository($this->entityName)->find($id);
 
             //If the object is not empty
-            $view_data                          = array();
-            $view_data['games']                 = $recordObj->getJackpotGames();
-            $view_data['pageHeading']           = 'Jackpot Games';
-            $view_data['jackpotTitle']          = $recordObj->getTitle();
-            $view_data['jackpotGameBidsUrl']    = 'jackpot-game/bids';
-            $view_data['jackpotGameUsersUrl']   = 'jackpot-game-users';
-            $viewFile                           = 'admin/jackpot/game-history';
+            $view_data = [];
+            $view_data['games'] = $recordObj->getJackpotGames();
+            $view_data['pageHeading'] = 'Jackpot Games';
+            $view_data['jackpotTitle'] = $recordObj->getTitle();
+            $view_data['jackpotGameBidsUrl'] = 'jackpot-game/bids';
+            $view_data['jackpotGameUsersUrl'] = 'jackpot-game-users';
+            $viewFile = 'admin/jackpot/game-history';
 
             //If request is ajax then return only view
             $this->load->view($viewFile, $view_data);
         }
     }
 }
-
-

@@ -2,7 +2,7 @@
 /*!
 * HybridAuth
 * http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
-* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html 
+* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
 */
 
 /**
@@ -17,7 +17,7 @@ class Hybrid_Providers_Twitter extends Hybrid_Provider_Model_OAuth1
     {
         parent::initialize();
 
-        // Provider api end-points 
+        // Provider api end-points
         $this->api->api_base_url = 'https://api.twitter.com/1.1/';
         $this->api->authorize_url = 'https://api.twitter.com/oauth/authenticate';
         $this->api->request_token_url = 'https://api.twitter.com/oauth/request_token';
@@ -58,7 +58,7 @@ class Hybrid_Providers_Twitter extends Hybrid_Provider_Model_OAuth1
 
         // redirect the user to the provider authentication url with force_login
         if (isset($this->config['force_login']) && $this->config['force_login']) {
-            Hybrid_Auth::redirect($this->api->authorizeUrl($tokens, array('force_login' => true)));
+            Hybrid_Auth::redirect($this->api->authorizeUrl($tokens, ['force_login' => true]));
         }
 
         // else, redirect the user to the provider authentication url
@@ -81,7 +81,7 @@ class Hybrid_Providers_Twitter extends Hybrid_Provider_Model_OAuth1
             throw new Exception("User profile request failed! {$this->providerId} api returned an invalid response.", 6);
         }
 
-        # store the user profile.  
+        // store the user profile.
         $this->user->profile->identifier = (property_exists($response, 'id')) ? $response->id : '';
         $this->user->profile->displayName = (property_exists($response, 'screen_name')) ? $response->screen_name : '';
         $this->user->profile->description = (property_exists($response, 'description')) ? $response->description : '';
@@ -99,7 +99,7 @@ class Hybrid_Providers_Twitter extends Hybrid_Provider_Model_OAuth1
      */
     public function getUserContacts()
     {
-        $parameters = array('cursor' => '-1');
+        $parameters = ['cursor' => '-1'];
         $response = $this->api->get('friends/ids.json', $parameters);
 
         // check the last HTTP status code returned
@@ -108,16 +108,16 @@ class Hybrid_Providers_Twitter extends Hybrid_Provider_Model_OAuth1
         }
 
         if (!$response || !count($response->ids)) {
-            return array();
+            return [];
         }
 
         // 75 id per time should be okey
         $contactsids = array_chunk($response->ids, 75);
 
-        $contacts = array();
+        $contacts = [];
 
         foreach ($contactsids as $chunk) {
-            $parameters = array('user_id' => implode(',', $chunk));
+            $parameters = ['user_id' => implode(',', $chunk)];
             $response = $this->api->get('users/lookup.json', $parameters);
 
             // check the last HTTP status code returned
@@ -148,7 +148,7 @@ class Hybrid_Providers_Twitter extends Hybrid_Provider_Model_OAuth1
      */
     public function setUserStatus($status)
     {
-        $parameters = array('status' => $status);
+        $parameters = ['status' => $status];
         $response = $this->api->post('statuses/update.json', $parameters);
 
         // check the last HTTP status code returned
@@ -158,7 +158,7 @@ class Hybrid_Providers_Twitter extends Hybrid_Provider_Model_OAuth1
     }
 
     /**
-     * load the user latest activity  
+     * load the user latest activity
      *    - timeline : all the stream
      *    - me       : the user activity only.
      *
@@ -178,10 +178,10 @@ class Hybrid_Providers_Twitter extends Hybrid_Provider_Model_OAuth1
         }
 
         if (!$response) {
-            return array();
+            return [];
         }
 
-        $activities = array();
+        $activities = [];
 
         foreach ($response as $item) {
             $ua = new Hybrid_User_Activity();

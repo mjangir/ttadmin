@@ -26,13 +26,13 @@ class Home extends MY_GuestUserController
 {
     /**
      * index action.
-     * 
+     *
      * Home page default action
      */
     public function index()
     {
-        return $this->load->view('layout/frontend', array(
-            'content' => $this->load->view('frontend/home/index', array(), true),
-        ));
+        return $this->load->view('layout/frontend', [
+            'content' => $this->load->view('frontend/home/index', [], true),
+        ]);
     }
 }

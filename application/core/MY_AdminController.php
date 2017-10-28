@@ -36,14 +36,14 @@ class MY_AdminController extends CI_Controller
 
     /**
      * Query string parameters returned by GET request.
-     * 
+     *
      * @var array
      */
     protected $queryParams;
 
     /**
      * Query string parameters returned by POST request.
-     * 
+     *
      * @var array
      */
     protected $postParams;
@@ -106,7 +106,7 @@ class MY_AdminController extends CI_Controller
 
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor and sets common properties to all
      * controllers who are extending this class
      */
@@ -137,11 +137,11 @@ class MY_AdminController extends CI_Controller
 
         //Set global vars to layout file
         $links = getNavigationMenus();
-        $this->load->vars(array(
-            'settings' => getSettings(),
-            'loggedUser' => getLoggedUserData(),
-            'sidebarLinks' => !empty($links['backend_sidebar_links']) ? $links['backend_sidebar_links'] : array(),
-        ));
+        $this->load->vars([
+            'settings'     => getSettings(),
+            'loggedUser'   => getLoggedUserData(),
+            'sidebarLinks' => !empty($links['backend_sidebar_links']) ? $links['backend_sidebar_links'] : [],
+        ]);
 
         //Create search form session storage key
         $role = $this->uri->segment(1);
@@ -156,8 +156,8 @@ class MY_AdminController extends CI_Controller
         //for anything and refreshes the page, all the searched data gets lost. We prevent this thing here.
         //When a user submits search form, we store all the post and get data in a session key and retain the
         //previous search query on page refresh until the user does not press Reset Search button.
-        $previousPost = array();
-        $previousGet = array();
+        $previousPost = [];
+        $previousGet = [];
         $previousPage = null;
         $sessKey = $this->session->userdata($sessionKey);
         if (!empty($sessKey)) {
@@ -173,7 +173,7 @@ class MY_AdminController extends CI_Controller
             $newPage = (!empty($getData['page'])) ? $getData['page'] : 1;
         }
 
-        $container = array();
+        $container = [];
         $container['post'] = $newPost;
         $container['get'] = $newGet;
         $container['page'] = $newPage;

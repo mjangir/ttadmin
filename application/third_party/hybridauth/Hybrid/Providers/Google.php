@@ -2,17 +2,17 @@
 /*!
 * HybridAuth
 * http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
-* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html 
+* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
 */
 
 /**
  * Hybrid_Providers_Google provider adapter based on OAuth2 protocol.
- * 
+ *
  * http://hybridauth.sourceforge.net/userguide/IDProvider_info_Google.html
  */
 class Hybrid_Providers_Google extends Hybrid_Provider_Model_OAuth2
 {
-    // default permissions 
+    // default permissions
     public $scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email https://www.google.com/m8/feeds/';
 
     /**
@@ -33,8 +33,8 @@ class Hybrid_Providers_Google extends Hybrid_Provider_Model_OAuth2
      */
     public function loginBegin()
     {
-        $parameters = array('scope' => $this->scope, 'access_type' => 'offline');
-        $optionals = array('scope', 'access_type', 'redirect_uri', 'approval_prompt', 'hd');
+        $parameters = ['scope' => $this->scope, 'access_type' => 'offline'];
+        $optionals = ['scope', 'access_type', 'redirect_uri', 'approval_prompt', 'hd'];
 
         foreach ($optionals as $parameter) {
             if (isset($this->config[$parameter]) && !empty($this->config[$parameter])) {
@@ -50,7 +50,7 @@ class Hybrid_Providers_Google extends Hybrid_Provider_Model_OAuth2
      */
     public function getUserProfile()
     {
-        // refresh tokens if needed 
+        // refresh tokens if needed
         $this->refreshToken();
 
         // ask google api for user infos
@@ -83,26 +83,26 @@ class Hybrid_Providers_Google extends Hybrid_Provider_Model_OAuth2
     }
 
     /**
-     * load the user (Gmail) contacts 
+     * load the user (Gmail) contacts
      *  ..toComplete.
      */
     public function getUserContacts()
     {
-        // refresh tokens if needed 
+        // refresh tokens if needed
         $this->refreshToken();
 
         if (!isset($this->config['contacts_param'])) {
-            $this->config['contacts_param'] = array('max-results' => 500);
+            $this->config['contacts_param'] = ['max-results' => 500];
         }
 
         $response = $this->api->api('https://www.google.com/m8/feeds/contacts/default/full?'
-                            .http_build_query(array_merge(array('alt' => 'json'), $this->config['contacts_param'])));
+                            .http_build_query(array_merge(['alt' => 'json'], $this->config['contacts_param'])));
 
         if (!$response) {
-            return array();
+            return [];
         }
 
-        $contacts = array();
+        $contacts = [];
 
         foreach ($response->feed->entry as $idx => $entry) {
             $uc = new Hybrid_User_Contact();

@@ -2,7 +2,7 @@
 /*!
 * HybridAuth
 * http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
-* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html 
+* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
 */
 
 /**
@@ -44,7 +44,7 @@ abstract class Hybrid_Provider_Model
      */
     public function __construct($providerId, $config, $params = null)
     {
-        # init the IDp adapter parameters, get them from the cache if possible
+        // init the IDp adapter parameters, get them from the cache if possible
         if (!$params) {
             $this->params = Hybrid_Auth::storage()->get("hauth_session.$providerId.id_provider_params");
         } else {
@@ -75,11 +75,11 @@ abstract class Hybrid_Provider_Model
     /**
      * IDp wrappers initializer.
      *
-     * The main job of wrappers initializer is to performs (depend on the IDp api client it self): 
+     * The main job of wrappers initializer is to performs (depend on the IDp api client it self):
      *     - include some libs nedded by this provider,
      *     - check IDp key and secret,
      *     - set some needed parameters (stored in $this->params) by this IDp api client
-     *     - create and setup an instance of the IDp api client on $this->api 
+     *     - create and setup an instance of the IDp api client on $this->api
      */
     abstract protected function initialize();
 

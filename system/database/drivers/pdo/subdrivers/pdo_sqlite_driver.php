@@ -135,7 +135,7 @@ class CI_DB_pdo_sqlite_driver extends CI_DB_pdo_driver
             return false;
         }
 
-        $this->data_cache['field_names'][$table] = array();
+        $this->data_cache['field_names'][$table] = [];
         foreach ($result->result_array() as $row) {
             $this->data_cache['field_names'][$table][] = $row['name'];
         }
@@ -163,7 +163,7 @@ class CI_DB_pdo_sqlite_driver extends CI_DB_pdo_driver
             return false;
         }
 
-        $retval = array();
+        $retval = [];
         for ($i = 0, $c = count($query); $i < $c; ++$i) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = $query[$i]['name'];

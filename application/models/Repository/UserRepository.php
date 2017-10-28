@@ -35,10 +35,10 @@ class UserRepository extends EntityRepository
      * @param int $offset
      * @param int $limit
      * @param int $postParams
-     * 
+     *
      * @return Paginator
      */
-    public function getPagedList($offset = 0, $limit = 10, $postParams)
+    public function getPagedList($offset, $limit, $postParams)
     {
         $em = $this->_em;
         $qb = $em->createQueryBuilder();
@@ -58,10 +58,10 @@ class UserRepository extends EntityRepository
 
     /**
      * Get Users Dropdown List.
-     * 
+     *
      * @param array $postParams
      * @param array $queryParams
-     * 
+     *
      * @return type
      */
     public function getDropdownList($postParams, $queryParams)

@@ -31,7 +31,7 @@ class LinkCategoryRepository extends EntityRepository
 {
     /**
      * Get link categories list.
-     * 
+     *
      * @return object
      */
     public function getList()
@@ -48,7 +48,7 @@ class LinkCategoryRepository extends EntityRepository
 
     /**
      * Get link categories.
-     * 
+     *
      * @return object
      */
     public function getCategories()
@@ -63,10 +63,10 @@ class LinkCategoryRepository extends EntityRepository
 
     /**
      * Get paged link categories.
-     * 
+     *
      * @param int $offset
      * @param int $limit
-     * 
+     *
      * @return Paginator
      */
     public function getPagedCategories($offset = 0, $limit = 10)
