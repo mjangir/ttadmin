@@ -18,7 +18,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://192.168.1.4/ticktock/';
+
+$config['base_url'] = 'http://18.221.196.29/ticktock/';
 
 /*
 |--------------------------------------------------------------------------
