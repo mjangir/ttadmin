@@ -145,7 +145,7 @@
                             <?php echo form_hidden('levels['.$i.'][battle_type]','NORMAL');?>
                             <?php echo form_input(array(
                               'type' => 'text',
-                              'value' => $level->getLevelName(),
+                              'value' => $level['level_name'],
                               'name' => 'levels['.$i.'][level_name]',
                               'class' => 'form-control',
                               'data-fv-row' => '.col-md-2',
@@ -156,7 +156,7 @@
                         <div class="col-md-1">
                             <?php echo form_input(array(
                               'type' => 'text',
-                              'value' => $level->getDuration(),
+                              'value' => $level['duration'],
                               'name' => 'levels['.$i.'][duration]',
                               'class' => 'form-control','data-fv-row' => '.col-md-1',
                               'data-fv-notempty' => 'true',
@@ -171,7 +171,7 @@
                         <div class="col-md-1">
                             <?php echo form_input(array(
                               'type' => 'text',
-                              'value' => $level->getPrizeValue(),
+                              'value' => $level['prize_value'],
                               'name' => 'levels['.$i.'][prize_value]',
                               'class' => 'form-control',
                               'data-fv-row' => '.col-md-1',
@@ -186,7 +186,7 @@
                         <div class="col-md-1">
                             <?php echo form_input(array(
                               'type' => 'text',
-                              'value' => $level->getDefaultAvailableBids(),
+                              'value' => $level['default_bids'],
                               'name' => 'levels['.$i.'][default_bids]',
                               'class' => 'form-control','data-fv-row' => '.col-md-1',
                               'data-fv-notempty' => 'true',
@@ -200,7 +200,7 @@
                         <div class="col-md-1">
                             <?php echo form_input(array(
                               'type' => 'text',
-                              'value' => $level->getLastBidWinnerPercent(),
+                              'value' => $level['last_bid_winner_percent'],
                               'name' => 'levels['.$i.'][last_bid_winner_percent]',
                               'class' => 'form-control',
                               'data-fv-row' => '.col-md-2',
@@ -215,7 +215,7 @@
                         <div class="col-md-1">
                             <?php echo form_input(array(
                               'type' => 'text',
-                              'value' => $level->getLongestBidWinnerPercent(),
+                              'value' => $level['longest_bid_winner_percent'],
                               'name' => 'levels['.$i.'][longest_bid_winner_percent]',
                               'class' => 'form-control',
                               'data-fv-row' => '.col-md-2',
@@ -230,7 +230,7 @@
                         <div class="col-md-1">
                             <?php echo form_input(array(
                               'type' => 'text',
-                              'value' => $level->getIncrementSeconds(),
+                              'value' => $level['increment_seconds'],
                               'name' => 'levels['.$i.'][increment_seconds]',
                               'class' => 'form-control','data-fv-row' => '.col-md-1',
                               'data-fv-notempty' => 'true',
@@ -244,7 +244,7 @@
                         <div class="col-md-1">
                             <?php echo form_input(array(
                               'type' => 'text',
-                              'value' => $level->getMinPlayersRequiredToStart(),
+                              'value' => $level['min_players_to_start'],
                               'name' => 'levels['.$i.'][min_players_to_start]',
                               'class' => 'form-control',
                               'data-fv-row' => '.col-md-1',
@@ -259,7 +259,7 @@
                         <div class="col-md-1">
                             <?php echo form_input(array(
                               'type' => 'text',
-                              'value' => $level->getMinWinsToUnlockNextLevel(),
+                              'value' => $level['min_wins_to_unlock_next'],
                               'name' => 'levels['.$i.'][min_wins_to_unlock_next]',
                               'class' => 'form-control',
                               'data-fv-row' => '.col-md-1',
