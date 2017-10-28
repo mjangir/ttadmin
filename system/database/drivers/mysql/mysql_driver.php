@@ -418,7 +418,7 @@ class CI_DB_mysql_driver extends CI_DB
         }
         $query = $query->result_object();
 
-        $retval = array();
+        $retval = [];
         for ($i = 0, $c = count($query); $i < $c; ++$i) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = $query[$i]->Field;
@@ -447,7 +447,7 @@ class CI_DB_mysql_driver extends CI_DB
      */
     public function error()
     {
-        return array('code' => mysql_errno($this->conn_id), 'message' => mysql_error($this->conn_id));
+        return ['code' => mysql_errno($this->conn_id), 'message' => mysql_error($this->conn_id)];
     }
 
     // --------------------------------------------------------------------

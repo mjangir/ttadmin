@@ -66,7 +66,7 @@ class CI_DB_sqlite3_driver extends CI_DB
      *
      * @var array
      */
-    protected $_random_keyword = array('RANDOM()', 'RANDOM()');
+    protected $_random_keyword = ['RANDOM()', 'RANDOM()'];
 
     // --------------------------------------------------------------------
 
@@ -263,7 +263,7 @@ class CI_DB_sqlite3_driver extends CI_DB
             return false;
         }
 
-        $this->data_cache['field_names'][$table] = array();
+        $this->data_cache['field_names'][$table] = [];
         foreach ($result->result_array() as $row) {
             $this->data_cache['field_names'][$table][] = $row['name'];
         }
@@ -291,7 +291,7 @@ class CI_DB_sqlite3_driver extends CI_DB
             return false;
         }
 
-        $retval = array();
+        $retval = [];
         for ($i = 0, $c = count($query); $i < $c; ++$i) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = $query[$i]['name'];
@@ -316,7 +316,7 @@ class CI_DB_sqlite3_driver extends CI_DB
      */
     public function error()
     {
-        return array('code' => $this->conn_id->lastErrorCode(), 'message' => $this->conn_id->lastErrorMsg());
+        return ['code' => $this->conn_id->lastErrorCode(), 'message' => $this->conn_id->lastErrorMsg()];
     }
 
     // --------------------------------------------------------------------

@@ -143,10 +143,10 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver
 
         // SSL support was added to PDO_MYSQL in PHP 5.3.7
         if (is_array($this->encrypt) && is_php('5.3.7')) {
-            $ssl = array();
-            empty($this->encrypt['ssl_key'])    or $ssl[PDO::MYSQL_ATTR_SSL_KEY] = $this->encrypt['ssl_key'];
-            empty($this->encrypt['ssl_cert'])   or $ssl[PDO::MYSQL_ATTR_SSL_CERT] = $this->encrypt['ssl_cert'];
-            empty($this->encrypt['ssl_ca'])     or $ssl[PDO::MYSQL_ATTR_SSL_CA] = $this->encrypt['ssl_ca'];
+            $ssl = [];
+            empty($this->encrypt['ssl_key']) or $ssl[PDO::MYSQL_ATTR_SSL_KEY] = $this->encrypt['ssl_key'];
+            empty($this->encrypt['ssl_cert']) or $ssl[PDO::MYSQL_ATTR_SSL_CERT] = $this->encrypt['ssl_cert'];
+            empty($this->encrypt['ssl_ca']) or $ssl[PDO::MYSQL_ATTR_SSL_CA] = $this->encrypt['ssl_ca'];
             empty($this->encrypt['ssl_capath']) or $ssl[PDO::MYSQL_ATTR_SSL_CAPATH] = $this->encrypt['ssl_capath'];
             empty($this->encrypt['ssl_cipher']) or $ssl[PDO::MYSQL_ATTR_SSL_CIPHER] = $this->encrypt['ssl_cipher'];
 
@@ -249,7 +249,7 @@ class CI_DB_pdo_mysql_driver extends CI_DB_pdo_driver
         }
         $query = $query->result_object();
 
-        $retval = array();
+        $retval = [];
         for ($i = 0, $c = count($query); $i < $c; ++$i) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = $query[$i]->Field;

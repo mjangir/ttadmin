@@ -71,7 +71,7 @@ class CI_DB_sqlite3_result extends CI_DB_result
      */
     public function list_fields()
     {
-        $field_names = array();
+        $field_names = [];
         for ($i = 0, $c = $this->num_fields(); $i < $c; ++$i) {
             $field_names[] = $this->result_id->columnName($i);
         }
@@ -90,15 +90,15 @@ class CI_DB_sqlite3_result extends CI_DB_result
      */
     public function field_data()
     {
-        static $data_types = array(
+        static $data_types = [
             SQLITE3_INTEGER => 'integer',
-            SQLITE3_FLOAT => 'float',
-            SQLITE3_TEXT => 'text',
-            SQLITE3_BLOB => 'blob',
-            SQLITE3_NULL => 'null',
-        );
+            SQLITE3_FLOAT   => 'float',
+            SQLITE3_TEXT    => 'text',
+            SQLITE3_BLOB    => 'blob',
+            SQLITE3_NULL    => 'null',
+        ];
 
-        $retval = array();
+        $retval = [];
         for ($i = 0, $c = $this->num_fields(); $i < $c; ++$i) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = $this->result_id->columnName($i);

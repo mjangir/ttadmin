@@ -7,7 +7,7 @@
 
 /**
  * Hybrid_Endpoint class.
- * 
+ *
  * Hybrid_Endpoint class provides a simple way to handle the OpenID and OAuth endpoint.
  */
 class Hybrid_Endpoint
@@ -27,7 +27,7 @@ class Hybrid_Endpoint
 
         if (is_null(self::$request)) {
             // Fix a strange behavior when some provider call back ha endpoint
-            // with /index.php?hauth.done={provider}?{args}... 
+            // with /index.php?hauth.done={provider}?{args}...
             // >here we need to recreate the $_REQUEST
             if (strrpos($_SERVER['QUERY_STRING'], '?')) {
                 $_SERVER['QUERY_STRING'] = str_replace('?', '&', $_SERVER['QUERY_STRING']);
@@ -82,7 +82,7 @@ class Hybrid_Endpoint
         $output = str_replace(
             '{RETURN_TO_URL}',
             str_replace(
-                array('<', '>', '"', "'", '&'), array('&lt;', '&gt;', '&quot;', '&apos;', '&amp;'),
+                ['<', '>', '"', "'", '&'], ['&lt;', '&gt;', '&quot;', '&apos;', '&amp;'],
                 Hybrid_Auth::getCurrentUrl(false)
             ),
             file_get_contents(dirname(__FILE__).'/resources/openid_xrds.xml')
@@ -114,7 +114,7 @@ class Hybrid_Endpoint
 
         $provider_id = trim(strip_tags(self::$request['hauth_start']));
 
-        # check if page accessed directly
+        // check if page accessed directly
         if (!Hybrid_Auth::storage()->get("hauth_session.$provider_id.hauth_endpoint")) {
             Hybrid_Logger::error('Endpoint: hauth_endpoint parameter is not defined on hauth_start, halt login process!');
 
@@ -122,10 +122,10 @@ class Hybrid_Endpoint
             die('You cannot access this page directly.');
         }
 
-        # define:hybrid.endpoint.php step 2.
+        // define:hybrid.endpoint.php step 2.
         $hauth = Hybrid_Auth::setup($provider_id);
 
-        # if REQUESTed hauth_idprovider is wrong, session not created, etc. 
+        // if REQUESTed hauth_idprovider is wrong, session not created, etc.
         if (!$hauth) {
             Hybrid_Logger::error('Endpoint: Invalid parameter on hauth_start!');
 
@@ -189,7 +189,7 @@ class Hybrid_Endpoint
         if (!self::$initDone) {
             self::$initDone = true;
 
-            # Init Hybrid_Auth
+            // Init Hybrid_Auth
             try {
                 require_once realpath(dirname(__FILE__)).'/Storage.php';
 

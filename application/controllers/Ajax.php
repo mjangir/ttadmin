@@ -26,7 +26,7 @@ class Ajax extends MY_GuestUserController
 {
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor
      */
     public function __construct()
@@ -36,9 +36,9 @@ class Ajax extends MY_GuestUserController
 
     /**
      * links action.
-     * 
+     *
      * Provides system links dropdown content
-     * 
+     *
      * @return string Links json string
      */
     public function links()

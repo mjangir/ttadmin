@@ -84,15 +84,15 @@ class CI_DB_pdo_cubrid_forge extends CI_DB_pdo_forge
      *
      * @var array
      */
-    protected $_unsigned = array(
-        'SHORT' => 'INTEGER',
+    protected $_unsigned = [
+        'SHORT'    => 'INTEGER',
         'SMALLINT' => 'INTEGER',
-        'INT' => 'BIGINT',
-        'INTEGER' => 'BIGINT',
-        'BIGINT' => 'NUMERIC',
-        'FLOAT' => 'DOUBLE',
-        'REAL' => 'DOUBLE',
-    );
+        'INT'      => 'BIGINT',
+        'INTEGER'  => 'BIGINT',
+        'BIGINT'   => 'NUMERIC',
+        'FLOAT'    => 'DOUBLE',
+        'REAL'     => 'DOUBLE',
+    ];
 
     // --------------------------------------------------------------------
 
@@ -107,12 +107,12 @@ class CI_DB_pdo_cubrid_forge extends CI_DB_pdo_forge
      */
     protected function _alter_table($alter_type, $table, $field)
     {
-        if (in_array($alter_type, array('DROP', 'ADD'), true)) {
+        if (in_array($alter_type, ['DROP', 'ADD'], true)) {
             return parent::_alter_table($alter_type, $table, $field);
         }
 
         $sql = 'ALTER TABLE '.$this->db->escape_identifiers($table);
-        $sqls = array();
+        $sqls = [];
         for ($i = 0, $c = count($field); $i < $c; ++$i) {
             if ($field[$i]['_literal'] !== false) {
                 $sqls[] = $sql.' CHANGE '.$field[$i]['_literal'];
@@ -206,13 +206,13 @@ class CI_DB_pdo_cubrid_forge extends CI_DB_pdo_forge
                 continue;
             }
 
-            is_array($this->keys[$i]) or $this->keys[$i] = array($this->keys[$i]);
+            is_array($this->keys[$i]) or $this->keys[$i] = [$this->keys[$i]];
 
             $sql .= ",\n\tKEY ".$this->db->escape_identifiers(implode('_', $this->keys[$i]))
                 .' ('.implode(', ', $this->db->escape_identifiers($this->keys[$i])).')';
         }
 
-        $this->keys = array();
+        $this->keys = [];
 
         return $sql;
     }

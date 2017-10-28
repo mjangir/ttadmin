@@ -2,14 +2,14 @@
 /*!
 * HybridAuth
 * http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
-* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html 
+* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
 */
 
 /**
  * Hybrid_User_Activity.
- * 
+ *
  * used to provider the connected user activity stream on a standardized structure across supported social apis.
- * 
+ *
  * http://hybridauth.sourceforge.net/userguide/Profile_Data_User_Activity.html
  */
 class Hybrid_User_Activity

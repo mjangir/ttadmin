@@ -34,7 +34,7 @@ class Usergroup extends MY_AdminController
     /**
      * Module Name.
      *
-     * @var string Name of the entity which the controller is for 
+     * @var string Name of the entity which the controller is for
      */
     protected $crudName;
 
@@ -47,7 +47,7 @@ class Usergroup extends MY_AdminController
 
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor and sets base url of the controller,
      * module name and doctrine entity name
      */
@@ -67,7 +67,7 @@ class Usergroup extends MY_AdminController
 
     /**
      * index action.
-     * 
+     *
      * Index page of User Group module
      */
     public function index()
@@ -83,7 +83,7 @@ class Usergroup extends MY_AdminController
         $paginator = $this->paginator->setOptions($data, $this->page, $this->baseControllerUrl, $this->limit);
 
         //Prepare the view parameters
-        $view_data = array();
+        $view_data = [];
         $view_data['data'] = $data;                            //Data got from model
         $view_data['page'] = $this->page;                      //Current page number
         $view_data['listStartFrom'] = $this->offset + 1;                          //Serial number of the table records
@@ -102,43 +102,44 @@ class Usergroup extends MY_AdminController
 
         //Check if the request is ajax. If yes then only render the view
         if ($this->input->is_ajax_request()) {
-            $jsonResponse = array();
+            $jsonResponse = [];
             $jsonResponse['html'] = $this->load->view('admin/usergroup/index', $view_data, true);
             echo json_encode($jsonResponse);
         } else {
 
             //If request is not ajax then render the view with layout
-            return $this->load->view('layout/backend', array(
-                'content' => $this->load->view('admin/usergroup/index', $view_data, true),
-                'pageHeading' => 'User Groups',
-                'pageSubHeading' => '',
-                'activeLinksAlias' => array('admin_user_groups'),
-                'breadCrumbs' => array('User Groups' => ''),
-            ));
+            return $this->load->view('layout/backend', [
+                'content'          => $this->load->view('admin/usergroup/index', $view_data, true),
+                'pageHeading'      => 'User Groups',
+                'pageSubHeading'   => '',
+                'activeLinksAlias' => ['admin_user_groups'],
+                'breadCrumbs'      => ['User Groups' => ''],
+            ]);
         }
     }
-    
+
     /**
      * alias_exists function.
-     * 
+     *
      * Checks weather given alias name exists in database or not
-     * 
+     *
      * @param string $alias Alias Name to check in database
-     * 
+     *
      * @return bool
      */
     public function alias_exists($alias, $id)
     {
-        $record = $this->objectManager->getRepository('Entity\UserGroup')->findOneBy(array('alias' => $alias));
-        if($record !== NULL && $record->getId() == $id) {
+        $record = $this->objectManager->getRepository('Entity\UserGroup')->findOneBy(['alias' => $alias]);
+        if ($record !== null && $record->getId() == $id) {
             return true;
         }
+
         return $record === null;
     }
 
     /**
      * addupdate action.
-     * 
+     *
      * The common action to add or update a record for this controller. In case of update record,
      * the ID of record will be provide. It will render the form only if the request to this action
      * is not POST.
@@ -164,13 +165,13 @@ class Usergroup extends MY_AdminController
 
             //Set validation rules
             $this->form_validation->set_rules('roleId', 'User Role', 'trim|required',
-                    array('required' => 'Please select User Role'));
+                    ['required' => 'Please select User Role']);
             $this->form_validation->set_rules('groupName', 'Group Name', 'trim|required|xss_clean',
-                    array('required' => 'Please enter Group Name'));
+                    ['required' => 'Please enter Group Name']);
             $this->form_validation->set_rules('alias', 'Alias', 'trim|required|callback_alias_exists['.$id.']|xss_clean',
-                    array('required' => 'Please enter Alias Name',
-                        'alias_exists' => 'Alias Name must be unique for each User Group'
-                    ));
+                    ['required'        => 'Please enter Alias Name',
+                        'alias_exists' => 'Alias Name must be unique for each User Group',
+                    ]);
             $this->form_validation->set_rules('description', 'Description', 'trim|xss_clean');
 
             //If form is successfully validated
@@ -204,55 +205,55 @@ class Usergroup extends MY_AdminController
                     $this->objectManager->flush($group);
 
                     //Return success if added successfully
-                    echo json_encode(array(
-                        'html' => '',
-                        'notification' => array(
-                            array(
-                                'status' => 'success',
+                    echo json_encode([
+                        'html'         => '',
+                        'notification' => [
+                            [
+                                'status'  => 'success',
                                 'message' => $this->crudName.' saved successfully.',
-                                'type' => 'toastr',
-                            ),
-                        ),
-                        'location' => array(
-                            'redirect' => array(
-                                'url' => $this->baseControllerUrl,
+                                'type'    => 'toastr',
+                            ],
+                        ],
+                        'location' => [
+                            'redirect' => [
+                                'url'     => $this->baseControllerUrl,
                                 'timeout' => 2000,
-                            ),
-                        ),
-                    ));
+                            ],
+                        ],
+                    ]);
                     exit;
                 } catch (Exception $ex) {
                     //show error message to user
-                    echo json_encode(array(
-                        'html' => '',
-                        'notification' => array(
-                            array(
-                                'status' => 'error',
+                    echo json_encode([
+                        'html'         => '',
+                        'notification' => [
+                            [
+                                'status'  => 'error',
                                 'message' => 'Error occured while processing.',
-                                'type' => 'toastr',
-                            ),
-                        ),
-                    ));
+                                'type'    => 'toastr',
+                            ],
+                        ],
+                    ]);
                     exit;
                 }
             } else {
                 //Throw the validation errors, if validation not successfully
                 $errors = $this->form_validation->error_array();
-                echo json_encode(array(
-                    'validation' => array(
-                        'form' => '#form_usergroup',
+                echo json_encode([
+                    'validation' => [
+                        'form'   => '#form_usergroup',
                         'errors' => $errors,
-                    ),
-                ));
+                    ],
+                ]);
                 exit;
             }
         } else {
             //If request method is not post then render the form with layout
 
             //Set view form attributes and variables
-            $view_data['form']['attributes'] = array(
+            $view_data['form']['attributes'] = [
                 'id' => 'form_usergroup',
-            );
+            ];
             $view_data['form']['action'] = ($id === null) ? $this->baseControllerUrl.'/add-update' : $this->baseControllerUrl.'/add-update?id='.$id;
             $view_data['form']['cancelUrl'] = $this->baseControllerUrl;
             $view_data['form']['viewUrl'] = $this->baseControllerUrl.'/view?id='.$id;
@@ -277,7 +278,7 @@ class Usergroup extends MY_AdminController
 
     /**
      * view action.
-     * 
+     *
      * View a User Group details
      */
     public function view()
@@ -298,13 +299,13 @@ class Usergroup extends MY_AdminController
         if (!empty($id)) {
             //Get actual record object
             $record = $this->objectManager->getRepository('Entity\UserGroup')->find($id);
-            $this->load->view('admin/usergroup/view', array('record' => $record));
+            $this->load->view('admin/usergroup/view', ['record' => $record]);
         }
     }
 
     /**
      * delete action.
-     * 
+     *
      * Action to delete a record from the table. It will permanent remove the record from database.
      * There is no soft delete functionality as of now
      */
@@ -336,29 +337,29 @@ class Usergroup extends MY_AdminController
                 $this->objectManager->flush();
 
                 //If record deleted successfully then show the success message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'success',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'success',
                             'message' => $this->crudName.' deleted successfully.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             } else {
 
                 //If record not found in database with the given ID, then show No record found message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'error',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'error',
                             'message' => 'No record found.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             }
         }
 
@@ -369,7 +370,7 @@ class Usergroup extends MY_AdminController
 
     /**
      * permissions action.
-     * 
+     *
      * Add/Update permissions for a user group to access the application resources
      */
     public function permissions()
@@ -392,7 +393,7 @@ class Usergroup extends MY_AdminController
             $links = $this->getNestedMenus($links);
 
             //Set view variables
-            $viewData = array();
+            $viewData = [];
             $viewData['links'] = $links;
             $viewData['userGroupId'] = $userGroup->getId();
             $viewData['groupName'] = $userGroup->getGroupName();
@@ -400,13 +401,13 @@ class Usergroup extends MY_AdminController
             $viewData['saveUrl'] = $this->baseControllerUrl.'/update-permissions';
 
             //Return the view with rendered layout
-            return $this->load->view('layout/backend', array(
-                'content' => $this->load->view('admin/usergroup/permissions', $viewData, true),
-                'pageHeading' => 'Manage User Group Permissions',
-                'pageSubHeading' => '',
-                'activeLinksAlias' => array('admin_manage_users', 'admin_manage_users_user_list'),
-                'breadCrumbs' => array('Manage Users' => '', 'User Groups' => '', 'Update Permissions' => ''),
-            ));
+            return $this->load->view('layout/backend', [
+                'content'          => $this->load->view('admin/usergroup/permissions', $viewData, true),
+                'pageHeading'      => 'Manage User Group Permissions',
+                'pageSubHeading'   => '',
+                'activeLinksAlias' => ['admin_manage_users', 'admin_manage_users_user_list'],
+                'breadCrumbs'      => ['Manage Users' => '', 'User Groups' => '', 'Update Permissions' => ''],
+            ]);
         } else {
             redirect($this->baseControllerUrl);
         }
@@ -414,17 +415,17 @@ class Usergroup extends MY_AdminController
 
     /**
      * getNestedMenus function.
-     * 
+     *
      * Function to create nested menu
-     * 
+     *
      * @param array $arr    Array which has to be made as nested
      * @param int   $parent Parent id of the link. Default is 0
-     * 
+     *
      * @return array $navigation Nested array of links
      */
     private function getNestedMenus($arr, $parent = 0)
     {
-        $navigation = array();
+        $navigation = [];
         foreach ($arr as $menu) {
             if ($menu['parentId'] == $parent) {
                 $menu['sub'] = isset($menu['sub']) ? $menu['sub'] : $this->getNestedMenus($arr, $menu['id']);
@@ -437,7 +438,7 @@ class Usergroup extends MY_AdminController
 
     /**
      * updatepermissions action.
-     * 
+     *
      * Save User Group permission action
      */
     public function updatepermissions()
@@ -454,7 +455,7 @@ class Usergroup extends MY_AdminController
             $group = $this->objectManager->getRepository($this->entityName)->find($userGroupId);
 
             //Get existing permissions and remove them
-            $existingData = $this->objectManager->getRepository('Entity\LinkPermission')->findBy(array('group' => $group));
+            $existingData = $this->objectManager->getRepository('Entity\LinkPermission')->findBy(['group' => $group]);
             if (!empty($existingData)) {
                 foreach ($existingData as $ed) {
                     $this->objectManager->remove($ed);
@@ -464,7 +465,7 @@ class Usergroup extends MY_AdminController
 
             //Now again re-assign the permissions
             foreach ($menu as $menuId => $menuItem) {
-                $link = $this->objectManager->getRepository('Entity\Link')->findOneBy(array('id' => $menuId));
+                $link = $this->objectManager->getRepository('Entity\Link')->findOneBy(['id' => $menuId]);
                 $permissions = json_encode($menuItem['permissions']);
                 $linkPermission = new Entity\LinkPermission();
                 $linkPermission->setPermissions($permissions);
@@ -480,21 +481,21 @@ class Usergroup extends MY_AdminController
             $this->navigation->setSessionMenuPermissions();
 
             //If permissions updated successfully, then show a success message
-            $response = array(
-                'html' => '',
-                'notification' => array(
-                    array(
-                        'status' => 'success',
+            $response = [
+                'html'         => '',
+                'notification' => [
+                    [
+                        'status'  => 'success',
                         'message' => 'Permissions updated successfully.',
-                        'type' => 'toastr',
-                    ),
-                ),
-                'location' => array(
-                    'refresh' => array(
+                        'type'    => 'toastr',
+                    ],
+                ],
+                'location' => [
+                    'refresh' => [
                         'timeout' => 2000,
-                    ),
-                ),
-            );
+                    ],
+                ],
+            ];
             echo json_encode($response);
             exit;
         }

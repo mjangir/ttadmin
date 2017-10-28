@@ -36,7 +36,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\Question'."\0".'id', ''."\0".'Entity\\Question'."\0".'block', ''."\0".'Entity\\Question'."\0".'title', ''."\0".'Entity\\Question'."\0".'createdOn', ''."\0".'Entity\\Question'."\0".'updatedOn', ''."\0".'Entity\\Question'."\0".'status', ''."\0".'Entity\\Question'."\0".'category', ''."\0".'Entity\\Question'."\0".'interestArea', ''."\0".'Entity\\Question'."\0".'createdBy', ''."\0".'Entity\\Question'."\0".'updatedBy');
+            return ['__isInitialized__', ''."\0".'Entity\\Question'."\0".'id', ''."\0".'Entity\\Question'."\0".'block', ''."\0".'Entity\\Question'."\0".'title', ''."\0".'Entity\\Question'."\0".'createdOn', ''."\0".'Entity\\Question'."\0".'updatedOn', ''."\0".'Entity\\Question'."\0".'status', ''."\0".'Entity\\Question'."\0".'category', ''."\0".'Entity\\Question'."\0".'interestArea', ''."\0".'Entity\\Question'."\0".'createdBy', ''."\0".'Entity\\Question'."\0".'updatedBy'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\Question'."\0".'id', ''."\0".'Entity\\Question'."\0".'block', ''."\0".'Entity\\Question'."\0".'title', ''."\0".'Entity\\Question'."\0".'createdOn', ''."\0".'Entity\\Question'."\0".'updatedOn', ''."\0".'Entity\\Question'."\0".'status', ''."\0".'Entity\\Question'."\0".'category', ''."\0".'Entity\\Question'."\0".'interestArea', ''."\0".'Entity\\Question'."\0".'createdBy', ''."\0".'Entity\\Question'."\0".'updatedBy');
+        return ['__isInitialized__', ''."\0".'Entity\\Question'."\0".'id', ''."\0".'Entity\\Question'."\0".'block', ''."\0".'Entity\\Question'."\0".'title', ''."\0".'Entity\\Question'."\0".'createdOn', ''."\0".'Entity\\Question'."\0".'updatedOn', ''."\0".'Entity\\Question'."\0".'status', ''."\0".'Entity\\Question'."\0".'category', ''."\0".'Entity\\Question'."\0".'interestArea', ''."\0".'Entity\\Question'."\0".'createdBy', ''."\0".'Entity\\Question'."\0".'updatedBy'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function setBlock($block)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBlock', array($block));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setBlock', [$block]);
 
         return parent::setBlock($block);
     }
@@ -197,7 +191,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function getBlock()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBlock', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getBlock', []);
 
         return parent::getBlock();
     }
@@ -207,7 +201,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function setTitle($title)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', array($title));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTitle', [$title]);
 
         return parent::setTitle($title);
     }
@@ -217,7 +211,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function getTitle()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTitle', []);
 
         return parent::getTitle();
     }
@@ -227,7 +221,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function setCreatedOn($createdOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', array($createdOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', [$createdOn]);
 
         return parent::setCreatedOn($createdOn);
     }
@@ -237,7 +231,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function getCreatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', []);
 
         return parent::getCreatedOn();
     }
@@ -247,7 +241,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function setUpdatedOn($updatedOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', array($updatedOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', [$updatedOn]);
 
         return parent::setUpdatedOn($updatedOn);
     }
@@ -257,7 +251,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function getUpdatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', []);
 
         return parent::getUpdatedOn();
     }
@@ -267,7 +261,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function setStatus($status)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$status]);
 
         return parent::setStatus($status);
     }
@@ -277,7 +271,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function getStatus()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', []);
 
         return parent::getStatus();
     }
@@ -287,7 +281,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function setCategory(\Entity\QuestionCategory $category = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategory', array($category));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCategory', [$category]);
 
         return parent::setCategory($category);
     }
@@ -297,7 +291,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function getCategory()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategory', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCategory', []);
 
         return parent::getCategory();
     }
@@ -307,7 +301,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function setInterestArea(\Entity\InterestArea $interestArea = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInterestArea', array($interestArea));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setInterestArea', [$interestArea]);
 
         return parent::setInterestArea($interestArea);
     }
@@ -317,7 +311,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function getInterestArea()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInterestArea', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getInterestArea', []);
 
         return parent::getInterestArea();
     }
@@ -327,7 +321,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function setCreatedBy(\Entity\User $createdBy = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', array($createdBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', [$createdBy]);
 
         return parent::setCreatedBy($createdBy);
     }
@@ -337,7 +331,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function getCreatedBy()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', []);
 
         return parent::getCreatedBy();
     }
@@ -347,7 +341,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function setUpdatedBy(\Entity\User $updatedBy = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', array($updatedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', [$updatedBy]);
 
         return parent::setUpdatedBy($updatedBy);
     }
@@ -357,7 +351,7 @@ class __CG__EntityQuestion extends \Entity\Question implements \Doctrine\ORM\Pro
      */
     public function getUpdatedBy()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', []);
 
         return parent::getUpdatedBy();
     }

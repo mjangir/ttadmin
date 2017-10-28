@@ -36,7 +36,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\Guardian'."\0".'id', ''."\0".'Entity\\Guardian'."\0".'firstName', ''."\0".'Entity\\Guardian'."\0".'middleName', ''."\0".'Entity\\Guardian'."\0".'lastName', ''."\0".'Entity\\Guardian'."\0".'mobileNo', ''."\0".'Entity\\Guardian'."\0".'email', ''."\0".'Entity\\Guardian'."\0".'createdOn', ''."\0".'Entity\\Guardian'."\0".'updatedOn');
+            return ['__isInitialized__', ''."\0".'Entity\\Guardian'."\0".'id', ''."\0".'Entity\\Guardian'."\0".'firstName', ''."\0".'Entity\\Guardian'."\0".'middleName', ''."\0".'Entity\\Guardian'."\0".'lastName', ''."\0".'Entity\\Guardian'."\0".'mobileNo', ''."\0".'Entity\\Guardian'."\0".'email', ''."\0".'Entity\\Guardian'."\0".'createdOn', ''."\0".'Entity\\Guardian'."\0".'updatedOn'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\Guardian'."\0".'id', ''."\0".'Entity\\Guardian'."\0".'firstName', ''."\0".'Entity\\Guardian'."\0".'middleName', ''."\0".'Entity\\Guardian'."\0".'lastName', ''."\0".'Entity\\Guardian'."\0".'mobileNo', ''."\0".'Entity\\Guardian'."\0".'email', ''."\0".'Entity\\Guardian'."\0".'createdOn', ''."\0".'Entity\\Guardian'."\0".'updatedOn');
+        return ['__isInitialized__', ''."\0".'Entity\\Guardian'."\0".'id', ''."\0".'Entity\\Guardian'."\0".'firstName', ''."\0".'Entity\\Guardian'."\0".'middleName', ''."\0".'Entity\\Guardian'."\0".'lastName', ''."\0".'Entity\\Guardian'."\0".'mobileNo', ''."\0".'Entity\\Guardian'."\0".'email', ''."\0".'Entity\\Guardian'."\0".'createdOn', ''."\0".'Entity\\Guardian'."\0".'updatedOn'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function setFirstName($firstName)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstName', array($firstName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstName', [$firstName]);
 
         return parent::setFirstName($firstName);
     }
@@ -197,7 +191,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function getFirstName()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstName', []);
 
         return parent::getFirstName();
     }
@@ -207,7 +201,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function setMiddleName($middleName)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMiddleName', array($middleName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMiddleName', [$middleName]);
 
         return parent::setMiddleName($middleName);
     }
@@ -217,7 +211,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function getMiddleName()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMiddleName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMiddleName', []);
 
         return parent::getMiddleName();
     }
@@ -227,7 +221,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function setLastName($lastName)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastName', array($lastName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastName', [$lastName]);
 
         return parent::setLastName($lastName);
     }
@@ -237,7 +231,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function getLastName()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastName', []);
 
         return parent::getLastName();
     }
@@ -247,7 +241,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function setMobileNo($mobileNo)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMobileNo', array($mobileNo));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMobileNo', [$mobileNo]);
 
         return parent::setMobileNo($mobileNo);
     }
@@ -257,7 +251,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function getMobileNo()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMobileNo', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMobileNo', []);
 
         return parent::getMobileNo();
     }
@@ -267,7 +261,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function setEmail($email)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', array($email));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', [$email]);
 
         return parent::setEmail($email);
     }
@@ -277,7 +271,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function getEmail()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', []);
 
         return parent::getEmail();
     }
@@ -287,7 +281,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function setCreatedOn($createdOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', array($createdOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', [$createdOn]);
 
         return parent::setCreatedOn($createdOn);
     }
@@ -297,7 +291,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function getCreatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', []);
 
         return parent::getCreatedOn();
     }
@@ -307,7 +301,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function setUpdatedOn($updatedOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', array($updatedOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', [$updatedOn]);
 
         return parent::setUpdatedOn($updatedOn);
     }
@@ -317,7 +311,7 @@ class __CG__EntityGuardian extends \Entity\Guardian implements \Doctrine\ORM\Pro
      */
     public function getUpdatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', []);
 
         return parent::getUpdatedOn();
     }

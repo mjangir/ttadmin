@@ -13,15 +13,15 @@
 
     <div class="tab-content clearfix">
       <div class="tab-pane active" id="jackpot-tab">
-        <?php include_once('jackpot.php');?>
+        <?php include_once 'jackpot.php'; ?>
       </div>
       <div class="tab-pane" id="bid-battle-tab">
-        <?php include_once('battle.php');?>
+        <?php include_once 'battle.php'; ?>
       </div>
     </div>
 </div>
 <!-- /.row -->
 
 <script type="text/javascript">
-    var USERID = <?php echo $userId;?>
+    var USERID = <?php echo $userId; ?>
 </script>

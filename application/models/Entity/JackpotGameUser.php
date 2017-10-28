@@ -1,11 +1,11 @@
 <?php
-namespace Entity;
 
+namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * JackpotGameUser
+ * JackpotGameUser.
  *
  * @ORM\Table(name="jackpot_game_user", indexes={@ORM\Index(name="user_id", columns={"user_id"}), @ORM\Index(name="jackpot_game_id", columns={"jackpot_game_id"})})
  * @ORM\Entity
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class JackpotGameUser
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -22,21 +22,21 @@ class JackpotGameUser
     private $id;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="remaining_available_bids", type="integer", nullable=true)
      */
     private $remainingAvailableBids;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="total_number_of_bids", type="integer", nullable=true)
      */
     private $totalNumberOfBids;
 
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="longest_bid_duration", type="integer", nullable=true)
      */
@@ -90,12 +90,10 @@ class JackpotGameUser
      */
     private $jackpotGame;
 
-
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -103,9 +101,10 @@ class JackpotGameUser
     }
 
     /**
-     * Set remainingAvailableBids
+     * Set remainingAvailableBids.
      *
-     * @param integer $remainingAvailableBids
+     * @param int $remainingAvailableBids
+     *
      * @return JackpotGameUser
      */
     public function setRemainingAvailableBids($remainingAvailableBids)
@@ -116,9 +115,9 @@ class JackpotGameUser
     }
 
     /**
-     * Get remainingAvailableBids
+     * Get remainingAvailableBids.
      *
-     * @return integer 
+     * @return int
      */
     public function getRemainingAvailableBids()
     {
@@ -126,9 +125,10 @@ class JackpotGameUser
     }
 
     /**
-     * Set totalNumberOfBids
+     * Set totalNumberOfBids.
      *
-     * @param integer $totalNumberOfBids
+     * @param int $totalNumberOfBids
+     *
      * @return JackpotGameUser
      */
     public function setTotalNumberOfBids($totalNumberOfBids)
@@ -139,9 +139,9 @@ class JackpotGameUser
     }
 
     /**
-     * Get totalNumberOfBids
+     * Get totalNumberOfBids.
      *
-     * @return integer 
+     * @return int
      */
     public function getTotalNumberOfBids()
     {
@@ -149,9 +149,10 @@ class JackpotGameUser
     }
 
     /**
-     * Set longestBidDuration
+     * Set longestBidDuration.
      *
-     * @param integer $longestBidDuration
+     * @param int $longestBidDuration
+     *
      * @return JackpotGameUser
      */
     public function setLongestBidDuration($longestBidDuration)
@@ -162,9 +163,9 @@ class JackpotGameUser
     }
 
     /**
-     * Get longestBidDuration
+     * Get longestBidDuration.
      *
-     * @return integer 
+     * @return int
      */
     public function getLongestBidDuration()
     {
@@ -172,9 +173,10 @@ class JackpotGameUser
     }
 
     /**
-     * Set joinedOn
+     * Set joinedOn.
      *
      * @param \DateTime $joinedOn
+     *
      * @return JackpotGameUser
      */
     public function setJoinedOn($joinedOn)
@@ -185,9 +187,9 @@ class JackpotGameUser
     }
 
     /**
-     * Get joinedOn
+     * Get joinedOn.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getJoinedOn()
     {
@@ -195,9 +197,10 @@ class JackpotGameUser
     }
 
     /**
-     * Set quittedOn
+     * Set quittedOn.
      *
      * @param \DateTime $quittedOn
+     *
      * @return JackpotGameUser
      */
     public function setQuittedOn($quittedOn)
@@ -208,9 +211,9 @@ class JackpotGameUser
     }
 
     /**
-     * Get quittedOn
+     * Get quittedOn.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getQuittedOn()
     {
@@ -218,9 +221,10 @@ class JackpotGameUser
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return JackpotGameUser
      */
     public function setCreatedAt($createdAt)
@@ -231,9 +235,9 @@ class JackpotGameUser
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -241,9 +245,10 @@ class JackpotGameUser
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return JackpotGameUser
      */
     public function setUpdatedAt($updatedAt)
@@ -254,9 +259,9 @@ class JackpotGameUser
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -264,9 +269,10 @@ class JackpotGameUser
     }
 
     /**
-     * Set user
+     * Set user.
      *
      * @param User $user
+     *
      * @return JackpotGameUser
      */
     public function setUser(User $user = null)
@@ -277,9 +283,9 @@ class JackpotGameUser
     }
 
     /**
-     * Get user
+     * Get user.
      *
-     * @return User 
+     * @return User
      */
     public function getUser()
     {
@@ -287,9 +293,10 @@ class JackpotGameUser
     }
 
     /**
-     * Set jackpotGame
+     * Set jackpotGame.
      *
      * @param JackpotGame $jackpotGame
+     *
      * @return JackpotGameUser
      */
     public function setJackpotGame(JackpotGame $jackpotGame = null)
@@ -300,9 +307,9 @@ class JackpotGameUser
     }
 
     /**
-     * Get jackpotGame
+     * Get jackpotGame.
      *
-     * @return JackpotGame 
+     * @return JackpotGame
      */
     public function getJackpotGame()
     {

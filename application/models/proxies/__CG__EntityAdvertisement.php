@@ -36,7 +36,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\Advertisement'."\0".'id', ''."\0".'Entity\\Advertisement'."\0".'headline', ''."\0".'Entity\\Advertisement'."\0".'descriptionLine1', ''."\0".'Entity\\Advertisement'."\0".'descriptionLine2', ''."\0".'Entity\\Advertisement'."\0".'descriptionLine3', ''."\0".'Entity\\Advertisement'."\0".'displayUrl', ''."\0".'Entity\\Advertisement'."\0".'targetDomain', ''."\0".'Entity\\Advertisement'."\0".'destinationUrl', ''."\0".'Entity\\Advertisement'."\0".'idPattern', ''."\0".'Entity\\Advertisement'."\0".'replaceId', ''."\0".'Entity\\Advertisement'."\0".'targetPattern', ''."\0".'Entity\\Advertisement'."\0".'snippetType', ''."\0".'Entity\\Advertisement'."\0".'snippet', ''."\0".'Entity\\Advertisement'."\0".'domainName', ''."\0".'Entity\\Advertisement'."\0".'domIdentifierType', ''."\0".'Entity\\Advertisement'."\0".'domIdentifierName', ''."\0".'Entity\\Advertisement'."\0".'position', ''."\0".'Entity\\Advertisement'."\0".'width', ''."\0".'Entity\\Advertisement'."\0".'height', ''."\0".'Entity\\Advertisement'."\0".'note', ''."\0".'Entity\\Advertisement'."\0".'activeFrom', ''."\0".'Entity\\Advertisement'."\0".'activeTo', ''."\0".'Entity\\Advertisement'."\0".'createdOn', ''."\0".'Entity\\Advertisement'."\0".'createdBy', ''."\0".'Entity\\Advertisement'."\0".'updatedOn', ''."\0".'Entity\\Advertisement'."\0".'updatedBy', ''."\0".'Entity\\Advertisement'."\0".'status', ''."\0".'Entity\\Advertisement'."\0".'pluginComponent', ''."\0".'Entity\\Advertisement'."\0".'adType');
+            return ['__isInitialized__', ''."\0".'Entity\\Advertisement'."\0".'id', ''."\0".'Entity\\Advertisement'."\0".'headline', ''."\0".'Entity\\Advertisement'."\0".'descriptionLine1', ''."\0".'Entity\\Advertisement'."\0".'descriptionLine2', ''."\0".'Entity\\Advertisement'."\0".'descriptionLine3', ''."\0".'Entity\\Advertisement'."\0".'displayUrl', ''."\0".'Entity\\Advertisement'."\0".'targetDomain', ''."\0".'Entity\\Advertisement'."\0".'destinationUrl', ''."\0".'Entity\\Advertisement'."\0".'idPattern', ''."\0".'Entity\\Advertisement'."\0".'replaceId', ''."\0".'Entity\\Advertisement'."\0".'targetPattern', ''."\0".'Entity\\Advertisement'."\0".'snippetType', ''."\0".'Entity\\Advertisement'."\0".'snippet', ''."\0".'Entity\\Advertisement'."\0".'domainName', ''."\0".'Entity\\Advertisement'."\0".'domIdentifierType', ''."\0".'Entity\\Advertisement'."\0".'domIdentifierName', ''."\0".'Entity\\Advertisement'."\0".'position', ''."\0".'Entity\\Advertisement'."\0".'width', ''."\0".'Entity\\Advertisement'."\0".'height', ''."\0".'Entity\\Advertisement'."\0".'note', ''."\0".'Entity\\Advertisement'."\0".'activeFrom', ''."\0".'Entity\\Advertisement'."\0".'activeTo', ''."\0".'Entity\\Advertisement'."\0".'createdOn', ''."\0".'Entity\\Advertisement'."\0".'createdBy', ''."\0".'Entity\\Advertisement'."\0".'updatedOn', ''."\0".'Entity\\Advertisement'."\0".'updatedBy', ''."\0".'Entity\\Advertisement'."\0".'status', ''."\0".'Entity\\Advertisement'."\0".'pluginComponent', ''."\0".'Entity\\Advertisement'."\0".'adType'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\Advertisement'."\0".'id', ''."\0".'Entity\\Advertisement'."\0".'headline', ''."\0".'Entity\\Advertisement'."\0".'descriptionLine1', ''."\0".'Entity\\Advertisement'."\0".'descriptionLine2', ''."\0".'Entity\\Advertisement'."\0".'descriptionLine3', ''."\0".'Entity\\Advertisement'."\0".'displayUrl', ''."\0".'Entity\\Advertisement'."\0".'targetDomain', ''."\0".'Entity\\Advertisement'."\0".'destinationUrl', ''."\0".'Entity\\Advertisement'."\0".'idPattern', ''."\0".'Entity\\Advertisement'."\0".'replaceId', ''."\0".'Entity\\Advertisement'."\0".'targetPattern', ''."\0".'Entity\\Advertisement'."\0".'snippetType', ''."\0".'Entity\\Advertisement'."\0".'snippet', ''."\0".'Entity\\Advertisement'."\0".'domainName', ''."\0".'Entity\\Advertisement'."\0".'domIdentifierType', ''."\0".'Entity\\Advertisement'."\0".'domIdentifierName', ''."\0".'Entity\\Advertisement'."\0".'position', ''."\0".'Entity\\Advertisement'."\0".'width', ''."\0".'Entity\\Advertisement'."\0".'height', ''."\0".'Entity\\Advertisement'."\0".'note', ''."\0".'Entity\\Advertisement'."\0".'activeFrom', ''."\0".'Entity\\Advertisement'."\0".'activeTo', ''."\0".'Entity\\Advertisement'."\0".'createdOn', ''."\0".'Entity\\Advertisement'."\0".'createdBy', ''."\0".'Entity\\Advertisement'."\0".'updatedOn', ''."\0".'Entity\\Advertisement'."\0".'updatedBy', ''."\0".'Entity\\Advertisement'."\0".'status', ''."\0".'Entity\\Advertisement'."\0".'pluginComponent', ''."\0".'Entity\\Advertisement'."\0".'adType');
+        return ['__isInitialized__', ''."\0".'Entity\\Advertisement'."\0".'id', ''."\0".'Entity\\Advertisement'."\0".'headline', ''."\0".'Entity\\Advertisement'."\0".'descriptionLine1', ''."\0".'Entity\\Advertisement'."\0".'descriptionLine2', ''."\0".'Entity\\Advertisement'."\0".'descriptionLine3', ''."\0".'Entity\\Advertisement'."\0".'displayUrl', ''."\0".'Entity\\Advertisement'."\0".'targetDomain', ''."\0".'Entity\\Advertisement'."\0".'destinationUrl', ''."\0".'Entity\\Advertisement'."\0".'idPattern', ''."\0".'Entity\\Advertisement'."\0".'replaceId', ''."\0".'Entity\\Advertisement'."\0".'targetPattern', ''."\0".'Entity\\Advertisement'."\0".'snippetType', ''."\0".'Entity\\Advertisement'."\0".'snippet', ''."\0".'Entity\\Advertisement'."\0".'domainName', ''."\0".'Entity\\Advertisement'."\0".'domIdentifierType', ''."\0".'Entity\\Advertisement'."\0".'domIdentifierName', ''."\0".'Entity\\Advertisement'."\0".'position', ''."\0".'Entity\\Advertisement'."\0".'width', ''."\0".'Entity\\Advertisement'."\0".'height', ''."\0".'Entity\\Advertisement'."\0".'note', ''."\0".'Entity\\Advertisement'."\0".'activeFrom', ''."\0".'Entity\\Advertisement'."\0".'activeTo', ''."\0".'Entity\\Advertisement'."\0".'createdOn', ''."\0".'Entity\\Advertisement'."\0".'createdBy', ''."\0".'Entity\\Advertisement'."\0".'updatedOn', ''."\0".'Entity\\Advertisement'."\0".'updatedBy', ''."\0".'Entity\\Advertisement'."\0".'status', ''."\0".'Entity\\Advertisement'."\0".'pluginComponent', ''."\0".'Entity\\Advertisement'."\0".'adType'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setHeadline($headline)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', array($headline));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeadline', [$headline]);
 
         return parent::setHeadline($headline);
     }
@@ -197,7 +191,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getHeadline()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeadline', []);
 
         return parent::getHeadline();
     }
@@ -207,7 +201,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setDescriptionLine1($descriptionLine1)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescriptionLine1', array($descriptionLine1));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescriptionLine1', [$descriptionLine1]);
 
         return parent::setDescriptionLine1($descriptionLine1);
     }
@@ -217,7 +211,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getDescriptionLine1()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescriptionLine1', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescriptionLine1', []);
 
         return parent::getDescriptionLine1();
     }
@@ -227,7 +221,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setDescriptionLine2($descriptionLine2)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescriptionLine2', array($descriptionLine2));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescriptionLine2', [$descriptionLine2]);
 
         return parent::setDescriptionLine2($descriptionLine2);
     }
@@ -237,7 +231,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getDescriptionLine2()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescriptionLine2', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescriptionLine2', []);
 
         return parent::getDescriptionLine2();
     }
@@ -247,7 +241,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setDescriptionLine3($descriptionLine3)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescriptionLine3', array($descriptionLine3));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescriptionLine3', [$descriptionLine3]);
 
         return parent::setDescriptionLine3($descriptionLine3);
     }
@@ -257,7 +251,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getDescriptionLine3()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescriptionLine3', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescriptionLine3', []);
 
         return parent::getDescriptionLine3();
     }
@@ -267,7 +261,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setDisplayUrl($displayUrl)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayUrl', array($displayUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDisplayUrl', [$displayUrl]);
 
         return parent::setDisplayUrl($displayUrl);
     }
@@ -277,7 +271,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getDisplayUrl()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDisplayUrl', []);
 
         return parent::getDisplayUrl();
     }
@@ -287,7 +281,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setTargetDomain($targetDomain)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTargetDomain', array($targetDomain));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTargetDomain', [$targetDomain]);
 
         return parent::setTargetDomain($targetDomain);
     }
@@ -297,7 +291,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getTargetDomain()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTargetDomain', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTargetDomain', []);
 
         return parent::getTargetDomain();
     }
@@ -307,7 +301,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setDestinationUrl($destinationUrl)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDestinationUrl', array($destinationUrl));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDestinationUrl', [$destinationUrl]);
 
         return parent::setDestinationUrl($destinationUrl);
     }
@@ -317,7 +311,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getDestinationUrl()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDestinationUrl', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDestinationUrl', []);
 
         return parent::getDestinationUrl();
     }
@@ -327,7 +321,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setIdPattern($idPattern)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdPattern', array($idPattern));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIdPattern', [$idPattern]);
 
         return parent::setIdPattern($idPattern);
     }
@@ -337,7 +331,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getIdPattern()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdPattern', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getIdPattern', []);
 
         return parent::getIdPattern();
     }
@@ -347,7 +341,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setReplaceId($replaceId)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReplaceId', array($replaceId));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setReplaceId', [$replaceId]);
 
         return parent::setReplaceId($replaceId);
     }
@@ -357,7 +351,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getReplaceId()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReplaceId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getReplaceId', []);
 
         return parent::getReplaceId();
     }
@@ -367,7 +361,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setTargetPattern($targetPattern)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTargetPattern', array($targetPattern));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTargetPattern', [$targetPattern]);
 
         return parent::setTargetPattern($targetPattern);
     }
@@ -377,7 +371,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getTargetPattern()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTargetPattern', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTargetPattern', []);
 
         return parent::getTargetPattern();
     }
@@ -387,7 +381,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setSnippetType($snippetType)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSnippetType', array($snippetType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSnippetType', [$snippetType]);
 
         return parent::setSnippetType($snippetType);
     }
@@ -397,7 +391,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getSnippetType()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSnippetType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSnippetType', []);
 
         return parent::getSnippetType();
     }
@@ -407,7 +401,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setSnippet($snippet)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSnippet', array($snippet));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSnippet', [$snippet]);
 
         return parent::setSnippet($snippet);
     }
@@ -417,7 +411,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getSnippet()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSnippet', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSnippet', []);
 
         return parent::getSnippet();
     }
@@ -427,7 +421,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setDomainName($domainName)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDomainName', array($domainName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDomainName', [$domainName]);
 
         return parent::setDomainName($domainName);
     }
@@ -437,7 +431,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getDomainName()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDomainName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDomainName', []);
 
         return parent::getDomainName();
     }
@@ -447,7 +441,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setDomIdentifierType($domIdentifierType)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDomIdentifierType', array($domIdentifierType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDomIdentifierType', [$domIdentifierType]);
 
         return parent::setDomIdentifierType($domIdentifierType);
     }
@@ -457,7 +451,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getDomIdentifierType()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDomIdentifierType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDomIdentifierType', []);
 
         return parent::getDomIdentifierType();
     }
@@ -467,7 +461,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setDomIdentifierName($domIdentifierName)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDomIdentifierName', array($domIdentifierName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDomIdentifierName', [$domIdentifierName]);
 
         return parent::setDomIdentifierName($domIdentifierName);
     }
@@ -477,7 +471,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getDomIdentifierName()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDomIdentifierName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDomIdentifierName', []);
 
         return parent::getDomIdentifierName();
     }
@@ -487,7 +481,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setPosition($position)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPosition', array($position));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPosition', [$position]);
 
         return parent::setPosition($position);
     }
@@ -497,7 +491,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getPosition()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPosition', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPosition', []);
 
         return parent::getPosition();
     }
@@ -507,7 +501,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setWidth($width)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWidth', array($width));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setWidth', [$width]);
 
         return parent::setWidth($width);
     }
@@ -517,7 +511,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getWidth()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWidth', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getWidth', []);
 
         return parent::getWidth();
     }
@@ -527,7 +521,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setHeight($height)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeight', array($height));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setHeight', [$height]);
 
         return parent::setHeight($height);
     }
@@ -537,7 +531,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getHeight()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeight', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getHeight', []);
 
         return parent::getHeight();
     }
@@ -547,7 +541,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setNote($note)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNote', array($note));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setNote', [$note]);
 
         return parent::setNote($note);
     }
@@ -557,7 +551,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getNote()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNote', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getNote', []);
 
         return parent::getNote();
     }
@@ -567,7 +561,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setActiveFrom($activeFrom)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActiveFrom', array($activeFrom));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActiveFrom', [$activeFrom]);
 
         return parent::setActiveFrom($activeFrom);
     }
@@ -577,7 +571,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getActiveFrom()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActiveFrom', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActiveFrom', []);
 
         return parent::getActiveFrom();
     }
@@ -587,7 +581,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setActiveTo($activeTo)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActiveTo', array($activeTo));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setActiveTo', [$activeTo]);
 
         return parent::setActiveTo($activeTo);
     }
@@ -597,7 +591,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getActiveTo()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActiveTo', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getActiveTo', []);
 
         return parent::getActiveTo();
     }
@@ -607,7 +601,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setCreatedOn($createdOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', array($createdOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedOn', [$createdOn]);
 
         return parent::setCreatedOn($createdOn);
     }
@@ -617,7 +611,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getCreatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedOn', []);
 
         return parent::getCreatedOn();
     }
@@ -627,7 +621,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setCreatedBy($createdBy)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', array($createdBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setCreatedBy', [$createdBy]);
 
         return parent::setCreatedBy($createdBy);
     }
@@ -637,7 +631,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getCreatedBy()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getCreatedBy', []);
 
         return parent::getCreatedBy();
     }
@@ -647,7 +641,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setUpdatedOn($updatedOn)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', array($updatedOn));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedOn', [$updatedOn]);
 
         return parent::setUpdatedOn($updatedOn);
     }
@@ -657,7 +651,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getUpdatedOn()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedOn', []);
 
         return parent::getUpdatedOn();
     }
@@ -667,7 +661,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setUpdatedBy($updatedBy)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', array($updatedBy));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setUpdatedBy', [$updatedBy]);
 
         return parent::setUpdatedBy($updatedBy);
     }
@@ -677,7 +671,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getUpdatedBy()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getUpdatedBy', []);
 
         return parent::getUpdatedBy();
     }
@@ -687,7 +681,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setStatus($status)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', array($status));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$status]);
 
         return parent::setStatus($status);
     }
@@ -697,7 +691,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getStatus()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getStatus', []);
 
         return parent::getStatus();
     }
@@ -707,7 +701,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setPluginComponent(\Entity\PluginComponent $pluginComponent = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPluginComponent', array($pluginComponent));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPluginComponent', [$pluginComponent]);
 
         return parent::setPluginComponent($pluginComponent);
     }
@@ -717,7 +711,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getPluginComponent()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPluginComponent', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPluginComponent', []);
 
         return parent::getPluginComponent();
     }
@@ -727,7 +721,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function setAdType(\Entity\AdType $adType = null)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdType', array($adType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAdType', [$adType]);
 
         return parent::setAdType($adType);
     }
@@ -737,7 +731,7 @@ class __CG__EntityAdvertisement extends \Entity\Advertisement implements \Doctri
      */
     public function getAdType()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAdType', []);
 
         return parent::getAdType();
     }

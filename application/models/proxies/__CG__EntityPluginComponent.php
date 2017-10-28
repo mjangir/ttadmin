@@ -36,7 +36,7 @@ class __CG__EntityPluginComponent extends \Entity\PluginComponent implements \Do
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityPluginComponent extends \Entity\PluginComponent implements \Do
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\PluginComponent'."\0".'id', ''."\0".'Entity\\PluginComponent'."\0".'componentName', ''."\0".'Entity\\PluginComponent'."\0".'constantName', ''."\0".'Entity\\PluginComponent'."\0".'alias', ''."\0".'Entity\\PluginComponent'."\0".'description');
+            return ['__isInitialized__', ''."\0".'Entity\\PluginComponent'."\0".'id', ''."\0".'Entity\\PluginComponent'."\0".'componentName', ''."\0".'Entity\\PluginComponent'."\0".'constantName', ''."\0".'Entity\\PluginComponent'."\0".'alias', ''."\0".'Entity\\PluginComponent'."\0".'description'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\PluginComponent'."\0".'id', ''."\0".'Entity\\PluginComponent'."\0".'componentName', ''."\0".'Entity\\PluginComponent'."\0".'constantName', ''."\0".'Entity\\PluginComponent'."\0".'alias', ''."\0".'Entity\\PluginComponent'."\0".'description');
+        return ['__isInitialized__', ''."\0".'Entity\\PluginComponent'."\0".'id', ''."\0".'Entity\\PluginComponent'."\0".'componentName', ''."\0".'Entity\\PluginComponent'."\0".'constantName', ''."\0".'Entity\\PluginComponent'."\0".'alias', ''."\0".'Entity\\PluginComponent'."\0".'description'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityPluginComponent extends \Entity\PluginComponent implements \Do
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityPluginComponent extends \Entity\PluginComponent implements \Do
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityPluginComponent extends \Entity\PluginComponent implements \Do
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityPluginComponent extends \Entity\PluginComponent implements \Do
      */
     public function setComponentName($componentName)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setComponentName', array($componentName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setComponentName', [$componentName]);
 
         return parent::setComponentName($componentName);
     }
@@ -197,7 +191,7 @@ class __CG__EntityPluginComponent extends \Entity\PluginComponent implements \Do
      */
     public function getComponentName()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getComponentName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getComponentName', []);
 
         return parent::getComponentName();
     }
@@ -207,7 +201,7 @@ class __CG__EntityPluginComponent extends \Entity\PluginComponent implements \Do
      */
     public function setConstantName($constantName)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setConstantName', array($constantName));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setConstantName', [$constantName]);
 
         return parent::setConstantName($constantName);
     }
@@ -217,7 +211,7 @@ class __CG__EntityPluginComponent extends \Entity\PluginComponent implements \Do
      */
     public function getConstantName()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getConstantName', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getConstantName', []);
 
         return parent::getConstantName();
     }
@@ -227,7 +221,7 @@ class __CG__EntityPluginComponent extends \Entity\PluginComponent implements \Do
      */
     public function setAlias($alias)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAlias', array($alias));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAlias', [$alias]);
 
         return parent::setAlias($alias);
     }
@@ -237,7 +231,7 @@ class __CG__EntityPluginComponent extends \Entity\PluginComponent implements \Do
      */
     public function getAlias()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAlias', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAlias', []);
 
         return parent::getAlias();
     }
@@ -247,7 +241,7 @@ class __CG__EntityPluginComponent extends \Entity\PluginComponent implements \Do
      */
     public function setDescription($description)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
 
         return parent::setDescription($description);
     }
@@ -257,7 +251,7 @@ class __CG__EntityPluginComponent extends \Entity\PluginComponent implements \Do
      */
     public function getDescription()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
 
         return parent::getDescription();
     }

@@ -27,28 +27,28 @@ class Utils
 {
     /**
      * Salt Key To Encrypt.
-     * 
+     *
      * @var string
      */
     protected static $salt = 'nxHJe36JalQ32hMyRxx8Dm';
 
     /**
      * Hash Method.
-     * 
+     *
      * @var string
      */
     protected static $method = 'md5';
 
     /**
      * Encryption Key.
-     * 
+     *
      * @var string
      */
     protected static $encKey = 'a3majhk6HJ5mh';
 
     /**
      * Encryption Key.
-     * 
+     *
      * @var string
      */
     protected static $ENCRYPTION_KEY;
@@ -63,7 +63,7 @@ class Utils
 
     /**
      * Generate random string.
-     * 
+     *
      * @return string
      */
     public static function generateRandomString()
@@ -76,7 +76,7 @@ class Utils
         $chunks = str_split($id, 8);
         //$mask = (int) base_convert(IDGenerator::BIT_MASK, 2, 10);
 
-        $id = array();
+        $id = [];
         foreach ($chunks as $key => $chunk) {
             //$chunk = str_pad(base_convert(base_convert($chunk, 2, 10) ^ $mask, 10, 2), 8, '0', STR_PAD_LEFT);
             if ($key & 1) {
@@ -91,9 +91,9 @@ class Utils
 
     /**
      * Generates hash of a value.
-     * 
+     *
      * @param string $value
-     * 
+     *
      * @return string
      */
     public static function hash($value)
@@ -112,9 +112,9 @@ class Utils
 
     /**
      * Creates slug from a string.
-     * 
+     *
      * @param string $text
-     * 
+     *
      * @return string
      */
     public static function slugify($text)
@@ -133,10 +133,10 @@ class Utils
 
     /**
      * Encrypt an integer number.
-     * 
+     *
      * @param int    $id
      * @param string $key
-     * 
+     *
      * @return string
      */
     public static function encryptId($id, $key)
@@ -151,10 +151,10 @@ class Utils
 
     /**
      * Decrypt an encrypted number.
-     * 
+     *
      * @param string $encryptedId
      * @param string $key
-     * 
+     *
      * @return int
      */
     public static function decryptId($encryptedId, $key)
@@ -169,10 +169,10 @@ class Utils
 
     /**
      * Encrypt a string using salt.
-     * 
+     *
      * @param string $encrypt
      * @param string $key
-     * 
+     *
      * @return string
      */
     public function encrypt($encrypt, $key = null)
@@ -190,10 +190,10 @@ class Utils
 
     /**
      * Decrypt a string using salt.
-     * 
+     *
      * @param string $decrypt
      * @param string $key
-     * 
+     *
      * @return string
      */
     public function decrypt($decrypt, $key = null)

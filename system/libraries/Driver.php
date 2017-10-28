@@ -56,7 +56,7 @@ class CI_Driver_Library
      *
      * @var array
      */
-    protected $valid_drivers = array();
+    protected $valid_drivers = [];
 
     /**
      * Name of the current class - usually the driver class.
@@ -97,7 +97,7 @@ class CI_Driver_Library
 
         if (!isset($this->lib_name)) {
             // Get library name without any prefix
-            $this->lib_name = str_replace(array('CI_', $prefix), '', get_class($this));
+            $this->lib_name = str_replace(['CI_', $prefix], '', get_class($this));
         }
 
         // The child will be prefixed with the parent lib
@@ -207,14 +207,14 @@ class CI_Driver
      *
      * @var array
      */
-    protected $_methods = array();
+    protected $_methods = [];
 
     /**
      * List of properties in the parent class.
      *
      * @var array
      */
-    protected $_properties = array();
+    protected $_properties = [];
 
     /**
      * Array of methods and properties for the parent class(es).
@@ -223,7 +223,7 @@ class CI_Driver
      *
      * @var array
      */
-    protected static $_reflections = array();
+    protected static $_reflections = [];
 
     /**
      * Decorate.
@@ -256,7 +256,7 @@ class CI_Driver
                 }
             }
 
-            self::$_reflections[$class_name] = array($this->_methods, $this->_properties);
+            self::$_reflections[$class_name] = [$this->_methods, $this->_properties];
         } else {
             list($this->_methods, $this->_properties) = self::$_reflections[$class_name];
         }
@@ -274,10 +274,10 @@ class CI_Driver
      *
      * @return mixed
      */
-    public function __call($method, $args = array())
+    public function __call($method, $args = [])
     {
         if (in_array($method, $this->_methods)) {
-            return call_user_func_array(array($this->_parent, $method), $args);
+            return call_user_func_array([$this->_parent, $method], $args);
         }
 
         throw new BadMethodCallException('No such method: '.$method.'()');

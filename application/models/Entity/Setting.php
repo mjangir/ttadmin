@@ -1,11 +1,11 @@
 <?php
-namespace Entity;
 
+namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Setting
+ * Setting.
  *
  * @ORM\Table(name="setting")
  * @ORM\Entity(repositoryClass="Repository\SettingRepository")
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Setting
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -49,12 +49,10 @@ class Setting
      */
     private $updatedAt;
 
-
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -62,9 +60,10 @@ class Setting
     }
 
     /**
-     * Set key
+     * Set key.
      *
      * @param string $key
+     *
      * @return Setting
      */
     public function setKey($key)
@@ -75,9 +74,9 @@ class Setting
     }
 
     /**
-     * Get key
+     * Get key.
      *
-     * @return string 
+     * @return string
      */
     public function getKey()
     {
@@ -85,9 +84,10 @@ class Setting
     }
 
     /**
-     * Set value
+     * Set value.
      *
      * @param string $value
+     *
      * @return Setting
      */
     public function setValue($value)
@@ -98,9 +98,9 @@ class Setting
     }
 
     /**
-     * Get value
+     * Get value.
      *
-     * @return string 
+     * @return string
      */
     public function getValue()
     {
@@ -108,9 +108,10 @@ class Setting
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return Setting
      */
     public function setCreatedAt($createdAt)
@@ -121,9 +122,9 @@ class Setting
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -131,9 +132,10 @@ class Setting
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return Setting
      */
     public function setUpdatedAt($updatedAt)
@@ -144,9 +146,9 @@ class Setting
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {

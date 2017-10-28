@@ -27,17 +27,17 @@ class Swiftmailer
 {
     /**
      * Sends mail using the following parameters.
-     * 
+     *
      * @param string $alias
      * @param string $mailTo
      * @param string $replaceArray
      * @param string $customSubject
      * @param array  $attachments
      * @param string $mailFrom
-     * 
+     *
      * @return bool
      */
-    public function sendmail($alias, $mailTo, $replaceArray = null, $customSubject = null, $attachments = array(), $mailFrom = null)
+    public function sendmail($alias, $mailTo, $replaceArray = null, $customSubject = null, $attachments = [], $mailFrom = null)
     {
 
         //Get CI instanced to access additional libraries

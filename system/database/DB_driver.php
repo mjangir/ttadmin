@@ -214,7 +214,7 @@ abstract class CI_DB_driver
      *
      * @var string[]
      */
-    public $queries = array();
+    public $queries = [];
 
     /**
      * Query times.
@@ -223,7 +223,7 @@ abstract class CI_DB_driver
      *
      * @var array
      */
-    public $query_times = array();
+    public $query_times = [];
 
     /**
      * Data cache.
@@ -232,7 +232,7 @@ abstract class CI_DB_driver
      *
      * @var array
      */
-    public $data_cache = array();
+    public $data_cache = [];
 
     /**
      * Transaction enabled flag.
@@ -317,7 +317,7 @@ abstract class CI_DB_driver
      *
      * @var string[]
      */
-    protected $_reserved_identifiers = array('*');
+    protected $_reserved_identifiers = ['*'];
 
     /**
      * Identifier escape character.
@@ -345,7 +345,7 @@ abstract class CI_DB_driver
      *
      * @var array
      */
-    protected $_random_keyword = array('RAND()', 'RAND(%d)');
+    protected $_random_keyword = ['RAND()', 'RAND(%d)'];
 
     /**
      * COUNT string.
@@ -649,7 +649,7 @@ abstract class CI_DB_driver
                 }
 
                 // Display errors
-                return $this->display_error(array('Error Number: '.$error['code'], $error['message'], $sql));
+                return $this->display_error(['Error Number: '.$error['code'], $error['message'], $sql]);
             }
 
             return false;
@@ -865,7 +865,7 @@ abstract class CI_DB_driver
         if (empty($binds) or empty($this->bind_marker) or strpos($sql, $this->bind_marker) === false) {
             return $sql;
         } elseif (!is_array($binds)) {
-            $binds = array($binds);
+            $binds = [$binds];
             $bind_count = 1;
         } else {
             // Make sure we're using numeric keys
@@ -971,7 +971,7 @@ abstract class CI_DB_driver
     public function escape($str)
     {
         if (is_array($str)) {
-            $str = array_map(array(&$this, 'escape'), $str);
+            $str = array_map([&$this, 'escape'], $str);
 
             return $str;
         } elseif (is_string($str) or (is_object($str) && method_exists($str, '__toString'))) {
@@ -1010,8 +1010,8 @@ abstract class CI_DB_driver
         // escape LIKE condition wildcards
         if ($like === true) {
             return str_replace(
-                array($this->_like_escape_chr, '%', '_'),
-                array($this->_like_escape_chr.$this->_like_escape_chr, $this->_like_escape_chr.'%', $this->_like_escape_chr.'_'),
+                [$this->_like_escape_chr, '%', '_'],
+                [$this->_like_escape_chr.$this->_like_escape_chr, $this->_like_escape_chr.'%', $this->_like_escape_chr.'_'],
                 $str
             );
         }
@@ -1118,7 +1118,7 @@ abstract class CI_DB_driver
             return ($this->db_debug) ? $this->display_error('db_unsupported_function') : false;
         }
 
-        $this->data_cache['table_names'] = array();
+        $this->data_cache['table_names'] = [];
         $query = $this->query($sql);
 
         foreach ($query->result_array() as $row) {
@@ -1180,7 +1180,7 @@ abstract class CI_DB_driver
         }
 
         $query = $this->query($sql);
-        $this->data_cache['field_names'][$table] = array();
+        $this->data_cache['field_names'][$table] = [];
 
         foreach ($query->result_array() as $row) {
             // Do we know from where to get the column's name?
@@ -1259,16 +1259,16 @@ abstract class CI_DB_driver
             return $item;
         }
 
-        static $preg_ec = array();
+        static $preg_ec = [];
 
         if (empty($preg_ec)) {
             if (is_array($this->_escape_char)) {
-                $preg_ec = array(
+                $preg_ec = [
                     preg_quote($this->_escape_char[0], '/'),
                     preg_quote($this->_escape_char[1], '/'),
                     $this->_escape_char[0],
                     $this->_escape_char[1],
-                );
+                ];
             } else {
                 $preg_ec[0] = $preg_ec[1] = preg_quote($this->_escape_char, '/');
                 $preg_ec[2] = $preg_ec[3] = $this->_escape_char;
@@ -1296,7 +1296,7 @@ abstract class CI_DB_driver
      */
     public function insert_string($table, $data)
     {
-        $fields = $values = array();
+        $fields = $values = [];
 
         foreach ($data as $key => $val) {
             $fields[] = $this->escape_identifiers($key);
@@ -1343,7 +1343,7 @@ abstract class CI_DB_driver
 
         $this->where($where);
 
-        $fields = array();
+        $fields = [];
         foreach ($data as $key => $val) {
             $fields[$this->protect_identifiers($key)] = $this->escape($val);
         }
@@ -1409,7 +1409,7 @@ abstract class CI_DB_driver
             $_les = ($this->_like_escape_str !== '')
                 ? '\s+'.preg_quote(trim(sprintf($this->_like_escape_str, $this->_like_escape_chr)), '/')
                 : '';
-            $_operators = array(
+            $_operators = [
                 '\s*(?:<|>|!)?=\s*',        // =, <=, >=, !=
                 '\s*<>?\s*',            // <, <>
                 '\s*>\s*',            // >
@@ -1422,7 +1422,7 @@ abstract class CI_DB_driver
                 '\s+NOT IN\s*\([^\)]+\)',    // NOT IN (list)
                 '\s+LIKE\s+\S+'.$_les,        // LIKE 'expr'[ ESCAPE '%s']
                 '\s+NOT LIKE\s+\S+'.$_les,    // NOT LIKE 'expr'[ ESCAPE '%s']
-            );
+            ];
         }
 
         return preg_match('/'.implode('|', $_operators).'/i', $str, $match)
@@ -1587,7 +1587,7 @@ abstract class CI_DB_driver
         if ($native === true) {
             $message = (array) $error;
         } else {
-            $message = is_array($error) ? $error : array(str_replace('%s', $swap, $LANG->line($error)));
+            $message = is_array($error) ? $error : [str_replace('%s', $swap, $LANG->line($error))];
         }
 
         // Find the most likely culprit of the error by going through
@@ -1603,7 +1603,7 @@ abstract class CI_DB_driver
 
                 if (strpos($call['file'], BASEPATH.'database') === false && strpos($call['class'], 'Loader') === false) {
                     // Found it - use a relative path for safety
-                    $message[] = 'Filename: '.str_replace(array(APPPATH, BASEPATH), '', $call['file']);
+                    $message[] = 'Filename: '.str_replace([APPPATH, BASEPATH], '', $call['file']);
                     $message[] = 'Line Number: '.$call['line'];
                     break;
                 }
@@ -1651,7 +1651,7 @@ abstract class CI_DB_driver
         }
 
         if (is_array($item)) {
-            $escaped_array = array();
+            $escaped_array = [];
             foreach ($item as $k => $v) {
                 $escaped_array[$this->protect_identifiers($k)] = $this->protect_identifiers($v, $prefix_single, $protect_identifiers, $field_exists);
             }

@@ -17,7 +17,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * Page Class.
  *
  * Create, Update, Delete application pages. There will be a unique alias name
- * for each page for e.g. about-us. Following base_url('page/alias-name') will 
+ * for each page for e.g. about-us. Following base_url('page/alias-name') will
  * lead to open the respected page
  *
  * @category	Controller
@@ -36,7 +36,7 @@ class Page extends MY_AdminController
     /**
      * Module Name.
      *
-     * @var string Name of the entity which the controller is for 
+     * @var string Name of the entity which the controller is for
      */
     protected $crudName;
 
@@ -49,7 +49,7 @@ class Page extends MY_AdminController
 
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor and sets base url of the controller,
      * module name and doctrine entity name
      */
@@ -69,7 +69,7 @@ class Page extends MY_AdminController
 
     /**
      * index action.
-     * 
+     *
      * Index page of Page module
      */
     public function index()
@@ -85,7 +85,7 @@ class Page extends MY_AdminController
         $paginator = $this->paginator->setOptions($data, $this->page, $this->baseControllerUrl, $this->limit);
 
         //Prepare the view parameters
-        $view_data = array();
+        $view_data = [];
         $view_data['data'] = $data;                            //Data got from model
         $view_data['page'] = $this->page;                      //Current page number
         $view_data['listStartFrom'] = $this->offset + 1;                  //Serial number of the table records
@@ -103,40 +103,41 @@ class Page extends MY_AdminController
 
         //Check if the request is ajax. If yes then only render the view
         if ($this->input->is_ajax_request()) {
-            $jsonResponse = array();
+            $jsonResponse = [];
             $jsonResponse['html'] = $this->load->view('admin/page/index', $view_data, true);
             echo json_encode($jsonResponse);
         } else {
 
             //If request is not ajax then render the view with layout
-            return $this->load->view('layout/backend', array(
-                'content' => $this->load->view('admin/page/index', $view_data, true),
-                'pageHeading' => 'Manage Pages',
-                'pageSubHeading' => '',
-                'activeLinksAlias' => array('admin_manage_cms', 'admin_manage_pages'),
-                'breadCrumbs' => array('Manage Pages' => ''),
-            ));
+            return $this->load->view('layout/backend', [
+                'content'          => $this->load->view('admin/page/index', $view_data, true),
+                'pageHeading'      => 'Manage Pages',
+                'pageSubHeading'   => '',
+                'activeLinksAlias' => ['admin_manage_cms', 'admin_manage_pages'],
+                'breadCrumbs'      => ['Manage Pages' => ''],
+            ]);
         }
     }
-    
+
     /**
      * alias_exists function.
-     * 
+     *
      * Checks weather given alias name exists in database or not
-     * 
+     *
      * @param string $alias Alias Name to check in database
-     * 
+     *
      * @return bool
      */
     public function alias_exists($alias)
     {
-        $record = $this->objectManager->getRepository('Entity\Page')->findOneBy(array('alias' => $alias));
+        $record = $this->objectManager->getRepository('Entity\Page')->findOneBy(['alias' => $alias]);
+
         return $record === null;
     }
 
     /**
      * addupdate action.
-     * 
+     *
      * The common action to add or update a record for this controller. In case of update record,
      * the ID of record will be provide. It will render the form only if the request to this action
      * is not POST.
@@ -162,17 +163,17 @@ class Page extends MY_AdminController
 
             //Set form validation rules
             $this->form_validation->set_rules('name', 'Page Name', 'trim|required|xss_clean',
-                    array('required' => 'Please enter Page Name'));
+                    ['required' => 'Please enter Page Name']);
             $this->form_validation->set_rules('title', 'Page Title', 'trim|required|xss_clean',
-                    array('required' => 'Please enter Page Title'));
+                    ['required' => 'Please enter Page Title']);
             $this->form_validation->set_rules('content', 'Content', 'trim|xss_clean');
             $this->form_validation->set_rules('metaKeywords', 'Meta Keywords', 'trim|xss_clean');
             $this->form_validation->set_rules('metaDescription', 'Meta Description', 'trim|xss_clean');
             if ($id === null) {
-               $this->form_validation->set_rules('alias', 'Alias Name', 'trim|required|callback_alias_exists|xss_clean',
-                        array('required' => 'Please enter Alias Name',
-                                'alias_exists' => 'Alias Name must be unique for each page'
-                        )); 
+                $this->form_validation->set_rules('alias', 'Alias Name', 'trim|required|callback_alias_exists|xss_clean',
+                        ['required'            => 'Please enter Alias Name',
+                                'alias_exists' => 'Alias Name must be unique for each page',
+                        ]);
             }
 
             //If form is successfully validated
@@ -204,55 +205,55 @@ class Page extends MY_AdminController
                     $this->objectManager->flush($page);
 
                     //Return success if added successfully
-                    echo json_encode(array(
-                        'html' => '',
-                        'notification' => array(
-                            array(
-                                'status' => 'success',
+                    echo json_encode([
+                        'html'         => '',
+                        'notification' => [
+                            [
+                                'status'  => 'success',
                                 'message' => $this->crudName.' saved successfully.',
-                                'type' => 'toastr',
-                            ),
-                        ),
-                        'location' => array(
-                            'redirect' => array(
-                                'url' => $this->baseControllerUrl,
+                                'type'    => 'toastr',
+                            ],
+                        ],
+                        'location' => [
+                            'redirect' => [
+                                'url'     => $this->baseControllerUrl,
                                 'timeout' => 2000,
-                            ),
-                        ),
-                    ));
+                            ],
+                        ],
+                    ]);
                     exit;
                 } catch (Exception $ex) {
                     //show error message to user
-                    echo json_encode(array(
-                        'html' => '',
-                        'notification' => array(
-                            array(
-                                'status' => 'error',
+                    echo json_encode([
+                        'html'         => '',
+                        'notification' => [
+                            [
+                                'status'  => 'error',
                                 'message' => 'Error occured while processing.',
-                                'type' => 'toastr',
-                            ),
-                        ),
-                    ));
+                                'type'    => 'toastr',
+                            ],
+                        ],
+                    ]);
                     exit;
                 }
             } else {
                 //Throw the validation errors, if validation not successful
                 $errors = $this->form_validation->error_array();
-                echo json_encode(array(
-                    'validation' => array(
-                        'form' => '#form_page',
+                echo json_encode([
+                    'validation' => [
+                        'form'   => '#form_page',
                         'errors' => $errors,
-                    ),
-                ));
+                    ],
+                ]);
                 exit;
             }
         } else {
             //If request method is not post then render the form with layout
 
             //Set view form attributes and variables
-            $view_data['form']['attributes'] = array(
+            $view_data['form']['attributes'] = [
                 'id' => 'form_page',
-            );
+            ];
             $view_data['form']['action'] = ($id === null) ? $this->baseControllerUrl.'/add-update' : $this->baseControllerUrl.'/add-update?id='.$id;
             $view_data['form']['cancelUrl'] = $this->baseControllerUrl;
             $view_data['form']['viewUrl'] = $this->baseControllerUrl.'/view?id='.$id;
@@ -269,19 +270,19 @@ class Page extends MY_AdminController
             }
 
             //Return the layout with view form
-            return $this->load->view('layout/backend', array(
-                'content' => $this->load->view($viewFile, $view_data, true),
-                'pageHeading' => $view_data['pageHeading'],
-                'pageSubHeading' => '',
-                'activeLinksAlias' => array('admin_manage_cms', 'admin_manage_pages'),
-                'breadCrumbs' => array('Manage Pages' => $this->baseControllerUrl, $view_data['pageHeading'] => ''),
-            ));
+            return $this->load->view('layout/backend', [
+                'content'          => $this->load->view($viewFile, $view_data, true),
+                'pageHeading'      => $view_data['pageHeading'],
+                'pageSubHeading'   => '',
+                'activeLinksAlias' => ['admin_manage_cms', 'admin_manage_pages'],
+                'breadCrumbs'      => ['Manage Pages' => $this->baseControllerUrl, $view_data['pageHeading'] => ''],
+            ]);
         }
     }
 
     /**
      * addupdate action.
-     * 
+     *
      * Action to delete a record from the table. It will permanent remove the record from database.
      * There is no soft delete functionality as of now
      */
@@ -313,29 +314,29 @@ class Page extends MY_AdminController
                 $this->objectManager->flush();
 
                 //If record deleted successfully then show the success message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'success',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'success',
                             'message' => $this->crudName.' deleted successfully.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             } else {
 
                 //If record not found in database with the given ID, then show No record found message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'error',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'error',
                             'message' => 'No record found.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             }
         }
 
@@ -346,7 +347,7 @@ class Page extends MY_AdminController
 
     /**
      * status action.
-     * 
+     *
      * Enable or Disable a page
      */
     public function status()
@@ -384,29 +385,29 @@ class Page extends MY_AdminController
                 $this->objectManager->flush();
 
                 //If record marked as active or in-active then show the success message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'success',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'success',
                             'message' => $this->crudName.' marked as '.strtolower($newStatus).' successfully.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             } else {
 
                 //If record not found in database with the given ID, then show No record found message
-                $response = array(
-                    'html' => '',
-                    'notification' => array(
-                        array(
-                            'status' => 'error',
+                $response = [
+                    'html'         => '',
+                    'notification' => [
+                        [
+                            'status'  => 'error',
                             'message' => 'No record found.',
-                            'type' => 'toastr',
-                        ),
-                    ),
-                );
+                            'type'    => 'toastr',
+                        ],
+                    ],
+                ];
             }
         }
 

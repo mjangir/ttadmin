@@ -180,7 +180,7 @@ if (!function_exists('timespan')) {
 
         $seconds = ($time <= $seconds) ? 1 : $time - $seconds;
 
-        $str = array();
+        $str = [];
         $years = floor($seconds / 31557600);
 
         if ($years > 0) {
@@ -282,7 +282,7 @@ if (!function_exists('days_in_month')) {
             }
         }
 
-        $days_in_month = array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+        $days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
         return $days_in_month[$month - 1];
     }
@@ -359,7 +359,7 @@ if (!function_exists('mysql_to_unix')) {
         // since the formatting changed with MySQL 4.1
         // YYYY-MM-DD HH:MM:SS
 
-        $time = str_replace(array('-', ':', ' '), '', $time);
+        $time = str_replace(['-', ':', ' '], '', $time);
 
         // YYYYMMDDHHMMSS
         return mktime(
@@ -473,7 +473,7 @@ if (!function_exists('nice_date')) {
 
         // Date like: YYYYMM
         if (preg_match('/^\d{6}$/i', $bad_date)) {
-            if (in_array(substr($bad_date, 0, 2), array('19', '20'))) {
+            if (in_array(substr($bad_date, 0, 2), ['19', '20'])) {
                 $year = substr($bad_date, 0, 4);
                 $month = substr($bad_date, 4, 2);
             } else {
@@ -563,48 +563,48 @@ if (!function_exists('timezones')) {
         // Note: Don't change the order of these even though
         // some items appear to be in the wrong order
 
-        $zones = array(
-            'UM12' => -12,
-            'UM11' => -11,
-            'UM10' => -10,
-            'UM95' => -9.5,
-            'UM9' => -9,
-            'UM8' => -8,
-            'UM7' => -7,
-            'UM6' => -6,
-            'UM5' => -5,
-            'UM45' => -4.5,
-            'UM4' => -4,
-            'UM35' => -3.5,
-            'UM3' => -3,
-            'UM2' => -2,
-            'UM1' => -1,
-            'UTC' => 0,
-            'UP1' => +1,
-            'UP2' => +2,
-            'UP3' => +3,
-            'UP35' => +3.5,
-            'UP4' => +4,
-            'UP45' => +4.5,
-            'UP5' => +5,
-            'UP55' => +5.5,
-            'UP575' => +5.75,
-            'UP6' => +6,
-            'UP65' => +6.5,
-            'UP7' => +7,
-            'UP8' => +8,
-            'UP875' => +8.75,
-            'UP9' => +9,
-            'UP95' => +9.5,
-            'UP10' => +10,
-            'UP105' => +10.5,
-            'UP11' => +11,
-            'UP115' => +11.5,
-            'UP12' => +12,
+        $zones = [
+            'UM12'   => -12,
+            'UM11'   => -11,
+            'UM10'   => -10,
+            'UM95'   => -9.5,
+            'UM9'    => -9,
+            'UM8'    => -8,
+            'UM7'    => -7,
+            'UM6'    => -6,
+            'UM5'    => -5,
+            'UM45'   => -4.5,
+            'UM4'    => -4,
+            'UM35'   => -3.5,
+            'UM3'    => -3,
+            'UM2'    => -2,
+            'UM1'    => -1,
+            'UTC'    => 0,
+            'UP1'    => +1,
+            'UP2'    => +2,
+            'UP3'    => +3,
+            'UP35'   => +3.5,
+            'UP4'    => +4,
+            'UP45'   => +4.5,
+            'UP5'    => +5,
+            'UP55'   => +5.5,
+            'UP575'  => +5.75,
+            'UP6'    => +6,
+            'UP65'   => +6.5,
+            'UP7'    => +7,
+            'UP8'    => +8,
+            'UP875'  => +8.75,
+            'UP9'    => +9,
+            'UP95'   => +9.5,
+            'UP10'   => +10,
+            'UP105'  => +10.5,
+            'UP11'   => +11,
+            'UP115'  => +11.5,
+            'UP12'   => +12,
             'UP1275' => +12.75,
-            'UP13' => +13,
-            'UP14' => +14,
-        );
+            'UP13'   => +13,
+            'UP14'   => +14,
+        ];
 
         if ($tz === '') {
             return $zones;
@@ -649,10 +649,10 @@ if (!function_exists('date_range')) {
         }
 
         if ($is_unix && ($unix_start == $mixed or date($format, $unix_start) === date($format, $mixed))) {
-            return array(date($format, $unix_start));
+            return [date($format, $unix_start)];
         }
 
-        $range = array();
+        $range = [];
 
         /* NOTE: Even though the DateTime object has many useful features, it appears that
          *	 it doesn't always handle properly timezones, when timestamps are passed

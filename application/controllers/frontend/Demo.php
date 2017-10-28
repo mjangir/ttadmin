@@ -26,19 +26,19 @@ class Demo extends MY_GuestUserController
 {
     /**
      * index action.
-     * 
+     *
      * Home page default action
      */
     public function index()
     {
         $userId = 1;
 
-        if($this->input->get('user'))
-        {
+        if ($this->input->get('user')) {
             $userId = $this->input->get('user');
         }
-        return $this->load->view('layout/demo', array(
-            'content' => $this->load->view('frontend/demo/index', array('userId' => $userId), true),
-        ));
+
+        return $this->load->view('layout/demo', [
+            'content' => $this->load->view('frontend/demo/index', ['userId' => $userId], true),
+        ]);
     }
 }

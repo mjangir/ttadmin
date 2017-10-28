@@ -7,8 +7,8 @@
 
 /**
  * Errors manager.
- * 
- * HybridAuth errors are stored in Hybrid::storage() and not displayed directly to the end user 
+ *
+ * HybridAuth errors are stored in Hybrid::storage() and not displayed directly to the end user
  */
 class Hybrid_Error
 {
@@ -41,8 +41,8 @@ class Hybrid_Error
     }
 
     /**
-     * Checks to see if there is a an error. 
-     * 
+     * Checks to see if there is a an error.
+     *
      * @return bool True if there is an error.
      */
     public static function hasError()

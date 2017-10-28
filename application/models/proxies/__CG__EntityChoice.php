@@ -36,7 +36,7 @@ class __CG__EntityChoice extends \Entity\Choice implements \Doctrine\ORM\Proxy\P
      *
      * @see \Doctrine\Common\Persistence\Proxy::__getLazyProperties
      */
-    public static $lazyPropertiesDefaults = array();
+    public static $lazyPropertiesDefaults = [];
 
     /**
      * @param \Closure $initializer
@@ -54,15 +54,12 @@ class __CG__EntityChoice extends \Entity\Choice implements \Doctrine\ORM\Proxy\P
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', ''."\0".'Entity\\Choice'."\0".'id', ''."\0".'Entity\\Choice'."\0".'label', ''."\0".'Entity\\Choice'."\0".'value', ''."\0".'Entity\\Choice'."\0".'surveyType');
+            return ['__isInitialized__', ''."\0".'Entity\\Choice'."\0".'id', ''."\0".'Entity\\Choice'."\0".'label', ''."\0".'Entity\\Choice'."\0".'value', ''."\0".'Entity\\Choice'."\0".'surveyType'];
         }
 
-        return array('__isInitialized__', ''."\0".'Entity\\Choice'."\0".'id', ''."\0".'Entity\\Choice'."\0".'label', ''."\0".'Entity\\Choice'."\0".'value', ''."\0".'Entity\\Choice'."\0".'surveyType');
+        return ['__isInitialized__', ''."\0".'Entity\\Choice'."\0".'id', ''."\0".'Entity\\Choice'."\0".'label', ''."\0".'Entity\\Choice'."\0".'value', ''."\0".'Entity\\Choice'."\0".'surveyType'];
     }
 
-    /**
-     * 
-     */
     public function __wakeup()
     {
         if (!$this->__isInitialized__) {
@@ -81,12 +78,9 @@ class __CG__EntityChoice extends \Entity\Choice implements \Doctrine\ORM\Proxy\P
         }
     }
 
-    /**
-     * 
-     */
     public function __clone()
     {
-        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', array());
+        $this->__cloner__ && $this->__cloner__->__invoke($this, '__clone', []);
     }
 
     /**
@@ -94,7 +88,7 @@ class __CG__EntityChoice extends \Entity\Choice implements \Doctrine\ORM\Proxy\P
      */
     public function __load()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, '__load', []);
     }
 
     /**
@@ -177,7 +171,7 @@ class __CG__EntityChoice extends \Entity\Choice implements \Doctrine\ORM\Proxy\P
             return (int) parent::getId();
         }
 
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getId', []);
 
         return parent::getId();
     }
@@ -187,7 +181,7 @@ class __CG__EntityChoice extends \Entity\Choice implements \Doctrine\ORM\Proxy\P
      */
     public function setLabel($label)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLabel', array($label));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLabel', [$label]);
 
         return parent::setLabel($label);
     }
@@ -197,7 +191,7 @@ class __CG__EntityChoice extends \Entity\Choice implements \Doctrine\ORM\Proxy\P
      */
     public function getLabel()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLabel', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLabel', []);
 
         return parent::getLabel();
     }
@@ -207,7 +201,7 @@ class __CG__EntityChoice extends \Entity\Choice implements \Doctrine\ORM\Proxy\P
      */
     public function setValue($value)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setValue', array($value));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setValue', [$value]);
 
         return parent::setValue($value);
     }
@@ -217,7 +211,7 @@ class __CG__EntityChoice extends \Entity\Choice implements \Doctrine\ORM\Proxy\P
      */
     public function getValue()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getValue', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getValue', []);
 
         return parent::getValue();
     }
@@ -227,7 +221,7 @@ class __CG__EntityChoice extends \Entity\Choice implements \Doctrine\ORM\Proxy\P
      */
     public function setSurveyType($surveyType)
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSurveyType', array($surveyType));
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSurveyType', [$surveyType]);
 
         return parent::setSurveyType($surveyType);
     }
@@ -237,7 +231,7 @@ class __CG__EntityChoice extends \Entity\Choice implements \Doctrine\ORM\Proxy\P
      */
     public function getSurveyType()
     {
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSurveyType', array());
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getSurveyType', []);
 
         return parent::getSurveyType();
     }

@@ -2,13 +2,13 @@
 /*!
 * HybridAuth
 * http://hybridauth.sourceforge.net | http://github.com/hybridauth/hybridauth
-* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html 
+* (c) 2009-2012, HybridAuth authors | http://hybridauth.sourceforge.net/licenses.html
 */
 
 /**
  * To implement an OAuth 2 based service provider, Hybrid_Provider_Model_OAuth2
- * can be used to save the hassle of the authentication flow. 
- * 
+ * can be used to save the hassle of the authentication flow.
+ *
  * Each class that inherit from Hybrid_Provider_Model_OAuth2 have to implemenent
  * at least 2 methods:
  *   Hybrid_Providers_{provider_name}::initialize()     to setup the provider api end-points urls
@@ -19,7 +19,7 @@
  */
 class Hybrid_Provider_Model_OAuth2 extends Hybrid_Provider_Model
 {
-    // default permissions 
+    // default permissions
     public $scope = '';
 
     /**
@@ -27,7 +27,7 @@ class Hybrid_Provider_Model_OAuth2 extends Hybrid_Provider_Model
      */
     public function errorMessageByStatus($code = null)
     {
-        $http_status_codes = array(
+        $http_status_codes = [
             200 => 'OK: Success!',
             304 => 'Not Modified: There was no new data to return.',
             400 => 'Bad Request: The request was invalid.',
@@ -38,14 +38,14 @@ class Hybrid_Provider_Model_OAuth2 extends Hybrid_Provider_Model
             500 => 'Internal Server Error: Something is broken.',
             502 => 'Bad Gateway.',
             503 => 'Service Unavailable.',
-        );
+        ];
 
         if (!$code && $this->api) {
             $code = $this->api->http_code;
         }
 
-        if (isset($http_status_codes[ $code ])) {
-            return $code.' '.$http_status_codes[ $code ];
+        if (isset($http_status_codes[$code])) {
+            return $code.' '.$http_status_codes[$code];
         }
     }
 
@@ -93,7 +93,7 @@ class Hybrid_Provider_Model_OAuth2 extends Hybrid_Provider_Model
     public function loginBegin()
     {
         // redirect the user to the provider authentication url
-        Hybrid_Auth::redirect($this->api->authorizeUrl(array('scope' => $this->scope)));
+        Hybrid_Auth::redirect($this->api->authorizeUrl(['scope' => $this->scope]));
     }
 
     // --------------------------------------------------------------------
@@ -144,7 +144,7 @@ class Hybrid_Provider_Model_OAuth2 extends Hybrid_Provider_Model
 
                 // expired?
                 if ($this->api->access_token_expires_at <= time()) {
-                    $response = $this->api->refreshToken(array('refresh_token' => $this->api->refresh_token));
+                    $response = $this->api->refreshToken(['refresh_token' => $this->api->refresh_token]);
 
                     if (!isset($response->access_token) || !$response->access_token) {
                         // set the user as disconnected at this point and throw an exception

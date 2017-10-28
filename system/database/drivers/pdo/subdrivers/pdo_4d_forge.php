@@ -88,12 +88,12 @@ class CI_DB_pdo_4d_forge extends CI_DB_pdo_forge
      *
      * @var array
      */
-    protected $_unsigned = array(
-        'INT16' => 'INT',
+    protected $_unsigned = [
+        'INT16'    => 'INT',
         'SMALLINT' => 'INT',
-        'INT' => 'INT64',
-        'INT32' => 'INT64',
-    );
+        'INT'      => 'INT64',
+        'INT32'    => 'INT64',
+    ];
 
     /**
      * DEFAULT value representation in CREATE/ALTER TABLE statements.
@@ -115,7 +115,7 @@ class CI_DB_pdo_4d_forge extends CI_DB_pdo_forge
      */
     protected function _alter_table($alter_type, $table, $field)
     {
-        if (in_array($alter_type, array('ADD', 'DROP'), true)) {
+        if (in_array($alter_type, ['ADD', 'DROP'], true)) {
             return parent::_alter_table($alter_type, $table, $field);
         }
 

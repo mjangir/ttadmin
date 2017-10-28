@@ -1,11 +1,11 @@
 <?php
-namespace Entity;
 
+namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * LinkCategory
+ * LinkCategory.
  *
  * @ORM\Table(name="link_category", indexes={@ORM\Index(name="role_id", columns={"role_id"})})
  * @ORM\Entity(repositoryClass="Repository\LinkCategoryRepository")
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class LinkCategory
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -59,12 +59,10 @@ class LinkCategory
      */
     private $role;
 
-
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -72,9 +70,10 @@ class LinkCategory
     }
 
     /**
-     * Set name
+     * Set name.
      *
      * @param string $name
+     *
      * @return LinkCategory
      */
     public function setName($name)
@@ -85,9 +84,9 @@ class LinkCategory
     }
 
     /**
-     * Get name
+     * Get name.
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -95,9 +94,10 @@ class LinkCategory
     }
 
     /**
-     * Set alias
+     * Set alias.
      *
      * @param string $alias
+     *
      * @return LinkCategory
      */
     public function setAlias($alias)
@@ -108,9 +108,9 @@ class LinkCategory
     }
 
     /**
-     * Get alias
+     * Get alias.
      *
-     * @return string 
+     * @return string
      */
     public function getAlias()
     {
@@ -118,9 +118,10 @@ class LinkCategory
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return LinkCategory
      */
     public function setCreatedAt($createdAt)
@@ -131,9 +132,9 @@ class LinkCategory
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -141,9 +142,10 @@ class LinkCategory
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return LinkCategory
      */
     public function setUpdatedAt($updatedAt)
@@ -154,9 +156,9 @@ class LinkCategory
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {
@@ -164,9 +166,10 @@ class LinkCategory
     }
 
     /**
-     * Set role
+     * Set role.
      *
      * @param Role $role
+     *
      * @return LinkCategory
      */
     public function setRole(Role $role = null)
@@ -177,9 +180,9 @@ class LinkCategory
     }
 
     /**
-     * Get role
+     * Get role.
      *
-     * @return Role 
+     * @return Role
      */
     public function getRole()
     {

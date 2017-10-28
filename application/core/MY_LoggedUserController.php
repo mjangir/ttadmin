@@ -50,7 +50,7 @@ class MY_LoggedUserController extends CI_Controller
 
     /**
      * Class constructor.
-     * 
+     *
      * Calls parent class constructor and sets common properties to all
      * controllers who are extending this class
      */
@@ -71,9 +71,7 @@ class MY_LoggedUserController extends CI_Controller
         $loggedUserData = getLoggedUserData();
         if (empty($loggedUserData['id'])) {
             redirect('auth/login');
-        }
-        else if($loggedUserData['userGroupId'] == ADMIN_GROUP_ID && $this->controller != 'settings')
-        {
+        } elseif ($loggedUserData['userGroupId'] == ADMIN_GROUP_ID && $this->controller != 'settings') {
             redirect('/admin');
         }
 
@@ -85,13 +83,13 @@ class MY_LoggedUserController extends CI_Controller
 
         //Set global vars to layout file
         $links = getNavigationMenus();
-        $this->load->vars(array(
-            'settings' => getSettings(),
-            'loggedUser' => getLoggedUserData(),
-            'mainNavLinks' => !empty($links['frontend_main_navigation_links']) ? $links['frontend_main_navigation_links'] : array(),
-            'footerLinks' => !empty($links['frontend_footer_links']) ? $links['frontend_footer_links'] : array(),
-            'sidebarLinks' => !empty($links['frontend_logged_user_sidebar_links']) ? $links['frontend_logged_user_sidebar_links'] : array(),
-        ));
+        $this->load->vars([
+            'settings'     => getSettings(),
+            'loggedUser'   => getLoggedUserData(),
+            'mainNavLinks' => !empty($links['frontend_main_navigation_links']) ? $links['frontend_main_navigation_links'] : [],
+            'footerLinks'  => !empty($links['frontend_footer_links']) ? $links['frontend_footer_links'] : [],
+            'sidebarLinks' => !empty($links['frontend_logged_user_sidebar_links']) ? $links['frontend_logged_user_sidebar_links'] : [],
+        ]);
 
         //Clear cache on each request
         $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate, no-transform, max-age=0, post-check=0, pre-check=0');

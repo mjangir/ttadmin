@@ -1,24 +1,25 @@
 <?php
-if(!$isAjaxRequest) {
-    $id                     = $game->getId();
-    $title                  = $game->getJackpot()->getTitle();
-    $totalUserParticipated  = $game->getTotalUsersParticipated();
-    $totalNumberOfBids      = $game->getTotalNumberOfBids();
-    $longestBidDuration     = $game->getLongestBidDuration();
-    $lastBidDuration        = $game->getLastBidDuration();
-    $startedOn              = $game->getStartedOn()->format('Y-m-d H:i:s');
-    $finishedOn             = $game->getFinishedOn()->format('Y-m-d H:i:s');
-    $longestBidWinner       = $game->getLongestBidWinnerUser()->getName();
-    $lastBidWinner          = $game->getLastBidWinnerUser()->getName();
+if (!$isAjaxRequest) {
+    $id = $game->getId();
+    $title = $game->getJackpot()->getTitle();
+    $totalUserParticipated = $game->getTotalUsersParticipated();
+    $totalNumberOfBids = $game->getTotalNumberOfBids();
+    $longestBidDuration = $game->getLongestBidDuration();
+    $lastBidDuration = $game->getLastBidDuration();
+    $startedOn = $game->getStartedOn()->format('Y-m-d H:i:s');
+    $finishedOn = $game->getFinishedOn()->format('Y-m-d H:i:s');
+    $longestBidWinner = $game->getLongestBidWinnerUser()->getName();
+    $lastBidWinner = $game->getLastBidWinnerUser()->getName();
 }
 ?>
 <div class="row">
 <div class="col-md-12">
-<?php if(!$isAjaxRequest) { ?>
+<?php if (!$isAjaxRequest) {
+    ?>
     <div class="the-box no-border">
         <div class="box box-success">
             <div class="box-header">
-                <h4><?php echo $title;?> - <i>(Details and list of users who played this game)</i></h4>
+                <h4><?php echo $title; ?> - <i>(Details and list of users who played this game)</i></h4>
             </div>
             <div class="box-body">
                 <table class="table table-th-block table-info">
@@ -36,21 +37,22 @@ if(!$isAjaxRequest) {
                     </thead>
                     <tbody>
                         <tr>
-                            <td><?php echo $totalUserParticipated;?></td>
-                            <td><?php echo $totalNumberOfBids;?></td>
-                            <td><?php echo convertSecondsToTimeFormat($longestBidDuration);?></td>
-                            <td><?php echo convertSecondsToTimeFormat($lastBidDuration);?></td>
-                            <td><?php echo $longestBidWinner;?></td>
-                            <td><?php echo $lastBidWinner;?></td>
-                            <td><?php echo $startedOn;?></td>
-                            <td><?php echo $finishedOn;?></td>
+                            <td><?php echo $totalUserParticipated; ?></td>
+                            <td><?php echo $totalNumberOfBids; ?></td>
+                            <td><?php echo convertSecondsToTimeFormat($longestBidDuration); ?></td>
+                            <td><?php echo convertSecondsToTimeFormat($lastBidDuration); ?></td>
+                            <td><?php echo $longestBidWinner; ?></td>
+                            <td><?php echo $lastBidWinner; ?></td>
+                            <td><?php echo $startedOn; ?></td>
+                            <td><?php echo $finishedOn; ?></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-<?php } ?>
+<?php
+} ?>
 <div class="the-box no-border paginated_tbl">
 <div class="box box-primary">
     <div class="box-header with-border">
@@ -72,24 +74,23 @@ if(!$isAjaxRequest) {
             </thead>
             <tbody>
                 <?php if ($data->count() > 0) {
-                    $count = $listStartFrom;
-                    foreach ($data as $record) {
-                        $id                 = $record->getId();
-                        $name               = $record->getUser()->getName();
-                        $joinedOn           = !empty($record->getJoinedOn()) ? $record->getJoinedOn()->format('Y-m-d H:i:s') : '<span class="label label-danger">Joined But Not Played</span>';
-                        $quittedOn          = !empty($record->getQuittedOn()) ? $record->getQuittedOn()->format('Y-m-d H:i:s') : 'Not Quitted';
-                        $totalBidsPlaced    = $record->getTotalNumberOfBids();
-                        $remainingBids      = $record->getRemainingAvailableBids();
-                        $longedBidDuration  = $record->getLongestBidDuration();
-                ?>
+        $count = $listStartFrom;
+        foreach ($data as $record) {
+            $id = $record->getId();
+            $name = $record->getUser()->getName();
+            $joinedOn = !empty($record->getJoinedOn()) ? $record->getJoinedOn()->format('Y-m-d H:i:s') : '<span class="label label-danger">Joined But Not Played</span>';
+            $quittedOn = !empty($record->getQuittedOn()) ? $record->getQuittedOn()->format('Y-m-d H:i:s') : 'Not Quitted';
+            $totalBidsPlaced = $record->getTotalNumberOfBids();
+            $remainingBids = $record->getRemainingAvailableBids();
+            $longedBidDuration = $record->getLongestBidDuration(); ?>
                     <tr>
-                        <td><?php echo $count;?></td>
-                        <td><?php echo $name;?></td>
-                        <td><?php echo $joinedOn;?></td>
-                        <td><?php echo $quittedOn;?></td>
-                        <td><?php echo $totalBidsPlaced;?></td>
-                        <td><?php echo $remainingBids;?></td>
-                        <td><?php echo $longedBidDuration;?></td>
+                        <td><?php echo $count; ?></td>
+                        <td><?php echo $name; ?></td>
+                        <td><?php echo $joinedOn; ?></td>
+                        <td><?php echo $quittedOn; ?></td>
+                        <td><?php echo $totalBidsPlaced; ?></td>
+                        <td><?php echo $remainingBids; ?></td>
+                        <td><?php echo $longedBidDuration; ?></td>
                         <td>
                             <a href="#">
                                 <i class="fa fa-dollar text-info" data-toggle="tooltip" title="View Bids By This User"></i>
@@ -97,21 +98,25 @@ if(!$isAjaxRequest) {
                         </td>
                     </tr>
                        <?php ++$count;
-                        }
-                    } else {?>
+        }
+    } else {
+        ?>
                     <tr>
                         <td colspan="8" class="text-center"> No Data Found.</td>
                     </tr>
-                    <?php } ?>
+                    <?php
+    } ?>
             </tbody>
         </table>
     </div>
     <div class="box-footer clearfix">
-        <?php if ($data->count() > 0 && !empty($pagination)) {?>
+        <?php if ($data->count() > 0 && !empty($pagination)) {
+        ?>
             <ul class="pagination pagination-sm no-margin pull-right info block-color">
             <?php echo $pagination; ?>
             </ul>
-        <?php } ?>
+        <?php
+    } ?>
     </div>
 </div>
 </div>

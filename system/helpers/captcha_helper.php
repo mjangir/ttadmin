@@ -62,25 +62,25 @@ if (!function_exists('create_captcha')) {
      */
     function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = '')
     {
-        $defaults = array(
-            'word' => '',
-            'img_path' => '',
-            'img_url' => '',
-            'img_width' => '150',
-            'img_height' => '30',
-            'font_path' => '',
-            'expiration' => 7200,
+        $defaults = [
+            'word'        => '',
+            'img_path'    => '',
+            'img_url'     => '',
+            'img_width'   => '150',
+            'img_height'  => '30',
+            'font_path'   => '',
+            'expiration'  => 7200,
             'word_length' => 8,
-            'font_size' => 16,
-            'img_id' => '',
-            'pool' => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-            'colors' => array(
-                'background' => array(255, 255, 255),
-                'border' => array(153, 102, 102),
-                'text' => array(204, 153, 153),
-                'grid' => array(255, 182, 182),
-            ),
-        );
+            'font_size'   => 16,
+            'img_id'      => '',
+            'pool'        => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            'colors'      => [
+                'background' => [255, 255, 255],
+                'border'     => [153, 102, 102],
+                'text'       => [204, 153, 153],
+                'grid'       => [255, 182, 182],
+            ],
+        ];
 
         foreach ($defaults as $key => $val) {
             if (!is_array($data) && empty($$key)) {
@@ -151,7 +151,7 @@ if (!function_exists('create_captcha')) {
         }
 
         // Create the rectangle
-        ImageFilledRectangle($im, 0, 0, $img_width, $img_height, $colors['background']);
+        imagefilledrectangle($im, 0, 0, $img_width, $img_height, $colors['background']);
 
         // -----------------------------------
         //  Create the spiral pattern
@@ -221,8 +221,8 @@ if (!function_exists('create_captcha')) {
         }
 
         $img = '<img '.($img_id === '' ? '' : 'id="'.$img_id.'"').' src="'.$img_url.$img_filename.'" style="width: '.$img_width.'; height: '.$img_height.'; border: 0;" alt=" " />';
-        ImageDestroy($im);
+        imagedestroy($im);
 
-        return array('word' => $word, 'time' => $now, 'image' => $img, 'filename' => $img_filename);
+        return ['word' => $word, 'time' => $now, 'image' => $img, 'filename' => $img_filename];
     }
 }

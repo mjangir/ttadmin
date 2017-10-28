@@ -1,11 +1,11 @@
 <?php
-namespace Entity;
 
+namespace Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Country
+ * Country.
  *
  * @ORM\Table(name="country")
  * @ORM\Entity(repositoryClass="Repository\CountryRepository")
@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Country
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -49,12 +49,10 @@ class Country
      */
     private $updatedAt;
 
-
-
     /**
-     * Get id
+     * Get id.
      *
-     * @return integer 
+     * @return int
      */
     public function getId()
     {
@@ -62,9 +60,10 @@ class Country
     }
 
     /**
-     * Set countryName
+     * Set countryName.
      *
      * @param string $countryName
+     *
      * @return Country
      */
     public function setCountryName($countryName)
@@ -75,9 +74,9 @@ class Country
     }
 
     /**
-     * Get countryName
+     * Get countryName.
      *
-     * @return string 
+     * @return string
      */
     public function getCountryName()
     {
@@ -85,9 +84,10 @@ class Country
     }
 
     /**
-     * Set countryCode
+     * Set countryCode.
      *
      * @param string $countryCode
+     *
      * @return Country
      */
     public function setCountryCode($countryCode)
@@ -98,9 +98,9 @@ class Country
     }
 
     /**
-     * Get countryCode
+     * Get countryCode.
      *
-     * @return string 
+     * @return string
      */
     public function getCountryCode()
     {
@@ -108,9 +108,10 @@ class Country
     }
 
     /**
-     * Set createdAt
+     * Set createdAt.
      *
      * @param \DateTime $createdAt
+     *
      * @return Country
      */
     public function setCreatedAt($createdAt)
@@ -121,9 +122,9 @@ class Country
     }
 
     /**
-     * Get createdAt
+     * Get createdAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -131,9 +132,10 @@ class Country
     }
 
     /**
-     * Set updatedAt
+     * Set updatedAt.
      *
      * @param \DateTime $updatedAt
+     *
      * @return Country
      */
     public function setUpdatedAt($updatedAt)
@@ -144,9 +146,9 @@ class Country
     }
 
     /**
-     * Get updatedAt
+     * Get updatedAt.
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {

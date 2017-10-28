@@ -129,10 +129,10 @@ class CI_DB_mysqli_driver extends CI_DB
         }
 
         if (is_array($this->encrypt)) {
-            $ssl = array();
-            empty($this->encrypt['ssl_key'])    or $ssl['key'] = $this->encrypt['ssl_key'];
-            empty($this->encrypt['ssl_cert'])   or $ssl['cert'] = $this->encrypt['ssl_cert'];
-            empty($this->encrypt['ssl_ca'])     or $ssl['ca'] = $this->encrypt['ssl_ca'];
+            $ssl = [];
+            empty($this->encrypt['ssl_key']) or $ssl['key'] = $this->encrypt['ssl_key'];
+            empty($this->encrypt['ssl_cert']) or $ssl['cert'] = $this->encrypt['ssl_cert'];
+            empty($this->encrypt['ssl_ca']) or $ssl['ca'] = $this->encrypt['ssl_ca'];
             empty($this->encrypt['ssl_capath']) or $ssl['capath'] = $this->encrypt['ssl_capath'];
             empty($this->encrypt['ssl_cipher']) or $ssl['cipher'] = $this->encrypt['ssl_cipher'];
 
@@ -143,9 +143,9 @@ class CI_DB_mysqli_driver extends CI_DB
 
                 $client_flags |= MYSQLI_CLIENT_SSL;
                 $mysqli->ssl_set(
-                    isset($ssl['key'])    ? $ssl['key']    : null,
-                    isset($ssl['cert'])   ? $ssl['cert']   : null,
-                    isset($ssl['ca'])     ? $ssl['ca']     : null,
+                    isset($ssl['key']) ? $ssl['key'] : null,
+                    isset($ssl['cert']) ? $ssl['cert'] : null,
+                    isset($ssl['ca']) ? $ssl['ca'] : null,
                     isset($ssl['capath']) ? $ssl['capath'] : null,
                     isset($ssl['cipher']) ? $ssl['cipher'] : null
                 );
@@ -443,7 +443,7 @@ class CI_DB_mysqli_driver extends CI_DB
         }
         $query = $query->result_object();
 
-        $retval = array();
+        $retval = [];
         for ($i = 0, $c = count($query); $i < $c; ++$i) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = $query[$i]->Field;
@@ -473,13 +473,13 @@ class CI_DB_mysqli_driver extends CI_DB
     public function error()
     {
         if (!empty($this->conn_id->connect_errno)) {
-            return array(
-                'code' => $this->conn_id->connect_errno,
+            return [
+                'code'    => $this->conn_id->connect_errno,
                 'message' => is_php('5.2.9') ? $this->conn_id->connect_error : mysqli_connect_error(),
-            );
+            ];
         }
 
-        return array('code' => $this->conn_id->errno, 'message' => $this->conn_id->error);
+        return ['code' => $this->conn_id->errno, 'message' => $this->conn_id->error];
     }
 
     // --------------------------------------------------------------------

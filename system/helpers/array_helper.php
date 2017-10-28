@@ -101,9 +101,9 @@ if (!function_exists('elements')) {
      */
     function elements($items, array $array, $default = null)
     {
-        $return = array();
+        $return = [];
 
-        is_array($items) or $items = array($items);
+        is_array($items) or $items = [$items];
 
         foreach ($items as $item) {
             $return[$item] = array_key_exists($item, $array) ? $array[$item] : $default;

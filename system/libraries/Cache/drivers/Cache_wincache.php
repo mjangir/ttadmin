@@ -151,15 +151,15 @@ class CI_Cache_wincache extends CI_Driver
 
     // ------------------------------------------------------------------------
 
-     /**
-      * Cache Info.
-      *
-      * @return	mixed	array on success, false on failure
-      */
-     public function cache_info()
-     {
-         return wincache_ucache_info(true);
-     }
+    /**
+     * Cache Info.
+     *
+     * @return	mixed	array on success, false on failure
+     */
+    public function cache_info()
+    {
+        return wincache_ucache_info(true);
+    }
 
     // ------------------------------------------------------------------------
 
@@ -177,12 +177,12 @@ class CI_Cache_wincache extends CI_Driver
             $ttl = $stored['ucache_entries'][1]['ttl_seconds'];
             $hitcount = $stored['ucache_entries'][1]['hitcount'];
 
-            return array(
-                'expire' => $ttl - $age,
+            return [
+                'expire'   => $ttl - $age,
                 'hitcount' => $hitcount,
-                'age' => $age,
-                'ttl' => $ttl,
-            );
+                'age'      => $age,
+                'ttl'      => $ttl,
+            ];
         }
 
         return false;

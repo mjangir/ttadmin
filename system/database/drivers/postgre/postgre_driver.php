@@ -73,7 +73,7 @@ class CI_DB_postgre_driver extends CI_DB
      *
      * @var array
      */
-    protected $_random_keyword = array('RANDOM()', 'RANDOM()');
+    protected $_random_keyword = ['RANDOM()', 'RANDOM()'];
 
     // --------------------------------------------------------------------
 
@@ -123,7 +123,7 @@ class CI_DB_postgre_driver extends CI_DB
          *
          * postgre://username:password@localhost:5432/database?connect_timeout=5&sslmode=1
          */
-        foreach (array('connect_timeout', 'options', 'sslmode', 'service') as $key) {
+        foreach (['connect_timeout', 'options', 'sslmode', 'service'] as $key) {
             if (isset($this->$key) && is_string($this->key) && $this->key !== '') {
                 $this->dsn .= $key."='".$this->key."' ";
             }
@@ -300,7 +300,7 @@ class CI_DB_postgre_driver extends CI_DB
      */
     public function is_write_type($sql)
     {
-        return (bool) preg_match('/^\s*"?(SET|INSERT(?![^\)]+\)\s+RETURNING)|UPDATE(?!.*\sRETURNING)|DELETE|CREATE|DROP|TRUNCATE|LOAD|COPY|ALTER|RENAME|GRANT|REVOKE|LOCK|UNLOCK|REINDEX)\s/i', str_replace(array("\r\n", "\r", "\n"), ' ', $sql));
+        return (bool) preg_match('/^\s*"?(SET|INSERT(?![^\)]+\)\s+RETURNING)|UPDATE(?!.*\sRETURNING)|DELETE|CREATE|DROP|TRUNCATE|LOAD|COPY|ALTER|RENAME|GRANT|REVOKE|LOCK|UNLOCK|REINDEX)\s/i', str_replace(["\r\n", "\r", "\n"], ' ', $sql));
     }
 
     // --------------------------------------------------------------------
@@ -452,7 +452,7 @@ class CI_DB_postgre_driver extends CI_DB
         }
         $query = $query->result_object();
 
-        $retval = array();
+        $retval = [];
         for ($i = 0, $c = count($query); $i < $c; ++$i) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = $query[$i]->column_name;
@@ -476,7 +476,7 @@ class CI_DB_postgre_driver extends CI_DB
      */
     public function error()
     {
-        return array('code' => '', 'message' => pg_last_error($this->conn_id));
+        return ['code' => '', 'message' => pg_last_error($this->conn_id)];
     }
 
     // --------------------------------------------------------------------
@@ -527,7 +527,7 @@ class CI_DB_postgre_driver extends CI_DB
     protected function _update($table, $values)
     {
         $this->qb_limit = false;
-        $this->qb_orderby = array();
+        $this->qb_orderby = [];
 
         return parent::_update($table, $values);
     }
@@ -547,7 +547,7 @@ class CI_DB_postgre_driver extends CI_DB
      */
     protected function _update_batch($table, $values, $index)
     {
-        $ids = array();
+        $ids = [];
         foreach ($values as $key => $val) {
             $ids[] = $val[$index];
 
