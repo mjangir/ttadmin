@@ -192,8 +192,7 @@ class Jackpot extends MY_AdminController
                     $jackpot->setDoomsDayRemaining(convertTimeFormatToSeconds($this->postParams['dooms_day_time']));
                     $jackpot->setMinPlayersRequired($this->postParams['min_players_required']);
                     //$jackpot->setDurationSetting($this->prepareDurationSetting($this->postParams));
-                    if($this->postParams['increase_amount_seconds'] != '' && $this->postParams['increase_amount'] != '')
-                    {
+                    if ($this->postParams['increase_amount_seconds'] != '' && $this->postParams['increase_amount'] != '') {
                         $jackpot->setIncreaseAmountSeconds($this->postParams['increase_amount_seconds']);
                         $jackpot->setIncreaseAmount($this->postParams['increase_amount']);
                     }
