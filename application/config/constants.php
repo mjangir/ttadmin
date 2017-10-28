@@ -91,8 +91,8 @@ define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 |--------------------------------------------------------------------------
 |
 */
-define('API_BASE_PATH', 'http://localhost:9000');
-define('WS_BASE_PATH', 'ws://localhost:9000/jackpot');
+define('API_BASE_PATH', 'http://192.168.1.4:9000');
+define('WS_BASE_PATH', 'ws://192.168.1.4:9000/jackpot');
 
 /*
 |--------------------------------------------------------------------------
