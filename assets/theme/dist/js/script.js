@@ -29,6 +29,11 @@ jQuery(document).ready(function()
       jQuery("#quit-game-button").hide();
     });
 
+    socket.on('no_jackpot_to_play', function(data)
+    {
+      console.log("No jackpot")
+    });
+
     // When jackpot game bid placed successfully
     socket.on('my_bid_placed', function(data)
     {
