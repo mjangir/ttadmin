@@ -116,7 +116,7 @@ echo form_open($form['action'], $form['attributes']);
                     </div>
                     <div class="col-xs-4">
                         <label class="control-label">Below Amount Should Be Increased</label>
-                        <?php echo form_input(['type' => 'number', 'name' => 'increase_amount', 'class' => 'form-control']); ?>
+                        <?php echo form_input(['type' => 'text', 'name' => 'increase_amount', 'class' => 'form-control']); ?>
                     </div>
                </div>
             </div>

@@ -432,6 +432,17 @@ $(document).ready(function () {
                     }
                 }
             },
+            increase_amount: {
+                row: '.col-xs-4',
+                verbose: false,
+                validators: {
+                    numeric: {
+                        message: 'Please enter a valid decimal amount',
+                        thousandsSeparator: '',
+                        decimalSeparator: '.'
+                    }
+                }
+            }
         }
     }).on('success.form.fv', function (e) {
         $('.server-feedback').removeClass('has-error').removeClass('has-feedback');
