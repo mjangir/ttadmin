@@ -87,12 +87,12 @@
             <div class="col-sm-12">
                 <?php
                     $formAttributes = [
-                        'data-fv-framework'      => 'bootstrap',
-                        'data-fv-message'        => 'This value is not valid',
-                        'data-fv-icon-valid'     => 'null',
-                        'data-fv-icon-invalid'   => 'glyphicon glyphicon-remove',
-                        'data-fv-icon-validating'=> 'null',
-                        'id'                     => 'form_normal_battle_levels',
+                        'data-fv-framework'       => 'bootstrap',
+                        'data-fv-message'         => 'This value is not valid',
+                        'data-fv-icon-valid'      => 'null',
+                        'data-fv-icon-invalid'    => 'glyphicon glyphicon-remove',
+                        'data-fv-icon-validating' => 'null',
+                        'id'                      => 'form_normal_battle_levels',
                     ];
                     echo form_open($saveUrl, $formAttributes);
                 ?>
@@ -144,13 +144,13 @@
                         <div class="col-md-3">
                             <?php echo form_hidden('levels['.$i.'][battle_type]', 'NORMAL'); ?>
                             <?php echo form_input([
-                              'type'                    => 'text',
-                              'value'                   => $level['level_name'],
-                              'name'                    => 'levels['.$i.'][level_name]',
-                              'class'                   => 'form-control',
-                              'data-fv-row'             => '.col-md-2',
-                              'data-fv-notempty'        => 'true',
-                              'data-fv-notempty-message'=> 'Level Name Cannot Be Empty',
+                              'type'                     => 'text',
+                              'value'                    => $level['level_name'],
+                              'name'                     => 'levels['.$i.'][level_name]',
+                              'class'                    => 'form-control',
+                              'data-fv-row'              => '.col-md-2',
+                              'data-fv-notempty'         => 'true',
+                              'data-fv-notempty-message' => 'Level Name Cannot Be Empty',
                             ]); ?>
                         </div>
                         <div class="col-md-1">
@@ -284,12 +284,12 @@
                             <div class="col-md-1">
                                 <?php echo form_hidden('levels[0][battle_type]', 'NORMAL'); ?>
                                 <?php echo form_input([
-                                  'type'                    => 'text',
-                                  'name'                    => 'levels[0][level_name]',
-                                  'class'                   => 'form-control',
-                                  'data-fv-row'             => '.col-md-2',
-                                  'data-fv-notempty'        => 'true',
-                                  'data-fv-notempty-message'=> 'Level Name Cannot Be Empty',
+                                  'type'                     => 'text',
+                                  'name'                     => 'levels[0][level_name]',
+                                  'class'                    => 'form-control',
+                                  'data-fv-row'              => '.col-md-2',
+                                  'data-fv-notempty'         => 'true',
+                                  'data-fv-notempty-message' => 'Level Name Cannot Be Empty',
                                 ]); ?>
                             </div>
                             <div class="col-md-1">

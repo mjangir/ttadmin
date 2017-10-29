@@ -18,20 +18,13 @@
  */
 class LightOpenID
 {
-    public $returnUrl
-         ;
-    public $required = []
-         ;
-    public $optional = []
-         ;
-    public $verify_peer = null
-         ;
-    public $capath = null
-         ;
-    public $cainfo = null
-         ;
-    public $data
-         ;
+    public $returnUrl;
+    public $required = [];
+    public $optional = [];
+    public $verify_peer = null;
+    public $capath = null;
+    public $cainfo = null;
+    public $data;
     public $oauth = [];
     private $identity;
     private $claimed_id;
@@ -39,14 +32,12 @@ class LightOpenID
     protected $version;
     protected $trustRoot;
     protected $aliases;
-    protected $identifier_select = false
-            ;
+    protected $identifier_select = false;
     protected $ax = false;
     protected $sreg = false;
     protected $setup_url = null;
     protected $headers = [];
-    protected $proxy = null
-            ;
+    protected $proxy = null;
     protected $xrds_override_pattern = null;
     protected $xrds_override_replacement = null;
     protected static $ax_to_sreg = [

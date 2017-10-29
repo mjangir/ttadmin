@@ -73,8 +73,8 @@ class Auth extends MY_GuestUserController
                 try {
                     $result = $client->post(API_BASE_PATH.'/auth/login', [
                                 'json' => [
-                                    'email'     => $email,
-                                    'password'  => $password,
+                                    'email'    => $email,
+                                    'password' => $password,
                                 ], ]);
 
                     $response = json_decode($result->getBody()->getContents(), true);
@@ -97,15 +97,15 @@ class Auth extends MY_GuestUserController
 
                         //If user matched successfully, then store user in session
                         $loggedUser = [
-                            'id'            => $user->getId(),
-                            'email'         => $user->getEmail(),
-                            'userGroupId'   => (string) $user->getUserGroup()->getId(),
-                            'roleId'        => $user->getUserGroup()->getRole()->getId(),
-                            'firstName'     => $user->getName(),
-                            'lastName'      => $user->getName(),
-                            'fullName'      => $user->getName(),
-                            'photo'         => $user->getPhoto(),
-                            'createdOn'     => $user->getCreatedAt()->format('Y-m-d'),
+                            'id'          => $user->getId(),
+                            'email'       => $user->getEmail(),
+                            'userGroupId' => (string) $user->getUserGroup()->getId(),
+                            'roleId'      => $user->getUserGroup()->getRole()->getId(),
+                            'firstName'   => $user->getName(),
+                            'lastName'    => $user->getName(),
+                            'fullName'    => $user->getName(),
+                            'photo'       => $user->getPhoto(),
+                            'createdOn'   => $user->getCreatedAt()->format('Y-m-d'),
                         ];
 
                         $this->session->set_userdata('loggedUser', $loggedUser);
