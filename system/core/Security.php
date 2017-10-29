@@ -133,15 +133,15 @@ class CI_Security
      * @var array
      */
     protected $_never_allowed_str = [
-        'document.cookie'      => '[removed]',
-        'document.write'       => '[removed]',
-        '.parentNode'          => '[removed]',
-        '.innerHTML'           => '[removed]',
-        '-moz-binding'         => '[removed]',
-        '<!--'                 => '&lt;!--',
-        '-->'                  => '--&gt;',
-        '<![CDATA['            => '&lt;![CDATA[',
-        '<comment>'            => '&lt;comment&gt;',
+        'document.cookie' => '[removed]',
+        'document.write'  => '[removed]',
+        '.parentNode'     => '[removed]',
+        '.innerHTML'      => '[removed]',
+        '-moz-binding'    => '[removed]',
+        '<!--'            => '&lt;!--',
+        '-->'             => '--&gt;',
+        '<![CDATA['       => '&lt;![CDATA[',
+        '<comment>'       => '&lt;comment&gt;',
     ];
 
     /**

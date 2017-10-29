@@ -214,7 +214,7 @@ class CI_Hooks
                     return $this->_in_progress = false;
                 }
             } else {
-                class_exists($class, false) or require_once($filepath);
+                class_exists($class, false) or require_once $filepath;
 
                 if (!class_exists($class, false) or !method_exists($class, $function)) {
                     return $this->_in_progress = false;
@@ -225,7 +225,7 @@ class CI_Hooks
                 $this->_objects[$class]->$function($params);
             }
         } else {
-            function_exists($function) or require_once($filepath);
+            function_exists($function) or require_once $filepath;
 
             if (!function_exists($function)) {
                 return $this->_in_progress = false;

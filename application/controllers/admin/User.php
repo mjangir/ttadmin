@@ -190,9 +190,9 @@ class User extends MY_AdminController
             $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean',
                     ['required' => 'Please enter Name']);
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|callback_email_exists['.$id.']|xss_clean',
-                    ['required'       => 'Please enter Email ID',
-                        'valid_email' => 'Please enter valid a Email ID',
-                        'email_exists'=> 'Email ID is already taken',
+                    ['required'        => 'Please enter Email ID',
+                        'valid_email'  => 'Please enter valid a Email ID',
+                        'email_exists' => 'Email ID is already taken',
                     ]);
             if ($id === null) {
                 $this->form_validation->set_rules('password', 'Password', 'trim|required',
@@ -206,14 +206,14 @@ class User extends MY_AdminController
             //If form is successfully validated
             if ($this->form_validation->run() == true) {
                 $request = [
-                    'name'          => $this->postParams['name'],
-                    'email'         => $this->postParams['email'],
-                    'userGroupId'   => $this->postParams['userGroupId'],
-                    'gender'        => $this->postParams['gender'],
-                    'phone'         => $this->postParams['phone'],
-                    'countryId'     => !empty($this->postParams['countryId']) ? $this->postParams['country'] : null,
-                    'createdBy'     => $this->loggedUserId,
-                    'updatedBy'     => $this->loggedUserId,
+                    'name'        => $this->postParams['name'],
+                    'email'       => $this->postParams['email'],
+                    'userGroupId' => $this->postParams['userGroupId'],
+                    'gender'      => $this->postParams['gender'],
+                    'phone'       => $this->postParams['phone'],
+                    'countryId'   => !empty($this->postParams['countryId']) ? $this->postParams['country'] : null,
+                    'createdBy'   => $this->loggedUserId,
+                    'updatedBy'   => $this->loggedUserId,
                 ];
 
                 $client = new Client();

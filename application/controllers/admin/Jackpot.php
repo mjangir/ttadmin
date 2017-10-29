@@ -293,11 +293,11 @@ class Jackpot extends MY_AdminController
 
             //Return the layout with view form
             return $this->load->view('layout/backend', [
-                'content'           => $this->load->view($viewFile, $view_data, true),
-                'pageHeading'       => $view_data['pageHeading'],
-                'pageSubHeading'    => '',
-                'activeLinksAlias'  => ['admin_jackpots'],
-                'breadCrumbs'       => ['Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''],
+                'content'          => $this->load->view($viewFile, $view_data, true),
+                'pageHeading'      => $view_data['pageHeading'],
+                'pageSubHeading'   => '',
+                'activeLinksAlias' => ['admin_jackpots'],
+                'breadCrumbs'      => ['Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''],
             ]);
         }
     }
@@ -421,11 +421,11 @@ class Jackpot extends MY_AdminController
 
             //Return the layout with view form
             return $this->load->view('layout/backend', [
-                'content'           => $this->load->view($viewFile, $view_data, true),
-                'pageHeading'       => $view_data['pageHeading'],
-                'pageSubHeading'    => '',
-                'activeLinksAlias'  => ['admin_jackpots'],
-                'breadCrumbs'       => ['Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''],
+                'content'          => $this->load->view($viewFile, $view_data, true),
+                'pageHeading'      => $view_data['pageHeading'],
+                'pageSubHeading'   => '',
+                'activeLinksAlias' => ['admin_jackpots'],
+                'breadCrumbs'      => ['Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''],
             ]);
         }
     }
@@ -658,11 +658,11 @@ class Jackpot extends MY_AdminController
 
             //Return the layout with view form
             return $this->load->view('layout/backend', [
-                'content'           => $this->load->view($viewFile, $view_data, true),
-                'pageHeading'       => $view_data['pageHeading'],
-                'pageSubHeading'    => '',
-                'activeLinksAlias'  => ['admin_jackpots'],
-                'breadCrumbs'       => ['Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''],
+                'content'          => $this->load->view($viewFile, $view_data, true),
+                'pageHeading'      => $view_data['pageHeading'],
+                'pageSubHeading'   => '',
+                'activeLinksAlias' => ['admin_jackpots'],
+                'breadCrumbs'      => ['Manage Jackpots' => $this->baseControllerUrl, $view_data['pageHeading'] => ''],
             ]);
         }
     }

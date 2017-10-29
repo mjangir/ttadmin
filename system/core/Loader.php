@@ -63,7 +63,7 @@ class CI_Loader
      *
      * @var array
      */
-    protected $_ci_view_paths = [VIEWPATH    => true];
+    protected $_ci_view_paths = [VIEWPATH => true];
 
     /**
      * List of paths to load libraries from.
@@ -912,8 +912,8 @@ class CI_Loader
         // to standard PHP echo statements.
         if (!is_php('5.4') && !ini_get('short_open_tag') && config_item('rewrite_short_tags') === true) {
             echo eval('?>'.preg_replace('/;*\s*\?>/', '; ?>', str_replace('<?=', '<?php echo ', file_get_contents($_ci_path))));
-        } else  {
-            include($_ci_path); // include() vs include_once() allows for multiple views with the same name
+        } else {
+            include $_ci_path; // include() vs include_once() allows for multiple views with the same name
         }
 
         log_message('info', 'File loaded: '.$_ci_path);
@@ -1138,19 +1138,19 @@ class CI_Loader
                     // We test for both uppercase and lowercase, for servers that
                     // are case-sensitive with regard to file names. Load global first,
                     // override with environment next
-                    if (file_exists($path.'config/'.strtolower($class). '.php')) {
-                        include($path.'config/'.strtolower($class).'.php');
+                    if (file_exists($path.'config/'.strtolower($class).'.php')) {
+                        include $path.'config/'.strtolower($class).'.php';
                         $found = true;
-                    } elseif (file_exists($path.'config/'.ucfirst(strtolower($class)). '.php')) {
-                        include($path.'config/'.ucfirst(strtolower($class)).'.php');
+                    } elseif (file_exists($path.'config/'.ucfirst(strtolower($class)).'.php')) {
+                        include $path.'config/'.ucfirst(strtolower($class)).'.php';
                         $found = true;
                     }
 
-                    if (file_exists($path.'config/'.ENVIRONMENT.'/'.strtolower($class). '.php')) {
-                        include($path.'config/'.ENVIRONMENT.'/'.strtolower($class).'.php');
+                    if (file_exists($path.'config/'.ENVIRONMENT.'/'.strtolower($class).'.php')) {
+                        include $path.'config/'.ENVIRONMENT.'/'.strtolower($class).'.php';
                         $found = true;
-                    } elseif (file_exists($path.'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)). '.php')) {
-                        include($path.'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php');
+                    } elseif (file_exists($path.'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php')) {
+                        include $path.'config/'.ENVIRONMENT.'/'.ucfirst(strtolower($class)).'.php';
                         $found = true;
                     }
 
@@ -1214,12 +1214,12 @@ class CI_Loader
      */
     protected function _ci_autoloader()
     {
-        if (file_exists(APPPATH. 'config/autoload.php')) {
-            include(APPPATH.'config/autoload.php');
+        if (file_exists(APPPATH.'config/autoload.php')) {
+            include APPPATH.'config/autoload.php';
         }
 
-        if (file_exists(APPPATH.'config/'.ENVIRONMENT. '/autoload.php')) {
-            include(APPPATH.'config/'.ENVIRONMENT.'/autoload.php');
+        if (file_exists(APPPATH.'config/'.ENVIRONMENT.'/autoload.php')) {
+            include APPPATH.'config/'.ENVIRONMENT.'/autoload.php';
         }
 
         if (!isset($autoload)) {
