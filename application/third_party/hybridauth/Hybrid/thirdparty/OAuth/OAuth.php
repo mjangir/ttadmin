@@ -340,7 +340,7 @@ class OAuthRequest
     public static function from_consumer_and_token($consumer, $token, $http_method, $http_url, $parameters = null)
     {
         $parameters = ($parameters) ? $parameters : [];
-        $defaults = ['oauth_version'         => self::$version,
+        $defaults = ['oauth_version'       => self::$version,
                       'oauth_nonce'        => self::generate_nonce(),
                       'oauth_timestamp'    => self::generate_timestamp(),
                       'oauth_consumer_key' => $consumer->key, ];
