@@ -52,7 +52,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-sm-3">
                 <form method="post" action="<?php echo $saveUrl; ?>" id="setting-application-form">
                     <div class="panel panel-square panel-default">
                         <div class="panel-heading">
@@ -78,7 +78,21 @@
                     </div>
                 </form>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-9">
+                <form method="post" action="<?php echo $saveUrl; ?>" id="setting-application-form">
+                    <div class="panel panel-square panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Privacy Text</h3>
+                        </div>
+                        <div class="panel-body">
+                            <textarea name="settings[privacy_text]" rows="12" class="form-control wysihtml5"><?php echo $settings['privacy_text']; ?></textarea>
+                        </div>
+                        <!-- /.panel-body -->
+                        <div class="panel-footer">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
