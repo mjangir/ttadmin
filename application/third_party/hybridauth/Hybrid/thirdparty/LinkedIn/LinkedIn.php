@@ -1627,7 +1627,7 @@ class LinkedIn
 		           <mailbox-item>
 		             <recipients>';
         $data .= ($copy_self) ? '<recipient><person path="/people/~"/></recipient>' : '';
-        for ($i = 0; $i < count($recipients); ++$i) {
+        for ($i = 0; $i < count($recipients); $i++) {
             if (is_string($recipients[$i])) {
                 $data .= '<recipient><person path="/people/'.trim($recipients[$i]).'"/></recipient>';
             } else {

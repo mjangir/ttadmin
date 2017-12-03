@@ -191,7 +191,7 @@ class CI_Table
             $temp = array_splice($array, 0, $col_limit);
 
             if (count($temp) < $col_limit) {
-                for ($i = count($temp); $i < $col_limit; ++$i) {
+                for ($i = count($temp); $i < $col_limit; $i++) {
                     $temp[] = '&nbsp;';
                 }
             }

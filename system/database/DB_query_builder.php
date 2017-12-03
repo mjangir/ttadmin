@@ -2232,7 +2232,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver
     protected function _compile_wh($qb_key)
     {
         if (count($this->$qb_key) > 0) {
-            for ($i = 0, $c = count($this->$qb_key); $i < $c; ++$i) {
+            for ($i = 0, $c = count($this->$qb_key); $i < $c; $i++) {
                 // Is this condition already compiled?
                 if (is_string($this->{$qb_key}[$i])) {
                     continue;
@@ -2249,7 +2249,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver
                     PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY
                 );
 
-                for ($ci = 0, $cc = count($conditions); $ci < $cc; ++$ci) {
+                for ($ci = 0, $cc = count($conditions); $ci < $cc; $ci++) {
                     if (($op = $this->_get_operator($conditions[$ci])) === false
                         or !preg_match('/^(\(?)(.*)('.preg_quote($op, '/').')\s*(.*(?<!\)))?(\)?)$/i', $conditions[$ci], $matches)) {
                         continue;
@@ -2299,7 +2299,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver
     protected function _compile_group_by()
     {
         if (count($this->qb_groupby) > 0) {
-            for ($i = 0, $c = count($this->qb_groupby); $i < $c; ++$i) {
+            for ($i = 0, $c = count($this->qb_groupby); $i < $c; $i++) {
                 // Is it already compiled?
                 if (is_string($this->qb_groupby[$i])) {
                     continue;
@@ -2332,7 +2332,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver
     protected function _compile_order_by()
     {
         if (is_array($this->qb_orderby) && count($this->qb_orderby) > 0) {
-            for ($i = 0, $c = count($this->qb_orderby); $i < $c; ++$i) {
+            for ($i = 0, $c = count($this->qb_orderby); $i < $c; $i++) {
                 if ($this->qb_orderby[$i]['escape'] !== false && !$this->_is_literal($this->qb_orderby[$i]['field'])) {
                     $this->qb_orderby[$i]['field'] = $this->protect_identifiers($this->qb_orderby[$i]['field']);
                 }
@@ -2492,7 +2492,7 @@ abstract class CI_DB_query_builder extends CI_DB_driver
             $qb_cache_var = 'qb_cache_'.$val;
             $qb_new = $this->$qb_cache_var;
 
-            for ($i = 0, $c = count($this->$qb_variable); $i < $c; ++$i) {
+            for ($i = 0, $c = count($this->$qb_variable); $i < $c; $i++) {
                 if (!in_array($this->{$qb_variable}[$i], $qb_new, true)) {
                     $qb_new[] = $this->{$qb_variable}[$i];
                     if ($val === 'select') {

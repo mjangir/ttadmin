@@ -560,7 +560,7 @@ class User
      *
      * @return User
      */
-    public function setCreatedBy(User $createdBy = null)
+    public function setCreatedBy(self $createdBy = null)
     {
         $this->createdBy = $createdBy;
 
@@ -584,7 +584,7 @@ class User
      *
      * @return User
      */
-    public function setUpdatedBy(User $updatedBy = null)
+    public function setUpdatedBy(self $updatedBy = null)
     {
         $this->updatedBy = $updatedBy;
 

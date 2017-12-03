@@ -202,7 +202,7 @@ class CI_Zip
 .$dir;
 
         $this->offset = strlen($this->zipdata);
-        ++$this->entries;
+        $this->entries++;
     }
 
     // --------------------------------------------------------------------
@@ -278,8 +278,8 @@ class CI_Zip
 .$filepath;
 
         $this->offset = strlen($this->zipdata);
-        ++$this->entries;
-        ++$this->file_num;
+        $this->entries++;
+        $this->file_num++;
     }
 
     // --------------------------------------------------------------------

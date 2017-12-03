@@ -151,7 +151,7 @@ class CI_DB_mysqli_utility extends CI_DB_utility
 
                 // Create a string of field names
                 $field_str .= $this->db->escape_identifiers($field->name).', ';
-                ++$i;
+                $i++;
             }
 
             // Trim off the end comma
@@ -173,7 +173,7 @@ class CI_DB_mysqli_utility extends CI_DB_utility
 
                     // Append a comma
                     $val_str .= ', ';
-                    ++$i;
+                    $i++;
                 }
 
                 // Remove the comma at the end of the string

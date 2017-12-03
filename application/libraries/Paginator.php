@@ -217,7 +217,7 @@ class Paginator
             //Print all pages from 1 to end
             $pmin = ($this->page > $this->adjacents) ? ($this->page - $this->adjacents) : 1;
             $pmax = ($this->page < ($pages - $this->adjacents)) ? ($this->page + $this->adjacents) : $pages;
-            for ($i = $pmin; $i <= $pmax; ++$i) {
+            for ($i = $pmin; $i <= $pmax; $i++) {
                 if ($i == $this->page) {
                     $this->paging .= '<li class="active"><a href="javascript:void(0);">'.$i.'</a></li>';
                 } elseif ($i == 1) {

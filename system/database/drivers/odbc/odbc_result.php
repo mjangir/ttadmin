@@ -100,7 +100,7 @@ class CI_DB_odbc_result extends CI_DB_result
         $num_fields = $this->num_fields();
 
         if ($num_fields > 0) {
-            for ($i = 1; $i <= $num_fields; ++$i) {
+            for ($i = 1; $i <= $num_fields; $i++) {
                 $field_names[] = odbc_field_name($this->result_id, $i);
             }
         }

@@ -72,7 +72,7 @@ class CI_DB_ibase_result extends CI_DB_result
     public function list_fields()
     {
         $field_names = [];
-        for ($i = 0, $num_fields = $this->num_fields(); $i < $num_fields; ++$i) {
+        for ($i = 0, $num_fields = $this->num_fields(); $i < $num_fields; $i++) {
             $info = ibase_field_info($this->result_id, $i);
             $field_names[] = $info['name'];
         }
@@ -92,7 +92,7 @@ class CI_DB_ibase_result extends CI_DB_result
     public function field_data()
     {
         $retval = [];
-        for ($i = 0, $c = $this->num_fields(); $i < $c; ++$i) {
+        for ($i = 0, $c = $this->num_fields(); $i < $c; $i++) {
             $info = ibase_field_info($this->result_id, $i);
 
             $retval[$i] = new stdClass();

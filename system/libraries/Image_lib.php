@@ -993,7 +993,7 @@ class CI_Image_lib
         $height = $this->orig_height;
 
         if ($this->rotation_angle === 'hor') {
-            for ($i = 0; $i < $height; ++$i) {
+            for ($i = 0; $i < $height; $i++) {
                 $left = 0;
                 $right = $width - 1;
 
@@ -1004,12 +1004,12 @@ class CI_Image_lib
                     imagesetpixel($src_img, $left, $i, $cr);
                     imagesetpixel($src_img, $right, $i, $cl);
 
-                    ++$left;
-                    --$right;
+                    $left++;
+                    $right--;
                 }
             }
         } else {
-            for ($i = 0; $i < $width; ++$i) {
+            for ($i = 0; $i < $width; $i++) {
                 $top = 0;
                 $bottom = $height - 1;
 
@@ -1020,8 +1020,8 @@ class CI_Image_lib
                     imagesetpixel($src_img, $i, $top, $cb);
                     imagesetpixel($src_img, $i, $bottom, $ct);
 
-                    ++$top;
-                    --$bottom;
+                    $top++;
+                    $bottom--;
                 }
             }
         }

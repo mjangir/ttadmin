@@ -453,7 +453,7 @@ class CI_DB_postgre_driver extends CI_DB
         $query = $query->result_object();
 
         $retval = [];
-        for ($i = 0, $c = count($query); $i < $c; ++$i) {
+        for ($i = 0, $c = count($query); $i < $c; $i++) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = $query[$i]->column_name;
             $retval[$i]->type = $query[$i]->data_type;

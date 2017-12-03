@@ -262,7 +262,7 @@ class CI_Profiler
             }
 
             $output .= "</table>\n</fieldset>";
-            ++$count;
+            $count++;
         }
 
         return $output;
@@ -511,7 +511,7 @@ class CI_Profiler
             if ($this->_compile_[$section] !== false) {
                 $func = '_compile_'.$section;
                 $output .= $this->{$func}();
-                ++$fields_displayed;
+                $fields_displayed++;
             }
         }
 

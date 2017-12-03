@@ -471,7 +471,7 @@ class CI_Trackback
         $out = '';
         $temp = [];
 
-        for ($i = 0, $s = strlen($str); $i < $s; ++$i) {
+        for ($i = 0, $s = strlen($str); $i < $s; $i++) {
             $ordinal = ord($str[$i]);
 
             if ($ordinal < 128) {

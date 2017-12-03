@@ -187,7 +187,7 @@ class CI_DB_result
         }
 
         if ($_data !== null) {
-            for ($i = 0; $i < $c; ++$i) {
+            for ($i = 0; $i < $c; $i++) {
                 $this->custom_result_object[$class_name][$i] = new $class_name();
 
                 foreach ($this->{$_data}[$i] as $key => $value) {
@@ -229,7 +229,7 @@ class CI_DB_result
         }
 
         if (($c = count($this->result_array)) > 0) {
-            for ($i = 0; $i < $c; ++$i) {
+            for ($i = 0; $i < $c; $i++) {
                 $this->result_object[$i] = (object) $this->result_array[$i];
             }
 
@@ -265,7 +265,7 @@ class CI_DB_result
         }
 
         if (($c = count($this->result_object)) > 0) {
-            for ($i = 0; $i < $c; ++$i) {
+            for ($i = 0; $i < $c; $i++) {
                 $this->result_array[$i] = (array) $this->result_object[$i];
             }
 
@@ -484,7 +484,7 @@ class CI_DB_result
         }
 
         if (isset($result[$this->current_row - 1])) {
-            --$this->current_row;
+            $this->current_row--;
         }
 
         return $result[$this->current_row];

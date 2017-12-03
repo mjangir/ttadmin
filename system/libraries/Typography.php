@@ -126,7 +126,7 @@ class CI_Typography
         // HTML comment tags don't conform to patterns of normal tags, so pull them out separately, only if needed
         $html_comments = [];
         if (strpos($str, '<!--') !== false && preg_match_all('#(<!\-\-.*?\-\->)#s', $str, $matches)) {
-            for ($i = 0, $total = count($matches[0]); $i < $total; ++$i) {
+            for ($i = 0, $total = count($matches[0]); $i < $total; $i++) {
                 $html_comments[] = $matches[0][$i];
                 $str = str_replace($matches[0][$i], '{@HC'.$i.'}', $str);
             }
@@ -167,7 +167,7 @@ class CI_Typography
         $str = '';
         $process = true;
 
-        for ($i = 0, $c = count($chunks) - 1; $i <= $c; ++$i) {
+        for ($i = 0, $c = count($chunks) - 1; $i <= $c; $i++) {
             // Are we dealing with a tag? If so, we'll skip the processing for this cycle.
             // Well also set the "process" flag which allows us to skip <pre> tags and a few other things.
             if (preg_match('#<(/*)('.$this->block_elements.').*?>#', $chunks[$i], $match)) {
@@ -206,7 +206,7 @@ class CI_Typography
         $str = $this->format_characters($str);
 
         // restore HTML comments
-        for ($i = 0, $total = count($html_comments); $i < $total; ++$i) {
+        for ($i = 0, $total = count($html_comments); $i < $total; $i++) {
             // remove surrounding paragraph tags, but only if there's an opening paragraph tag
             // otherwise HTML comments at the ends of paragraphs will have the closing tag removed
             // if '<p>{@HC1}' then replace <p>{@HC1}</p> with the comment, else replace only {@HC1} with the comment
@@ -392,7 +392,7 @@ class CI_Typography
     public function nl2br_except_pre($str)
     {
         $newstr = '';
-        for ($ex = explode('pre>', $str), $ct = count($ex), $i = 0; $i < $ct; ++$i) {
+        for ($ex = explode('pre>', $str), $ct = count($ex), $i = 0; $i < $ct; $i++) {
             $newstr .= (($i % 2) === 0) ? nl2br($ex[$i]) : $ex[$i];
             if ($ct - 1 !== $i) {
                 $newstr .= 'pre>';

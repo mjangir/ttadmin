@@ -457,7 +457,7 @@ class CI_FTP
 
         $list = $this->list_files($filepath);
         if (!empty($list)) {
-            for ($i = 0, $c = count($list); $i < $c; ++$i) {
+            for ($i = 0, $c = count($list); $i < $c; $i++) {
                 // If we can't delete the item it's probaly a directory,
                 // so we'll recursively call delete_dir()
                 if (!preg_match('#/\.\.?$#', $list[$i]) && !@ftp_delete($this->conn_id, $list[$i])) {
