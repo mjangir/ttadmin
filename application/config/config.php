@@ -19,7 +19,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://18.221.196.29/ticktock/';
+$config['base_url'] = 'http://localhost/ticktock/';
 
 /*
 |--------------------------------------------------------------------------

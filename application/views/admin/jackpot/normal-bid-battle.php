@@ -191,7 +191,7 @@ echo form_open($form['action'], $finalFormAttrs);
 } else {
     ?>
                         <div class="col-md-12 pivot-inner mbt10 inner-col-8p">
-                            <div class="col-md-1">
+                            <div class="col-md-3">
                                 <?php echo form_hidden('levels[0][battle_type]', 'NORMAL'); ?>
                                 <?php echo form_input([
                                   'type'                     => 'text',

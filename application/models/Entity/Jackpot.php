@@ -88,7 +88,7 @@ class Jackpot
     /**
      * @var int
      *
-     * @ORM\Column(name="increase_amount", type="integer", nullable=false)
+     * @ORM\Column(name="increase_amount", type="float", nullable=false)
      */
     private $increaseAmount;
 

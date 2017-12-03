@@ -438,7 +438,7 @@ class Jackpot extends MY_AdminController
      */
     public function updateNormalBidBattleLevels($model, $params)
     {
-        $oldRecords = $this->objectManager->getRepository('Entity\JackpotBattleLevel')->findBy(['jackpot' => $model]);
+        $oldRecords = $this->objectManager->getRepository('Entity\JackpotBattleLevel')->findBy(['jackpot' => $model, 'battleType' => 'NORMAL']);
         $createdAt = new \DateTime();
         $updatedAt = new \DateTime();
 
@@ -626,7 +626,7 @@ class Jackpot extends MY_AdminController
                 ]);
                 exit;
             } catch (Exception $ex) {
-                //die($ex->getMessage());
+                die($ex->getMessage());
                 //show error message to user
                 echo json_encode([
                     'html'         => '',
@@ -675,7 +675,7 @@ class Jackpot extends MY_AdminController
      */
     public function updateGamblingBidBattleLevels($model, $params)
     {
-        $oldRecords = $this->objectManager->getRepository('Entity\JackpotBattleLevel')->findBy(['jackpot' => $model]);
+        $oldRecords = $this->objectManager->getRepository('Entity\JackpotBattleLevel')->findBy(['jackpot' => $model, 'battleType' => 'GAMBLING']);
         $createdAt = new \DateTime();
         $updatedAt = new \DateTime();
 
@@ -700,6 +700,7 @@ class Jackpot extends MY_AdminController
                     $entity->setPrizeValue(0);
                     $entity->setDefaultAvailableBids($newRecord['default_bids']);
                     $entity->setMinBidsToGamb($newRecord['min_bids_to_gamb']);
+                    $entity->setIncrementSeconds($newRecord['increment_seconds']);
                     $entity->setLastBidWinnerPercent($newRecord['last_bid_winner_percent']);
                     $entity->setLongestBidWinnerPercent($newRecord['longest_bid_winner_percent']);
                     $entity->setMinPlayersRequiredToStart($newRecord['min_players_to_start']);
