@@ -101,7 +101,7 @@ class CI_DB_cubrid_result extends CI_DB_result
     {
         $retval = [];
 
-        for ($i = 0, $c = $this->num_fields(); $i < $c; ++$i) {
+        for ($i = 0, $c = $this->num_fields(); $i < $c; $i++) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = cubrid_field_name($this->result_id, $i);
             $retval[$i]->type = cubrid_field_type($this->result_id, $i);

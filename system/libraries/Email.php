@@ -766,7 +766,7 @@ class CI_Email
             $this->multipart = 'related'; // Thunderbird need this for inline images
         }
 
-        for ($i = 0, $c = count($this->_attachments); $i < $c; ++$i) {
+        for ($i = 0, $c = count($this->_attachments); $i < $c; $i++) {
             if ($this->_attachments[$i]['name'][0] === $filename) {
                 $this->_attachments[$i]['cid'] = uniqid(basename($this->_attachments[$i]['name'][0]).'@');
 
@@ -1134,7 +1134,7 @@ class CI_Email
         $body = preg_match('/\<body.*?\>(.*)\<\/body\>/si', $this->_body, $match) ? $match[1] : $this->_body;
         $body = str_replace("\t", '', preg_replace('#<!--(.*)--\>#', '', trim(strip_tags($body))));
 
-        for ($i = 20; $i >= 3; --$i) {
+        for ($i = 20; $i >= 3; $i--) {
             $body = str_replace(str_repeat("\n", $i), "\n\n", $body);
         }
 
@@ -1175,7 +1175,7 @@ class CI_Email
         // strip the entire chunk and replace it with a marker.
         $unwrap = [];
         if (preg_match_all('|\{unwrap\}(.+?)\{/unwrap\}|s', $str, $matches)) {
-            for ($i = 0, $c = count($matches[0]); $i < $c; ++$i) {
+            for ($i = 0, $c = count($matches[0]); $i < $c; $i++) {
                 $unwrap[] = $matches[1][$i];
                 $str = str_replace($matches[0][$i], '{{unwrapped'.$i.'}}', $str);
             }
@@ -1385,7 +1385,7 @@ class CI_Email
         }
 
         $attachment = [];
-        for ($i = 0, $c = count($this->_attachments), $z = 0; $i < $c; ++$i) {
+        for ($i = 0, $c = count($this->_attachments), $z = 0; $i < $c; $i++) {
             $filename = $this->_attachments[$i]['name'][0];
             $basename = ($this->_attachments[$i]['name'][1] === null)
                 ? basename($filename) : $this->_attachments[$i]['name'][1];
@@ -1456,7 +1456,7 @@ class CI_Email
             // Loop through each character in the line to add soft-wrap
             // characters at the end of a line " =\r\n" and add the newly
             // processed line(s) to the output (see comment on $crlf class property)
-            for ($i = 0; $i < $length; ++$i) {
+            for ($i = 0; $i < $length; $i++) {
                 // Grab the next character
                 $char = $line[$i];
                 $ascii = ord($char);
@@ -1536,7 +1536,7 @@ class CI_Email
         isset($chars) or $chars = strlen($str);
 
         $output = '=?'.$this->charset.'?Q?';
-        for ($i = 0, $length = strlen($output); $i < $chars; ++$i) {
+        for ($i = 0, $length = strlen($output); $i < $chars; $i++) {
             $chr = ($this->charset === 'UTF-8' && ICONV_ENABLED === true)
                 ? '='.implode('=', str_split(strtoupper(bin2hex(iconv_substr($str, $i, 1, $this->charset))), 2))
                 : '='.strtoupper(bin2hex($str[$i]));
@@ -1622,7 +1622,7 @@ class CI_Email
         $set = '';
         $chunk = [];
 
-        for ($i = 0, $c = count($this->_bcc_array); $i < $c; ++$i) {
+        for ($i = 0, $c = count($this->_bcc_array); $i < $c; $i++) {
             if (isset($this->_bcc_array[$i])) {
                 $set .= ', '.$this->_bcc_array[$i];
             }
@@ -1638,7 +1638,7 @@ class CI_Email
             }
         }
 
-        for ($i = 0, $c = count($chunk); $i < $c; ++$i) {
+        for ($i = 0, $c = count($chunk); $i < $c; $i++) {
             unset($this->_headers['Bcc']);
 
             $bcc = $this->clean_email($this->_str_to_array($chunk[$i]));

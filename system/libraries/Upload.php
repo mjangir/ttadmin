@@ -366,7 +366,7 @@ class CI_Upload
         // Does the field name contain array notation?
         elseif (($c = preg_match_all('/(?:^[^\[]+)|\[[^]]*\]/', $field, $matches)) > 1) {
             $_file = $_FILES;
-            for ($i = 0; $i < $c; ++$i) {
+            for ($i = 0; $i < $c; $i++) {
                 // We can't track numeric iterations, only full field names are accepted
                 if (($field = trim($matches[0][$i], '[]')) === '' or !isset($_file[$field])) {
                     $_file = null;
@@ -628,7 +628,7 @@ class CI_Upload
         $filename = str_replace($this->file_ext, '', $filename);
 
         $new_filename = '';
-        for ($i = 1; $i < $this->max_filename_increment; ++$i) {
+        for ($i = 1; $i < $this->max_filename_increment; $i++) {
             if (!file_exists($path.$filename.$i.$this->file_ext)) {
                 $new_filename = $filename.$i.$this->file_ext;
                 break;

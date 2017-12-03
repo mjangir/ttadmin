@@ -26,9 +26,9 @@
                                 foreach ($link['sub'] as $tempSubMenu) {
                                     $permittedTempSmActions = json_decode($tempSubMenu['permissions']);
                                     if (count($permittedTempSmActions) > 0) {
-                                        ++$leastPermission;
+                                        $leastPermission++;
                                     }
-                                    ++$totalSubMenus;
+                                    $totalSubMenus++;
                                 }
                                 $permitAllChecked = ($totalSubMenus == $leastPermission) ? 'checked="checked"' : ''; ?>
                                 <div class="col-md-6 col-sm-6">
@@ -64,7 +64,7 @@
                                                     if ($actionCnt % 2 == 0) {
                                                         echo '<div class="clear"></div>';
                                                     }
-                                                    ++$actionCnt;
+                                                    $actionCnt++;
                                                 }
                                                 echo '</div>';
                                             } ?>
@@ -74,7 +74,7 @@
                                             echo '<div class="clear"></div>';
                                         }
 
-                                    ++$smCnt;
+                                    $smCnt++;
                                 }
                                 echo '</div>';
                             } else {
@@ -94,7 +94,7 @@
                                                 </div>
                                             </div>
                                 <?php
-                                ++$linkActionCnt;
+                                $linkActionCnt++;
                                     }
                                     echo '</div>';
                                 } else {
@@ -111,7 +111,7 @@
                         </div><!-- /.collapse in -->
                     </div><!-- /.panel panel-default -->
         <?php
-        ++$i;
+        $i++;
             }
     ?>
             </div><!-- /.panel-group -->

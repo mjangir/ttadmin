@@ -54,7 +54,7 @@
                         </a>
                     </td>
                 </tr>
-                   <?php ++$count;
+                   <?php $count++;
         }
     } else {
         ?>

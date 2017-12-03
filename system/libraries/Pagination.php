@@ -551,7 +551,7 @@ class CI_Pagination
         // Render the pages
         if ($this->display_pages !== false) {
             // Write the digit links
-            for ($loop = $start - 1; $loop <= $end; ++$loop) {
+            for ($loop = $start - 1; $loop <= $end; $loop++) {
                 $i = ($this->use_page_numbers) ? $loop : ($loop * $this->per_page) - $this->per_page;
 
                 $attributes = sprintf('%s %s="%d"', $this->_attributes, $this->data_page_attr, (int) $i);

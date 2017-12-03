@@ -257,7 +257,7 @@ class CI_Calendar
 
         $day_names = $this->get_day_names();
 
-        for ($i = 0; $i < 7; ++$i) {
+        for ($i = 0; $i < 7; $i++) {
             $out .= str_replace('{week_day}', $day_names[($start_day + $i) % 7], $this->replacements['week_day_cell']);
         }
 
@@ -267,7 +267,7 @@ class CI_Calendar
         while ($day <= $total_days) {
             $out .= "\n".$this->replacements['cal_row_start']."\n";
 
-            for ($i = 0; $i < 7; ++$i) {
+            for ($i = 0; $i < 7; $i++) {
                 if ($day > 0 && $day <= $total_days) {
                     $out .= ($is_current_month === true && $day == $cur_day) ? $this->replacements['cal_cell_start_today'] : $this->replacements['cal_cell_start'];
 
@@ -303,7 +303,7 @@ class CI_Calendar
                     $out .= $this->replacements['cal_cell_start'].$this->replacements['cal_cell_blank'].$this->replacements['cal_cell_end'];
                 }
 
-                ++$day;
+                $day++;
             }
 
             $out .= "\n".$this->replacements['cal_row_end']."\n";
@@ -364,7 +364,7 @@ class CI_Calendar
         }
 
         $days = [];
-        for ($i = 0, $c = count($day_names); $i < $c; ++$i) {
+        for ($i = 0, $c = count($day_names); $i < $c; $i++) {
             $days[] = ($this->CI->lang->line('cal_'.$day_names[$i]) === false) ? ucfirst($day_names[$i]) : $this->CI->lang->line('cal_'.$day_names[$i]);
         }
 
@@ -394,12 +394,12 @@ class CI_Calendar
 
         while ($date['month'] > 12) {
             $date['month'] -= 12;
-            ++$date['year'];
+            $date['year']++;
         }
 
         while ($date['month'] <= 0) {
             $date['month'] += 12;
-            --$date['year'];
+            $date['year']--;
         }
 
         if (strlen($date['month']) === 1) {

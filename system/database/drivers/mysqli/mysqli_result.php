@@ -107,7 +107,7 @@ class CI_DB_mysqli_result extends CI_DB_result
     {
         $retval = [];
         $field_data = $this->result_id->fetch_fields();
-        for ($i = 0, $c = count($field_data); $i < $c; ++$i) {
+        for ($i = 0, $c = count($field_data); $i < $c; $i++) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = $field_data[$i]->name;
             $retval[$i]->type = $field_data[$i]->type;

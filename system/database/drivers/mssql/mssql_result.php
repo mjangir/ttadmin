@@ -106,7 +106,7 @@ class CI_DB_mssql_result extends CI_DB_result
     public function field_data()
     {
         $retval = [];
-        for ($i = 0, $c = $this->num_fields(); $i < $c; ++$i) {
+        for ($i = 0, $c = $this->num_fields(); $i < $c; $i++) {
             $field = mssql_fetch_field($this->result_id, $i);
 
             $retval[$i] = new stdClass();

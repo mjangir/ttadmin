@@ -251,7 +251,7 @@ class CI_Encrypt
         $string = $this->_xor_merge($string, $key);
 
         $dec = '';
-        for ($i = 0, $l = strlen($string); $i < $l; ++$i) {
+        for ($i = 0, $l = strlen($string); $i < $l; $i++) {
             $dec .= ($string[$i++] ^ $string[$i]);
         }
 
@@ -274,7 +274,7 @@ class CI_Encrypt
     {
         $hash = $this->hash($key);
         $str = '';
-        for ($i = 0, $ls = strlen($string), $lh = strlen($hash); $i < $ls; ++$i) {
+        for ($i = 0, $ls = strlen($string), $lh = strlen($hash); $i < $ls; $i++) {
             $str .= $string[$i] ^ $hash[($i % $lh)];
         }
 

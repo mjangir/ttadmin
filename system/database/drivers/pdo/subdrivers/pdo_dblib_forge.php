@@ -93,7 +93,7 @@ class CI_DB_pdo_dblib_forge extends CI_DB_pdo_forge
 
         $sql = 'ALTER TABLE '.$this->db->escape_identifiers($table).' ALTER COLUMN ';
         $sqls = [];
-        for ($i = 0, $c = count($field); $i < $c; ++$i) {
+        for ($i = 0, $c = count($field); $i < $c; $i++) {
             $sqls[] = $sql.$this->_process_column($field[$i]);
         }
 

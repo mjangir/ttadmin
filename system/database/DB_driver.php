@@ -664,7 +664,7 @@ abstract class CI_DB_driver
         }
 
         // Increment the query counter
-        ++$this->query_count;
+        $this->query_count++;
 
         // Will we have a result object instantiated? If not - we'll simply return TRUE
         if ($return_object !== true) {
@@ -893,7 +893,7 @@ abstract class CI_DB_driver
         }
 
         do {
-            --$c;
+            $c--;
             $escaped_value = $this->escape($binds[$c]);
             if (is_array($escaped_value)) {
                 $escaped_value = '('.implode(',', $escaped_value).')';
@@ -1734,7 +1734,7 @@ abstract class CI_DB_driver
                 // This flag is set when the supplied $item does not contain a field name.
                 // This can happen when this function is being called from a JOIN.
                 if ($field_exists === false) {
-                    ++$i;
+                    $i++;
                 }
 
                 // Verify table prefix and replace if necessary

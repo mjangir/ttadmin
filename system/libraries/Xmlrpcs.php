@@ -255,7 +255,7 @@ class CI_Xmlrpcs extends CI_Xmlrpc
             $m = new XML_RPC_Message($parser_object->xh[$pname]['method']);
             $plist = '';
 
-            for ($i = 0, $c = count($parser_object->xh[$pname]['params']); $i < $c; ++$i) {
+            for ($i = 0, $c = count($parser_object->xh[$pname]['params']); $i < $c; $i++) {
                 if ($this->debug === true) {
                     $plist .= $i.' - '.print_r(get_object_vars($parser_object->xh[$pname]['params'][$i]), true).";\n";
                 }
@@ -332,11 +332,11 @@ class CI_Xmlrpcs extends CI_Xmlrpc
 
         if (isset($this->methods[$methName]['signature'])) {
             $sig = $this->methods[$methName]['signature'];
-            for ($i = 0, $c = count($sig); $i < $c; ++$i) {
+            for ($i = 0, $c = count($sig); $i < $c; $i++) {
                 $current_sig = $sig[$i];
 
                 if (count($current_sig) === count($m->params) + 1) {
-                    for ($n = 0, $mc = count($m->params); $n < $mc; ++$n) {
+                    for ($n = 0, $mc = count($m->params); $n < $mc; $n++) {
                         $p = $m->params[$n];
                         $pt = ($p->kindOf() === 'scalar') ? $p->scalarval() : $p->kindOf();
 
@@ -417,10 +417,10 @@ class CI_Xmlrpcs extends CI_Xmlrpc
                 $sigs = [];
                 $signature = $this->methods[$method_name]['signature'];
 
-                for ($i = 0, $c = count($signature); $i < $c; ++$i) {
+                for ($i = 0, $c = count($signature); $i < $c; $i++) {
                     $cursig = [];
                     $inSig = $signature[$i];
-                    for ($j = 0, $jc = count($inSig); $j < $jc; ++$j) {
+                    for ($j = 0, $jc = count($inSig); $j < $jc; $j++) {
                         $cursig[] = new XML_RPC_Values($inSig[$j], 'string');
                     }
                     $sigs[] = new XML_RPC_Values($cursig, 'array');
@@ -481,7 +481,7 @@ class CI_Xmlrpcs extends CI_Xmlrpc
             $m = new XML_RPC_Message($value[0]);
             $plist = '';
 
-            for ($i = 0, $c = count($value[1]); $i < $c; ++$i) {
+            for ($i = 0, $c = count($value[1]); $i < $c; $i++) {
                 $m->addParam(new XML_RPC_Values($value[1][$i], 'string'));
             }
 
@@ -550,7 +550,7 @@ class CI_Xmlrpcs extends CI_Xmlrpc
         list($a, $b) = each($params->me);
 
         $msg = new XML_RPC_Message($scalar_value);
-        for ($i = 0, $numParams = count($b); $i < $numParams; ++$i) {
+        for ($i = 0, $numParams = count($b); $i < $numParams; $i++) {
             $msg->params[] = $params->me['array'][$i];
         }
 
