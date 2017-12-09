@@ -75,7 +75,7 @@ jQuery(document).ready(function()
         jQuery('#total-bids').html(data.totalBids);
         jQuery('#current-bid-user').html(data.currentBidUser.name);
 
-        if(data.canIBid == true)
+        if(data.canIBid && data.canIBid == true)
         {
           jQuery('#place-bid').show();
         }
