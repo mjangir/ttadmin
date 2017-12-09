@@ -239,7 +239,7 @@ jQuery(document).on('click', '.play-battle-level', function(e)
       userId            : USERID,
       jackpotUniqueId   : jQuery('#jackpot_id').val(),
       levelUniqueId     : levelUniqueId,
-      battleType        : 'GAMBLING'
+      battleType        : 'NORMAL'
   })
 });
 
