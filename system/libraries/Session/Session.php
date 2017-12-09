@@ -322,7 +322,7 @@ class CI_Session
     public function mark_as_flash($key)
     {
         if (is_array($key)) {
-            for ($i = 0, $c = count($key); $i < $c; ++$i) {
+            for ($i = 0, $c = count($key); $i < $c; $i++) {
                 if (!isset($_SESSION[$key[$i]])) {
                     return false;
                 }

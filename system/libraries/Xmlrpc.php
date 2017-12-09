@@ -935,7 +935,7 @@ class XML_RPC_Response
             $b = current($xmlrpc_val->me);
             $arr = [];
 
-            for ($i = 0, $size = count($b); $i < $size; ++$i) {
+            for ($i = 0, $size = count($b); $i < $size; $i++) {
                 $arr[] = $this->xmlrpc_decoder($xmlrpc_val->me['array'][$i]);
             }
 
@@ -1028,7 +1028,7 @@ class XML_RPC_Message extends CI_Xmlrpc
 
         $this->method_name = $method;
         if (is_array($pars) && count($pars) > 0) {
-            for ($i = 0, $c = count($pars); $i < $c; ++$i) {
+            for ($i = 0, $c = count($pars); $i < $c; $i++) {
                 // $pars[$i] = XML_RPC_Values
                 $this->params[] = $pars[$i];
             }
@@ -1046,7 +1046,7 @@ class XML_RPC_Message extends CI_Xmlrpc
                 .'<methodName>'.$this->method_name."</methodName>\r\n"
                 ."<params>\r\n";
 
-        for ($i = 0, $c = count($this->params); $i < $c; ++$i) {
+        for ($i = 0, $c = count($this->params); $i < $c; $i++) {
             // $p = XML_RPC_Values
             $p = $this->params[$i];
             $this->payload .= "<param>\r\n".$p->serialize_class()."</param>\r\n";
@@ -1489,7 +1489,7 @@ class XML_RPC_Message extends CI_Xmlrpc
 
         $parameters = [];
 
-        for ($i = 0, $c = count($this->params); $i < $c; ++$i) {
+        for ($i = 0, $c = count($this->params); $i < $c; $i++) {
             $a_param = $this->decode_message($this->params[$i]);
 
             if (is_array($a_param)) {
@@ -1522,7 +1522,7 @@ class XML_RPC_Message extends CI_Xmlrpc
             $b = current($param->me);
             $arr = [];
 
-            for ($i = 0, $c = count($b); $i < $c; ++$i) {
+            for ($i = 0, $c = count($b); $i < $c; $i++) {
                 $arr[] = $this->decode_message($param->me['array'][$i]);
             }
 
@@ -1723,7 +1723,7 @@ class XML_RPC_Values extends CI_Xmlrpc
             case 2:
                 // array
                 $rs .= "<array>\n<data>\n";
-                for ($i = 0, $c = count($val); $i < $c; ++$i) {
+                for ($i = 0, $c = count($val); $i < $c; $i++) {
                     $rs .= $this->serializeval($val[$i]);
                 }
                 $rs .= "</data>\n</array>\n";

@@ -154,7 +154,7 @@ class CI_DB_pdo_mysql_forge extends CI_DB_pdo_forge
         }
 
         $sql = 'ALTER TABLE '.$this->db->escape_identifiers($table);
-        for ($i = 0, $c = count($field); $i < $c; ++$i) {
+        for ($i = 0, $c = count($field); $i < $c; $i++) {
             if ($field[$i]['_literal'] !== false) {
                 $field[$i] = ($alter_type === 'ADD')
                         ? "\n\tADD ".$field[$i]['_literal']
@@ -216,9 +216,9 @@ class CI_DB_pdo_mysql_forge extends CI_DB_pdo_forge
     {
         $sql = '';
 
-        for ($i = 0, $c = count($this->keys); $i < $c; ++$i) {
+        for ($i = 0, $c = count($this->keys); $i < $c; $i++) {
             if (is_array($this->keys[$i])) {
-                for ($i2 = 0, $c2 = count($this->keys[$i]); $i2 < $c2; ++$i2) {
+                for ($i2 = 0, $c2 = count($this->keys[$i]); $i2 < $c2; $i2++) {
                     if (!isset($this->fields[$this->keys[$i][$i2]])) {
                         unset($this->keys[$i][$i2]);
                         continue;

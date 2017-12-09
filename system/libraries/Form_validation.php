@@ -214,7 +214,7 @@ class CI_Form_validation
         if (($is_array = (bool) preg_match_all('/\[(.*?)\]/', $field, $matches)) === true) {
             sscanf($field, '%[^[][', $indexes[0]);
 
-            for ($i = 0, $c = count($matches[0]); $i < $c; ++$i) {
+            for ($i = 0, $c = count($matches[0]); $i < $c; $i++) {
                 if ($matches[1][$i] !== '') {
                     $indexes[] = $matches[1][$i];
                 }

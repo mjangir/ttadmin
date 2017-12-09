@@ -522,7 +522,7 @@ class LightOpenID
         }
 
         // We'll jump a maximum of 5 times, to avoid endless redirections.
-        for ($i = 0; $i < 5; ++$i) {
+        for ($i = 0; $i < 5; $i++) {
             if ($yadis) {
                 $headers = $this->request($url, 'HEAD', [], true);
 
@@ -915,7 +915,7 @@ class LightOpenID
                     if (($count = intval($this->getItem($idc))) > 0) {
                         $value = [];
 
-                        for ($i = 1; $i <= $count; ++$i) {
+                        for ($i = 1; $i <= $count; $i++) {
                             $value[] = $this->getItem($idv.'_'.$i);
                         }
 

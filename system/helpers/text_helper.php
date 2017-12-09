@@ -133,7 +133,7 @@ if (!function_exists('ascii_to_entities')) {
     function ascii_to_entities($str)
     {
         $out = '';
-        for ($i = 0, $s = strlen($str) - 1, $count = 1, $temp = []; $i <= $s; ++$i) {
+        for ($i = 0, $s = strlen($str) - 1, $count = 1, $temp = []; $i <= $s; $i++) {
             $ordinal = ord($str[$i]);
 
             if ($ordinal < 128) {
@@ -190,7 +190,7 @@ if (!function_exists('entities_to_ascii')) {
     function entities_to_ascii($str, $all = true)
     {
         if (preg_match_all('/\&#(\d+)\;/', $str, $matches)) {
-            for ($i = 0, $s = count($matches[0]); $i < $s; ++$i) {
+            for ($i = 0, $s = count($matches[0]); $i < $s; $i++) {
                 $digits = $matches[1][$i];
                 $out = '';
 
@@ -410,7 +410,7 @@ if (!function_exists('word_wrap')) {
         // strip the entire chunk and replace it with a marker.
         $unwrap = [];
         if (preg_match_all('|\{unwrap\}(.+?)\{/unwrap\}|s', $str, $matches)) {
-            for ($i = 0, $c = count($matches[0]); $i < $c; ++$i) {
+            for ($i = 0, $c = count($matches[0]); $i < $c; $i++) {
                 $unwrap[] = $matches[1][$i];
                 $str = str_replace($matches[0][$i], '{{unwrapped'.$i.'}}', $str);
             }

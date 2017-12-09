@@ -532,7 +532,7 @@ class CI_DB_oci8_driver extends CI_DB
         $query = $query->result_object();
 
         $retval = [];
-        for ($i = 0, $c = count($query); $i < $c; ++$i) {
+        for ($i = 0, $c = count($query); $i < $c; $i++) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = $query[$i]->COLUMN_NAME;
             $retval[$i]->type = $query[$i]->DATA_TYPE;
@@ -598,7 +598,7 @@ class CI_DB_oci8_driver extends CI_DB
         $keys = implode(', ', $keys);
         $sql = "INSERT ALL\n";
 
-        for ($i = 0, $c = count($values); $i < $c; ++$i) {
+        for ($i = 0, $c = count($values); $i < $c; $i++) {
             $sql .= '	INTO '.$table.' ('.$keys.') VALUES '.$values[$i]."\n";
         }
 

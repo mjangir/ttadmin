@@ -356,7 +356,7 @@ class CI_DB_mssql_driver extends CI_DB
         $query = $query->result_object();
 
         $retval = [];
-        for ($i = 0, $c = count($query); $i < $c; ++$i) {
+        for ($i = 0, $c = count($query); $i < $c; $i++) {
             $retval[$i] = new stdClass();
             $retval[$i]->name = $query[$i]->COLUMN_NAME;
             $retval[$i]->type = $query[$i]->DATA_TYPE;
@@ -475,7 +475,7 @@ class CI_DB_mssql_driver extends CI_DB
                 $select = [];
                 $field_regexp = ($this->_quoted_identifier)
                     ? '("[^\"]+")' : '(\[[^\]]+\])';
-                for ($i = 0, $c = count($this->qb_select); $i < $c; ++$i) {
+                for ($i = 0, $c = count($this->qb_select); $i < $c; $i++) {
                     $select[] = preg_match('/(?:\s|\.)'.$field_regexp.'$/i', $this->qb_select[$i], $m)
                         ? $m[1] : $this->qb_select[$i];
                 }

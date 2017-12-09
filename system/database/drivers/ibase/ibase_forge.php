@@ -148,7 +148,7 @@ class CI_DB_ibase_forge extends CI_DB_forge
 
         $sql = 'ALTER TABLE '.$this->db->escape_identifiers($table);
         $sqls = [];
-        for ($i = 0, $c = count($field); $i < $c; ++$i) {
+        for ($i = 0, $c = count($field); $i < $c; $i++) {
             if ($field[$i]['_literal'] !== false) {
                 return false;
             }

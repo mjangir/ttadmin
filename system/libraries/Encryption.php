@@ -474,7 +474,7 @@ class CI_Encryption
 
             // Time-attack-safe comparison
             $diff = 0;
-            for ($i = 0; $i < $digest_size; ++$i) {
+            for ($i = 0; $i < $digest_size; $i++) {
                 $diff |= ord($hmac_input[$i]) ^ ord($hmac_check[$i]);
             }
 
@@ -779,7 +779,7 @@ class CI_Encryption
 
         $prk = hash_hmac($digest, $key, $salt, true);
         $key = '';
-        for ($key_block = '', $block_index = 1; self::strlen($key) < $length; ++$block_index) {
+        for ($key_block = '', $block_index = 1; self::strlen($key) < $length; $block_index++) {
             $key_block = hash_hmac($digest, $key_block.$info.chr($block_index), $prk, true);
             $key .= $key_block;
         }

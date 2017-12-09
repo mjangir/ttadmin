@@ -117,7 +117,7 @@ if (!function_exists('create_captcha')) {
 
         if (empty($word)) {
             $word = '';
-            for ($i = 0, $mt_rand_max = strlen($pool) - 1; $i < $word_length; ++$i) {
+            for ($i = 0, $mt_rand_max = strlen($pool) - 1; $i < $word_length; $i++) {
                 $word .= $pool[mt_rand(0, $mt_rand_max)];
             }
         } elseif (!is_string($word)) {
@@ -162,7 +162,7 @@ if (!function_exists('create_captcha')) {
         $circles = 20;
         $points = 32;
 
-        for ($i = 0, $cp = ($circles * $points) - 1; $i < $cp; ++$i) {
+        for ($i = 0, $cp = ($circles * $points) - 1; $i < $cp; $i++) {
             $theta += $thetac;
             $rad = $radius * ($i / $points);
             $x = ($rad * cos($theta)) + $x_axis;
@@ -190,7 +190,7 @@ if (!function_exists('create_captcha')) {
             $y = $font_size + 2;
         }
 
-        for ($i = 0; $i < $length; ++$i) {
+        for ($i = 0; $i < $length; $i++) {
             if ($use_font === false) {
                 $y = mt_rand(0, $img_height / 2);
                 imagestring($im, $font_size, $x, $y, $word[$i], $colors['text']);

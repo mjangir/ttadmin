@@ -94,7 +94,7 @@ class CI_DB_pdo_result extends CI_DB_result
     public function list_fields()
     {
         $field_names = [];
-        for ($i = 0, $c = $this->num_fields(); $i < $c; ++$i) {
+        for ($i = 0, $c = $this->num_fields(); $i < $c; $i++) {
             // Might trigger an E_WARNING due to not all subdrivers
             // supporting getColumnMeta()
             $field_names[$i] = @$this->result_id->getColumnMeta($i);
@@ -118,7 +118,7 @@ class CI_DB_pdo_result extends CI_DB_result
         try {
             $retval = [];
 
-            for ($i = 0, $c = $this->num_fields(); $i < $c; ++$i) {
+            for ($i = 0, $c = $this->num_fields(); $i < $c; $i++) {
                 $field = $this->result_id->getColumnMeta($i);
 
                 $retval[$i] = new stdClass();

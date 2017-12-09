@@ -24,7 +24,7 @@
                         <td><?php echo $record->getName(); ?></td>
                         <td><?php echo $record->getAlias(); ?></td>
                     </tr>
-                       <?php ++$count;
+                       <?php $count++;
     }
 } else {
     ?>

@@ -91,7 +91,7 @@ if (!$isAjaxRequest) {
                                 <i class="fa fa-ban text-warning" data-toggle="tooltip" title="Make <?php echo $statusTitle; ?>"></i>
                         </td>
                     </tr>
-                       <?php ++$count;
+                       <?php $count++;
         }
     } else {
         ?>
