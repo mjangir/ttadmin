@@ -32,17 +32,17 @@
     	<div class="col-md-3">
     		<div class="row">
     			<div class="col-md-12 text-left mbt10">
-    				My Available Bids - <span id="my-advance-battle-available-bids"></span>
+    				My Available Bids - <span id="my-normal-battle-available-bids"></span>
     			</div>
     			<div class="col-md-12 text-left mbt10">
-    				My Placed Bids - <span id="my-advance-battle-placed-bids"></span>
+    				My Placed Bids - <span id="my-normal-battle-placed-bids"></span>
     			</div>
     			<div class="col-md-12">
-    				<button class="btn btn-sm btn-success hide" id="place-advance-battle-bid">Place A Bid</button>
+    				<button class="btn btn-sm btn-success hide" id="place-normal-battle-bid">Place A Bid</button>
     			</div>
     		</div>
     	</div>
     </div>
 </div>
-<input type="hidden" name="" id="advance_battle_level_unique_id">
-<input type="hidden" name="" id="advance_battle_game_unique_id">
+<input type="hidden" name="" id="normal_battle_level_unique_id">
+<input type="hidden" name="" id="normal_battle_game_unique_id">
