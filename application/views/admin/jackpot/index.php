@@ -47,6 +47,7 @@
                         <td><?php echo $gameStatus; ?></td>
                         <td><span class="label label-<?php echo $labelClass; ?>"><?php echo $qualifiedStatus; ?></span></td>
                         <td>
+                        <?php if($record->getGameStatus() != 'FINISHED') { ?>
                             <a href="<?php echo $updateUrl.'?id='.$id; ?>">
                                 <i class="fa fa-edit text-info" data-toggle="tooltip" title="Update"></i>
                             </a>&nbsp;
@@ -66,6 +67,9 @@
                             <a href="<?php echo $gamblingBidBattleUrl.'?id='.$id; ?>">
                                 <i class="fa fa-gamepad text-primary" data-toggle="tooltip" title="Gambling Bid Battle"></i>
                             </a>&nbsp;
+                        <?php } else { ?>
+                            <i class="fa fa-ban"></i>
+                        <?php } ?>
                         </td>
                     </tr>
                        <?php ++$count;
