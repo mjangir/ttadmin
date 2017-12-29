@@ -46,6 +46,13 @@ class Jackpot
     /**
      * @var int
      *
+     * @ORM\Column(name="default_available_bids", type="integer", nullable=false)
+     */
+    private $defaultAvailableBids;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="duration_setting", type="text", nullable=true)
      */
     private $durationSetting;
@@ -77,6 +84,13 @@ class Jackpot
      * @ORM\Column(name="dooms_day_remaining", type="integer", nullable=false)
      */
     private $doomsDayRemaining;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="increase_seconds_on_bid", type="integer", nullable=false)
+     */
+    private $increaseSecondsOnBid;
 
     /**
      * @var int
@@ -254,6 +268,30 @@ class Jackpot
         return $this->minPlayersRequired;
     }
 
+    /**
+     * Set defaultAvailableBids.
+     *
+     * @param int $defaultAvailableBids
+     *
+     * @return Jackpot
+     */
+    public function setDefaultAvailableBids($defaultAvailableBids)
+    {
+        $this->defaultAvailableBids = $defaultAvailableBids;
+
+        return $this;
+    }
+
+    /**
+     * Get defaultAvailableBids.
+     *
+     * @return int
+     */
+    public function getDefaultAvailableBids()
+    {
+        return $this->defaultAvailableBids;
+    }
+
     public function setDurationSetting($durationSetting)
     {
         $this->durationSetting = $durationSetting;
@@ -360,6 +398,30 @@ class Jackpot
     public function getDoomsDayRemaining()
     {
         return $this->doomsDayRemaining;
+    }
+
+    /**
+     * Set increaseSecondsOnBid.
+     *
+     * @param int $increaseSecondsOnBid
+     *
+     * @return Jackpot
+     */
+    public function setIncreaseSecondsOnBid($increaseSecondsOnBid)
+    {
+        $this->increaseSecondsOnBid = $increaseSecondsOnBid;
+
+        return $this;
+    }
+
+    /**
+     * Get increaseSecondsOnBid.
+     *
+     * @return int
+     */
+    public function getIncreaseSecondsOnBid()
+    {
+        return $this->increaseSecondsOnBid;
     }
 
     /**

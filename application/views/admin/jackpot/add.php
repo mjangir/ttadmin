@@ -33,6 +33,22 @@ echo form_open($form['action'], $form['attributes']);
             <div class="form-group">
                 <div class="row">
                     <div class="col-xs-12">
+                        <label class="control-label">Default Available Bids*</label>
+                        <?php echo form_input(['name' => 'default_available_bids', 'type' => 'number', 'min' => '1', 'class' => 'form-control', 'value' => 10]); ?>
+                    </div>
+               </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <label class="control-label">How Many Seconds (Game Clock) To Increase On Each Bid*</label>
+                        <?php echo form_input(['name' => 'increase_seconds_on_bid', 'type' => 'number', 'min' => '1', 'class' => 'form-control', 'value' => 10]); ?>
+                    </div>
+               </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12">
                         <label class="control-label">Game Clock Time*</label>
                         <?php echo form_input(['name' => 'game_clock_time', 'class' => 'form-control timepicker']); ?>
                     </div>

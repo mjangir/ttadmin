@@ -17,6 +17,16 @@ jQuery(document).ready(function()
       console.log("disconnected");
     });
 
+    
+    socket.on('update_home_screen', function(data)
+    {
+      if(data.footer)
+      {
+        console.log(data.footer.showBidButton, data.footer.showQuitButton);
+      }
+      
+    });
+
     // When user joined a game
     socket.on('me_joined', function(data)
     {
@@ -204,9 +214,9 @@ jQuery(document).ready(function()
 // Place a bid
 jQuery(document).on('click', '#place-bid', function(e)
 {
-    socket.emit('place_bid', {
+    socket.emit('place_jackpot_bid', {
         userId: USERID,
-        jackpotUniqueId: jQuery('#jackpot_id').val()
+        jackpotUniqueId: "Gpj65X5itoG7n65TvxrY"
     })
 });
 
