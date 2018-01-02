@@ -123,6 +123,19 @@ class Setting extends MY_AdminController
                 }
 
                 $isAjax = true;
+            } else if ($this->input->post('advance_battle_levels') && $this->input->post('advance_battle_levels') == 1) {
+                $levels = $this->input->post('levels') ? json_encode($this->input->post('levels')) : json_encode([]);
+                //Get setting entity by key
+                $settingEntity = $this->objectManager->getRepository($this->entityName)->findOneBy(['key' => 'advance_battle_levels_json']);
+
+                //If key is not empty them update the new value
+                if (!empty($settingEntity)) {
+                    $settingEntity->setValue($levels);
+                    $this->objectManager->persist($settingEntity);
+                    $this->objectManager->flush();
+                }
+
+                $isAjax = true;
             } else {
                 //Get all posted data
                 $settings = $this->input->post('settings');

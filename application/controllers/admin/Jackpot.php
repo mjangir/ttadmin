@@ -206,6 +206,7 @@ class Jackpot extends MY_AdminController
                     // Copy default normal bid battle levels from settings (only for add new)
                     if ($id === null) {
                         $this->copyNormalBidBattleLevelsFromSettings($jackpot);
+                        $this->copyAdvanceBidBattleLevelsFromSettings($jackpot);
                     }
 
                     // Update in socket state
@@ -526,6 +527,68 @@ class Jackpot extends MY_AdminController
                         $entity->setMinPlayersRequiredToStart($level['min_players_to_start']);
                         $entity->setMinWinsToUnlockNextLevel($level['min_wins_to_unlock_next']);
                         $entity->setIncrementSeconds($level['increment_seconds']);
+                        $entity->setCreatedAt($createdAt);
+                        $entity->setUpdatedAt($updatedAt);
+
+                        if ($i == $total) {
+                            $entity->setIsLastLevel(1);
+                        } else {
+                            $entity->setIsLastLevel(0);
+                        }
+
+                        $this->objectManager->persist($entity);
+
+                        $i++;
+                    }
+                }
+
+                $this->objectManager->flush();
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Copy Advance Bid Battle Levels From Settings.
+     *
+     * @param Jackpot $jackpot
+     */
+    public function copyAdvanceBidBattleLevelsFromSettings($jackpot)
+    {
+        $settingEntity = $this->objectManager->getRepository('Entity\Setting')->findOneBy(['key' => 'advance_battle_levels_json']);
+
+        //If key is not empty them update the new value
+        if (!empty($settingEntity)) {
+            $levels = $settingEntity->getValue();
+
+            $advanceBattleLevels = isset($levels) && !empty($levels) ? json_decode($levels, true) : null;
+
+            if ($advanceBattleLevels && is_array($advanceBattleLevels) && count($advanceBattleLevels) > 0) {
+                $i = 1;
+                $total = count($advanceBattleLevels);
+                $createdAt = new \DateTime();
+                $updatedAt = new \DateTime();
+
+                foreach ($advanceBattleLevels as $level) {
+                    if (!empty($level['level_name']) && !empty($level['battle_type'])) {
+                        $entity = new Entity\JackpotBattleLevel();
+                        $entity->setJackpot($jackpot);
+                        $entity->setBattleType($level['battle_type']);
+                        $entity->setOrder($i);
+                        $entity->setLevelName($level['level_name']);
+                        $entity->setDuration($level['duration']);
+                        $entity->setPrizeType($level['prize_type']);
+                        $entity->setMinBidsToGamb($level['min_bids_to_gamb']);
+                        $entity->setDefaultAvailableBids($level['default_bids']);
+                        $entity->setLastBidWinnerPercent($level['last_bid_winner_percent']);
+                        $entity->setLongestBidWinnerPercent($level['longest_bid_winner_percent']);
+                        $entity->setMinPlayersRequiredToStart($level['min_players_to_start']);
+                        $entity->setMinWinsToUnlockNextLevel($level['min_wins_to_unlock_next']);
+                        $entity->setIncrementSeconds($level['increment_seconds']);
+                        $entity->setPrizeValue($level['min_players_to_start'] * $level['min_bids_to_gamb']);
                         $entity->setCreatedAt($createdAt);
                         $entity->setUpdatedAt($updatedAt);
 
@@ -912,7 +975,7 @@ class Jackpot extends MY_AdminController
         $body = json_decode($result->getBody()->getContents(), true);
 
         if (isset($body['status']) && $body['status'] == 'success') {
-            if ($body['state'] == 'STARTED') {
+            if (isset($body['state']) && $body['state'] == 'STARTED') {
                 if ($bool == true) {
                     $return = true;
                 } else {

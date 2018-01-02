@@ -20,11 +20,17 @@ jQuery(document).ready(function()
     
     socket.on('update_home_screen', function(data)
     {
-      if(data.footer)
+      console.log(data);
+      if(data.my_info)
       {
-        console.log(data.footer.showBidButton, data.footer.showQuitButton);
+        console.log(data.my_info);
       }
       
+    });
+
+    socket.on('show_error_popup', function(data)
+    {
+      console.log(data);
     });
 
     // When user joined a game
@@ -207,6 +213,14 @@ jQuery(document).ready(function()
       console.log(data.time);
     });
 
+    socket.on('update_level_screen', function(data){
+      console.log(data.levels);
+    });
+
+    socket.on('update_battle_game_screen', function(data) {
+      console.log(data.header.jackpotUniqueId, data.header.levelUniqueId, data.header.gameUniqueId, data.my_info);
+    })
+
   });
 
 });
@@ -214,9 +228,9 @@ jQuery(document).ready(function()
 // Place a bid
 jQuery(document).on('click', '#place-bid', function(e)
 {
-    socket.emit('place_jackpot_bid', {
+    socket.emit('request_battle_levels', {
         userId: USERID,
-        jackpotUniqueId: "Gpj65X5itoG7n65TvxrY"
+        jackpotUniqueId: "agoKOiqk2wBklvmhXpow"
     })
 });
 

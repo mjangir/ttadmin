@@ -458,4 +458,347 @@
             </div>
         </div>
     </div>
+
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12">
+                <?php
+                    $formAttributes = [
+                        'data-fv-framework'       => 'bootstrap',
+                        'data-fv-message'         => 'This value is not valid',
+                        'data-fv-icon-valid'      => 'null',
+                        'data-fv-icon-invalid'    => 'glyphicon glyphicon-remove',
+                        'data-fv-icon-validating' => 'null',
+                        'id'                      => 'form_normal_battle_levels',
+                    ];
+                    echo form_open($saveUrl, $formAttributes);
+                ?>
+                    <div class="panel panel-square panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Default Advnce Bid Battle Levels For Jackpot</h3>
+                            <input type="hidden" name="advance_battle_levels" value="1">
+                        </div>
+                        <div class="panel-body">
+                            <div class="row pivot-wrapper">
+                                <div class="col-md-12 mbt10 inner-col-8p">
+                                  <div class="col-md-3">
+                                      <strong>Level Name</strong>
+                                  </div>
+                                  <div class="col-md-1">
+                                      <strong>Duration</strong>
+                                  </div>
+                                  <div class="col-md-1">
+                                      <strong>Min Bids To Put In Game</strong>
+                                  </div>
+                                  <div class="col-md-1">
+                                      <strong>Default Given Bids</strong>
+                                  </div>
+                                  <div class="col-md-1">
+                                      <strong>Last Winner Percent</strong>
+                                  </div>
+                                  <div class="col-md-1">
+                                      <strong>Longest Winner Percent</strong>
+                                  </div>
+                                  <div class="col-md-1">
+                                      <strong>Increment Seconds</strong>
+                                  </div>
+                                  <div class="col-md-1">
+                                      <strong>Min Players</strong>
+                                  </div>
+                                  <div class="col-md-1">
+                                      <strong>Min Wins To Unlock Next</strong>
+                                  </div>
+                                  <div class="col-md-1">
+                                  </div>
+                              </div>
+                                <?php 
+                                $advanceBattleLevels = isset($settings['advance_battle_levels_json']) ? json_decode($settings['advance_battle_levels_json'], true) : null;
+                                if ($advanceBattleLevels && is_array($advanceBattleLevels) && count($advanceBattleLevels) > 0) {
+                                    $i = 0;
+                                    foreach ($advanceBattleLevels as $level) {
+                                        ?>
+                                        <div class="col-md-12 pivot-inner mbt10">
+                                            <div class="col-md-3">
+                                                <?php echo form_hidden('levels['.$i.'][battle_type]', 'GAMBLING'); ?>
+                                                <?php echo form_input([
+                                                  'type'                     => 'text',
+                                                  'value'                    => $level['level_name'],
+                                                  'name'                     => 'levels['.$i.'][level_name]',
+                                                  'class'                    => 'form-control',
+                                                  'data-fv-row'              => '.col-md-2',
+                                                  'data-fv-notempty'         => 'true',
+                                                  'data-fv-notempty-message' => 'Level Name Cannot Be Empty',
+                                                ]); ?>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <?php echo form_input([
+                                                  'type'                               => 'text',
+                                                  'value'                              => $level['duration'],
+                                                  'name'                               => 'levels['.$i.'][duration]',
+                                                  'class'                              => 'form-control', 'data-fv-row' => '.col-md-1',
+                                                  'data-fv-notempty'                   => 'true',
+                                                  'data-fv-notempty-message'           => 'Please Enter Game Duration (In Seconds)',
+                                                  'data-fv-numeric'                    => 'true',
+                                                  'data-fv-numeric-message'            => 'Duration Seconds Must Be Numeric',
+                                                  'data-fv-numeric-thousandsseparator' => '',
+                                                  'data-fv-numeric-decimalseparator'   => '.',
+                                                ]); ?>
+                                                <?php echo form_hidden('levels['.$i.'][prize_type]', 'BID'); ?>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <?php echo form_input([
+                                                  'type'                               => 'text',
+                                                  'value'                              => $level['min_bids_to_gamb'],
+                                                  'name'                               => 'levels['.$i.'][min_bids_to_gamb]',
+                                                  'class'                              => 'form-control',
+                                                  'data-fv-row'                        => '.col-md-1',
+                                                  'data-fv-notempty'                   => 'true',
+                                                  'data-fv-notempty-message'           => 'Please provide minimum bids to put in game',
+                                                  'data-fv-numeric'                    => 'true',
+                                                  'data-fv-numeric-message'            => 'Value Must Be Numeric',
+                                                  'data-fv-numeric-thousandsseparator' => '',
+                                                  'data-fv-numeric-decimalseparator'   => '.',
+                                                ]); ?>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <?php echo form_input([
+                                                  'type'                               => 'text',
+                                                  'value'                              => $level['default_bids'],
+                                                  'name'                               => 'levels['.$i.'][default_bids]',
+                                                  'class'                              => 'form-control', 'data-fv-row' => '.col-md-1',
+                                                  'data-fv-notempty'                   => 'true',
+                                                  'data-fv-notempty-message'           => 'Please Provide Some Default Bids To Play',
+                                                  'data-fv-numeric'                    => 'true',
+                                                  'data-fv-numeric-message'            => 'Available Bids Must Be Numeric',
+                                                  'data-fv-numeric-thousandsseparator' => '',
+                                                  'data-fv-numeric-decimalseparator'   => '.',
+                                                ]); ?>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <?php echo form_input([
+                                                  'type'                               => 'text',
+                                                  'value'                              => $level['last_bid_winner_percent'],
+                                                  'name'                               => 'levels['.$i.'][last_bid_winner_percent]',
+                                                  'class'                              => 'form-control',
+                                                  'data-fv-row'                        => '.col-md-2',
+                                                  'data-fv-notempty'                   => 'true',
+                                                  'data-fv-notempty-message'           => 'Last Bid Winner Percent (In Case of Different)',
+                                                  'data-fv-numeric'                    => 'true',
+                                                  'data-fv-numeric-message'            => 'Percentage Must Be Numeric',
+                                                  'data-fv-numeric-thousandsseparator' => '',
+                                                  'data-fv-numeric-decimalseparator'   => '.',
+                                                ]); ?>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <?php echo form_input([
+                                                  'type'                               => 'text',
+                                                  'value'                              => $level['longest_bid_winner_percent'],
+                                                  'name'                               => 'levels['.$i.'][longest_bid_winner_percent]',
+                                                  'class'                              => 'form-control',
+                                                  'data-fv-row'                        => '.col-md-2',
+                                                  'data-fv-notempty'                   => 'true',
+                                                  'data-fv-notempty-message'           => 'Longest Bid Winner Percent (In Case of Different)',
+                                                  'data-fv-numeric'                    => 'true',
+                                                  'data-fv-numeric-message'            => 'Percentage Must Be Numeric',
+                                                  'data-fv-numeric-thousandsseparator' => '',
+                                                  'data-fv-numeric-decimalseparator'   => '.',
+                                                ]); ?>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <?php echo form_input([
+                                                  'type'                               => 'text',
+                                                  'value'                              => $level['increment_seconds'],
+                                                  'name'                               => 'levels['.$i.'][increment_seconds]',
+                                                  'class'                              => 'form-control', 'data-fv-row' => '.col-md-1',
+                                                  'data-fv-notempty'                   => 'true',
+                                                  'data-fv-notempty-message'           => 'Please Enter Time Increment On Bid (In Seconds)',
+                                                  'data-fv-numeric'                    => 'true',
+                                                  'data-fv-numeric-message'            => 'Seconds Must Be Numeric',
+                                                  'data-fv-numeric-thousandsseparator' => '',
+                                                  'data-fv-numeric-decimalseparator'   => '.',
+                                                ]); ?>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <?php echo form_input([
+                                                  'type'                               => 'text',
+                                                  'value'                              => $level['min_players_to_start'],
+                                                  'name'                               => 'levels['.$i.'][min_players_to_start]',
+                                                  'class'                              => 'form-control',
+                                                  'data-fv-row'                        => '.col-md-1',
+                                                  'data-fv-notempty'                   => 'true',
+                                                  'data-fv-notempty-message'           => 'Provide Minimum Players To Start The Game',
+                                                  'data-fv-numeric'                    => 'true',
+                                                  'data-fv-numeric-message'            => 'Value Must Be Numeric',
+                                                  'data-fv-numeric-thousandsseparator' => '',
+                                                  'data-fv-numeric-decimalseparator'   => '.',
+                                                ]); ?>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <?php echo form_input([
+                                                  'type'                               => 'text',
+                                                  'value'                              => $level['min_wins_to_unlock_next'],
+                                                  'name'                               => 'levels['.$i.'][min_wins_to_unlock_next]',
+                                                  'class'                              => 'form-control',
+                                                  'data-fv-row'                        => '.col-md-1',
+                                                  'data-fv-notempty'                   => 'true',
+                                                  'data-fv-notempty-message'           => 'Provide Minimum Wins Required To Unlock Next Level',
+                                                  'data-fv-numeric'                    => 'true',
+                                                  'data-fv-numeric-message'            => 'Value Must Be Numeric',
+                                                  'data-fv-numeric-thousandsseparator' => '',
+                                                  'data-fv-numeric-decimalseparator'   => '.',
+                                                ]); ?>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <button type="button" class="btn bg-purple btn-flat add <?php echo ($i > 0) ? 'hide' : '' ?>" style="margin-left: -12px;"><i class="fa fa-plus"></i></button>
+                                                <button type="button" class="btn bg-maroon btn-flat remove <?php echo ($i == 0) ? 'hide' : '' ?>" style="margin-left: -12px;"><i class="fa fa-minus"></i></button>
+                                            </div>
+                                        </div>
+                                    <?php $i++;
+                                    }
+                                } else {
+                                    ?>
+                             <div class="col-md-12 pivot-inner mbt10 inner-col-8p">
+                            <div class="col-md-3">
+                                <?php echo form_hidden('levels[0][battle_type]', 'GAMBLING'); ?>
+                                <?php echo form_input([
+                                  'type'                     => 'text',
+                                  'name'                     => 'levels[0][level_name]',
+                                  'class'                    => 'form-control',
+                                  'data-fv-row'              => '.col-md-2',
+                                  'data-fv-notempty'         => 'true',
+                                  'data-fv-notempty-message' => 'Level Name Cannot Be Empty',
+                                ]); ?>
+                            </div>
+                            <div class="col-md-1">
+                                <?php echo form_input([
+                                  'type'                               => 'text',
+                                  'name'                               => 'levels[0][duration]',
+                                  'class'                              => 'form-control',
+                                  'data-fv-row'                        => '.col-md-1',
+                                  'data-fv-notempty'                   => 'true',
+                                  'data-fv-notempty-message'           => 'Please Enter Game Duration (In Seconds)',
+                                  'data-fv-numeric'                    => 'true',
+                                  'data-fv-numeric-message'            => 'Duration Seconds Must Be Numeric',
+                                  'data-fv-numeric-thousandsseparator' => '',
+                                  'data-fv-numeric-decimalseparator'   => '.',
+                                ]); ?>
+                                <?php echo form_hidden('levels[0][prize_type]', 'BID'); ?>
+                            </div>
+                            <div class="col-md-1">
+                                <?php echo form_input([
+                                  'type'                               => 'text',
+                                  'name'                               => 'levels[0][min_bids_to_gamb]',
+                                  'class'                              => 'form-control',
+                                  'data-fv-row'                        => '.col-md-1',
+                                  'data-fv-notempty'                   => 'true',
+                                  'data-fv-notempty-message'           => 'Please provide minimum bids to put in game',
+                                  'data-fv-numeric'                    => 'true',
+                                  'data-fv-numeric-message'            => 'Value Must Be Numeric',
+                                  'data-fv-numeric-thousandsseparator' => '',
+                                  'data-fv-numeric-decimalseparator'   => '.',
+                                ]); ?>
+                            </div>
+                            <div class="col-md-1">
+                                <?php echo form_input([
+                                  'type'                               => 'text',
+                                  'name'                               => 'levels[0][default_bids]',
+                                  'class'                              => 'form-control',
+                                  'data-fv-row'                        => '.col-md-1',
+                                  'data-fv-notempty'                   => 'true',
+                                  'data-fv-notempty-message'           => 'Please Provide Some Default Bids To Play',
+                                  'data-fv-numeric'                    => 'true',
+                                  'data-fv-numeric-message'            => 'Available Bids Must Be Numeric',
+                                  'data-fv-numeric-thousandsseparator' => '',
+                                  'data-fv-numeric-decimalseparator'   => '.',
+                                ]); ?>
+                            </div>
+                            <div class="col-md-1">
+                                <?php echo form_input([
+                                  'type'                               => 'text',
+                                  'name'                               => 'levels[0][last_bid_winner_percent]',
+                                  'class'                              => 'form-control',
+                                  'data-fv-row'                        => '.col-md-2',
+                                  'data-fv-notempty'                   => 'true',
+                                  'data-fv-notempty-message'           => 'Last Bid Winner Percent (In Case of Different)',
+                                  'data-fv-numeric'                    => 'true',
+                                  'data-fv-numeric-message'            => 'Percent Must Be Numeric',
+                                  'data-fv-numeric-thousandsseparator' => '',
+                                  'data-fv-numeric-decimalseparator'   => '.',
+                                ]); ?>
+                            </div>
+                            <div class="col-md-1">
+                                <?php echo form_input([
+                                    'type'                               => 'text',
+                                    'name'                               => 'levels[0][longest_bid_winner_percent]',
+                                    'class'                              => 'form-control',
+                                    'data-fv-row'                        => '.col-md-2',
+                                    'data-fv-notempty'                   => 'true',
+                                    'data-fv-notempty-message'           => 'Longest Bid Winner Percent (In Case of Different)',
+                                    'data-fv-numeric'                    => 'true',
+                                    'data-fv-numeric-message'            => 'Percent Must Be Numeric',
+                                    'data-fv-numeric-thousandsseparator' => '',
+                                    'data-fv-numeric-decimalseparator'   => '.',
+                                ]); ?>
+                            </div>
+                            <div class="col-md-1">
+                              <?php echo form_input([
+                                'type'                               => 'text',
+                                'name'                               => 'levels[0][increment_seconds]',
+                                'class'                              => 'form-control', 'data-fv-row' => '.col-md-1',
+                                'data-fv-notempty'                   => 'true',
+                                'data-fv-notempty-message'           => 'Please Enter Time Increment On Bid (In Seconds)',
+                                'data-fv-numeric'                    => 'true',
+                                'data-fv-numeric-message'            => 'Seconds Must Be Numeric',
+                                'data-fv-numeric-thousandsseparator' => '',
+                                'data-fv-numeric-decimalseparator'   => '.',
+                              ]); ?>
+                          </div>
+                            <div class="col-md-1">
+                                <?php echo form_input([
+                                  'type'                               => 'text',
+                                  'name'                               => 'levels[0][min_players_to_start]',
+                                  'class'                              => 'form-control',
+                                  'data-fv-row'                        => '.col-md-1',
+                                  'data-fv-notempty'                   => 'true',
+                                  'data-fv-notempty-message'           => 'Provide Minimum Players To Start The Game',
+                                  'data-fv-numeric'                    => 'true',
+                                  'data-fv-numeric-message'            => 'Value Must Be Numeric',
+                                  'data-fv-numeric-thousandsseparator' => '',
+                                  'data-fv-numeric-decimalseparator'   => '.',
+                                ]); ?>
+                            </div>
+                            <div class="col-md-1">
+                                <?php echo form_input([
+                                  'type'                               => 'text',
+                                  'name'                               => 'levels[0][min_wins_to_unlock_next]',
+                                  'value'                              => 0,
+                                  'class'                              => 'form-control',
+                                  'data-fv-row'                        => '.col-md-1',
+                                  'data-fv-notempty'                   => 'true',
+                                  'data-fv-notempty-message'           => 'Provide Minimum Wins Required To Unlock Next Level',
+                                  'data-fv-numeric'                    => 'true',
+                                  'data-fv-numeric-message'            => 'Value Must Be Numeric',
+                                  'data-fv-numeric-thousandsseparator' => '',
+                                  'data-fv-numeric-decimalseparator'   => '.',
+                                ]); ?>
+                            </div>
+                            <div class="col-md-1">
+                                <button type="button" class="btn bg-purple btn-flat add" style="margin-left: -12px;"><i class="fa fa-plus"></i></button>
+                                <button type="button" class="btn bg-maroon btn-flat remove hide" style="margin-left: -12px;"><i class="fa fa-minus"></i></button>
+                            </div>
+                        </div>
+                <div class="clearfix"></div>
+                <?php
+                                } ?>
+                            </div>
+                      </div>
+                        <!-- /.panel-body -->
+                        <div class="panel-footer">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
