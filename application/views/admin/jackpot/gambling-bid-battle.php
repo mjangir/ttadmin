@@ -52,7 +52,7 @@ echo form_open($form['action'], $finalFormAttrs);
         ?>
                     <div class="col-md-12 pivot-inner mbt10">
                         <div class="col-md-3">
-                            <?php echo form_hidden('levels['.$i.'][battle_type]', 'GAMBLING'); ?>
+                            <?php echo form_hidden('levels['.$i.'][battle_type]', 'ADVANCE'); ?>
                             <?php echo form_input([
                               'type'                     => 'text',
                               'value'                    => $level->getLevelName(),

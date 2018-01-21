@@ -717,7 +717,7 @@ class Jackpot extends MY_AdminController
 
             //Set other view parameters if a record is updated
             $view_data['jackpot'] = $jackpot;
-            $view_data['levels'] = $this->getBattleLevels($jackpot, 'GAMBLING');
+            $view_data['levels'] = $this->getBattleLevels($jackpot, 'ADVANCE');
             $viewFile = 'admin/jackpot/gambling-bid-battle';
             $view_data['pageHeading'] = 'Manage Gambling Bid Battle';
 
@@ -740,7 +740,7 @@ class Jackpot extends MY_AdminController
      */
     public function updateGamblingBidBattleLevels($model, $params)
     {
-        $oldRecords = $this->objectManager->getRepository('Entity\JackpotBattleLevel')->findBy(['jackpot' => $model, 'battleType' => 'GAMBLING']);
+        $oldRecords = $this->objectManager->getRepository('Entity\JackpotBattleLevel')->findBy(['jackpot' => $model, 'battleType' => 'ADVANCE']);
         $createdAt = new \DateTime();
         $updatedAt = new \DateTime();
 
