@@ -120,6 +120,27 @@
     <div class="col-sm-12">
         <div class="row">
             <div class="col-sm-12">
+                <form method="post" action="<?php echo $saveUrl; ?>" id="setting-faq-form">
+                    <div class="panel panel-square panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Terms And Conditions</h3>
+                        </div>
+                        <div class="panel-body">
+                            <textarea name="settings[terms_conditions]" rows="12" class="form-control wysihtml5"><?php echo $settings['terms_conditions']; ?></textarea>
+                        </div>
+                        <!-- /.panel-body -->
+                        <div class="panel-footer">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="row">
+            <div class="col-sm-12">
                 <?php
                     $formAttributes = [
                         'data-fv-framework'       => 'bootstrap',
